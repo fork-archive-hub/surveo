@@ -1,8 +1,11 @@
+const { checkContext } = require('feathers-hooks-common');
 const { getItems } = require('feathers-hooks-common');
 const omitDeep = require('omit-deep');
 
 module.exports = (fields) => {
   return (context) => {
+    checkContext(context, null, ['create', 'find', 'get', 'update', 'patch', 'remove'], 'deepDiscard');
+
     const items = getItems(context);
 
     if (Array.isArray(items)) {
