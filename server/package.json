@@ -55,6 +55,7 @@
     "mongodb-core": "^3.2.7",
     "mongoose": "^6.2.5",
     "mongoose-unique-validator": "^3.0.0",
+    "node-fetch": "^2.6.7",
     "omit-deep": "^0.3.0",
     "serve-favicon": "^2.5.0",
     "winston": "^3.6.0"
