@@ -68,7 +68,7 @@ module.exports = function (app) {
           type: Boolean,
           default: false,
         },
-        ipLimit: {
+        ipRestriction: {
           type: Boolean,
           default: false,
         },
