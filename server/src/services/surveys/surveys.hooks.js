@@ -2,10 +2,10 @@ const { authenticate } = require('@feathersjs/authentication').hooks;
 
 const { iff, isNot, isProvider, discard, disallow } = require('feathers-hooks-common');
 
-const setDocumentOwner = require('../../hooks/set-document-owner');
-const deepDiscard = require('../../hooks/deep-discard');
-const restrictToOwner = require('../../hooks/restrict-to-owner');
-const isOwner = require('../../hooks/is-owner');
+const setDocumentOwner = require('../../hooks/set-document-owner.hook');
+const deepDiscard = require('../../hooks/deep-discard.hook');
+const restrictToOwner = require('../../hooks/restrict-to-owner.hook');
+const isOwner = require('../../hooks/is-owner.hook');
 
 module.exports = {
   before: {
