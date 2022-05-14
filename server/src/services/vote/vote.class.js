@@ -1,0 +1,1 @@
+exports.Vote = class Vote {};
