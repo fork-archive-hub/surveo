@@ -1,3 +1,5 @@
+const verifyCaptchaToken = require('../../hooks/verify-captcha-token.hook');
+
 const restrictDuplicatedIps = require('./hooks/restrict-duplicated-ips.hook');
 
 module.exports = {
@@ -5,7 +7,7 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [restrictDuplicatedIps()],
+    create: [verifyCaptchaToken('token'), restrictDuplicatedIps()],
     update: [],
     patch: [],
     remove: [],
