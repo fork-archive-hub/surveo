@@ -4,7 +4,7 @@ const omitDeep = require('omit-deep');
 
 module.exports = (fields) => {
   return (context) => {
-    checkContext(context, null, ['create', 'find', 'get', 'update', 'patch', 'remove'], 'deepDiscard');
+    checkContext(context, null, null, 'deepDiscard');
 
     const items = getItems(context);
 

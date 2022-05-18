@@ -1,13 +1,13 @@
 const { checkContext } = require('feathers-hooks-common');
 
-module.exports = (userField, resultfield) => {
+module.exports = (userField, resultField) => {
   return (context) => {
-    checkContext(context, 'after', ['create', 'get', 'update', 'patch', 'remove'], 'isOwner');
+    checkContext(context, 'after', ['get', 'create', 'update', 'patch', 'remove'], 'isOwner');
 
     const isUserAuthenticated = Object.prototype.hasOwnProperty.call(context.params, 'user');
 
     if (isUserAuthenticated) {
-      const isUserAuthor = context.params.user[userField].toString() === context.result[resultfield].toString();
+      const isUserAuthor = context.params.user[userField].toString() === context.result[resultField].toString();
 
       return isUserAuthor;
     }

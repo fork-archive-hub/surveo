@@ -2,6 +2,7 @@ const { authenticate } = require('@feathersjs/authentication').hooks;
 
 const { iff, isNot, isProvider, discard, disallow } = require('feathers-hooks-common');
 
+const authenticateIfPossible = require('../../hooks/authenticate-if-possible.hook');
 const setDocumentOwner = require('../../hooks/set-document-owner.hook');
 const deepDiscard = require('../../hooks/deep-discard.hook');
 const restrictToOwner = require('../../hooks/restrict-to-owner.hook');
@@ -11,8 +12,8 @@ module.exports = {
   before: {
     all: [],
     find: [],
-    get: [],
-    create: [authenticate('jwt'), setDocumentOwner('author'), deepDiscard(['votes'])],
+    get: [authenticateIfPossible('jwt')],
+    create: [authenticate('jwt'), setDocumentOwner('_id', 'author'), deepDiscard(['votes'])],
     update: [authenticate('jwt'), disallow('external')],
     patch: [authenticate('jwt'), disallow('external')],
     remove: [authenticate('jwt'), restrictToOwner('author')],
