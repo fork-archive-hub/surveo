@@ -9,13 +9,13 @@ const isOwner = require('../../hooks/is-owner.hook');
 
 module.exports = {
   before: {
-    all: [authenticate('jwt')],
+    all: [],
     find: [],
     get: [],
-    create: [setDocumentOwner('author'), deepDiscard(['votes'])],
-    update: [disallow('external')],
-    patch: [disallow('external')],
-    remove: [restrictToOwner('author')],
+    create: [authenticate('jwt'), setDocumentOwner('author'), deepDiscard(['votes'])],
+    update: [authenticate('jwt'), disallow('external')],
+    patch: [authenticate('jwt'), disallow('external')],
+    remove: [authenticate('jwt'), restrictToOwner('author')],
   },
 
   after: {
