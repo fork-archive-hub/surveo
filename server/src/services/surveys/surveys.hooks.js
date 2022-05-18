@@ -21,7 +21,7 @@ module.exports = {
   after: {
     all: [iff(isProvider('external'), discard('ips'))],
     find: [iff(isProvider('external'), deepDiscard(['votes']), discard('protection', 'questions'))],
-    get: [iff(isProvider('external'), iff(isNot(isOwner('author')), deepDiscard(['votes'])))],
+    get: [iff(isProvider('external'), iff(isNot(isOwner('_id', 'author')), deepDiscard(['votes'])))],
     create: [],
     update: [],
     patch: [],
