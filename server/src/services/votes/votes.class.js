@@ -1,6 +1,6 @@
 const { BadRequest } = require('@feathersjs/errors');
 
-exports.Vote = class Vote {
+exports.Votes = class Votes {
   constructor(options, app) {
     this.app = app;
     this.options = options || {};
