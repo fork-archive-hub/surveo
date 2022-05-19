@@ -7,7 +7,7 @@ exports.Votes = class Votes {
   }
 
   async get(id, params) {
-    const survey = await this.getSurvey(id);
+    const survey = await this.app.service('surveys').get(id);
     const votes = survey.ips.filter((ip) => ip === params.ip).length;
 
     return {
@@ -17,7 +17,7 @@ exports.Votes = class Votes {
   }
 
   async create(data, params) {
-    const survey = await this.getSurvey(data.surveyId);
+    const survey = await this.app.service('surveys').get(data.surveyId);
 
     for (const question of survey.questions) {
       const answerForQuestion = this.getUserAnswer(question, data.answerSheet);
@@ -34,19 +34,9 @@ exports.Votes = class Votes {
     }
 
     survey.ips.push(params.ip);
-    await survey.save();
+    await this.app.service('surveys').patch(data.surveyId, survey);
 
     return { success: true };
-  }
-
-  async getSurvey(surveyId) {
-    const survey = await this.app.service('surveys').Model.findById(surveyId);
-
-    if (survey === null) {
-      throw new BadRequest(`Survey with id '${surveyId}' not found!`);
-    }
-
-    return survey;
   }
 
   getUserAnswer(question, answerSheet) {
