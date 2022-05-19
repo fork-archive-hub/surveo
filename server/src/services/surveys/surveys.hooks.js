@@ -16,7 +16,7 @@ module.exports = {
     create: [authenticate('jwt'), setDocumentOwner('_id', 'author'), deepDiscard(['votes'])],
     update: [authenticate('jwt'), disallow('external')],
     patch: [authenticate('jwt'), disallow('external')],
-    remove: [authenticate('jwt'), restrictToOwner('author')],
+    remove: [authenticate('jwt'), restrictToOwner('_id', 'author')],
   },
 
   after: {
