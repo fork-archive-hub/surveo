@@ -17,9 +17,9 @@ exports.Votes = class Votes {
   }
 
   async create(data, params) {
-    const survey = await this.app.service('surveys').get(data.surveyId);
+    const { questions, ips } = await this.app.service('surveys').get(data.surveyId);
 
-    for (const question of survey.questions) {
+    for (const question of questions) {
       const answerForQuestion = this.getUserAnswer(question, data.answerSheet);
 
       for (const subQuestion of question.subQuestions) {
@@ -33,8 +33,9 @@ exports.Votes = class Votes {
       answerForQuestion.votes += 1;
     }
 
-    survey.ips.push(params.ip);
-    await this.app.service('surveys').patch(data.surveyId, survey);
+    ips.push(params.ip);
+
+    await this.app.service('surveys').patch(data.surveyId, { questions, ips });
 
     return { success: true };
   }
