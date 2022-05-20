@@ -52,6 +52,7 @@
     "feathers-hooks-common": "^5.0.6",
     "feathers-mongoose": "^8.5.1",
     "helmet": "^4.6.0",
+    "joi": "^17.6.0",
     "mongodb-core": "^3.2.7",
     "mongoose": "^6.2.5",
     "mongoose-unique-validator": "^3.0.0",

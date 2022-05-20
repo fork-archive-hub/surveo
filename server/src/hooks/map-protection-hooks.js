@@ -1,5 +1,4 @@
 const { checkContext } = require('feathers-hooks-common');
-const { BadRequest } = require('@feathersjs/errors');
 
 module.exports = (surveyField, protectionHooks) => {
   return async (context) => {
@@ -9,10 +8,6 @@ module.exports = (surveyField, protectionHooks) => {
 
     if (protectionNames.length === 0) {
       return context;
-    }
-
-    if (!Object.prototype.hasOwnProperty.call(context.data, 'surveyId')) {
-      throw new BadRequest('Survey Id is required');
     }
 
     const survey = await context.app.service('surveys').get(context.data.surveyId);
