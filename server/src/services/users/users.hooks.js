@@ -10,8 +10,8 @@ const { userSchema } = require('./users.schemas');
 module.exports = {
   before: {
     all: [],
-    find: [authenticate('jwt')],
-    get: [authenticate('jwt')],
+    find: [],
+    get: [],
     create: [validateSchema(userSchema), hashPassword('password')],
     update: [disallow('external'), hashPassword('password'), authenticate('jwt')],
     patch: [disallow('external'), hashPassword('password'), authenticate('jwt')],

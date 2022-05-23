@@ -3,18 +3,10 @@ module.exports = function (app) {
     return;
   }
 
-  app.on('login', async (authResult, { connection }) => {
-    if (connection) {
-      const userId = connection.user._id.toString();
-
-      app.channel(`user.${userId}`).join(connection);
-    }
-  });
-
   app.service('votes').publish('created', async (data, context) => {
-    const survey = await app.service('surveys').get(context.data.surveyId, { provider: 'socketio' });
-    const authorId = survey.authorId.toString();
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { ips, ...survey } = await app.service('surveys').get(context.data.surveyId);
 
-    return [app.channel(`user.${authorId}`).send(survey)];
+    return [app.channel(`survey.${survey._id.toString()}`).send(survey)];
   });
 };
