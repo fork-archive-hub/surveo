@@ -7,6 +7,6 @@ module.exports = function (app) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { ips, ...survey } = await app.service('surveys').get(context.data.surveyId);
 
-    return [app.channel(`survey.${survey._id.toString()}`).send(survey)];
+    return app.channel(`survey.${survey._id.toString()}`).send(survey);
   });
 };
