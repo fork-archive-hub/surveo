@@ -44,7 +44,7 @@ module.exports = function (app) {
 
   const SurveySchema = new mongooseClient.Schema(
     {
-      author: {
+      authorId: {
         type: mongooseClient.Schema.Types.ObjectId,
         ref: 'users',
       },

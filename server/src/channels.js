@@ -13,7 +13,7 @@ module.exports = function (app) {
 
   app.service('votes').publish('created', async (data, context) => {
     const survey = await app.service('surveys').get(context.data.surveyId, { provider: 'socketio' });
-    const authorId = survey.author.toString();
+    const authorId = survey.authorId.toString();
 
     return [app.channel(`user.${authorId}`).send(survey)];
   });

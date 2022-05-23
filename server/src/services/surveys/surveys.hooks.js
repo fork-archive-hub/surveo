@@ -1,6 +1,6 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
 
-const { iff, isNot, isProvider, discard, disallow } = require('feathers-hooks-common');
+const { iff, isNot, isProvider, discard, disallow, populate } = require('feathers-hooks-common');
 
 const validateSchema = require('../../hooks/validate-schema.hook');
 const authenticateIfPossible = require('../../hooks/authenticate-if-possible.hook');
@@ -19,18 +19,32 @@ module.exports = {
     create: [
       authenticate('jwt'),
       validateSchema(surveySchema),
-      setDocumentOwner('_id', 'author'),
+      setDocumentOwner('_id', 'authorId'),
       deepDiscard(['votes']),
     ],
     update: [authenticate('jwt'), disallow('external')],
     patch: [authenticate('jwt'), disallow('external')],
-    remove: [authenticate('jwt'), restrictToOwner('_id', 'author')],
+    remove: [authenticate('jwt'), restrictToOwner('_id', 'authorId')],
   },
 
   after: {
     all: [iff(isProvider('external'), discard('ips'))],
     find: [iff(isProvider('external'), deepDiscard(['votes']), discard('protection', 'questions'))],
-    get: [iff(isProvider('external'), iff(isNot(isDocumentOwner('_id', 'author')), deepDiscard(['votes'])))],
+    get: [
+      iff(isProvider('external'), iff(isNot(isDocumentOwner('_id', 'authorId')), deepDiscard(['votes']))),
+      populate({
+        schema: {
+          include: {
+            service: 'users',
+            nameAs: 'author',
+            parentField: 'authorId',
+            childField: '_id',
+            provider: 'rest',
+          },
+        },
+      }),
+      discard('_include'),
+    ],
     create: [],
     update: [],
     patch: [],
