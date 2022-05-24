@@ -1,10 +1,14 @@
-const { checkContext } = require('feathers-hooks-common');
+const { isProvider, checkContext } = require('feathers-hooks-common');
 const { setField } = require('feathers-authentication-hooks');
 const { Forbidden } = require('@feathersjs/errors');
 
 module.exports = (userField, dataField) => {
   return async (context) => {
     checkContext(context, 'before', null, 'restrictToOwner');
+
+    if (isProvider('server')(context)) {
+      return context;
+    }
 
     const isUserAuthenticated = Object.prototype.hasOwnProperty.call(context.params, 'user');
 
