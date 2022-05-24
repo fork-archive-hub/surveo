@@ -2,7 +2,7 @@ const { checkContext } = require('feathers-hooks-common');
 const { getItems } = require('feathers-hooks-common');
 const omitDeep = require('omit-deep');
 
-module.exports = (fields) => {
+module.exports = (...fields) => {
   return (context) => {
     checkContext(context, null, null, 'deepDiscard');
 

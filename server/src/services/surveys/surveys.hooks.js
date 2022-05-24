@@ -21,7 +21,7 @@ module.exports = {
       authenticate('jwt'),
       validateSchema(surveySchema),
       setDocumentOwner('_id', 'authorId'),
-      deepDiscard(['votes']),
+      deepDiscard('votes'),
     ],
     update: [authenticate('jwt'), disallow('external')],
     patch: [authenticate('jwt'), disallow('external')],
@@ -30,9 +30,9 @@ module.exports = {
 
   after: {
     all: [ifProvider(['external'], discard('ips'))],
-    find: [ifProvider(['external'], deepDiscard(['votes']), discard('protection', 'questions'))],
+    find: [ifProvider(['external'], deepDiscard('votes'), discard('protection', 'questions'))],
     get: [
-      ifProvider(['external'], iff(isNot(isDocumentOwner('_id', 'authorId')), deepDiscard(['votes']))),
+      ifProvider(['external'], iff(isNot(isDocumentOwner('_id', 'authorId')), deepDiscard('votes'))),
       populate({
         schema: {
           include: {
