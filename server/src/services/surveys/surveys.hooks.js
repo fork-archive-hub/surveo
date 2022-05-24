@@ -1,9 +1,10 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
 
-const { iff, isNot, discard, disallow, populate } = require('feathers-hooks-common');
+const { discard, disallow, populate } = require('feathers-hooks-common');
 
 const validateSchema = require('../../hooks/validate-schema.hook');
 const ifProvider = require('../../hooks/if-provider.hook');
+const ifNot = require('../../hooks/if-not.hook');
 const authenticateIfPossible = require('../../hooks/authenticate-if-possible.hook');
 const setDocumentOwner = require('../../hooks/set-document-owner.hook');
 const deepDiscard = require('../../hooks/deep-discard.hook');
@@ -32,7 +33,7 @@ module.exports = {
     all: [ifProvider(['external'], discard('ips'))],
     find: [ifProvider(['external'], deepDiscard('votes'), discard('protection', 'questions'))],
     get: [
-      ifProvider(['external'], iff(isNot(isDocumentOwner('_id', 'authorId')), deepDiscard('votes'))),
+      ifProvider(['external'], ifNot(isDocumentOwner('_id', 'authorId'), deepDiscard('votes'))),
       populate({
         schema: {
           include: {
