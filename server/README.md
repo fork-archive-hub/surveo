@@ -54,7 +54,12 @@ In order for a user to be authenticated, the request must have an `Authorization
 
 ## Services
 
-Surveo server currently has 5 services `authentication`, `users`, `subscriptions`, `surveys`, `votes`
+Surveo server currently has 5 services:
+- [authentication](https://github.com/r1pk/surveo-server#service-authentication-authentication)
+- [users](https://github.com/r1pk/surveo-server#service-users-users)
+- [subscriptions](https://github.com/r1pk/surveo-server#service-users-users)
+- [surveys](https://github.com/r1pk/surveo-server#service-users-users)
+- [votes](https://github.com/r1pk/surveo-server#service-users-users)
 
 ### Service: `authentication` (`/authentication`)
 #### CREATE `POST`
