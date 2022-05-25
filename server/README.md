@@ -80,7 +80,7 @@ Response
 ```
 {
     "accessToken": String - authentication token used to authenticate requests
-    "authentication": Object - object containing information about the authentication strategy
+    "authentication": Object - object containing informations about the authentication strategy
     "user": User {
         "_id": String - user id
         "username": String - username
@@ -101,7 +101,7 @@ Endpoint is used to log the user in and on successful login returns an authentic
 Request body
 ```
 {
-    "username": String - username,
+    "username": String - username
     "password": String - password
 }
 ```
@@ -221,14 +221,14 @@ Request body
     "protection": {
         "captcha": Boolean - status of captcha protection
         "ipRestriction": Boolean - status of ip restriction protection
-    },
+    }
     "questions": Array<Question> [
         Question {
             "text": String - text of the question
             "answers": Array<Answer> [
                 Answer {
                     "text": String - text of the answer
-                    "index": Number - unique number of question used to order answers
+                    "index": Number - unique number of answer used to order answers
                 }
             ]
             "subQuestions": Array<SubQuestion> [
@@ -238,7 +238,7 @@ Request body
                     "answers": Array<Answer> [
                         Answer {
                             "text": String - text of the answer
-                            "index": Number - unique number of question used to order answers
+                            "index": Number - unique number of answer used to order answers
                         }
                     ]
                 }
@@ -259,16 +259,16 @@ Survey {
     "protection": {
         "captcha": Boolean - status of captcha protection
         "ipRestriction": Boolean - status of ip restriction protection
-    },
+    }
     "questions": Array<Question> [
         Question {
-            "_id": id of the question
+            "_id": String - id of the question
             "text": String - text of the question
             "answers": Array<Answer> [
                 Answer {
-                    "_id": id of the answer
+                    "_id": String - id of the answer
                     "text": String - text of the answer
-                    "index": Number - unique number of question used to order answers
+                    "index": Number - unique number of answer used to order answers
                     "votes": Number - number of votes to given answer
                 }
             ]
@@ -279,9 +279,9 @@ Survey {
                     "text": String - text of the question
                     "answers": Array<Answer> [
                         Answer {
-                            "_id": id of the answer
+                            "_id": String - id of the answer
                             "text": String - text of the answer
-                            "index": Number - unique number of question used to order answers
+                            "index": Number - unique number of answer used to order answers
                             "votes": Number - number of votes to given answer
                         }
                     ]
@@ -311,7 +311,7 @@ Response
     "skip": Number - skipped results
     "data": [
         {
-            "_id": String - survey id,
+            "_id": String - survey id
             "authorId": String - survey author id
             "name": String - survey name
             "createdAt": String - survey create timestamp
@@ -351,16 +351,16 @@ Survey {
     "protection": {
         "captcha": Boolean - status of captcha protection
         "ipRestriction": Boolean - status of ip restriction protection
-    },
+    }
     "questions": Array<Question> [
         Question {
-            "_id": id of the question
+            "_id": String - id of the question
             "text": String - text of the question
             "answers": Array<Answer> [
                 Answer {
-                    "_id": id of the answer
+                    "_id": String - id of the answer
                     "text": String - text of the answer
-                    "index": Number - unique number of question used to order answers
+                    "index": Number - unique number of answer used to order answers
                     "votes": Number - number of votes to given answer (ONLY IF AUTHENTICATED USER IS AUTHOR OF THE SURVEY)
                 }
             ]
@@ -371,9 +371,9 @@ Survey {
                     "text": String - text of the question
                     "answers": Array<Answer> [
                         Answer {
-                            "_id": id of the answer
+                            "_id": String - id of the answer
                             "text": String - text of the answer
-                            "index": Number - unique number of question used to order answers
+                            "index": Number - unique number of answer used to order answers
                             "votes": Number - number of votes to given answer (ONLY IF AUTHENTICATED USER IS AUTHOR OF THE SURVEY)
                         }
                     ]
@@ -383,7 +383,7 @@ Survey {
     ]
 }
 ```
-Endpoint is used to get questions and answers to survey, if authenticated in user is survey author then endpoint returns the same object except for answers where there is additional field `votes` containing number of votes for given answer.
+Endpoint is used to get questions and answers to survey, if authenticated user is survey author then endpoint returns the same object except for answers where there is additional field `votes` containing number of votes for given answer.
 
 #### REMOVE `DELETE`
 `URL: /surveys/:surveyId`
@@ -470,16 +470,16 @@ Survey {
     "protection": {
         "captcha": Boolean - status of captcha protection
         "ipRestriction": Boolean - status of ip restriction protection
-    },
+    }
     "questions": Array<Question> [
         Question {
-            "_id": id of the question
+            "_id": String - id of the question
             "text": String - text of the question
             "answers": Array<Answer> [
                 Answer {
-                    "_id": id of the answer
+                    "_id": String - id of the answer
                     "text": String - text of the answer
-                    "index": Number - unique number of question used to order answers
+                    "index": Number - unique number of answer used to order answers
                     "votes": Number - number of votes to given answer
                 }
             ]
@@ -490,9 +490,9 @@ Survey {
                     "text": String - text of the question
                     "answers": Array<Answer> [
                         Answer {
-                            "_id": id of the answer
+                            "_id": String - id of the answer
                             "text": String - text of the answer
-                            "index": Number - unique number of question used to order answers
+                            "index": Number - unique number of answer used to order answers
                             "votes": Number - number of votes to given answer
                         }
                     ]
@@ -505,6 +505,8 @@ Survey {
 
 An event is emitted after each successfully approved vote for a survey. The event is emitted only to users in the "survey.SURVEY_ID" channel.
 
+## Request validation
+Validation of the query body is done with the `validateSchema` hook which uses the `Joi` library. Each service has a `SERVICE.schemas.js` file that contains the schemas for the queries it supports.
 
 ## Author
 
