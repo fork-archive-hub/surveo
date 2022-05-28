@@ -6,9 +6,9 @@ const validateSchema = require('../../hooks/validate-schema.hook');
 const ifProvider = require('../../hooks/if-provider.hook');
 const ifNot = require('../../hooks/if-not.hook');
 const authenticateIfPossible = require('../../hooks/authenticate-if-possible.hook');
-const setDocumentOwner = require('../../hooks/set-document-owner.hook');
 const deepDiscard = require('../../hooks/deep-discard.hook');
-const restrictToOwner = require('../../hooks/restrict-to-owner.hook');
+const mapUserFieldToDataField = require('../../hooks/map-user-field-to-data-field.hook');
+const mapUserFieldToQueryField = require('../../hooks/map-user-field-to-query-field.hook');
 const isDocumentOwner = require('../../hooks/is-document-owner.hook');
 
 const { surveySchema } = require('./surveys.schemas');
@@ -21,12 +21,12 @@ module.exports = {
     create: [
       authenticate('jwt'),
       validateSchema(surveySchema),
-      setDocumentOwner('_id', 'authorId'),
+      mapUserFieldToDataField('_id', 'authorId'),
       deepDiscard('votes'),
     ],
     update: [authenticate('jwt'), disallow('external')],
     patch: [authenticate('jwt'), disallow('external')],
-    remove: [authenticate('jwt'), restrictToOwner('_id', 'authorId')],
+    remove: [authenticate('jwt'), mapUserFieldToQueryField('_id', 'authorId')],
   },
 
   after: {

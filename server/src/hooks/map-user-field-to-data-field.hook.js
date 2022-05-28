@@ -4,7 +4,7 @@ const { Forbidden } = require('@feathersjs/errors');
 
 module.exports = (userField, dataField) => {
   return async (context) => {
-    checkContext(context, 'before', null, 'setDocumentOwner');
+    checkContext(context, 'before', null, 'mapUserFieldToDataField');
 
     const isUserAuthenticated = Object.prototype.hasOwnProperty.call(context.params, 'user');
 
