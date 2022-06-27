@@ -49,7 +49,7 @@ Creates a Survey that is assigned to the currently authenticated user and then r
             "_id": "123412341234123412341234"
           }
         ],
-        "subQuestions": [
+        "subquestions": [
           {
             "requirements": [],
             "text": "text",
@@ -88,7 +88,7 @@ Creates a Survey that is assigned to the currently authenticated user and then r
             "_id": "123412341234123412341234"
           }
         ],
-        "subQuestions": [
+        "subquestions": [
           {
             "requirements": [],
             "text": "123412341234123412341234",

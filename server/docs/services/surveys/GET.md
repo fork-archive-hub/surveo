@@ -47,7 +47,7 @@ If the currently authenticated user is the author of the survey it will also ret
             "_id": "123412341234123412341234"
           }
         ],
-        "subQuestions": [
+        "subquestions": [
           {
             "requirements": [],
             "text": "text",
@@ -86,7 +86,7 @@ If the currently authenticated user is the author of the survey it will also ret
             "_id": "123412341234123412341234"
           }
         ],
-        "subQuestions": [
+        "subquestions": [
           {
             "requirements": [],
             "text": "text",

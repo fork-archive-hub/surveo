@@ -5,7 +5,7 @@ const answerSchema = Joi.object().keys({
   text: Joi.string().min(2).max(140).required(),
 });
 
-const subQuestionSchema = Joi.object().keys({
+const subquestionSchema = Joi.object().keys({
   requirements: Joi.array().items(Joi.number().min(0)).required(),
   text: Joi.string().min(3).max(140).required(),
   answers: Joi.array().items(answerSchema).min(2).required(),
@@ -14,7 +14,7 @@ const subQuestionSchema = Joi.object().keys({
 const questionSchema = Joi.object().keys({
   text: Joi.string().min(3).max(140).required(),
   answers: Joi.array().items(answerSchema).min(2).required(),
-  subQuestions: Joi.array().items(subQuestionSchema).required(),
+  subquestions: Joi.array().items(subquestionSchema).required(),
 });
 
 const surveySchema = Joi.object().keys({
@@ -28,4 +28,4 @@ const surveySchema = Joi.object().keys({
   questions: Joi.array().items(questionSchema).min(1).required(),
 });
 
-module.exports = { answerSchema, subQuestionSchema, questionSchema, surveySchema };
+module.exports = { answerSchema, subquestionSchema, questionSchema, surveySchema };

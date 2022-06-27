@@ -22,11 +22,11 @@ exports.Votes = class Votes {
     for (const question of questions) {
       const answerForQuestion = this.getUserAnswer(question, data.answerSheet);
 
-      for (const subQuestion of question.subQuestions) {
-        if (subQuestion.requirements.includes(answerForQuestion.index)) {
-          const answerForSubQuestion = this.getUserAnswer(subQuestion, data.answerSheet);
+      for (const subquestion of question.subquestions) {
+        if (subquestion.requirements.includes(answerForQuestion.index)) {
+          const answerForSubquestion = this.getUserAnswer(subquestion, data.answerSheet);
 
-          answerForSubQuestion.votes += 1;
+          answerForSubquestion.votes += 1;
         }
       }
 

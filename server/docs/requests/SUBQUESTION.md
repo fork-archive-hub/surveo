@@ -1,4 +1,4 @@
-# SubQuestion
+# Subquestion
 
 ## `requirements`
 

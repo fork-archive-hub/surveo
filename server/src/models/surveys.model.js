@@ -20,7 +20,7 @@ module.exports = function (app) {
     },
   });
 
-  const SubQuestionSchema = new mongooseClient.Schema({
+  const SubquestionSchema = new mongooseClient.Schema({
     requirements: [Number],
     text: {
       type: String,
@@ -39,7 +39,7 @@ module.exports = function (app) {
       maxLength: [140, 'Question text cannot be more than 140 characters long!'],
     },
     answers: [AnswerSchema],
-    subQuestions: [SubQuestionSchema],
+    subquestions: [SubquestionSchema],
   });
 
   const SurveySchema = new mongooseClient.Schema(
