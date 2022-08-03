@@ -12,9 +12,7 @@ Returns a user object and an authentication token with information about the use
   `POST`
 
 - **Headers:**
-
-  - **Required:**  
-    `Authorization = 'Bearer {token}'`
+  None
 
 - **URL Params**  
   None

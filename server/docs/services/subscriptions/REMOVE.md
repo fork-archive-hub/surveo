@@ -12,6 +12,11 @@ Removes user connection from `survey.SURVEY_ID` channel.
 - **Method:**  
   `DELETE`
 
+- **Headers:**
+
+  - **Required:**  
+    `Authorization = 'Bearer {token}'`
+
 - **URL Params**
 
   - **Required:**  

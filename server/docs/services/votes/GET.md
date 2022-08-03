@@ -1,7 +1,7 @@
 ## **Get Vote**
 
-Endpoint used to receive votes for a specific survey.
-Returns the status of whether the vote was accepted.
+Endpoint used to check if a vote has already been cast from a given ip address in a given survey.
+Returns a logical value depending on whether a vote has been cast and the number of votes cast.
 
 - **URL**  
   `/votes/:surveyId`
@@ -11,6 +11,9 @@ Returns the status of whether the vote was accepted.
 
 - **Method:**  
   `GET`
+
+- **Headers:**
+  None
 
 - **URL Params**
 

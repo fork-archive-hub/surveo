@@ -12,6 +12,11 @@ Endpoint always returns the data of the currently authenticated user.
 - **Method:**  
   `GET`
 
+- **Headers:**
+
+  - **Required:**  
+    `Authorization = 'Bearer {token}'`
+
 - **URL Params**  
   None
 

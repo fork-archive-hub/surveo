@@ -12,6 +12,11 @@ If the currently authenticated user is the author of the survey it will also ret
 - **Method:**  
   `GET`
 
+- **Headers:**
+
+  - **Optional:**  
+    `Authorization = 'Bearer {token}'`
+
 - **URL Params**
 
   - **Required:**  
