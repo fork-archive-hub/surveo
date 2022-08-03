@@ -11,7 +11,7 @@ Returns a user object and an authentication token with information about the use
 - **Method:**  
   `POST`
 
-- **Headers:**
+- **Headers:**  
   None
 
 - **URL Params**  

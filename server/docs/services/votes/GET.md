@@ -12,7 +12,7 @@ Returns a logical value depending on whether a vote has been cast and the number
 - **Method:**  
   `GET`
 
-- **Headers:**
+- **Headers:**  
   None
 
 - **URL Params**

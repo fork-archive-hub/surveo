@@ -11,7 +11,7 @@ Returns reduced survey objects that match the query in the URL.
 - **Method:**  
   `GET`
 
-- **Headers:**
+- **Headers:**  
   None
 
 - **URL Params**

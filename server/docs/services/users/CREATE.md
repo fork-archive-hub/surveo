@@ -11,7 +11,7 @@ Creates a new user which is later used for authentication.
 - **Method:**  
   `POST`
 
-- **Headers:**
+- **Headers:**  
   None
 
 - **URL Params**  

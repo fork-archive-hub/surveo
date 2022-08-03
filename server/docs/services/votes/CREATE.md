@@ -12,7 +12,7 @@ Returns the status of whether the vote was accepted.
 - **Method:**  
   `POST`
 
-- **Headers:**
+- **Headers:**  
   None
 
 - **URL Params**  
