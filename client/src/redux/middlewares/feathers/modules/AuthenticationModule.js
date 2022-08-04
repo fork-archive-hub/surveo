@@ -1,4 +1,6 @@
-import { login, logout } from '../../../slices/authentication';
+import { login, logout } from '../actions';
+
+import { setAuthenticatedUser } from '../../../slices/authentication';
 
 export default class AuthenticationModule {
   constructor(client, store) {
@@ -13,13 +15,19 @@ export default class AuthenticationModule {
       password: action.payload.password,
     });
 
-    return login(result.user);
+    return setAuthenticatedUser({
+      isAuthenticated: true,
+      user: result.user,
+    });
   };
 
   handleLogoutAction = async () => {
     await this.client.logout();
 
-    return logout();
+    return setAuthenticatedUser({
+      isAuthenticated: false,
+      user: {},
+    });
   };
 
   getModuleActions = () => {
