@@ -1,4 +1,4 @@
-const { BadRequest } = require('@feathersjs/errors');
+const { BadRequest, NotAcceptable } = require('@feathersjs/errors');
 
 exports.Votes = class Votes {
   constructor(options, app) {
@@ -17,7 +17,11 @@ exports.Votes = class Votes {
   }
 
   async create(data, params) {
-    const { questions, ips } = await this.app.service('surveys').get(data.surveyId);
+    const { open, questions, ips } = await this.app.service('surveys').get(data.surveyId);
+
+    if (!open) {
+      throw new NotAcceptable('Survey is closed');
+    }
 
     for (const question of questions) {
       const answerForQuestion = this.getUserAnswer(question, data.answerSheet);

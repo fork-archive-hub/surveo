@@ -54,6 +54,10 @@ module.exports = function (app) {
         minlength: [3, 'Survey name must be at least 3 characters long!'],
         maxLength: [240, 'Survey name cannot be more than 240 characters long!'],
       },
+      open: {
+        type: Boolean,
+        default: true,
+      },
       protection: {
         captcha: {
           type: Boolean,
