@@ -33,6 +33,7 @@ Returns reduced survey objects that match the query in the URL.
         "_id": "123412341234123412341234",
         "authorId": "123412341234123412341234",
         "name": "name",
+        "open": true,
         "createdAt": "2022-05-23T19:22:32.195Z",
         "updatedAt": "2022-05-24T20:12:09.489Z",
         "__v": 0

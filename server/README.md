@@ -83,6 +83,7 @@ Surveo server currently has 5 services:
 - [create](./docs/services/surveys/CREATE.md)
 - [find](./docs/services/surveys/FIND.md)
 - [get](./docs/services/surveys/GET.md)
+- [patch](./docs/services/surveys/PATCH.md)
 - [remove](./docs/services/surveys/REMOVE.md)
 
 ### Service: `votes` (`/votes`)

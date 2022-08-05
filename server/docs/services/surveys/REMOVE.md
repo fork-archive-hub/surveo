@@ -31,6 +31,7 @@ Authenticated user must be the author of the survey in order to delete it.
     "_id": "123412341234123412341234",
     "authorId": "123412341234123412341234",
     "name": "name",
+    "open": true,
     "protection": {
       "captcha": true,
       "ipRestriction": true

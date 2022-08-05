@@ -28,6 +28,7 @@ Creates a Survey that is assigned to the currently authenticated user and then r
   {
     "authorId": "123412341234123412341234",
     "name": "name",
+    "open": true,
     "protection": {
       "captcha": true,
       "ipRestriction": true

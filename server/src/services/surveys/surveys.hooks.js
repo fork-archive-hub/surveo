@@ -11,7 +11,7 @@ const mapUserFieldToDataField = require('../../hooks/map-user-field-to-data-fiel
 const mapUserFieldToQueryField = require('../../hooks/map-user-field-to-query-field.hook');
 const isDocumentOwner = require('../../hooks/is-document-owner.hook');
 
-const { surveySchema } = require('./surveys.schemas');
+const { surveyMetadataSchema, surveySchema } = require('./surveys.schemas');
 
 module.exports = {
   before: {
@@ -25,7 +25,10 @@ module.exports = {
       deepDiscard('votes'),
     ],
     update: [authenticate('jwt'), disallow('external')],
-    patch: [authenticate('jwt'), disallow('external')],
+    patch: [
+      authenticate('jwt'),
+      ifProvider(['external'], mapUserFieldToQueryField('_id', 'authorId'), validateSchema(surveyMetadataSchema)),
+    ],
     remove: [authenticate('jwt'), mapUserFieldToQueryField('_id', 'authorId')],
   },
 
