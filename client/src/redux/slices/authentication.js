@@ -4,12 +4,12 @@ const slice = createSlice({
   name: 'authentication',
   initialState: {
     isAuthenticated: false,
-    user: {},
+    authenticatedUser: {},
   },
   reducers: {
     setAuthenticatedUser: (state, action) => {
       state.isAuthenticated = action.payload.isAuthenticated;
-      state.user = action.payload.user;
+      state.authenticatedUser = action.payload.authenticatedUser;
     },
   },
 });

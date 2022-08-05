@@ -1,4 +1,4 @@
-import { login, logout } from '../actions';
+import { register, login, logout } from '../actions';
 
 import { setAuthenticatedUser } from '../../../slices/authentication';
 
@@ -10,6 +10,7 @@ export default class AuthenticationModule {
 
   getModuleActions = () => {
     return {
+      [register.type]: this.handleRegisterAction,
       [login.type]: this.handleLoginAction,
       [logout.type]: this.handleLogoutAction,
     };
@@ -24,7 +25,7 @@ export default class AuthenticationModule {
     this.store.dispatch(
       setAuthenticatedUser({
         isAuthenticated: true,
-        user: data.user,
+        authenticatedUser: data.user,
       })
     );
   };
@@ -33,20 +34,33 @@ export default class AuthenticationModule {
     this.store.dispatch(
       setAuthenticatedUser({
         isAuthenticated: false,
-        user: {},
+        authenticatedUser: {},
       })
     );
   };
 
+  handleRegisterAction = async (action) => {
+    const result = await this.client.service('users').create({
+      username: action.payload.username,
+      password: action.payload.password,
+    });
+
+    return register(result);
+  };
+
   handleLoginAction = async (action) => {
-    await this.client.authenticate({
+    const result = await this.client.authenticate({
       strategy: 'local',
       username: action.payload.username,
       password: action.payload.password,
     });
+
+    return login(result);
   };
 
   handleLogoutAction = async () => {
-    await this.client.logout();
+    const result = await this.client.logout();
+
+    return logout(result);
   };
 }
