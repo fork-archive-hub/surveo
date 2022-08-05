@@ -8,11 +8,17 @@ export const middleware = (store) => {
   const client = feathers();
   const socket = io(process.env.REACT_APP_FEATHERS_SERVER_URL);
 
+  const modules = [new AuthenticationModule(client, store)];
+  const actions = modules.reduce((actions, module) => ({ ...actions, ...module.getModuleActions() }), {});
+
   client.configure(socketio(socket));
   client.configure(feathers.authentication({ storage: window.localStorage }));
 
-  const modules = [new AuthenticationModule(client, store)];
-  const actions = modules.reduce((actions, module) => ({ ...actions, ...module.getModuleActions() }), {});
+  modules.forEach((module) => {
+    if (module.initializeEventListeners) {
+      module.initializeEventListeners();
+    }
+  });
 
   return (next) => async (action) => {
     if (Object.prototype.hasOwnProperty.call(actions, action.type)) {

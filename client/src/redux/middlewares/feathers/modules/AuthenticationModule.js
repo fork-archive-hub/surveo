@@ -8,32 +8,45 @@ export default class AuthenticationModule {
     this.store = store;
   }
 
-  handleLoginAction = async (action) => {
-    const result = await this.client.authenticate({
-      strategy: 'local',
-      username: action.payload.username,
-      password: action.payload.password,
-    });
-
-    return setAuthenticatedUser({
-      isAuthenticated: true,
-      user: result.user,
-    });
-  };
-
-  handleLogoutAction = async () => {
-    await this.client.logout();
-
-    return setAuthenticatedUser({
-      isAuthenticated: false,
-      user: {},
-    });
-  };
-
   getModuleActions = () => {
     return {
       [login.type]: this.handleLoginAction,
       [logout.type]: this.handleLogoutAction,
     };
+  };
+
+  initializeEventListeners = () => {
+    this.client.on('authenticated', this.handleAuthenticatedEvent);
+    this.client.on('logout', this.handleLogoutEvent);
+  };
+
+  handleAuthenticatedEvent = (data) => {
+    this.store.dispatch(
+      setAuthenticatedUser({
+        isAuthenticated: true,
+        user: data.user,
+      })
+    );
+  };
+
+  handleLogoutEvent = () => {
+    this.store.dispatch(
+      setAuthenticatedUser({
+        isAuthenticated: false,
+        user: {},
+      })
+    );
+  };
+
+  handleLoginAction = async (action) => {
+    await this.client.authenticate({
+      strategy: 'local',
+      username: action.payload.username,
+      password: action.payload.password,
+    });
+  };
+
+  handleLogoutAction = async () => {
+    await this.client.logout();
   };
 }
