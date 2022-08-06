@@ -1,4 +1,4 @@
-import { register, login, logout } from '../actions';
+import { authentication } from '../actions';
 
 import { setAuthenticatedUser } from '../../../slices/authentication';
 
@@ -10,9 +10,9 @@ export default class AuthenticationModule {
 
   getModuleActions = () => {
     return {
-      [register.type]: this.handleRegisterAction,
-      [login.type]: this.handleLoginAction,
-      [logout.type]: this.handleLogoutAction,
+      [authentication.register.type]: this.handleRegisterAction,
+      [authentication.login.type]: this.handleLoginAction,
+      [authentication.logout.type]: this.handleLogoutAction,
     };
   };
 
@@ -45,7 +45,7 @@ export default class AuthenticationModule {
       password: action.payload.password,
     });
 
-    return register(result);
+    return authentication.register(result);
   };
 
   handleLoginAction = async (action) => {
@@ -55,12 +55,12 @@ export default class AuthenticationModule {
       password: action.payload.password,
     });
 
-    return login(result);
+    return authentication.login(result);
   };
 
   handleLogoutAction = async () => {
     const result = await this.client.logout();
 
-    return logout(result);
+    return authentication.logout(result);
   };
 }
