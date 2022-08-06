@@ -13,13 +13,16 @@ export default class SurveyModule {
       [survey.get.type]: this.handleSurveyGetAction,
       [survey.patch.type]: this.handleSurveyPatchAction,
       [survey.remove.type]: this.handleSurveyRemoveAction,
+
+      [survey.subscribe.type]: this.handleSurveySubscribeAction,
+      [survey.unsubscribe.type]: this.handleSurveyUnsubscribeAction,
     };
   };
 
   initializeEventListeners = () => {};
 
-  handleSurveyCreateAction = async (actions) => {
-    const result = await this.client.service('surveys').create(actions.payload);
+  handleSurveyCreateAction = async (action) => {
+    const result = await this.client.service('surveys').create(action.payload.data);
 
     return survey.create(result);
   };
@@ -46,5 +49,17 @@ export default class SurveyModule {
     const result = await this.client.service('surveys').remove(action.payload.id);
 
     return survey.remove(result);
+  };
+
+  handleSurveySubscribeAction = async (action) => {
+    const result = await this.client.service('subscriptions').create({ surveyId: action.payload.id });
+
+    return survey.subscribe(result);
+  };
+
+  handleSurveyUnsubscribeAction = async (action) => {
+    const result = await this.client.service('subscriptions').remove(action.payload.id);
+
+    return survey.unsubscribe(result);
   };
 }
