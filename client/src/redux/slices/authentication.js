@@ -8,12 +8,6 @@ const slice = createSlice({
     isAuthenticated: false,
     authenticatedUser: {},
   },
-  reducers: {
-    setAuthenticatedUser: (state, action) => {
-      state.isAuthenticated = action.payload.isAuthenticated;
-      state.authenticatedUser = action.payload.authenticatedUser;
-    },
-  },
   extraReducers: (builder) => {
     builder.addCase(authentication.login.type, (state, action) => {
       state.isAuthenticated = true;
@@ -24,8 +18,17 @@ const slice = createSlice({
       state.isAuthenticated = false;
       state.authenticatedUser = {};
     });
+
+    builder.addCase(authentication.onLogin.type, (state, action) => {
+      state.isAuthenticated = true;
+      state.authenticatedUser = action.payload.user;
+    });
+
+    builder.addCase(authentication.onLogout.type, (state, action) => {
+      state.isAuthenticated = false;
+      state.authenticatedUser = {};
+    });
   },
 });
 
-export const { setAuthenticatedUser } = slice.actions;
 export default slice.reducer;

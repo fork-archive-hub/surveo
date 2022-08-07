@@ -1,7 +1,5 @@
 import { authentication } from '../actions';
 
-import { setAuthenticatedUser } from '../../../slices/authentication';
-
 export default class AuthenticationModule {
   constructor(client, store) {
     this.client = client;
@@ -23,21 +21,11 @@ export default class AuthenticationModule {
   };
 
   handleAuthenticatedEvent = (data) => {
-    this.store.dispatch(
-      setAuthenticatedUser({
-        isAuthenticated: true,
-        authenticatedUser: data.user,
-      })
-    );
+    this.store.dispatch(authentication.onLogin(data));
   };
 
-  handleLogoutEvent = () => {
-    this.store.dispatch(
-      setAuthenticatedUser({
-        isAuthenticated: false,
-        authenticatedUser: {},
-      })
-    );
+  handleLogoutEvent = (data) => {
+    this.store.dispatch(authentication.onLogout(data));
   };
 
   handleRegisterAction = async (action) => {

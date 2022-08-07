@@ -1,7 +1,5 @@
 import { vote } from '../actions';
 
-import { setSurveyData } from '../../../slices/survey';
-
 export default class VoteModule {
   constructor(client, store) {
     this.client = client;
@@ -20,13 +18,7 @@ export default class VoteModule {
   };
 
   handleVoteCreatedEvent = (data) => {
-    if (this.store.getState().survey.data._id === data._id) {
-      this.store.dispatch(
-        setSurveyData({
-          data: data,
-        })
-      );
-    }
+    this.store.dispatch(vote.onCreated(data));
   };
 
   handleVoteCreateAction = async (action) => {

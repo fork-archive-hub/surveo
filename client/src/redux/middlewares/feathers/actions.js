@@ -5,6 +5,9 @@ export const authentication = {
   login: createAction('feathers/authentication/login'),
   logout: createAction('feathers/authentication/logout'),
   reauthenticate: createAction('feathers/authentication/reauthenticate'),
+
+  onLogin: createAction('feathers/authentication/onLogin'),
+  onLogout: createAction('feathers/authentication/onLogout'),
 };
 
 export const survey = {
@@ -21,4 +24,6 @@ export const survey = {
 export const vote = {
   create: createAction('feathers/vote/create'),
   get: createAction('feathers/vote/get'),
+
+  onCreated: createAction('feathers/vote/onCreated'),
 };
