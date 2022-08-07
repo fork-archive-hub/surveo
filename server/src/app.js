@@ -31,7 +31,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.configure(express.rest());
-app.configure(socketio());
+app.configure(
+  socketio((io) => {
+    io.on('connection', (socket) => {
+      socket.feathers.ip = socket.request.connection.remoteAddress;
+    });
+  })
+);
 app.configure(mongoose);
 
 app.configure(middleware);
