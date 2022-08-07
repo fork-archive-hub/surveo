@@ -13,6 +13,7 @@ export default class AuthenticationModule {
       [authentication.register.type]: this.handleRegisterAction,
       [authentication.login.type]: this.handleLoginAction,
       [authentication.logout.type]: this.handleLogoutAction,
+      [authentication.reauthenticate.type]: this.handleReauthenticateAction,
     };
   };
 
@@ -62,5 +63,11 @@ export default class AuthenticationModule {
     const result = await this.client.logout();
 
     return authentication.logout(result);
+  };
+
+  handleReauthenticateAction = async () => {
+    const result = await this.client.reAuthenticate();
+
+    return authentication.reauthenticate(result);
   };
 }

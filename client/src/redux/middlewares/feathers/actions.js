@@ -4,6 +4,7 @@ export const authentication = {
   register: createAction('feathers/authentication/register'),
   login: createAction('feathers/authentication/login'),
   logout: createAction('feathers/authentication/logout'),
+  reauthenticate: createAction('feathers/authentication/reauthenticate'),
 };
 
 export const survey = {
