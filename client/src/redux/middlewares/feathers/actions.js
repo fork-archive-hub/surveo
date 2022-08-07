@@ -16,3 +16,8 @@ export const survey = {
   subscribe: createAction('feathers/survey/subscribe'),
   unsubscribe: createAction('feathers/survey/unsubscribe'),
 };
+
+export const vote = {
+  create: createAction('feathers/vote/create'),
+  get: createAction('feathers/vote/get'),
+};

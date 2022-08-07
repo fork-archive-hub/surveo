@@ -4,12 +4,17 @@ import io from 'socket.io-client';
 
 import AuthenticationModule from './modules/AuthenticationModule';
 import SurveyModule from './modules/SurveyModule';
+import VoteModule from './modules/VoteModule';
 
 export const middleware = (store) => {
   const client = feathers();
   const socket = io(process.env.REACT_APP_FEATHERS_SERVER_URL);
 
-  const modules = [new AuthenticationModule(client, store), new SurveyModule(client, store)];
+  const modules = [
+    new AuthenticationModule(client, store),
+    new SurveyModule(client, store),
+    new VoteModule(client, store),
+  ];
   const actions = modules.reduce((actions, module) => ({ ...actions, ...module.getModuleActions() }), {});
 
   client.configure(socketio(socket));
