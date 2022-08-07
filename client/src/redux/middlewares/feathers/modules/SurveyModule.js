@@ -28,37 +28,37 @@ export default class SurveyModule {
   };
 
   handleSurveyFindAction = async (action) => {
-    const result = await this.client.service('surveys').find({ authorId: action.payload.authorId });
+    const result = await this.client.service('surveys').find({ query: { authorId: action.payload.authorId } });
 
     return survey.find(result);
   };
 
   handleSurveyGetAction = async (action) => {
-    const result = await this.client.service('surveys').get(action.payload.id);
+    const result = await this.client.service('surveys').get(action.payload.surveyId);
 
     return survey.get(result);
   };
 
   handleSurveyPatchAction = async (action) => {
-    const result = await this.client.service('surveys').patch(action.payload.id, action.payload.data);
+    const result = await this.client.service('surveys').patch(action.payload.surveyId, action.payload.data);
 
     return survey.patch(result);
   };
 
   handleSurveyRemoveAction = async (action) => {
-    const result = await this.client.service('surveys').remove(action.payload.id);
+    const result = await this.client.service('surveys').remove(action.payload.surveyId);
 
     return survey.remove(result);
   };
 
   handleSurveySubscribeAction = async (action) => {
-    const result = await this.client.service('subscriptions').create({ surveyId: action.payload.id });
+    const result = await this.client.service('subscriptions').create({ surveyId: action.payload.surveyId });
 
     return survey.subscribe(result);
   };
 
   handleSurveyUnsubscribeAction = async (action) => {
-    const result = await this.client.service('subscriptions').remove(action.payload.id);
+    const result = await this.client.service('subscriptions').remove(action.payload.surveyId);
 
     return survey.unsubscribe(result);
   };
