@@ -6,12 +6,14 @@ import { store } from './redux';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { theme } from './theme';
 
+import { BrowserRouter } from 'react-router-dom';
+
 const Providers = ({ children }) => {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        {children}
+        <BrowserRouter>{children}</BrowserRouter>
       </ThemeProvider>
     </Provider>
   );
