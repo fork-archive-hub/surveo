@@ -1,19 +1,14 @@
+import PropTypes from 'prop-types';
 import { useState, useRef } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 
 import { Link } from 'react-router-dom';
 import { Menu, MenuItem, IconButton, Avatar, Typography, Divider } from '@mui/material';
 
 import { BallotOutlined, LogoutOutlined, PersonOutline } from '@mui/icons-material';
 
-import { feathers } from '../../redux';
-
-const AccountMenu = () => {
+const AccountMenu = ({ account, onLogout }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const anchorElement = useRef(null);
-
-  const authenticatedUser = useSelector((state) => state.authentication.authenticatedUser);
-  const dispatch = useDispatch();
 
   const handleMenuOpen = () => {
     setIsMenuOpen(true);
@@ -22,15 +17,10 @@ const AccountMenu = () => {
   const handleMenuClose = (callback) => {
     return () => {
       setIsMenuOpen(false);
-
       if (callback) {
         callback();
       }
     };
-  };
-
-  const handleLogout = () => {
-    dispatch(feathers.authentication.logout());
   };
 
   return (
@@ -44,19 +34,13 @@ const AccountMenu = () => {
         keepMounted
         open={isMenuOpen}
         anchorEl={anchorElement.current}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         onClose={handleMenuClose}
       >
         <MenuItem disabled>
           <Typography variant="body1" align="center" sx={{ width: 1, textTransform: 'capitalize' }}>
-            Hello, {authenticatedUser.username}!
+            Hello, {account.username}!
           </Typography>
         </MenuItem>
         <Divider />
@@ -64,12 +48,20 @@ const AccountMenu = () => {
           <BallotOutlined sx={{ mr: 1 }} /> My Surveys
         </MenuItem>
         <Divider />
-        <MenuItem to="/" component={Link} onClick={handleMenuClose(handleLogout)}>
+        <MenuItem to="/" component={Link} onClick={handleMenuClose(onLogout)}>
           <LogoutOutlined sx={{ mr: 1 }} /> Logout
         </MenuItem>
       </Menu>
     </>
   );
+};
+
+AccountMenu.propTypes = {
+  account: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
+  }).isRequired,
+  onLogout: PropTypes.func.isRequired,
 };
 
 export default AccountMenu;
