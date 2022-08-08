@@ -6,17 +6,17 @@ const slice = createSlice({
   name: 'authentication',
   initialState: {
     isAuthenticated: false,
-    authenticatedUser: {},
+    user: {},
   },
   extraReducers: (builder) => {
     builder.addCase(authentication.onLogin.type, (state, action) => {
       state.isAuthenticated = true;
-      state.authenticatedUser = action.payload.user;
+      state.user = action.payload.user;
     });
 
     builder.addCase(authentication.onLogout.type, (state, action) => {
       state.isAuthenticated = false;
-      state.authenticatedUser = {};
+      state.user = {};
     });
   },
 });
