@@ -6,7 +6,7 @@ import { Menu, MenuItem, IconButton, Avatar, Typography, Divider } from '@mui/ma
 
 import { BallotOutlined, LogoutOutlined, PersonOutline } from '@mui/icons-material';
 
-const AccountMenu = ({ account, onLogout }) => {
+const UserMenu = ({ user, onLogout }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const anchorElement = useRef(null);
 
@@ -26,7 +26,7 @@ const AccountMenu = ({ account, onLogout }) => {
   return (
     <>
       <IconButton onClick={handleMenuOpen} ref={anchorElement} sx={{ p: 0 }}>
-        <Avatar alt="Account">
+        <Avatar alt="Profile">
           <PersonOutline />
         </Avatar>
       </IconButton>
@@ -40,7 +40,7 @@ const AccountMenu = ({ account, onLogout }) => {
       >
         <MenuItem disabled>
           <Typography variant="body1" align="center" sx={{ width: 1, textTransform: 'capitalize' }}>
-            Hello, {account.username}!
+            Hello, {user.username}!
           </Typography>
         </MenuItem>
         <Divider />
@@ -56,12 +56,12 @@ const AccountMenu = ({ account, onLogout }) => {
   );
 };
 
-AccountMenu.propTypes = {
-  account: PropTypes.shape({
+UserMenu.propTypes = {
+  user: PropTypes.shape({
     _id: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
   }).isRequired,
   onLogout: PropTypes.func.isRequired,
 };
 
-export default AccountMenu;
+export default UserMenu;

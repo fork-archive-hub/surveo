@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { AppBar as MUIAppBar, Container, Box, Toolbar } from '@mui/material';
 
 import Logo from './Logo';
-import AccountMenu from './AccountMenu';
+import UserMenu from './UserMenu';
 import QuestMenu from './QuestMenu';
 
 import { feathers } from '../../redux';
@@ -25,7 +25,7 @@ const AppBar = () => {
           <Logo />
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ flexGrow: 0 }}>
-            {isAuthenticated ? <AccountMenu account={authenticatedUser} onLogout={handleLogout} /> : <QuestMenu />}
+            {isAuthenticated ? <UserMenu user={authenticatedUser} onLogout={handleLogout} /> : <QuestMenu />}
           </Box>
         </Toolbar>
       </Container>
