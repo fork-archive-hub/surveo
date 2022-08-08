@@ -9,16 +9,6 @@ const slice = createSlice({
     authenticatedUser: {},
   },
   extraReducers: (builder) => {
-    builder.addCase(authentication.login.type, (state, action) => {
-      state.isAuthenticated = true;
-      state.authenticatedUser = action.payload.user;
-    });
-
-    builder.addCase(authentication.logout.type, (state, action) => {
-      state.isAuthenticated = false;
-      state.authenticatedUser = {};
-    });
-
     builder.addCase(authentication.onLogin.type, (state, action) => {
       state.isAuthenticated = true;
       state.authenticatedUser = action.payload.user;
