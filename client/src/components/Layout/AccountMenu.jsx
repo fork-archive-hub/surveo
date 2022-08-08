@@ -22,7 +22,10 @@ const AccountMenu = () => {
   const handleMenuClose = (callback) => {
     return () => {
       setIsMenuOpen(false);
-      callback();
+
+      if (callback) {
+        callback();
+      }
     };
   };
 
@@ -57,7 +60,7 @@ const AccountMenu = () => {
           </Typography>
         </MenuItem>
         <Divider />
-        <MenuItem to="/" component={Link} onClick={handleMenuClose}>
+        <MenuItem to="/" component={Link} onClick={handleMenuClose()}>
           <BallotOutlined sx={{ mr: 1 }} /> My Surveys
         </MenuItem>
         <Divider />
