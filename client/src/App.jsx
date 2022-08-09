@@ -1,9 +1,10 @@
 import Providers from './Providers';
+import Routes from './Routes';
 
 const App = () => {
   return (
     <Providers>
-      <p>Surveo</p>
+      <Routes />
     </Providers>
   );
 };
