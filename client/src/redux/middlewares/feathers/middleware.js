@@ -6,6 +6,8 @@ import AuthenticationModule from './modules/AuthenticationModule';
 import SurveyModule from './modules/SurveyModule';
 import VoteModule from './modules/VoteModule';
 
+import { beautifyErrorMessages } from './utils/beautifyErrorMessages';
+
 export const middleware = (store) => {
   const client = feathers();
   const socket = io(process.env.REACT_APP_FEATHERS_SERVER_URL);
@@ -35,7 +37,7 @@ export const middleware = (store) => {
           return next(result);
         }
       } catch (error) {
-        return next({ ...action, error: error.message });
+        return next({ ...action, error: beautifyErrorMessages(error.message) });
       }
     } else {
       return next(action);
