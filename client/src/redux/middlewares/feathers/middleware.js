@@ -35,7 +35,7 @@ export const middleware = (store) => {
           return next(result);
         }
       } catch (error) {
-        console.error(error.message);
+        return next({ ...action, error: error.message });
       }
     } else {
       return next(action);
