@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { Paper, Typography, TextField, Stack, Button } from '@mui/material';
 
@@ -10,7 +10,10 @@ import { validatePassword } from '../utils/validatePassword';
 
 import { feathers } from '../../../redux';
 
-const LoginForm = (onSuccessfulLogin) => {
+const LoginForm = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { control, formState, handleSubmit, setError } = useForm({
     mode: 'all',
     reValidateMode: 'onChange',
@@ -19,7 +22,6 @@ const LoginForm = (onSuccessfulLogin) => {
       password: '',
     },
   });
-  const dispatch = useDispatch();
 
   const onSubmit = async ({ username, password }) => {
     const result = await dispatch(feathers.authentication.login({ username, password }));
@@ -29,9 +31,7 @@ const LoginForm = (onSuccessfulLogin) => {
         setError(field, { type: 'validate', message: result.error });
       });
     } else {
-      if (onSuccessfulLogin) {
-        onSuccessfulLogin();
-      }
+      navigate('/');
     }
   };
 
@@ -86,10 +86,6 @@ const LoginForm = (onSuccessfulLogin) => {
       </form>
     </Paper>
   );
-};
-
-LoginForm.propTypes = {
-  onSuccessfulLogin: PropTypes.func.isRequired,
 };
 
 export default LoginForm;
