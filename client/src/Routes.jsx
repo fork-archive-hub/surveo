@@ -1,6 +1,6 @@
 import { useRoutes } from 'react-router-dom';
 
-import { MainLayout } from './components/Layout';
+import { MainLayout, PresentationLayout } from './components/Layout';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -13,12 +13,17 @@ const Routes = () => {
       children: [],
     },
     {
-      path: '/login',
-      element: <Login />,
-    },
-    {
-      path: '/register',
-      element: <Register />,
+      element: <PresentationLayout />,
+      children: [
+        {
+          path: '/login',
+          element: <Login />,
+        },
+        {
+          path: '/register',
+          element: <Register />,
+        },
+      ],
     },
   ]);
 
