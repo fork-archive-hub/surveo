@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Paper, Typography, TextField, Stack, Button } from '@mui/material';
 
 import { useForm, Controller } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 import { validateUsername } from '../utils/validateUsername';
 import { validatePassword } from '../utils/validatePassword';
@@ -31,6 +32,7 @@ const LoginForm = () => {
         setError(field, { type: 'validate', message: result.error });
       });
     } else {
+      toast.success('Login successful');
       navigate('/');
     }
   };
