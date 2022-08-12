@@ -15,7 +15,7 @@ const RegisterForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { control, formState, handleSubmit, setError, getValues } = useForm({
+  const { control, handleSubmit, setError, getValues } = useForm({
     mode: 'all',
     reValidateMode: 'onChange',
     defaultValues: {
@@ -66,12 +66,12 @@ const RegisterForm = () => {
             name="username"
             control={control}
             rules={{ required: true, validate: handleFieldValidation(validateUsername) }}
-            render={({ field }) => (
+            render={({ field, fieldState }) => (
               <TextField
                 variant="filled"
                 label="Username"
-                error={!!formState.errors.username}
-                helperText={formState.errors.username && formState.errors.username.message}
+                error={!!fieldState.error}
+                helperText={fieldState.error && fieldState.error.message}
                 {...field}
               />
             )}
@@ -80,13 +80,13 @@ const RegisterForm = () => {
             name="password"
             control={control}
             rules={{ required: true, validate: handleFieldValidation(validatePassword) }}
-            render={({ field }) => (
+            render={({ field, fieldState }) => (
               <TextField
                 variant="filled"
                 type="password"
                 label="Password"
-                error={!!formState.errors.password}
-                helperText={formState.errors.password && formState.errors.password.message}
+                error={!!fieldState.error}
+                helperText={fieldState.error && fieldState.error.message}
                 {...field}
               />
             )}
@@ -95,13 +95,13 @@ const RegisterForm = () => {
             name="repeatPassword"
             control={control}
             rules={{ required: true, validate: handleFieldValidation(validateRepeatPassword) }}
-            render={({ field }) => (
+            render={({ field, fieldState }) => (
               <TextField
                 variant="filled"
                 type="password"
                 label="Repeat password"
-                error={!!formState.errors.repeatPassword}
-                helperText={formState.errors.repeatPassword && formState.errors.repeatPassword.message}
+                error={!!fieldState.error}
+                helperText={fieldState.error && fieldState.error.message}
                 {...field}
               />
             )}

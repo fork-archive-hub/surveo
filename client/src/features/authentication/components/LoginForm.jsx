@@ -15,7 +15,7 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { control, formState, handleSubmit, setError } = useForm({
+  const { control, handleSubmit, setError } = useForm({
     mode: 'all',
     reValidateMode: 'onChange',
     defaultValues: {
@@ -56,12 +56,12 @@ const LoginForm = () => {
             name="username"
             control={control}
             rules={{ required: true, validate: handleFieldValidation(validateUsername) }}
-            render={({ field }) => (
+            render={({ field, fieldState }) => (
               <TextField
                 variant="filled"
                 label="Username"
-                error={!!formState.errors.username}
-                helperText={formState.errors.username && formState.errors.username.message}
+                error={!!fieldState.error}
+                helperText={fieldState.error && fieldState.error.message}
                 {...field}
               />
             )}
@@ -70,13 +70,13 @@ const LoginForm = () => {
             name="password"
             control={control}
             rules={{ required: true, validate: handleFieldValidation(validatePassword) }}
-            render={({ field }) => (
+            render={({ field, fieldState }) => (
               <TextField
                 variant="filled"
                 type="password"
                 label="Password"
-                error={!!formState.errors.password}
-                helperText={formState.errors.password && formState.errors.password.message}
+                error={!!fieldState.error}
+                helperText={fieldState.error && fieldState.error.message}
                 {...field}
               />
             )}
