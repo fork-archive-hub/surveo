@@ -6,6 +6,7 @@ import { Paper, Typography, TextField, Stack, Button } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
+import { handleFieldValidation } from '../../../utils/handleFieldValidation';
 import { validateUsername } from '../utils/validateUsername';
 import { validatePassword } from '../utils/validatePassword';
 
@@ -36,14 +37,6 @@ const RegisterForm = () => {
       toast.success('Account created successfully');
       navigate('/login');
     }
-  };
-
-  const handleFieldValidation = (validator) => {
-    return (value) => {
-      const { result, message } = validator(value);
-
-      return result || message;
-    };
   };
 
   const validateRepeatPassword = (value) => {
