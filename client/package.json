@@ -7,6 +7,7 @@
     "@emotion/styled": "^11.9.3",
     "@feathersjs/client": "^4.5.15",
     "@feathersjs/socketio-client": "^4.5.15",
+    "@hookform/resolvers": "^2.9.7",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.0",
     "@reduxjs/toolkit": "^1.8.3",

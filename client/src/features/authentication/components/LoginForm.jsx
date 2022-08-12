@@ -6,9 +6,8 @@ import { Paper, Typography, TextField, Stack, Button } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-import { handleFieldValidation } from '../../../utils/handleFieldValidation';
-import { validateUsername } from '../utils/validateUsername';
-import { validatePassword } from '../utils/validatePassword';
+import { joiResolver } from '@hookform/resolvers/joi';
+import { login } from '../schemas';
 
 import { feathers } from '../../../redux';
 
@@ -23,6 +22,7 @@ const LoginForm = () => {
       username: '',
       password: '',
     },
+    resolver: joiResolver(login),
   });
 
   const onSubmit = async ({ username, password }) => {
@@ -48,7 +48,6 @@ const LoginForm = () => {
           <Controller
             name="username"
             control={control}
-            rules={{ required: true, validate: handleFieldValidation(validateUsername) }}
             render={({ field, fieldState }) => (
               <TextField
                 variant="filled"
@@ -62,7 +61,6 @@ const LoginForm = () => {
           <Controller
             name="password"
             control={control}
-            rules={{ required: true, validate: handleFieldValidation(validatePassword) }}
             render={({ field, fieldState }) => (
               <TextField
                 variant="filled"

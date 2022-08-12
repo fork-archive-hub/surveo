@@ -6,9 +6,8 @@ import { Paper, Typography, TextField, Stack, Button } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-import { handleFieldValidation } from '../../../utils/handleFieldValidation';
-import { validateUsername } from '../utils/validateUsername';
-import { validatePassword } from '../utils/validatePassword';
+import { joiResolver } from '@hookform/resolvers/joi';
+import { register } from '../schemas';
 
 import { feathers } from '../../../redux';
 
@@ -16,7 +15,7 @@ const RegisterForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { control, handleSubmit, setError, getValues } = useForm({
+  const { control, handleSubmit, setError } = useForm({
     mode: 'all',
     reValidateMode: 'onChange',
     defaultValues: {
@@ -24,6 +23,7 @@ const RegisterForm = () => {
       password: '',
       repeatPassword: '',
     },
+    resolver: joiResolver(register),
   });
 
   const onSubmit = async ({ username, password }) => {
@@ -39,15 +39,6 @@ const RegisterForm = () => {
     }
   };
 
-  const validateRepeatPassword = (value) => {
-    const result = getValues('password') === value;
-
-    return {
-      result: result,
-      message: result ? '' : 'Passwords do not match',
-    };
-  };
-
   return (
     <Paper sx={{ width: 340, p: 2 }}>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -58,7 +49,6 @@ const RegisterForm = () => {
           <Controller
             name="username"
             control={control}
-            rules={{ required: true, validate: handleFieldValidation(validateUsername) }}
             render={({ field, fieldState }) => (
               <TextField
                 variant="filled"
@@ -72,7 +62,6 @@ const RegisterForm = () => {
           <Controller
             name="password"
             control={control}
-            rules={{ required: true, validate: handleFieldValidation(validatePassword) }}
             render={({ field, fieldState }) => (
               <TextField
                 variant="filled"
@@ -87,7 +76,6 @@ const RegisterForm = () => {
           <Controller
             name="repeatPassword"
             control={control}
-            rules={{ required: true, validate: handleFieldValidation(validateRepeatPassword) }}
             render={({ field, fieldState }) => (
               <TextField
                 variant="filled"
