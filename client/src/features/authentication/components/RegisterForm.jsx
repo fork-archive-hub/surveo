@@ -7,7 +7,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
 import { joiResolver } from '@hookform/resolvers/joi';
-import { register } from '../schemas';
+import { registerFormSchema } from '../schemas';
 
 import { feathers } from '../../../redux';
 
@@ -23,7 +23,7 @@ const RegisterForm = () => {
       password: '',
       repeatPassword: '',
     },
-    resolver: joiResolver(register),
+    resolver: joiResolver(registerFormSchema),
   });
 
   const onSubmit = async ({ username, password }) => {

@@ -7,7 +7,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
 import { joiResolver } from '@hookform/resolvers/joi';
-import { login } from '../schemas';
+import { loginFormSchema } from '../schemas';
 
 import { feathers } from '../../../redux';
 
@@ -22,7 +22,7 @@ const LoginForm = () => {
       username: '',
       password: '',
     },
-    resolver: joiResolver(login),
+    resolver: joiResolver(loginFormSchema),
   });
 
   const onSubmit = async ({ username, password }) => {
