@@ -4,11 +4,11 @@ import { Stack, Button } from '@mui/material';
 
 import { useFormContext, useFieldArray } from 'react-hook-form';
 
-import SubquestionForm from './SubquestionForm';
+import CreateSubquestionForm from './CreateSubquestionForm';
 
 import { SubquestionTemplate } from '../templates';
 
-const SubquestionFormManager = ({ name, parentAnswerField }) => {
+const CreateSubquestionFormManager = ({ name, parentAnswerField }) => {
   const { control } = useFormContext();
   const { fields, append, remove } = useFieldArray({
     name: name,
@@ -26,7 +26,7 @@ const SubquestionFormManager = ({ name, parentAnswerField }) => {
   return (
     <Stack direction="column" spacing={2}>
       {fields.map((field, index) => (
-        <SubquestionForm
+        <CreateSubquestionForm
           key={field.id}
           name={`${name}[${index}]`}
           index={index}
@@ -39,9 +39,9 @@ const SubquestionFormManager = ({ name, parentAnswerField }) => {
   );
 };
 
-SubquestionFormManager.propTypes = {
+CreateSubquestionFormManager.propTypes = {
   name: PropTypes.string.isRequired,
   parentAnswerField: PropTypes.string.isRequired,
 };
 
-export default SubquestionFormManager;
+export default CreateSubquestionFormManager;

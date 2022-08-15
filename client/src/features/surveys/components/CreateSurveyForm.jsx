@@ -10,7 +10,7 @@ import { joiResolver } from '@hookform/resolvers/joi';
 import { surveyFormSchema } from '../schemas';
 
 import SurveyInformationForm from './SurveyInformationForm';
-import QuestionFormManager from './QuestionFormManager';
+import CreateQuestionFormManager from './CreateQuestionFormManager';
 
 import { SurveyTemplate } from '../templates';
 
@@ -35,7 +35,7 @@ const CreateSurveyForm = () => {
       <form onSubmit={methods.handleSubmit(onSubmit)}>
         <Stack direction="column" spacing={2} divider={<Divider />} sx={{ width: 360 }}>
           <SurveyInformationForm />
-          <QuestionFormManager name="questions" />
+          <CreateQuestionFormManager name="questions" />
           <Button type="submit" variant="contained">
             Create survey
           </Button>

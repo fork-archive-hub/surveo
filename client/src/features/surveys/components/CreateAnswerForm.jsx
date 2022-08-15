@@ -5,7 +5,7 @@ import { DeleteOutline } from '@mui/icons-material';
 
 import { useFormContext, Controller } from 'react-hook-form';
 
-const AnswerForm = ({ name, index, isRemoveButtonDisabled, onRemoveAnswer }) => {
+const CreateAnswerForm = ({ name, index, isRemoveButtonDisabled, onRemoveAnswer }) => {
   const { control } = useFormContext();
 
   const handleRemoveAnswer = () => {
@@ -41,11 +41,11 @@ const AnswerForm = ({ name, index, isRemoveButtonDisabled, onRemoveAnswer }) => 
   );
 };
 
-AnswerForm.propTypes = {
+CreateAnswerForm.propTypes = {
   name: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   isRemoveButtonDisabled: PropTypes.bool.isRequired,
   onRemoveAnswer: PropTypes.func.isRequired,
 };
 
-export default AnswerForm;
+export default CreateAnswerForm;

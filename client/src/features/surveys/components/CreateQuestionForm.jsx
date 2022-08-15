@@ -4,10 +4,10 @@ import { Stack, Paper, Typography, TextField, Button } from '@mui/material';
 
 import { useFormContext, Controller } from 'react-hook-form';
 
-import AnswerFormManager from './AnswerFormManager';
-import SubquestionFormManager from './SubquestionFormManager';
+import CreateAnswerFormManager from './CreateAnswerFormManager';
+import CreateSubquestionFormManager from './CreateSubquestionFormManager';
 
-const QuestionForm = ({ name, index, isRemoveButtonDisabled, onRemoveQuestion }) => {
+const CreateQuestionForm = ({ name, index, isRemoveButtonDisabled, onRemoveQuestion }) => {
   const { control } = useFormContext();
 
   const handleRemoveQuestion = () => {
@@ -40,7 +40,7 @@ const QuestionForm = ({ name, index, isRemoveButtonDisabled, onRemoveQuestion })
           />
 
           <Paper elevation={2} sx={{ p: 2 }}>
-            <AnswerFormManager name={`${name}.answers`} />
+            <CreateAnswerFormManager name={`${name}.answers`} />
           </Paper>
 
           <Button disabled={isRemoveButtonDisabled} onClick={handleRemoveQuestion}>
@@ -49,16 +49,16 @@ const QuestionForm = ({ name, index, isRemoveButtonDisabled, onRemoveQuestion })
         </Stack>
       </Paper>
 
-      <SubquestionFormManager name={`${name}.subquestions`} parentAnswerField={`${name}.answers`} />
+      <CreateSubquestionFormManager name={`${name}.subquestions`} parentAnswerField={`${name}.answers`} />
     </Stack>
   );
 };
 
-QuestionForm.propTypes = {
+CreateQuestionForm.propTypes = {
   name: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   isRemoveButtonDisabled: PropTypes.bool.isRequired,
   onRemoveQuestion: PropTypes.func.isRequired,
 };
 
-export default QuestionForm;
+export default CreateQuestionForm;

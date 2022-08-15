@@ -5,7 +5,7 @@ import { InfoOutlined } from '@mui/icons-material';
 
 import { useFormContext } from 'react-hook-form';
 
-const RequirementsForm = ({ name, parentAnswerField }) => {
+const CreateRequirementsForm = ({ name, parentAnswerField }) => {
   const { setValue, getValues, watch } = useFormContext();
   const answers = watch(parentAnswerField);
 
@@ -43,9 +43,9 @@ const RequirementsForm = ({ name, parentAnswerField }) => {
   );
 };
 
-RequirementsForm.propTypes = {
+CreateRequirementsForm.propTypes = {
   name: PropTypes.string.isRequired,
   parentAnswerField: PropTypes.string.isRequired,
 };
 
-export default RequirementsForm;
+export default CreateRequirementsForm;
