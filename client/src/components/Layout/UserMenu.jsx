@@ -17,6 +17,7 @@ const UserMenu = ({ user, onLogout }) => {
   const handleMenuClose = (callback) => {
     return () => {
       setIsMenuOpen(false);
+
       if (callback) {
         callback();
       }

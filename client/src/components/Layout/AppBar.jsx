@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { AppBar as MUIAppBar, Container, Box, Toolbar } from '@mui/material';
 
@@ -6,16 +6,9 @@ import Logo from './Logo';
 import UserMenu from './UserMenu';
 import QuestMenu from './QuestMenu';
 
-import { feathers } from '../../redux';
-
-const AppBar = () => {
-  const isAuthenticated = useSelector((state) => state.authentication.isAuthenticated);
-  const user = useSelector((state) => state.authentication.user);
-
-  const dispatch = useDispatch();
-
+const AppBar = ({ isAuthenticated, user, onLogout }) => {
   const handleLogout = () => {
-    dispatch(feathers.authentication.logout());
+    onLogout();
   };
 
   return (
@@ -31,6 +24,12 @@ const AppBar = () => {
       </Container>
     </MUIAppBar>
   );
+};
+
+AppBar.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired,
+  user: PropTypes.object,
+  onLogout: PropTypes.func.isRequired,
 };
 
 export default AppBar;
