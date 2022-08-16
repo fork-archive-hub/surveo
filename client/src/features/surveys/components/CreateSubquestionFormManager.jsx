@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 
-import { Stack, Button } from '@mui/material';
+import { Stack } from '@mui/material';
 
 import { useFormContext, useFieldArray } from 'react-hook-form';
 
 import CreateSubquestionForm from './CreateSubquestionForm';
 
 import { SubquestionTemplate } from '../templates';
+
+import { Button } from '../../../components/Form';
 
 const CreateSubquestionFormManager = ({ name, parentAnswerField }) => {
   const { control } = useFormContext();

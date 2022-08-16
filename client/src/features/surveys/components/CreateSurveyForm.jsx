@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { Stack, Divider, Button } from '@mui/material';
+import { Stack, Divider } from '@mui/material';
 
 import { useForm, FormProvider } from 'react-hook-form';
 
@@ -11,6 +11,8 @@ import SurveyInformationForm from './SurveyInformationForm';
 import CreateQuestionFormManager from './CreateQuestionFormManager';
 
 import { SurveyTemplate } from '../templates';
+
+import { SubmitButton } from '../../../components/Form';
 
 const CreateSurveyForm = ({ onSubmitSurvey }) => {
   const methods = useForm({
@@ -31,9 +33,7 @@ const CreateSurveyForm = ({ onSubmitSurvey }) => {
         <Stack direction="column" spacing={2} divider={<Divider />} sx={{ width: 360 }}>
           <SurveyInformationForm />
           <CreateQuestionFormManager name="questions" />
-          <Button type="submit" variant="contained">
-            Create survey
-          </Button>
+          <SubmitButton>Create survey</SubmitButton>
         </Stack>
       </form>
     </FormProvider>

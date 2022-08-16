@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 
-import { Stack, Divider, Button } from '@mui/material';
+import { Stack, Divider } from '@mui/material';
 
 import { useForm, FormProvider } from 'react-hook-form';
 
 import SurveyHeader from './SurveyHeader';
 import QuestionFormManager from './QuestionFormManager';
+
+import { SubmitButton } from '../../../components/Form';
 
 const SurveyForm = ({ survey, onSubmitVotes }) => {
   const methods = useForm({ mode: 'all' });
@@ -24,9 +26,7 @@ const SurveyForm = ({ survey, onSubmitVotes }) => {
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <Stack direction="column" spacing={2}>
             <QuestionFormManager questions={survey.questions} />
-            <Button type="submit" variant="contained" disabled={!survey.open}>
-              Submit
-            </Button>
+            <SubmitButton disabled={!survey.open}>Submit</SubmitButton>
           </Stack>
         </form>
       </FormProvider>

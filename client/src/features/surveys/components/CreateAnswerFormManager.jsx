@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { Stack, Button } from '@mui/material';
+import { Stack } from '@mui/material';
 
 import { useFormContext, useFieldArray } from 'react-hook-form';
 
@@ -8,6 +8,8 @@ import CreateAnswerForm from './CreateAnswerForm';
 
 import { AnswerTemplate } from '../templates';
 import { updateIndexFields } from '../utils/updateIndexFields';
+
+import { Button } from '../../../components/Form';
 
 const CreateAnswerFormManager = ({ name }) => {
   const { control, getValues, setValue } = useFormContext();

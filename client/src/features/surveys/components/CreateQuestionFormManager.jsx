@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 
-import { Stack, Divider, Button } from '@mui/material';
+import { Stack, Divider } from '@mui/material';
 
 import { useFormContext, useFieldArray } from 'react-hook-form';
 
 import CreateQuestionForm from './CreateQuestionForm';
 
 import { QuestionTemplate } from '../templates';
+
+import { Button } from '../../../components/Form';
 
 const CreateQuestionFormManager = ({ name }) => {
   const { control } = useFormContext();

@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 
-import { Paper, Typography, TextField, Stack, Button } from '@mui/material';
+import { Paper, Typography, Stack } from '@mui/material';
 
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 import { joiResolver } from '@hookform/resolvers/joi';
 import { loginFormSchema } from '../schemas';
+
+import { ControlledTextField, SubmitButton } from '../../../components/Form';
 
 const LoginForm = ({ onSubmitCredentials }) => {
   const { control, handleSubmit } = useForm({
@@ -31,36 +33,9 @@ const LoginForm = ({ onSubmitCredentials }) => {
           <Typography align="center" variant="h4" display="block">
             Sign in
           </Typography>
-          <Controller
-            name="username"
-            control={control}
-            render={({ field, fieldState }) => (
-              <TextField
-                variant="filled"
-                label="Username"
-                error={!!fieldState.error}
-                helperText={fieldState.error && fieldState.error.message}
-                {...field}
-              />
-            )}
-          />
-          <Controller
-            name="password"
-            control={control}
-            render={({ field, fieldState }) => (
-              <TextField
-                variant="filled"
-                type="password"
-                label="Password"
-                error={!!fieldState.error}
-                helperText={fieldState.error && fieldState.error.message}
-                {...field}
-              />
-            )}
-          />
-          <Button type="submit" variant="contained" color="primary">
-            Login
-          </Button>
+          <ControlledTextField control={control} name="username" label="Username" />
+          <ControlledTextField control={control} name="password" label="Password" type="password" />
+          <SubmitButton>Login</SubmitButton>
         </Stack>
       </form>
     </Paper>

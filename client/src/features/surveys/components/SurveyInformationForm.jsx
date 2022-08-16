@@ -1,6 +1,8 @@
-import { Paper, Stack, Typography, TextField, FormControlLabel, Switch } from '@mui/material';
+import { Paper, Stack, Typography, FormControlLabel, Switch } from '@mui/material';
 
 import { useFormContext, Controller } from 'react-hook-form';
+
+import { ControlledTextField } from '../../../components/Form';
 
 const SurveyInformationForm = () => {
   const { control } = useFormContext();
@@ -12,20 +14,7 @@ const SurveyInformationForm = () => {
           Survey information
         </Typography>
 
-        <Controller
-          control={control}
-          name="name"
-          render={({ field, fieldState }) => (
-            <TextField
-              size="small"
-              variant="outlined"
-              label="Survey name"
-              error={!!fieldState.error}
-              helperText={fieldState.error && fieldState.error.message}
-              {...field}
-            />
-          )}
-        />
+        <ControlledTextField control={control} name="name" label="Survey name" />
 
         <Paper elevation={2} sx={{ p: 2 }}>
           <Stack direction="column" spacing={2}>

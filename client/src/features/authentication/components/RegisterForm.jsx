@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 
-import { Paper, Typography, TextField, Stack, Button } from '@mui/material';
+import { Paper, Typography, Stack } from '@mui/material';
 
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 import { joiResolver } from '@hookform/resolvers/joi';
 import { registerFormSchema } from '../schemas';
+
+import { ControlledTextField, SubmitButton } from '../../../components/Form';
 
 const RegisterForm = ({ onSubmitCredentials }) => {
   const { control, handleSubmit } = useForm({
@@ -32,50 +34,10 @@ const RegisterForm = ({ onSubmitCredentials }) => {
           <Typography align="center" variant="h4" display="block">
             Sign up
           </Typography>
-          <Controller
-            name="username"
-            control={control}
-            render={({ field, fieldState }) => (
-              <TextField
-                variant="filled"
-                label="Username"
-                error={!!fieldState.error}
-                helperText={fieldState.error && fieldState.error.message}
-                {...field}
-              />
-            )}
-          />
-          <Controller
-            name="password"
-            control={control}
-            render={({ field, fieldState }) => (
-              <TextField
-                variant="filled"
-                type="password"
-                label="Password"
-                error={!!fieldState.error}
-                helperText={fieldState.error && fieldState.error.message}
-                {...field}
-              />
-            )}
-          />
-          <Controller
-            name="repeatPassword"
-            control={control}
-            render={({ field, fieldState }) => (
-              <TextField
-                variant="filled"
-                type="password"
-                label="Repeat password"
-                error={!!fieldState.error}
-                helperText={fieldState.error && fieldState.error.message}
-                {...field}
-              />
-            )}
-          />
-          <Button type="submit" variant="contained" color="primary">
-            Register
-          </Button>
+          <ControlledTextField control={control} name="username" label="Username" />
+          <ControlledTextField control={control} name="password" label="Password" type="password" />
+          <ControlledTextField control={control} name="repeatPassword" label="Repeat password" type="password" />
+          <SubmitButton>Register</SubmitButton>
         </Stack>
       </form>
     </Paper>

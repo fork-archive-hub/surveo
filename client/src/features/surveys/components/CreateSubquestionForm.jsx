@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 
-import { Paper, Stack, Typography, TextField, Button } from '@mui/material';
+import { Paper, Stack, Typography } from '@mui/material';
 
-import { useFormContext, Controller } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 
 import CreateAnswerFormManager from './CreateAnswerFormManager';
 import CreateRequirementsForm from './CreateRequirementsForm';
+
+import { ControlledTextField, Button } from '../../../components/Form';
 
 const CreateSubquestionForm = ({ name, index, parentAnswerField, onRemoveSubquestion }) => {
   const { control } = useFormContext();
@@ -23,20 +25,7 @@ const CreateSubquestionForm = ({ name, index, parentAnswerField, onRemoveSubques
           Subquestion #{index + 1}
         </Typography>
 
-        <Controller
-          control={control}
-          name={`${name}.text`}
-          render={({ field, fieldState }) => (
-            <TextField
-              size="small"
-              variant="outlined"
-              label="Question"
-              error={!!fieldState.error}
-              helperText={fieldState.error && fieldState.error.message}
-              {...field}
-            />
-          )}
-        />
+        <ControlledTextField control={control} name={`${name}.text`} label="Question" />
 
         <Paper elevation={2} sx={{ p: 2 }}>
           <CreateAnswerFormManager name={`${name}.answers`} />

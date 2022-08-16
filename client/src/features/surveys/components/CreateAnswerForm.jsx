@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 
-import { TextField, InputAdornment, IconButton } from '@mui/material';
+import { InputAdornment, IconButton } from '@mui/material';
 import { DeleteOutline } from '@mui/icons-material';
 
-import { useFormContext, Controller } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
+
+import { ControlledTextField } from '../../../components/Form';
 
 const CreateAnswerForm = ({ name, index, isRemoveButtonDisabled, onRemoveAnswer }) => {
   const { control } = useFormContext();
@@ -15,28 +17,19 @@ const CreateAnswerForm = ({ name, index, isRemoveButtonDisabled, onRemoveAnswer 
   };
 
   return (
-    <Controller
+    <ControlledTextField
       control={control}
       name={`${name}.text`}
-      render={({ field, fieldState }) => (
-        <TextField
-          size="small"
-          variant="outlined"
-          label={`Answer #${index + 1}`}
-          error={!!fieldState.error}
-          helperText={fieldState.error && fieldState.error.message}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton disabled={isRemoveButtonDisabled} onClick={handleRemoveAnswer}>
-                  <DeleteOutline />
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-          {...field}
-        />
-      )}
+      label="Answer"
+      InputProps={{
+        endAdornment: (
+          <InputAdornment position="end">
+            <IconButton disabled={isRemoveButtonDisabled} onClick={handleRemoveAnswer}>
+              <DeleteOutline />
+            </IconButton>
+          </InputAdornment>
+        ),
+      }}
     />
   );
 };
