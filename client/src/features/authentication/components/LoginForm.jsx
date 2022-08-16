@@ -1,21 +1,14 @@
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { Paper, Typography, TextField, Stack, Button } from '@mui/material';
 
 import { useForm, Controller } from 'react-hook-form';
-import { toast } from 'react-toastify';
 
 import { joiResolver } from '@hookform/resolvers/joi';
 import { loginFormSchema } from '../schemas';
 
-import { feathers } from '../../../redux';
-
-const LoginForm = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const { control, handleSubmit, setError } = useForm({
+const LoginForm = ({ onSubmitCredentials }) => {
+  const { control, handleSubmit } = useForm({
     mode: 'all',
     reValidateMode: 'onChange',
     defaultValues: {
@@ -25,16 +18,9 @@ const LoginForm = () => {
     resolver: joiResolver(loginFormSchema),
   });
 
-  const onSubmit = async ({ username, password }) => {
-    const result = await dispatch(feathers.authentication.login({ username, password }));
-
-    if (result.error) {
-      ['username', 'password'].forEach((field) => {
-        setError(field, { type: 'validate', message: result.error });
-      });
-    } else {
-      toast.success('Login successful');
-      navigate('/');
+  const onSubmit = (data) => {
+    if (onSubmitCredentials) {
+      onSubmitCredentials(data);
     }
   };
 
@@ -79,6 +65,10 @@ const LoginForm = () => {
       </form>
     </Paper>
   );
+};
+
+LoginForm.propTypes = {
+  onSubmitCredentials: PropTypes.func.isRequired,
 };
 
 export default LoginForm;
