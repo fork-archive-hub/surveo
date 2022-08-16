@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
+
 import { Provider } from 'react-redux';
 import { store } from './redux';
 
@@ -13,13 +15,15 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Providers = ({ children }) => {
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <BrowserRouter>{children}</BrowserRouter>
-        <ToastContainer theme="dark" position={toast.POSITION.TOP_CENTER} />
-      </ThemeProvider>
-    </Provider>
+    <GoogleReCaptchaProvider reCaptchaKey={process.env.REACT_APP_GOOGLE_RECAPTCHA_KEY}>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <BrowserRouter>{children}</BrowserRouter>
+          <ToastContainer theme="dark" position={toast.POSITION.TOP_CENTER} />
+        </ThemeProvider>
+      </Provider>
+    </GoogleReCaptchaProvider>
   );
 };
 
