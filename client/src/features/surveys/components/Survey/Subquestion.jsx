@@ -4,9 +4,9 @@ import { Paper, Typography } from '@mui/material';
 
 import { useFormContext } from 'react-hook-form';
 
-import AnswerListForm from './AnswerListForm';
+import AnswerFieldset from './AnswerFieldset';
 
-const SubquestionForm = ({ subquestion }) => {
+const Subquestion = ({ subquestion }) => {
   const { setValue } = useFormContext();
 
   const handleSelectAnswer = (answerId) => {
@@ -18,15 +18,14 @@ const SubquestionForm = ({ subquestion }) => {
       <Typography variant="h6" display="block" align="center" gutterBottom>
         {subquestion.text}
       </Typography>
-
       <Paper elevation={2} sx={{ p: 2 }}>
-        <AnswerListForm answers={subquestion.answers} onSelectAnswer={handleSelectAnswer} />
+        <AnswerFieldset answers={subquestion.answers} onSelectAnswer={handleSelectAnswer} />
       </Paper>
     </Paper>
   );
 };
 
-SubquestionForm.propTypes = {
+Subquestion.propTypes = {
   subquestion: PropTypes.shape({
     _id: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
@@ -34,4 +33,4 @@ SubquestionForm.propTypes = {
   }),
 };
 
-export default SubquestionForm;
+export default Subquestion;

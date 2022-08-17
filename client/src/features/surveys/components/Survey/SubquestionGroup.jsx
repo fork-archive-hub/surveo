@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 
-import SubquestionForm from './SubquestionForm';
+import Subquestion from './Subquestion';
 
-const SubquestionFormManager = ({ subquestions, selectedAnswerIndex }) => {
+const SubquestionGroup = ({ subquestions, selectedAnswerIndex }) => {
   const requiredSubquestions = subquestions.filter((subquestion) =>
     subquestion.requirements.includes(selectedAnswerIndex)
   );
@@ -11,7 +11,7 @@ const SubquestionFormManager = ({ subquestions, selectedAnswerIndex }) => {
     return (
       <>
         {requiredSubquestions.map((subquestion) => (
-          <SubquestionForm key={subquestion._id} subquestion={subquestion} />
+          <Subquestion key={subquestion._id} subquestion={subquestion} />
         ))}
       </>
     );
@@ -20,7 +20,7 @@ const SubquestionFormManager = ({ subquestions, selectedAnswerIndex }) => {
   return null;
 };
 
-SubquestionFormManager.propTypes = {
+SubquestionGroup.propTypes = {
   subquestions: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
@@ -29,4 +29,4 @@ SubquestionFormManager.propTypes = {
   selectedAnswerIndex: PropTypes.number.isRequired,
 };
 
-export default SubquestionFormManager;
+export default SubquestionGroup;

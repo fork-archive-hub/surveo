@@ -2,19 +2,19 @@ import PropTypes from 'prop-types';
 
 import { Stack } from '@mui/material';
 
-import QuestionForm from './QuestionForm';
+import Question from './Question';
 
-const QuestionFormManager = ({ questions }) => {
+const QuestionGroup = ({ questions }) => {
   return (
     <Stack direction="column" spacing={2}>
       {questions.map((question) => (
-        <QuestionForm key={question._id} question={question} />
+        <Question key={question._id} question={question} />
       ))}
     </Stack>
   );
 };
 
-QuestionFormManager.propTypes = {
+QuestionGroup.propTypes = {
   questions: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
@@ -22,4 +22,4 @@ QuestionFormManager.propTypes = {
   ).isRequired,
 };
 
-export default QuestionFormManager;
+export default QuestionGroup;

@@ -3,18 +3,17 @@ import PropTypes from 'prop-types';
 import { Stack, Divider } from '@mui/material';
 
 import { useForm, FormProvider } from 'react-hook-form';
-
 import { joiResolver } from '@hookform/resolvers/joi';
-import { surveyFormSchema } from '../schemas';
 
-import SurveyInformationForm from './SurveyInformationForm';
-import CreateQuestionFormManager from './CreateQuestionFormManager';
+import SurveyConfigurationFieldset from './SurveyConfigurationFieldset';
+import CreateQuestionFieldsetGroup from './CreateQuestionFieldsetGroup';
 
-import { SurveyTemplate } from '../templates';
+import { surveyFormSchema } from '../../schemas';
+import { SurveyTemplate } from '../../templates';
 
-import { SubmitButton } from '../../../components/Form';
+import { SubmitButton } from '../../../../components/Form';
 
-const CreateSurveyForm = ({ onSubmitSurvey }) => {
+const SurveyBuilderForm = ({ onSubmitSurvey }) => {
   const methods = useForm({
     mode: 'all',
     defaultValues: new SurveyTemplate(),
@@ -31,8 +30,8 @@ const CreateSurveyForm = ({ onSubmitSurvey }) => {
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)}>
         <Stack direction="column" spacing={2} divider={<Divider />} sx={{ width: 360 }}>
-          <SurveyInformationForm />
-          <CreateQuestionFormManager name="questions" />
+          <SurveyConfigurationFieldset />
+          <CreateQuestionFieldsetGroup name="questions" />
           <SubmitButton>Create survey</SubmitButton>
         </Stack>
       </form>
@@ -40,8 +39,8 @@ const CreateSurveyForm = ({ onSubmitSurvey }) => {
   );
 };
 
-CreateSurveyForm.propTypes = {
+SurveyBuilderForm.propTypes = {
   onSubmitSurvey: PropTypes.func.isRequired,
 };
 
-export default CreateSurveyForm;
+export default SurveyBuilderForm;

@@ -4,12 +4,12 @@ import { Stack, Paper, Typography } from '@mui/material';
 
 import { useFormContext, Controller } from 'react-hook-form';
 
-import CreateAnswerFormManager from './CreateAnswerFormManager';
-import CreateSubquestionFormManager from './CreateSubquestionFormManager';
+import AnswerTextFieldGroup from './AnswerTextFieldGroup';
+import CreateSubquestionFieldsetGroup from './CreateSubquestionFieldsetGroup';
 
-import { TextField, Button } from '../../../components/Form';
+import { TextField, Button } from '../../../../components/Form';
 
-const CreateQuestionForm = ({ name, index, isRemoveButtonDisabled, onRemoveQuestion }) => {
+const CreateQuestionFieldset = ({ name, index, isRemoveButtonDisabled, onRemoveQuestion }) => {
   const { control } = useFormContext();
 
   const handleRemoveQuestion = () => {
@@ -25,33 +25,29 @@ const CreateQuestionForm = ({ name, index, isRemoveButtonDisabled, onRemoveQuest
           <Typography variant="h6" display="block" align="center">
             Question #{index + 1}
           </Typography>
-
           <Controller
             control={control}
             name={`${name}.text`}
             render={(controller) => <TextField label="Question" controller={controller} />}
           />
-
           <Paper elevation={2} sx={{ p: 2 }}>
-            <CreateAnswerFormManager name={`${name}.answers`} />
+            <AnswerTextFieldGroup name={`${name}.answers`} />
           </Paper>
-
           <Button disabled={isRemoveButtonDisabled} onClick={handleRemoveQuestion}>
             Remove question #{index + 1}
           </Button>
         </Stack>
       </Paper>
-
-      <CreateSubquestionFormManager name={`${name}.subquestions`} parentAnswerField={`${name}.answers`} />
+      <CreateSubquestionFieldsetGroup name={`${name}.subquestions`} parentAnswerField={`${name}.answers`} />
     </Stack>
   );
 };
 
-CreateQuestionForm.propTypes = {
+CreateQuestionFieldset.propTypes = {
   name: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   isRemoveButtonDisabled: PropTypes.bool.isRequired,
   onRemoveQuestion: PropTypes.func.isRequired,
 };
 
-export default CreateQuestionForm;
+export default CreateQuestionFieldset;

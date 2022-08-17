@@ -5,10 +5,10 @@ import { Stack, Paper, Typography } from '@mui/material';
 
 import { useFormContext } from 'react-hook-form';
 
-import AnswerListForm from './AnswerListForm';
-import SubquestionFormManager from './SubquestionFormManager';
+import AnswerRadioGroup from './AnswerFieldset';
+import SubquestionGroup from './SubquestionGroup';
 
-const QuestionForm = ({ question }) => {
+const Question = ({ question }) => {
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(-1);
   const { setValue } = useFormContext();
 
@@ -23,18 +23,16 @@ const QuestionForm = ({ question }) => {
         <Typography variant="h6" display="block" align="center" gutterBottom>
           {question.text}
         </Typography>
-
         <Paper elevation={2} sx={{ p: 2 }}>
-          <AnswerListForm answers={question.answers} onSelectAnswer={handleSelectAnswer} />
+          <AnswerRadioGroup answers={question.answers} onSelectAnswer={handleSelectAnswer} />
         </Paper>
       </Paper>
-
-      <SubquestionFormManager subquestions={question.subquestions} selectedAnswerIndex={selectedAnswerIndex} />
+      <SubquestionGroup subquestions={question.subquestions} selectedAnswerIndex={selectedAnswerIndex} />
     </Stack>
   );
 };
 
-QuestionForm.propTypes = {
+Question.propTypes = {
   question: PropTypes.shape({
     _id: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
@@ -43,4 +41,4 @@ QuestionForm.propTypes = {
   }),
 };
 
-export default QuestionForm;
+export default Question;

@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { useId } from 'react';
 
-import { RadioGroup, FormControlLabel, Radio } from '../../../components/Form';
+import { RadioGroup, FormControlLabel, Radio } from '../../../../components/Form';
 
-const AnswerListForm = ({ answers, onSelectAnswer }) => {
+const AnswerFieldset = ({ answers, onSelectAnswer }) => {
   const groupId = useId();
 
   const handleChange = (event) => {
@@ -27,7 +27,7 @@ const AnswerListForm = ({ answers, onSelectAnswer }) => {
   );
 };
 
-AnswerListForm.propTypes = {
+AnswerFieldset.propTypes = {
   answers: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
@@ -38,4 +38,4 @@ AnswerListForm.propTypes = {
   onSelectAnswer: PropTypes.func.isRequired,
 };
 
-export default AnswerListForm;
+export default AnswerFieldset;

@@ -4,12 +4,12 @@ import { Paper, Stack, Typography } from '@mui/material';
 
 import { useFormContext, Controller } from 'react-hook-form';
 
-import CreateAnswerFormManager from './CreateAnswerFormManager';
-import CreateRequirementsForm from './CreateRequirementsForm';
+import AnswerTextFieldGroup from './AnswerTextFieldGroup';
+import RequirementConfigurationFieldset from './RequirementConfigurationFieldset';
 
-import { TextField, Button } from '../../../components/Form';
+import { TextField, Button } from '../../../../components/Form';
 
-const CreateSubquestionForm = ({ name, index, parentAnswerField, onRemoveSubquestion }) => {
+const CreateSubquestionFieldset = ({ name, index, parentAnswerField, onRemoveSubquestion }) => {
   const { control } = useFormContext();
 
   const handleRemoveSubquestion = () => {
@@ -24,32 +24,28 @@ const CreateSubquestionForm = ({ name, index, parentAnswerField, onRemoveSubques
         <Typography variant="h6" display="block" align="center">
           Subquestion #{index + 1}
         </Typography>
-
         <Controller
           control={control}
           name={`${name}.text`}
           render={(controller) => <TextField label="Question" controller={controller} />}
         />
-
         <Paper elevation={2} sx={{ p: 2 }}>
-          <CreateAnswerFormManager name={`${name}.answers`} />
+          <AnswerTextFieldGroup name={`${name}.answers`} />
         </Paper>
-
         <Paper elevation={2} sx={{ p: 2 }}>
-          <CreateRequirementsForm name={`${name}.requirements`} parentAnswerField={parentAnswerField} />
+          <RequirementConfigurationFieldset name={`${name}.requirements`} parentAnswerField={parentAnswerField} />
         </Paper>
-
         <Button onClick={handleRemoveSubquestion}>Remove subquestion #{index + 1}</Button>
       </Stack>
     </Paper>
   );
 };
 
-CreateSubquestionForm.propTypes = {
+CreateSubquestionFieldset.propTypes = {
   name: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   parentAnswerField: PropTypes.string.isRequired,
   onRemoveSubquestion: PropTypes.func.isRequired,
 };
 
-export default CreateSubquestionForm;
+export default CreateSubquestionFieldset;

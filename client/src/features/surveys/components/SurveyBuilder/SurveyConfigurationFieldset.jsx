@@ -2,7 +2,7 @@ import { Paper, Stack, Typography } from '@mui/material';
 
 import { useFormContext, Controller } from 'react-hook-form';
 
-import { TextField, FormControlLabel, Switch } from '../../../components/Form';
+import { TextField, FormControlLabel, Switch } from '../../../../components/Form';
 
 const SurveyInformationForm = () => {
   const { control } = useFormContext();
@@ -11,21 +11,18 @@ const SurveyInformationForm = () => {
     <Paper elevation={1} sx={{ p: 2 }}>
       <Stack direction="column" spacing={2}>
         <Typography variant="h6" display="block" align="center">
-          Survey information
+          Survey Configuration
         </Typography>
-
         <Controller
           control={control}
           name="name"
           render={(controller) => <TextField label="Survey name" controller={controller} />}
         />
-
         <Paper elevation={2} sx={{ p: 2 }}>
           <Stack direction="column" spacing={2}>
             <Typography variant="body1" display="block" align="center">
               Survey protection
             </Typography>
-
             <FormControlLabel
               label="Captcha"
               control={
@@ -36,7 +33,6 @@ const SurveyInformationForm = () => {
                 />
               }
             />
-
             <FormControlLabel
               label="Prevent duplicates"
               control={

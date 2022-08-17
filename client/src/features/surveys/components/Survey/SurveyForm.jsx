@@ -5,9 +5,9 @@ import { Stack, Divider } from '@mui/material';
 import { useForm, FormProvider } from 'react-hook-form';
 
 import SurveyHeader from './SurveyHeader';
-import QuestionFormManager from './QuestionFormManager';
+import QuestionGroup from './QuestionGroup';
 
-import { SubmitButton } from '../../../components/Form';
+import { SubmitButton } from '../../../../components/Form';
 
 const SurveyForm = ({ survey, onSubmitVotes }) => {
   const methods = useForm({ mode: 'all' });
@@ -25,7 +25,7 @@ const SurveyForm = ({ survey, onSubmitVotes }) => {
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <Stack direction="column" spacing={2}>
-            <QuestionFormManager questions={survey.questions} />
+            <QuestionGroup questions={survey.questions} />
             <SubmitButton disabled={!survey.open}>Submit</SubmitButton>
           </Stack>
         </form>

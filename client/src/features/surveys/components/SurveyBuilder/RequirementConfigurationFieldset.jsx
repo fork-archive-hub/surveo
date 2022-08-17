@@ -5,9 +5,9 @@ import { InfoOutlined } from '@mui/icons-material';
 
 import { useFormContext } from 'react-hook-form';
 
-import { FormGroup, FormControlLabel, Checkbox } from '../../../components/Form';
+import { FormGroup, FormControlLabel, Checkbox } from '../../../../components/Form';
 
-const CreateRequirementsForm = ({ name, parentAnswerField }) => {
+const RequirementConfigurationFieldset = ({ name, parentAnswerField }) => {
   const { setValue, getValues, watch } = useFormContext();
   const answers = watch(parentAnswerField);
 
@@ -33,7 +33,6 @@ const CreateRequirementsForm = ({ name, parentAnswerField }) => {
           <InfoOutlined fontSize="small" />
         </Tooltip>
       </Stack>
-
       {answers.map((answer, index) => (
         <FormControlLabel
           key={answer + index}
@@ -45,9 +44,9 @@ const CreateRequirementsForm = ({ name, parentAnswerField }) => {
   );
 };
 
-CreateRequirementsForm.propTypes = {
+RequirementConfigurationFieldset.propTypes = {
   name: PropTypes.string.isRequired,
   parentAnswerField: PropTypes.string.isRequired,
 };
 
-export default CreateRequirementsForm;
+export default RequirementConfigurationFieldset;

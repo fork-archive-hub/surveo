@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import { Paper, Typography } from '@mui/material';
 
-import { convertDateToHumanFormat } from '../utils/convertDateToHumanFormat';
+import { convertDateToHumanFormat } from '../../utils/convertDateToHumanFormat';
 
 const SurveyHeader = ({ name, author, createdAt }) => {
   return (
