@@ -1,17 +1,11 @@
-import PropTypes from 'prop-types';
+import { forwardRef } from 'react';
 
 import { Button as MUIButton } from '@mui/material';
 
-const Button = ({ children, ...rest }) => {
-  return (
-    <MUIButton size="small" {...rest}>
-      {children}
-    </MUIButton>
-  );
-};
+const Button = forwardRef((props, ref) => {
+  return <MUIButton size="small" ref={ref} {...props} />;
+});
 
-Button.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
-};
+Button.displayName = 'Button';
 
 export default Button;

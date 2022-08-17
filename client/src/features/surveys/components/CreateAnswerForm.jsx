@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { InputAdornment, IconButton } from '@mui/material';
 import { DeleteOutline } from '@mui/icons-material';
 
-import { useFormContext } from 'react-hook-form';
+import { useFormContext, Controller } from 'react-hook-form';
 
-import { ControlledTextField } from '../../../components/Form';
+import { TextField } from '../../../components/Form';
 
 const CreateAnswerForm = ({ name, index, isRemoveButtonDisabled, onRemoveAnswer }) => {
   const { control } = useFormContext();
@@ -17,19 +17,24 @@ const CreateAnswerForm = ({ name, index, isRemoveButtonDisabled, onRemoveAnswer 
   };
 
   return (
-    <ControlledTextField
+    <Controller
       control={control}
       name={`${name}.text`}
-      label="Answer"
-      InputProps={{
-        endAdornment: (
-          <InputAdornment position="end">
-            <IconButton disabled={isRemoveButtonDisabled} onClick={handleRemoveAnswer}>
-              <DeleteOutline />
-            </IconButton>
-          </InputAdornment>
-        ),
-      }}
+      render={(controller) => (
+        <TextField
+          label="Answer"
+          controller={controller}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton disabled={isRemoveButtonDisabled} onClick={handleRemoveAnswer}>
+                  <DeleteOutline />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+        />
+      )}
     />
   );
 };

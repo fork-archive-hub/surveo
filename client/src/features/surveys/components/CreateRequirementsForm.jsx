@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 
-import { FormGroup, Stack, Typography, Tooltip, FormControlLabel, Checkbox } from '@mui/material';
+import { Stack, Typography, Tooltip } from '@mui/material';
 import { InfoOutlined } from '@mui/icons-material';
 
 import { useFormContext } from 'react-hook-form';
+
+import { FormGroup, FormControlLabel, Checkbox } from '../../../components/Form';
 
 const CreateRequirementsForm = ({ name, parentAnswerField }) => {
   const { setValue, getValues, watch } = useFormContext();

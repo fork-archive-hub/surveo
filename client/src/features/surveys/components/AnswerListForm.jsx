@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useId } from 'react';
 
-import { RadioGroup, FormControlLabel, Radio } from '@mui/material';
+import { RadioGroup, FormControlLabel, Radio } from '../../../components/Form';
 
 const AnswerListForm = ({ answers, onSelectAnswer }) => {
   const groupId = useId();

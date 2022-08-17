@@ -2,12 +2,12 @@ import PropTypes from 'prop-types';
 
 import { Paper, Typography, Stack } from '@mui/material';
 
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 
 import { joiResolver } from '@hookform/resolvers/joi';
 import { loginFormSchema } from '../schemas';
 
-import { ControlledTextField, SubmitButton } from '../../../components/Form';
+import { TextField, SubmitButton } from '../../../components/Form';
 
 const LoginForm = ({ onSubmitCredentials }) => {
   const { control, handleSubmit } = useForm({
@@ -33,8 +33,16 @@ const LoginForm = ({ onSubmitCredentials }) => {
           <Typography align="center" variant="h4" display="block">
             Sign in
           </Typography>
-          <ControlledTextField control={control} name="username" label="Username" />
-          <ControlledTextField control={control} name="password" label="Password" type="password" />
+          <Controller
+            control={control}
+            name="username"
+            render={(controller) => <TextField label="Username" controller={controller} />}
+          />
+          <Controller
+            control={control}
+            name="password"
+            render={(controller) => <TextField label="Password" type="password" controller={controller} />}
+          />
           <SubmitButton>Login</SubmitButton>
         </Stack>
       </form>

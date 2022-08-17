@@ -1,17 +1,11 @@
-import PropTypes from 'prop-types';
+import { forwardRef } from 'react';
 
-import { Button } from '@mui/material';
+import { Button as MUIButton } from '@mui/material';
 
-const SubmitButton = ({ children, ...rest }) => {
-  return (
-    <Button type="submit" variant="contained" {...rest}>
-      {children}
-    </Button>
-  );
-};
+const SubmitButton = forwardRef((props, ref) => {
+  return <MUIButton type="submit" variant="contained" ref={ref} {...props} />;
+});
 
-SubmitButton.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
-};
+SubmitButton.displayName = 'SubmitButton';
 
 export default SubmitButton;
