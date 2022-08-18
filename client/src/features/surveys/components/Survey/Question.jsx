@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-import { Stack, Paper, Typography } from '@mui/material';
+import { Stack, Card, CardHeader, CardActions, Paper } from '@mui/material';
 
 import { useFormContext } from 'react-hook-form';
 
@@ -19,14 +19,14 @@ const Question = ({ question }) => {
 
   return (
     <Stack direction="column" spacing={2}>
-      <Paper elevation={1} sx={{ p: 2 }}>
-        <Typography variant="h6" display="block" align="center" gutterBottom>
-          {question.text}
-        </Typography>
-        <Paper elevation={2} sx={{ p: 2 }}>
-          <AnswerRadioGroup answers={question.answers} onSelectAnswer={handleSelectAnswer} />
-        </Paper>
-      </Paper>
+      <Card>
+        <CardHeader title={question.text} titleTypographyProps={{ variant: 'h6', display: 'block', align: 'center' }} />
+        <CardActions sx={{ p: 2 }}>
+          <Paper elevation={2} sx={{ width: 1, p: 2 }}>
+            <AnswerRadioGroup answers={question.answers} onSelectAnswer={handleSelectAnswer} />
+          </Paper>
+        </CardActions>
+      </Card>
       <SubquestionGroup subquestions={question.subquestions} selectedAnswerIndex={selectedAnswerIndex} />
     </Stack>
   );

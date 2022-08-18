@@ -1,19 +1,19 @@
 import PropTypes from 'prop-types';
 
-import { Paper, Typography } from '@mui/material';
+import { Card, CardHeader } from '@mui/material';
 
 import { convertDateToHumanFormat } from '../../utils/convertDateToHumanFormat';
 
 const SurveyHeader = ({ name, author, createdAt }) => {
   return (
-    <Paper elevation={1} sx={{ p: 2 }}>
-      <Typography variant="h5" display="block" align="center">
-        {name}
-      </Typography>
-      <Typography variant="caption" display="block" align="center">
-        Created by {author} on {convertDateToHumanFormat(createdAt)}.
-      </Typography>
-    </Paper>
+    <Card>
+      <CardHeader
+        title={name}
+        subheader={`Created by ${author} on ${convertDateToHumanFormat(createdAt)}`}
+        titleTypographyProps={{ variant: 'h5', display: 'block', align: 'center' }}
+        subheaderTypographyProps={{ variant: 'caption', display: 'block', align: 'center' }}
+      />
+    </Card>
   );
 };
 

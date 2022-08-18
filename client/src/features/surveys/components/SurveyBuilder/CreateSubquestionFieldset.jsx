@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { Paper, Stack, Typography } from '@mui/material';
+import { Card, CardHeader, CardActions, Paper, Stack } from '@mui/material';
 
 import { useFormContext, Controller } from 'react-hook-form';
 
@@ -19,25 +19,26 @@ const CreateSubquestionFieldset = ({ name, index, parentAnswerField, onRemoveSub
   };
 
   return (
-    <Paper elevation={1} sx={{ p: 2 }}>
-      <Stack direction="column" spacing={2}>
-        <Typography variant="h6" display="block" align="center">
-          Subquestion #{index + 1}
-        </Typography>
-        <Controller
-          control={control}
-          name={`${name}.text`}
-          render={(controller) => <TextField label="Question" controller={controller} />}
-        />
-        <Paper elevation={2} sx={{ p: 2 }}>
-          <AnswerTextFieldGroup name={`${name}.answers`} />
-        </Paper>
-        <Paper elevation={2} sx={{ p: 2 }}>
+    <Card>
+      <CardHeader
+        title={`Subquestion ${index + 1}`}
+        titleTypographyProps={{ variant: 'h6', display: 'block', align: 'center' }}
+      />
+      <CardActions sx={{ p: 2 }}>
+        <Stack direction="column" spacing={2} sx={{ width: 1 }}>
+          <Controller
+            control={control}
+            name={`${name}.text`}
+            render={(controller) => <TextField label="Question" controller={controller} />}
+          />
+          <Paper elevation={2} sx={{ p: 2 }}>
+            <AnswerTextFieldGroup name={`${name}.answers`} />
+          </Paper>
           <RequirementConfigurationFieldset name={`${name}.requirements`} parentAnswerField={parentAnswerField} />
-        </Paper>
-        <Button onClick={handleRemoveSubquestion}>Remove subquestion #{index + 1}</Button>
-      </Stack>
-    </Paper>
+          <Button onClick={handleRemoveSubquestion}>Remove subquestion #{index + 1}</Button>
+        </Stack>
+      </CardActions>
+    </Card>
   );
 };
 

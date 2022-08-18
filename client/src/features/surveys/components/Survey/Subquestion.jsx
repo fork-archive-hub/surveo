@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { Paper, Typography } from '@mui/material';
+import { Card, CardHeader, CardActions, Paper } from '@mui/material';
 
 import { useFormContext } from 'react-hook-form';
 
@@ -14,14 +14,17 @@ const Subquestion = ({ subquestion }) => {
   };
 
   return (
-    <Paper elevation={1} sx={{ p: 2 }}>
-      <Typography variant="h6" display="block" align="center" gutterBottom>
-        {subquestion.text}
-      </Typography>
-      <Paper elevation={2} sx={{ p: 2 }}>
-        <AnswerFieldset answers={subquestion.answers} onSelectAnswer={handleSelectAnswer} />
-      </Paper>
-    </Paper>
+    <Card>
+      <CardHeader
+        title={subquestion.text}
+        titleTypographyProps={{ variant: 'h6', display: 'block', align: 'center' }}
+      />
+      <CardActions sx={{ p: 2 }}>
+        <Paper elevation={2} sx={{ width: 1, p: 2 }}>
+          <AnswerFieldset answers={subquestion.answers} onSelectAnswer={handleSelectAnswer} />
+        </Paper>
+      </CardActions>
+    </Card>
   );
 };
 

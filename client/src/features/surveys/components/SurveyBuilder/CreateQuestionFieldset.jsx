@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { Stack, Paper, Typography } from '@mui/material';
+import { Stack, Card, CardHeader, CardActions, Paper } from '@mui/material';
 
 import { useFormContext, Controller } from 'react-hook-form';
 
@@ -20,24 +20,27 @@ const CreateQuestionFieldset = ({ name, index, isRemoveButtonDisabled, onRemoveQ
 
   return (
     <Stack direction="column" spacing={2}>
-      <Paper elevation={1} sx={{ p: 2 }}>
-        <Stack direction="column" spacing={2}>
-          <Typography variant="h6" display="block" align="center">
-            Question #{index + 1}
-          </Typography>
-          <Controller
-            control={control}
-            name={`${name}.text`}
-            render={(controller) => <TextField label="Question" controller={controller} />}
-          />
-          <Paper elevation={2} sx={{ p: 2 }}>
-            <AnswerTextFieldGroup name={`${name}.answers`} />
-          </Paper>
-          <Button disabled={isRemoveButtonDisabled} onClick={handleRemoveQuestion}>
-            Remove question #{index + 1}
-          </Button>
-        </Stack>
-      </Paper>
+      <Card>
+        <CardHeader
+          title={`Question ${index + 1}`}
+          titleTypographyProps={{ variant: 'h6', display: 'block', align: 'center' }}
+        />
+        <CardActions sx={{ p: 2 }}>
+          <Stack direction="column" spacing={2} sx={{ width: 1 }}>
+            <Controller
+              control={control}
+              name={`${name}.text`}
+              render={(controller) => <TextField label="Question" controller={controller} />}
+            />
+            <Paper elevation={2} sx={{ p: 2 }}>
+              <AnswerTextFieldGroup name={`${name}.answers`} />
+            </Paper>
+            <Button disabled={isRemoveButtonDisabled} onClick={handleRemoveQuestion}>
+              Remove question #{index + 1}
+            </Button>
+          </Stack>
+        </CardActions>
+      </Card>
       <CreateSubquestionFieldsetGroup name={`${name}.subquestions`} parentAnswerField={`${name}.answers`} />
     </Stack>
   );
