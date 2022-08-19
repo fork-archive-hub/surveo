@@ -38,7 +38,7 @@ const RequirementConfigurationFieldset = ({ name, parentAnswerField }) => {
         }
         disableTypography
       />
-      <CardActions sx={{ p: 2 }}>
+      <CardActions sx={{ p: 2, pt: 0 }}>
         <FormGroup onChange={handleChange}>
           {answers.map((answer, index) => (
             <FormControlLabel

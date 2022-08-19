@@ -21,7 +21,7 @@ const Question = ({ question }) => {
     <Stack direction="column" spacing={2}>
       <Card>
         <CardHeader title={question.text} titleTypographyProps={{ variant: 'h6', display: 'block', align: 'center' }} />
-        <CardActions sx={{ p: 2 }}>
+        <CardActions sx={{ p: 2, pt: 0 }}>
           <Paper elevation={2} sx={{ width: 1, p: 2 }}>
             <AnswerRadioGroup answers={question.answers} onSelectAnswer={handleSelectAnswer} />
           </Paper>

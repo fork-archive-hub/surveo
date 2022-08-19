@@ -19,7 +19,7 @@ const Subquestion = ({ subquestion }) => {
         title={subquestion.text}
         titleTypographyProps={{ variant: 'h6', display: 'block', align: 'center' }}
       />
-      <CardActions sx={{ p: 2 }}>
+      <CardActions sx={{ p: 2, pt: 0 }}>
         <Paper elevation={2} sx={{ width: 1, p: 2 }}>
           <AnswerFieldset answers={subquestion.answers} onSelectAnswer={handleSelectAnswer} />
         </Paper>

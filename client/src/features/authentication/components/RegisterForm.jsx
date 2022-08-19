@@ -30,7 +30,7 @@ const RegisterForm = ({ onSubmitCredentials }) => {
   return (
     <Card sx={{ width: 340 }}>
       <CardHeader title="Sign up" titleTypographyProps={{ variant: 'h4', display: 'block', align: 'center' }} />
-      <CardActions sx={{ p: 2, '> form': { width: 1 } }}>
+      <CardActions sx={{ p: 2, pt: 0, '> form': { width: 1 } }}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Stack direction="column" spacing={2}>
             <Controller
