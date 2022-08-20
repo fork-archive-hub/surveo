@@ -26,6 +26,7 @@ export class QuestionTemplate {
 export class SurveyInformationTemplate {
   constructor(name = '') {
     this.name = name;
+    this.open = true;
     this.protection = {
       captcha: false,
       ipRestriction: false,
