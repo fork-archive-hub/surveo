@@ -1,17 +1,15 @@
 import { Outlet } from 'react-router-dom';
 import { Container } from '@mui/material';
 
-import WaveTop from './WaveTop';
-import WaveBottom from './WaveBottom';
+import BackgroundScene from './BackgroundScene';
 
 const PresentationLayout = () => {
   return (
     <>
-      <WaveTop />
+      <BackgroundScene />
       <Container maxWidth="xl" sx={{ height: 1 }}>
         <Outlet />
       </Container>
-      <WaveBottom />
     </>
   );
 };
