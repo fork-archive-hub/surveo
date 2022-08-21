@@ -7,7 +7,7 @@ const PresentationLayout = () => {
   return (
     <>
       <BackgroundScene />
-      <Container maxWidth="xl" sx={{ height: 1 }}>
+      <Container maxWidth="xl">
         <Outlet />
       </Container>
     </>
