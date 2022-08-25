@@ -21,7 +21,7 @@ const MainLayout = () => {
   return (
     <>
       <AppBar isAuthenticated={isAuthenticated} user={user} onLogout={handleLogout} />
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" sx={{ py: 2 }}>
         <Outlet />
       </Container>
       <Footer />
