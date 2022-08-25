@@ -9,7 +9,7 @@ const Index = () => {
       flexDirection="column"
       alignItems="center"
       justifyContent="center"
-      sx={{ height: { sm: 'auto', md: '100vh' }, p: 2 }}
+      sx={{ height: { sm: 'auto', md: '100vh' } }}
     >
       <Grid container component={Paper} elevation={1} justifyContent="center" alignItems="center">
         <Grid item xs={12} md={7} sx={{ p: 2 }}>
