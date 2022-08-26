@@ -21,7 +21,7 @@ const Login = () => {
     }
 
     toast.success('Login successful');
-    navigate('/');
+    navigate('/dashboard');
   };
 
   return (
