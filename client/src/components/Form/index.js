@@ -1,5 +1,6 @@
 export { default as Button } from './Button';
 export { default as SubmitButton } from './SubmitButton';
+export { default as IconButton } from './IconButton';
 export { default as TextField } from './TextField';
 export { default as Radio } from './Radio';
 export { default as Checkbox } from './Checkbox';
