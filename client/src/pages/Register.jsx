@@ -29,8 +29,8 @@ const Register = () => {
       display="flex"
       flexDirection="column"
       alignItems="center"
-      justifyContent="center"
-      sx={{ height: { sm: 'auto', md: '100vh' } }}
+      justifyContent={{ xs: 'start', md: 'center' }}
+      sx={{ height: '100vh', py: 2 }}
     >
       <RegisterForm onSubmitCredentials={onRegister} />
       <Stack direction="row" gap={1} sx={{ my: 1 }}>
