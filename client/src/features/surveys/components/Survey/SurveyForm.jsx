@@ -19,7 +19,7 @@ const SurveyForm = ({ survey, onSubmitVotes }) => {
   };
 
   return (
-    <Stack direction="column" spacing={2} sx={{ width: 360 }}>
+    <Stack direction="column" spacing={2} sx={{ width: 1 }}>
       <SurveyHeader name={survey.name} author={survey.author.username} createdAt={survey.createdAt} />
       <Divider />
       <FormProvider {...methods}>
