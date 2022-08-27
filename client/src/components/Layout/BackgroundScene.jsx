@@ -4,7 +4,7 @@ const BackgroundScene = () => {
   const theme = useTheme();
 
   return (
-    <Box sx={{ position: 'absolute', top: 0, left: 0, width: 1, height: '100vh', zIndex: -1, lineHeight: 0 }}>
+    <Box sx={{ position: 'fixed', top: 0, left: 0, width: 1, height: 1, zIndex: -1, lineHeight: 0 }}>
       <svg viewBox="0 0 960 540" width="100%" height="100%" preserveAspectRatio="none">
         <g transform="translate(960, 0)">
           <path
