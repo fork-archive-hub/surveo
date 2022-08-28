@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { Grid, ClickAwayListener, Box } from '@mui/material';
@@ -13,13 +13,15 @@ import { feathers } from '../redux';
 
 const SurveyEdit = () => {
   const [surveyInformation, setSurveyInformation] = useState({});
+
+  const user = useSelector((state) => state.authentication.user);
   const dispatch = useDispatch();
 
   const params = useParams();
   const navigate = useNavigate();
 
   const onClickAway = () => {
-    navigate(-1);
+    navigate('/');
   };
 
   const onUpdateSurvey = async (data) => {
@@ -31,11 +33,12 @@ const SurveyEdit = () => {
     );
 
     if (result.error) {
-      return toast.error(result.error);
+      toast.error(result.error);
+      return navigate('/');
     }
 
     toast.success('Survey updated');
-    navigate(-1);
+    navigate('/');
   };
 
   useEffect(() => {
@@ -44,19 +47,36 @@ const SurveyEdit = () => {
         const result = await dispatch(feathers.survey.get({ surveyId: params.surveyId }));
 
         if (result.error) {
-          return toast.error(result.error);
+          toast.error(result.error, {
+            toastId: 'load-survey-information-error',
+          });
+          return navigate('/');
         }
 
         setSurveyInformation({
           name: result.payload.name,
           open: result.payload.open,
           protection: result.payload.protection,
+          authorId: result.payload.authorId,
         });
       }
     };
 
     loadSurveyInformation();
-  }, [params.surveyId, dispatch]);
+  }, [params.surveyId, navigate, dispatch]);
+
+  useEffect(() => {
+    const checkSurveyAuthor = () => {
+      if (Object.keys(surveyInformation).length > 0) {
+        if (surveyInformation.authorId !== user._id) {
+          toast.error('You cannot edit this survey');
+          navigate('/');
+        }
+      }
+    };
+
+    checkSurveyAuthor();
+  }, [user._id, surveyInformation, navigate]);
 
   return (
     <Grid container justifyContent="center" maxWidth="xl">

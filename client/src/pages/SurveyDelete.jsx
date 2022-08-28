@@ -16,11 +16,11 @@ const SurveyDelete = () => {
   const params = useParams();
 
   const onClickAway = () => {
-    navigate(-1);
+    navigate('/');
   };
 
   const onCancel = () => {
-    navigate(-1);
+    navigate('/');
   };
 
   const onDelete = async () => {
@@ -28,11 +28,12 @@ const SurveyDelete = () => {
       const result = await dispatch(feathers.survey.remove({ surveyId: params.surveyId }));
 
       if (result.error) {
-        return toast.error(result.error);
+        toast.error(result.error);
+        return navigate('/');
       }
 
       toast.success('Survey deleted');
-      navigate(-1);
+      navigate('/');
     }
   };
 
