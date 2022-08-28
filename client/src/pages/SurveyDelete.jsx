@@ -43,14 +43,16 @@ const SurveyDelete = () => {
       <Grid container item xs={12} sm={8} md={5} lg={4} xl={3}>
         <ClickAwayListener onClickAway={onClickAway}>
           <Card sx={{ width: 1 }}>
-            <CardContent component={Stack} direction="column" alignItems="center">
-              <WarningOutlined sx={{ fontSize: 128 }} />
-              <Typography variant="h5" align="center">
-                Delete Survey
-              </Typography>
-              <Typography variant="caption" align="center">
-                Are you sure you want to delete this survey?
-              </Typography>
+            <CardContent>
+              <Stack direction="column" alignItems="center">
+                <WarningOutlined sx={{ fontSize: 128 }} />
+                <Typography variant="h5" align="center">
+                  Delete Survey
+                </Typography>
+                <Typography variant="caption" align="center">
+                  Are you sure you want to delete this survey?
+                </Typography>
+              </Stack>
             </CardContent>
             <CardActions sx={{ justifyContent: 'center' }}>
               <Button onClick={onDelete}>Delete survey</Button>
