@@ -4,6 +4,7 @@ import Dashboard from '../pages/Dashboard';
 import SurveyEdit from '../pages/SurveyEdit';
 import SurveyDelete from '../pages/SurveyDelete';
 import SurveyCreate from '../pages/SurveyCreate';
+import SurveyResults from '../pages/SurveyResults';
 
 export const protectedRoutes = [
   {
@@ -31,6 +32,10 @@ export const protectedRoutes = [
       {
         path: '/surveys/create',
         element: <SurveyCreate />,
+      },
+      {
+        path: '/surveys/:surveyId/results',
+        element: <SurveyResults />,
       },
     ],
   },
