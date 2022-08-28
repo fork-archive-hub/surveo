@@ -1,6 +1,7 @@
 import { PresentationLayout } from '../components/Layout';
 
 import Index from '../pages/Index';
+import Survey from '../pages/Survey';
 
 export const commonRoutes = [
   {
@@ -9,6 +10,10 @@ export const commonRoutes = [
       {
         path: '/',
         element: <Index />,
+      },
+      {
+        path: '/surveys/:surveyId',
+        element: <Survey />,
       },
     ],
   },
