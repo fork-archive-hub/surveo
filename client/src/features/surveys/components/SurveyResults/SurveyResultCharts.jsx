@@ -7,7 +7,7 @@ import QuestionResultsGroup from './QuestionResultsGroup';
 
 const SurveyResultCharts = ({ survey }) => {
   return (
-    <Stack direction="column" spacing={2} sx={{ width: 360 }}>
+    <Stack direction="column" spacing={2} sx={{ width: 1 }}>
       <ReportHeader name={survey.name} surveyId={survey._id} />
       <QuestionResultsGroup questions={survey.questions} />
     </Stack>
