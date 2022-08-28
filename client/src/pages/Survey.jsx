@@ -13,13 +13,15 @@ import { SurveyForm } from '../features/surveys';
 import { feathers } from '../redux';
 
 const Survey = () => {
-  const [ipAlreadyUsed, setIpAlreadyUsed] = useState(false);
+  const [isIPDisallowed, setIsIPDisallowed] = useState(false);
 
   const survey = useSelector((state) => state.survey.data);
   const dispatch = useDispatch();
 
   const params = useParams();
   const { executeRecaptcha } = useGoogleReCaptcha();
+
+  const isFormDisabled = isIPDisallowed && survey.protection && survey.protection.ipRestriction;
 
   const onSubmitVotes = async (votes) => {
     try {
@@ -37,7 +39,7 @@ const Survey = () => {
       }
 
       if (survey.protection.ipRestriction) {
-        setIpAlreadyUsed(true);
+        setIsIPDisallowed(true);
       }
 
       toast.success('Votes submitted successfully');
@@ -63,7 +65,7 @@ const Survey = () => {
         const result = await dispatch(feathers.vote.get({ surveyId: survey._id }));
 
         if (!result.error) {
-          setIpAlreadyUsed(result.payload.voted);
+          setIsIPDisallowed(result.payload.voted);
         }
       }
     };
@@ -75,13 +77,13 @@ const Survey = () => {
     <Grid container justifyContent="center" sx={{ py: 2 }}>
       <Grid container item xs={12} sm={8} md={5} lg={4} xl={3}>
         <Stack direction="column" spacing={2} sx={{ width: 1 }}>
-          {ipAlreadyUsed && (
+          {isFormDisabled && (
             <Alert severity="info">
               You have already submitted your votes. New votes will not be accepted by the server.
             </Alert>
           )}
           {Object.keys(survey).length > 0 && (
-            <SurveyForm survey={survey} disableForm={ipAlreadyUsed} onSubmitVotes={onSubmitVotes} />
+            <SurveyForm survey={survey} disableForm={isFormDisabled} onSubmitVotes={onSubmitVotes} />
           )}
         </Stack>
       </Grid>
