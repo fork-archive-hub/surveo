@@ -18,6 +18,10 @@ export default class AuthenticationModule {
   initializeEventListeners = () => {
     this.client.on('authenticated', this.handleAuthenticatedEvent);
     this.client.on('logout', this.handleLogoutEvent);
+
+    this.client.reAuthenticate().catch((error) => {
+      console.log('Reauthentication failed:', error.message);
+    });
   };
 
   handleAuthenticatedEvent = (data) => {
