@@ -21,7 +21,7 @@ const Register = () => {
     }
 
     toast.success('Account created successfully');
-    navigate('/');
+    navigate('/login');
   };
 
   return (

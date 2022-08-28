@@ -21,7 +21,7 @@ const Survey = () => {
   const params = useParams();
   const { executeRecaptcha } = useGoogleReCaptcha();
 
-  const handleSubmitVotes = async (votes) => {
+  const onSubmitVotes = async (votes) => {
     try {
       const token = await executeRecaptcha('vote');
       const result = await dispatch(
@@ -32,11 +32,12 @@ const Survey = () => {
         })
       );
 
-      if (!result.error) {
-        toast.success('Votes submitted successfully');
-      } else {
-        toast.error(result.error);
+      if (result.error) {
+        return toast.error(result.error);
       }
+
+      setVoteAlreadySubmitted(true);
+      toast.success('Votes submitted successfully');
     } catch (error) {
       toast.error('Something went wrong');
       console.error(error);
@@ -77,7 +78,7 @@ const Survey = () => {
             </Alert>
           )}
           {Object.keys(survey).length > 0 && (
-            <SurveyForm survey={survey} disableForm={voteAlreadySubmitted} onSubmitVotes={handleSubmitVotes} />
+            <SurveyForm survey={survey} disableForm={voteAlreadySubmitted} onSubmitVotes={onSubmitVotes} />
           )}
         </Stack>
       </Grid>
