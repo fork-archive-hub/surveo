@@ -1,6 +1,7 @@
 import { MainLayout } from '../components/Layout';
 
 import Dashboard from '../pages/Dashboard';
+import SurveyEdit from '../pages/SurveyEdit';
 
 export const protectedRoutes = [
   {
@@ -9,6 +10,12 @@ export const protectedRoutes = [
       {
         path: '/',
         element: <Dashboard />,
+        children: [
+          {
+            path: '/surveys/:surveyId/edit',
+            element: <SurveyEdit />,
+          },
+        ],
       },
     ],
   },

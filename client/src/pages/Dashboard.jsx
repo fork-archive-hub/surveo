@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, useLocation, useOutlet, Link } from 'react-router-dom';
 
-import { Box, Grid, Paper, Typography } from '@mui/material';
+import { Box, Grid, Paper, Typography, Backdrop } from '@mui/material';
 
 import { toast } from 'react-toastify';
 
@@ -17,7 +17,10 @@ const Dashboard = () => {
 
   const user = useSelector((state) => state.authentication.user);
   const dispatch = useDispatch();
+
   const navigate = useNavigate();
+  const location = useLocation();
+  const outlet = useOutlet();
 
   const handleSurveyActionRequest = (action, surveyId) => {
     const paths = {
@@ -46,10 +49,10 @@ const Dashboard = () => {
     };
 
     loadUserSurveys();
-  }, [user._id, dispatch]);
+  }, [user._id, location, dispatch]);
 
   return (
-    <Box>
+    <>
       <Grid container component={Paper} elevation={1}>
         <Grid container item xs={12} alignItems="center" justifyContent="end" sx={{ p: 2 }}>
           <Button to="/surveys/create" size="large" component={Link}>
@@ -70,7 +73,10 @@ const Dashboard = () => {
           )}
         </Grid>
       </Grid>
-    </Box>
+      <Backdrop open={!!outlet} sx={{ p: 2 }}>
+        {outlet}
+      </Backdrop>
+    </>
   );
 };
 

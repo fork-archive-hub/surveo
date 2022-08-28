@@ -30,7 +30,7 @@ const SurveyEditorForm = ({ survey, onUpdateSurvey }) => {
 
   return (
     <FormProvider {...methods}>
-      <Box sx={{ width: 360 }}>
+      <Box sx={{ width: 1 }}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <Stack direction="column" spacing={2}>
             <ConfigurationFieldset />
