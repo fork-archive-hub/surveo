@@ -9,11 +9,11 @@ import QuestionGroup from './QuestionGroup';
 
 import { SubmitButton } from '../../../../components/Form';
 
-const SurveyForm = ({ survey, onSubmitVotes }) => {
+const SurveyForm = ({ survey, disableForm, onSubmitVotes }) => {
   const methods = useForm({ mode: 'all' });
 
   const onSubmit = (data) => {
-    if (onSubmitVotes) {
+    if (onSubmitVotes && !disableForm) {
       onSubmitVotes(data);
     }
   };
@@ -26,7 +26,7 @@ const SurveyForm = ({ survey, onSubmitVotes }) => {
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <Stack direction="column" spacing={2}>
             <QuestionGroup questions={survey.questions} />
-            <SubmitButton disabled={!survey.open}>Submit</SubmitButton>
+            <SubmitButton disabled={!survey.open || disableForm}>Submit</SubmitButton>
           </Stack>
         </form>
       </FormProvider>
@@ -44,6 +44,7 @@ SurveyForm.propTypes = {
     }).isRequired,
     questions: PropTypes.array.isRequired,
   }),
+  disableForm: PropTypes.bool.isRequired,
   onSubmitVotes: PropTypes.func.isRequired,
 };
 
