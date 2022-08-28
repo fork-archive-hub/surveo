@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 import { Grid, Stack, Alert } from '@mui/material';
@@ -19,6 +19,7 @@ const Survey = () => {
   const dispatch = useDispatch();
 
   const params = useParams();
+  const navigate = useNavigate();
   const { executeRecaptcha } = useGoogleReCaptcha();
 
   const isFormDisabled = isIPDisallowed && survey.protection && survey.protection.ipRestriction;
@@ -43,6 +44,7 @@ const Survey = () => {
       }
 
       toast.success('Votes submitted successfully');
+      navigate('/');
     } catch (error) {
       toast.error('Something went wrong');
       console.error(error);
