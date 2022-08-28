@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { Grid, ClickAwayListener, Card, CardHeader, CardActions } from '@mui/material';
+import { Grid, ClickAwayListener, Card, CardContent, CardActions, Stack, Typography } from '@mui/material';
+import { WarningOutlined } from '@mui/icons-material';
 
 import { toast } from 'react-toastify';
 
@@ -42,12 +43,15 @@ const SurveyDelete = () => {
       <Grid container item xs={12} sm={8} md={5} lg={4} xl={3}>
         <ClickAwayListener onClickAway={onClickAway}>
           <Card sx={{ width: 1 }}>
-            <CardHeader
-              title="Delete Survey"
-              subheader="Are you sure you want to delete this survey?"
-              titleTypographyProps={{ variant: 'h5', display: 'block', align: 'center' }}
-              subheaderTypographyProps={{ variant: 'caption', display: 'block', align: 'center' }}
-            />
+            <CardContent component={Stack} direction="column" alignItems="center">
+              <WarningOutlined sx={{ fontSize: 128 }} />
+              <Typography variant="h5" align="center">
+                Delete Survey
+              </Typography>
+              <Typography variant="caption" align="center">
+                Are you sure you want to delete this survey?
+              </Typography>
+            </CardContent>
             <CardActions sx={{ justifyContent: 'center' }}>
               <Button onClick={onDelete}>Delete survey</Button>
               <Button onClick={onCancel}>Cancel</Button>
