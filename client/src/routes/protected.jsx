@@ -1,8 +1,9 @@
-import { MainLayout } from '../components/Layout';
+import { MainLayout, PresentationLayout } from '../components/Layout';
 
 import Dashboard from '../pages/Dashboard';
 import SurveyEdit from '../pages/SurveyEdit';
 import SurveyDelete from '../pages/SurveyDelete';
+import SurveyCreate from '../pages/SurveyCreate';
 
 export const protectedRoutes = [
   {
@@ -21,6 +22,15 @@ export const protectedRoutes = [
             element: <SurveyDelete />,
           },
         ],
+      },
+    ],
+  },
+  {
+    element: <PresentationLayout />,
+    children: [
+      {
+        path: '/surveys/create',
+        element: <SurveyCreate />,
       },
     ],
   },
