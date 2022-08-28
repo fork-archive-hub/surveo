@@ -5,7 +5,7 @@ import { Stack } from '@mui/material';
 import ReportHeader from './ReportHeader';
 import QuestionResultsGroup from './QuestionResultsGroup';
 
-const SurveyResults = ({ survey }) => {
+const SurveyResultCharts = ({ survey }) => {
   return (
     <Stack direction="column" spacing={2} sx={{ width: 360 }}>
       <ReportHeader name={survey.name} surveyId={survey._id} />
@@ -14,7 +14,7 @@ const SurveyResults = ({ survey }) => {
   );
 };
 
-SurveyResults.propTypes = {
+SurveyResultCharts.propTypes = {
   survey: PropTypes.shape({
     _id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
@@ -22,4 +22,4 @@ SurveyResults.propTypes = {
   }),
 };
 
-export default SurveyResults;
+export default SurveyResultCharts;
