@@ -13,7 +13,7 @@ import { SurveyForm } from '../features/surveys';
 import { feathers } from '../redux';
 
 const Survey = () => {
-  const [voteAlreadySubmitted, setVoteAlreadySubmitted] = useState(false);
+  const [ipAlreadyUsed, setIpAlreadyUsed] = useState(false);
 
   const survey = useSelector((state) => state.survey.data);
   const dispatch = useDispatch();
@@ -36,7 +36,10 @@ const Survey = () => {
         return toast.error(result.error);
       }
 
-      setVoteAlreadySubmitted(true);
+      if (survey.protection.ipRestriction) {
+        setIpAlreadyUsed(true);
+      }
+
       toast.success('Votes submitted successfully');
     } catch (error) {
       toast.error('Something went wrong');
@@ -60,7 +63,7 @@ const Survey = () => {
         const result = await dispatch(feathers.vote.get({ surveyId: survey._id }));
 
         if (!result.error) {
-          setVoteAlreadySubmitted(result.payload.voted);
+          setIpAlreadyUsed(result.payload.voted);
         }
       }
     };
@@ -72,13 +75,13 @@ const Survey = () => {
     <Grid container justifyContent="center" sx={{ py: 2 }}>
       <Grid container item xs={12} sm={8} md={5} lg={4} xl={3}>
         <Stack direction="column" spacing={2} sx={{ width: 1 }}>
-          {voteAlreadySubmitted && (
+          {ipAlreadyUsed && (
             <Alert severity="info">
               You have already submitted your votes. New votes will not be accepted by the server.
             </Alert>
           )}
           {Object.keys(survey).length > 0 && (
-            <SurveyForm survey={survey} disableForm={voteAlreadySubmitted} onSubmitVotes={onSubmitVotes} />
+            <SurveyForm survey={survey} disableForm={ipAlreadyUsed} onSubmitVotes={onSubmitVotes} />
           )}
         </Stack>
       </Grid>
