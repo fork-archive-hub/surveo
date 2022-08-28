@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { Card, CardHeader, CardActions, Stack } from '@mui/material';
+import { Card, CardHeader, CardActions, Box, Stack } from '@mui/material';
 
 import { useForm, Controller } from 'react-hook-form';
 
@@ -31,7 +31,7 @@ const RegisterForm = ({ onSubmitCredentials }) => {
     <Card sx={{ width: 340 }}>
       <CardHeader title="Sign up" titleTypographyProps={{ variant: 'h4', display: 'block', align: 'center' }} />
       <CardActions sx={{ p: 2, pt: 0, '> form': { width: 1 } }}>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ width: 1 }}>
           <Stack direction="column" spacing={2}>
             <Controller
               control={control}
@@ -50,7 +50,7 @@ const RegisterForm = ({ onSubmitCredentials }) => {
             />
             <SubmitButton>Register</SubmitButton>
           </Stack>
-        </form>
+        </Box>
       </CardActions>
     </Card>
   );

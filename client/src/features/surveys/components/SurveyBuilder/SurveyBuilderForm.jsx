@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { Stack, Divider } from '@mui/material';
+import { Box, Stack, Divider } from '@mui/material';
 
 import { useForm, FormProvider } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
@@ -28,13 +28,13 @@ const SurveyBuilderForm = ({ onSubmitSurvey }) => {
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)}>
-        <Stack direction="column" spacing={2} divider={<Divider />} sx={{ width: 360 }}>
+      <Box component="form" onSubmit={methods.handleSubmit(onSubmit)} sx={{ width: 1 }}>
+        <Stack direction="column" spacing={2} divider={<Divider />}>
           <ConfigurationFieldset />
           <CreateQuestionFieldsetGroup name="questions" />
           <SubmitButton>Create survey</SubmitButton>
         </Stack>
-      </form>
+      </Box>
     </FormProvider>
   );
 };

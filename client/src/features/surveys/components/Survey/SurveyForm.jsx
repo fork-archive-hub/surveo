@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { Stack, Divider } from '@mui/material';
+import { Stack, Divider, Box } from '@mui/material';
 
 import { useForm, FormProvider } from 'react-hook-form';
 
@@ -23,12 +23,12 @@ const SurveyForm = ({ survey, disableForm, onSubmitVotes }) => {
       <SurveyHeader name={survey.name} author={survey.author.username} createdAt={survey.createdAt} />
       <Divider />
       <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit(onSubmit)}>
+        <Box component="form" onSubmit={methods.handleSubmit(onSubmit)} sx={{ width: 1 }}>
           <Stack direction="column" spacing={2}>
             <QuestionGroup questions={survey.questions} />
             <SubmitButton disabled={!survey.open || disableForm}>Submit</SubmitButton>
           </Stack>
-        </form>
+        </Box>
       </FormProvider>
     </Stack>
   );
