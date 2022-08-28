@@ -21,7 +21,7 @@ const SurveyStackItem = ({ survey, onButtonClick }) => {
       <Stack direction="row" flexWrap="wrap" spacing={2}>
         <Stack direction="column">
           <Typography variant="h6">{survey.name}</Typography>
-          <Typography variant="caption">Created at {convertDateToHumanFormat(survey.createdAt)}</Typography>
+          <Typography variant="caption">Created on {convertDateToHumanFormat(survey.createdAt)}</Typography>
         </Stack>
         <Stack direction="row" justifyContent="flex-end" alignItems="center" spacing={2} sx={{ flexGrow: 1 }}>
           <Tooltip title="Preview survey">
