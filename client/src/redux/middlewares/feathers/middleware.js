@@ -6,7 +6,7 @@ import AuthenticationModule from './modules/AuthenticationModule';
 import SurveyModule from './modules/SurveyModule';
 import VoteModule from './modules/VoteModule';
 
-import { beautifyErrorMessages } from './utils/beautifyErrorMessages';
+import { stringifyError } from './utils/stringifyError';
 
 export const middleware = (store) => {
   const client = feathers();
@@ -37,7 +37,7 @@ export const middleware = (store) => {
           return next(result);
         }
       } catch (error) {
-        return next({ ...action, error: beautifyErrorMessages(error.message) });
+        return next({ ...action, error: stringifyError(error) });
       }
     } else {
       return next(action);
