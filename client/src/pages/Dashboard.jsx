@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useLocation, useOutlet, Link } from 'react-router-dom';
 
-import { Box, Grid, Paper, Typography, Backdrop } from '@mui/material';
+import { Box, Grid, Paper, Typography, Pagination, Backdrop } from '@mui/material';
 
 import { toast } from 'react-toastify';
 
@@ -14,6 +14,8 @@ import { feathers } from '../redux';
 
 const Dashboard = () => {
   const [surveys, setSurveys] = useState([]);
+  const [pageCount, setPageCount] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const user = useSelector((state) => state.authentication.user);
   const dispatch = useDispatch();
@@ -37,19 +39,31 @@ const Dashboard = () => {
     }
   };
 
+  const handlePageChange = (_, value) => {
+    setCurrentPage(value);
+  };
+
   useEffect(() => {
     const loadUserSurveys = async () => {
-      const result = await dispatch(feathers.survey.find({ authorId: user._id }));
+      const DEFAULT_SURVEYS_PER_PAGE = 5;
+      const result = await dispatch(
+        feathers.survey.find({
+          authorId: user._id,
+          skip: (currentPage - 1) * DEFAULT_SURVEYS_PER_PAGE,
+          limit: DEFAULT_SURVEYS_PER_PAGE,
+        })
+      );
 
       if (!result.error) {
         setSurveys(result.payload.data);
+        setPageCount(Math.ceil(result.payload.total / DEFAULT_SURVEYS_PER_PAGE));
       } else {
         toast(result.error);
       }
     };
 
     loadUserSurveys();
-  }, [user._id, location, dispatch]);
+  }, [user._id, currentPage, location, dispatch]);
 
   return (
     <>
@@ -59,8 +73,19 @@ const Dashboard = () => {
             Create survey
           </Button>
         </Grid>
-        <Grid container item sx={{ px: 2, pb: 2 }}>
-          {surveys.length > 0 && <SurveyStack surveys={surveys} onSurveyActionRequest={handleSurveyActionRequest} />}
+        <Grid container item justifyContent="center" sx={{ px: 2, pb: 2 }}>
+          {surveys.length > 0 && (
+            <>
+              <SurveyStack surveys={surveys} onSurveyActionRequest={handleSurveyActionRequest} />
+              <Pagination
+                color="primary"
+                count={pageCount}
+                page={currentPage}
+                onChange={handlePageChange}
+                sx={{ mt: 2 }}
+              />
+            </>
+          )}
           {surveys.length === 0 && (
             <Box sx={{ width: 1, p: 2 }}>
               <Typography variant="h5" display="block" align="center">

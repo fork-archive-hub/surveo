@@ -28,7 +28,16 @@ export default class SurveyModule {
   };
 
   handleSurveyFindAction = async (action) => {
-    const result = await this.client.service('surveys').find({ query: { authorId: action.payload.authorId } });
+    const result = await this.client.service('surveys').find({
+      query: {
+        authorId: action.payload.authorId,
+        $skip: action.payload.skip,
+        $limit: action.payload.limit,
+        $sort: {
+          createdAt: -1,
+        },
+      },
+    });
 
     return survey.find(result);
   };
