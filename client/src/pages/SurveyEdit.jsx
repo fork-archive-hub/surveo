@@ -20,6 +20,10 @@ const SurveyEdit = () => {
   const params = useParams();
   const navigate = useNavigate();
 
+  const surveyExists = !!surveyInformation.authorId;
+  const isAuthenticatedUserAuthor = user._id === surveyInformation.authorId;
+  const shouldRenderSurveyEditForm = surveyExists && isAuthenticatedUserAuthor;
+
   const onClickAway = () => {
     navigate('/');
   };
@@ -83,7 +87,7 @@ const SurveyEdit = () => {
       <Grid container item xs={12} sm={8} md={5} lg={4} xl={3}>
         <ClickAwayListener onClickAway={onClickAway}>
           <Box sx={{ width: 1 }}>
-            {Object.keys(surveyInformation).length > 0 && (
+            {shouldRenderSurveyEditForm && (
               <SurveyEditorForm survey={surveyInformation} onUpdateSurvey={onUpdateSurvey} />
             )}
           </Box>

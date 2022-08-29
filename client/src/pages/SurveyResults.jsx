@@ -19,15 +19,26 @@ const SurveyResult = () => {
   const params = useParams();
   const navigate = useNavigate();
 
+  const surveyExists = !!survey._id;
+  const isAuthenticatedUserAuthor = user._id === survey.authorId;
+  const shouldRenderSurveyResults = surveyExists && isAuthenticatedUserAuthor;
+
   useEffect(() => {
     const loadSurvey = async () => {
       if (params.surveyId !== null) {
-        dispatch(feathers.survey.get({ surveyId: params.surveyId }));
+        const result = await dispatch(feathers.survey.get({ surveyId: params.surveyId }));
+
+        if (result.error) {
+          toast.error(result.error, {
+            toastId: 'survey-result-error',
+          });
+          navigate('/');
+        }
       }
     };
 
     loadSurvey();
-  }, [params.surveyId, dispatch]);
+  }, [params.surveyId, navigate, dispatch]);
 
   useEffect(() => {
     const checkSurveyAuthor = () => {
@@ -65,7 +76,7 @@ const SurveyResult = () => {
   return (
     <Grid container justifyContent="center" sx={{ py: 2 }}>
       <Grid container item xs={12} sm={8} md={5} lg={4} xl={3}>
-        {Object.keys(survey).length > 0 && <SurveyResultCharts survey={survey} />}
+        {shouldRenderSurveyResults && <SurveyResultCharts survey={survey} />}
       </Grid>
     </Grid>
   );

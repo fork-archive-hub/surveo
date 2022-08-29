@@ -22,6 +22,7 @@ const Survey = () => {
   const navigate = useNavigate();
   const { executeRecaptcha } = useGoogleReCaptcha();
 
+  const surveyExists = !!survey._id;
   const isFormDisabled = isIPDisallowed && survey.protection && survey.protection.ipRestriction;
 
   const onSubmitVotes = async (votes) => {
@@ -54,12 +55,19 @@ const Survey = () => {
   useEffect(() => {
     const loadSurvey = async () => {
       if (params.surveyId !== null) {
-        dispatch(feathers.survey.get({ surveyId: params.surveyId }));
+        const result = await dispatch(feathers.survey.get({ surveyId: params.surveyId }));
+
+        if (result.error) {
+          toast.error(result.error, {
+            toastId: 'load-survey-error',
+          });
+          navigate('/');
+        }
       }
     };
 
     loadSurvey();
-  }, [params.surveyId, dispatch]);
+  }, [params.surveyId, navigate, dispatch]);
 
   useEffect(() => {
     const loadSubmittedVotes = async () => {
@@ -84,9 +92,7 @@ const Survey = () => {
               You have already submitted your votes. New votes will not be accepted by the server.
             </Alert>
           )}
-          {Object.keys(survey).length > 0 && (
-            <SurveyForm survey={survey} disableForm={isFormDisabled} onSubmitVotes={onSubmitVotes} />
-          )}
+          {surveyExists && <SurveyForm survey={survey} disableForm={isFormDisabled} onSubmitVotes={onSubmitVotes} />}
         </Stack>
       </Grid>
     </Grid>
