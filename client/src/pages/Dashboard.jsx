@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useLocation, useOutlet, Link } from 'react-router-dom';
 
-import { Box, Grid, Paper, Typography, Pagination, Backdrop } from '@mui/material';
+import { Grid, Paper, Typography, Stack, Pagination, Backdrop } from '@mui/material';
 
 import { toast } from 'react-toastify';
 
@@ -73,28 +73,18 @@ const Dashboard = () => {
             Create survey
           </Button>
         </Grid>
-        <Grid container item justifyContent="center" sx={{ px: 2, pb: 2 }}>
+        <Grid container item sx={{ px: 2, pb: 2 }}>
           {surveys.length > 0 && (
-            <>
+            <Stack direction="column" alignItems="center" spacing={2} sx={{ width: 1 }}>
               <SurveyStack surveys={surveys} onSurveyActionRequest={handleSurveyActionRequest} />
-              <Pagination
-                color="primary"
-                count={pageCount}
-                page={currentPage}
-                onChange={handlePageChange}
-                sx={{ mt: 2 }}
-              />
-            </>
+              <Pagination color="primary" count={pageCount} page={currentPage} onChange={handlePageChange} />
+            </Stack>
           )}
           {surveys.length === 0 && (
-            <Box sx={{ width: 1, p: 2 }}>
-              <Typography variant="h5" display="block" align="center">
-                You dont have any surveys yet.
-              </Typography>
-              <Typography variant="body1" display="block" align="center">
-                Create a survey to get started.
-              </Typography>
-            </Box>
+            <Stack direction="column" alignItems="center" sx={{ width: 1 }}>
+              <Typography variant="h5">You dont have any surveys yet.</Typography>
+              <Typography variant="body1">Create a survey to get started.</Typography>
+            </Stack>
           )}
         </Grid>
       </Grid>
