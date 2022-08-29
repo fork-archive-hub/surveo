@@ -9,7 +9,9 @@ const slice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(survey.get.type, (state, action) => {
-      state.data = action.payload;
+      if (action.payload._id) {
+        state.data = action.payload;
+      }
     });
 
     builder.addCase(vote.onCreated.type, (state, action) => {
