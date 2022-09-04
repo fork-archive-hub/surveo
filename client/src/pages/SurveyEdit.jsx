@@ -71,16 +71,14 @@ const SurveyEdit = () => {
 
   useEffect(() => {
     const checkSurveyAuthor = () => {
-      if (Object.keys(surveyInformation).length > 0) {
-        if (surveyInformation.authorId !== user._id) {
-          toast.error('You cannot edit this survey');
-          navigate('/');
-        }
+      if (surveyExists && !isAuthenticatedUserAuthor) {
+        toast.error('You cannot edit this survey');
+        navigate('/');
       }
     };
 
     checkSurveyAuthor();
-  }, [user._id, surveyInformation, navigate]);
+  }, [surveyExists, isAuthenticatedUserAuthor, navigate]);
 
   return (
     <Grid container justifyContent="center" maxWidth="xl">

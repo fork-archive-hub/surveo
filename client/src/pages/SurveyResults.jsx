@@ -42,20 +42,18 @@ const SurveyResult = () => {
 
   useEffect(() => {
     const checkSurveyAuthor = () => {
-      if (Object.keys(survey).length > 0) {
-        if (survey.authorId !== user._id) {
-          toast.error('You are not authorized to view this survey results');
-          navigate('/');
-        }
+      if (surveyExists && !isAuthenticatedUserAuthor) {
+        toast.error('You are not authorized to view this survey results');
+        navigate('/');
       }
     };
 
     checkSurveyAuthor();
-  }, [user._id, survey, navigate]);
+  }, [surveyExists, isAuthenticatedUserAuthor, navigate]);
 
   useEffect(() => {
     const subscribeSurvey = () => {
-      if (survey._id && survey.authorId === user._id) {
+      if (shouldRenderSurveyResults) {
         dispatch(feathers.survey.subscribe({ surveyId: survey._id }));
       }
     };
@@ -64,14 +62,14 @@ const SurveyResult = () => {
 
     return () => {
       const unsubscribeSurvey = () => {
-        if (survey._id) {
+        if (shouldRenderSurveyResults) {
           dispatch(feathers.survey.unsubscribe({ surveyId: survey._id }));
         }
       };
 
       unsubscribeSurvey();
     };
-  }, [survey._id, survey.authorId, user._id, dispatch]);
+  }, [shouldRenderSurveyResults, survey._id, dispatch]);
 
   return (
     <Grid container justifyContent="center" sx={{ py: 2 }}>

@@ -23,7 +23,8 @@ const Survey = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
 
   const surveyExists = !!survey._id;
-  const isFormDisabled = isIPDisallowed && survey.protection && survey.protection.ipRestriction;
+  const isIPProtectionEnabled = survey.protection && survey.protection.ipRestriction;
+  const isFormDisabled = isIPProtectionEnabled && isIPDisallowed;
 
   const onSubmitVotes = async (votes) => {
     try {
@@ -71,7 +72,7 @@ const Survey = () => {
 
   useEffect(() => {
     const loadSubmittedVotes = async () => {
-      if (survey._id && survey.protection.ipRestriction) {
+      if (surveyExists && isIPProtectionEnabled) {
         const result = await dispatch(feathers.vote.get({ surveyId: survey._id }));
 
         if (!result.error) {
@@ -81,7 +82,7 @@ const Survey = () => {
     };
 
     loadSubmittedVotes();
-  }, [survey._id, survey.protection, dispatch]);
+  }, [surveyExists, isIPProtectionEnabled, survey._id, dispatch]);
 
   return (
     <Grid container justifyContent="center" sx={{ py: 2 }}>
