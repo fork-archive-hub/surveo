@@ -1,16 +1,16 @@
 import { Outlet } from 'react-router-dom';
-import { Container } from '@mui/material';
+import { Box, Container } from '@mui/material';
 
-import BackgroundScene from './BackgroundScene';
+import FixedBackground from './FixedBackground';
 
 const PresentationLayout = () => {
   return (
-    <>
-      <BackgroundScene />
+    <Box>
+      <FixedBackground />
       <Container maxWidth="xl">
         <Outlet />
       </Container>
-    </>
+    </Box>
   );
 };
 

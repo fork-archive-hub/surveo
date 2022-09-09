@@ -1,11 +1,11 @@
 import { Box, useTheme } from '@mui/material';
 
-const BackgroundScene = () => {
+const FixedBackground = () => {
   const theme = useTheme();
 
   return (
     <Box sx={{ position: 'fixed', top: 0, left: 0, width: 1, height: 1, zIndex: -1, lineHeight: 0 }}>
-      <svg viewBox="0 0 960 540" width="100%" height="100%" preserveAspectRatio="none">
+      <svg viewBox="0 0 960 540" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
         <g transform="translate(960, 0)">
           <path
             fill={theme.palette.primary.main}
@@ -35,4 +35,4 @@ const BackgroundScene = () => {
   );
 };
 
-export default BackgroundScene;
+export default FixedBackground;
