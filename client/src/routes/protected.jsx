@@ -1,4 +1,4 @@
-import { MainLayout, PresentationLayout } from '../layout';
+import { MainLayout, PresentationLayout } from '../layouts';
 
 import Dashboard from '../pages/Dashboard';
 import SurveyEdit from '../pages/SurveyEdit';

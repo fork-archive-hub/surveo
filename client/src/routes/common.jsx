@@ -1,4 +1,4 @@
-import { PresentationLayout } from '../layout';
+import { PresentationLayout } from '../layouts';
 
 import Survey from '../pages/Survey';
 import NotFound from '../pages/NotFound';

@@ -1,4 +1,4 @@
-import { PresentationLayout } from '../layout';
+import { PresentationLayout } from '../layouts';
 
 import Landing from '../pages/Landing';
 import Login from '../pages/Login';
