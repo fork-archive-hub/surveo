@@ -1,4 +1,4 @@
-import { PresentationLayout } from '../components/Layout';
+import { PresentationLayout } from '../layout';
 
 import Survey from '../pages/Survey';
 import NotFound from '../pages/NotFound';

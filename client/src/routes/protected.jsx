@@ -1,4 +1,4 @@
-import { MainLayout, PresentationLayout } from '../components/Layout';
+import { MainLayout, PresentationLayout } from '../layout';
 
 import Dashboard from '../pages/Dashboard';
 import SurveyEdit from '../pages/SurveyEdit';
