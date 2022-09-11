@@ -19,7 +19,7 @@ const Dashboard = () => {
 
   const { surveys, isLoading, page, pageCount, setPage } = useUserSurveys(user._id, 5);
 
-  const handleSurveyActionRequest = (action, surveyId) => {
+  const onSurveyActionRequest = (action, surveyId) => {
     const paths = {
       preview: `/surveys/${surveyId}`,
       view_results: `/surveys/${surveyId}/results`,
@@ -34,7 +34,7 @@ const Dashboard = () => {
     }
   };
 
-  const handlePageChange = (_, value) => {
+  const onPageChange = (_, value) => {
     setPage(value);
   };
 
@@ -50,8 +50,8 @@ const Dashboard = () => {
           {isLoading && <Spinner />}
           {Boolean(surveys.length > 0 && !isLoading) && (
             <Stack direction="column" alignItems="center" spacing={2} sx={{ width: 1 }}>
-              <SurveyStack surveys={surveys} onSurveyActionRequest={handleSurveyActionRequest} />
-              <Pagination color="primary" count={pageCount} page={page} onChange={handlePageChange} />
+              <SurveyStack surveys={surveys} onSurveyActionRequest={onSurveyActionRequest} />
+              <Pagination color="primary" count={pageCount} page={page} onChange={onPageChange} />
             </Stack>
           )}
           {Boolean(surveys.length === 0 && !isLoading) && (
