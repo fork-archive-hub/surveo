@@ -3,8 +3,6 @@ import { useNavigate, useOutlet, Link } from 'react-router-dom';
 
 import { Grid, Paper, Typography, Stack, Pagination, Backdrop } from '@mui/material';
 
-import { toast } from 'react-toastify';
-
 import { useUserSurveys } from '../hooks';
 
 import { Button } from '../components/Form';
@@ -27,10 +25,8 @@ const Dashboard = () => {
       delete: `/surveys/${surveyId}/delete`,
     };
 
-    try {
+    if (Object.prototype.hasOwnProperty.call(paths, action)) {
       navigate(paths[action]);
-    } catch (error) {
-      toast.error('Something went wrong');
     }
   };
 

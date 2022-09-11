@@ -19,11 +19,11 @@ const SurveyCreate = () => {
 
     if (result.error) {
       toast.error(result.error);
+      navigate('/');
     } else {
       toast.success('Survey successfully created');
+      navigate(`/surveys/${result.payload._id}`);
     }
-
-    navigate('/');
   };
 
   return (
