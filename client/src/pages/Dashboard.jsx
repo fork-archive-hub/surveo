@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
+
 import { useSelector } from 'react-redux';
-import { useNavigate, useOutlet, Link } from 'react-router-dom';
+import { useNavigate, useLocation, useOutlet, Link } from 'react-router-dom';
 
 import { Grid, Paper, Typography, Stack, Pagination, Backdrop } from '@mui/material';
 
@@ -11,11 +13,12 @@ import { SurveyStack } from '../features/surveys';
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const outlet = useOutlet();
 
   const user = useSelector((state) => state.authentication.user);
 
-  const { surveys, isLoading, page, pageCount, setPage } = useUserSurveys(user._id, 5);
+  const { surveys, isLoading, page, refresh } = useUserSurveys(user._id, 5);
 
   const onSurveyActionRequest = (action, surveyId) => {
     const paths = {
@@ -31,8 +34,14 @@ const Dashboard = () => {
   };
 
   const onPageChange = (_, value) => {
-    setPage(value);
+    page.set(value);
   };
+
+  useEffect(() => {
+    if (location.pathname === '/') {
+      refresh();
+    }
+  }, [location, refresh]);
 
   return (
     <>
@@ -47,7 +56,7 @@ const Dashboard = () => {
           {Boolean(surveys.length > 0 && !isLoading) && (
             <Stack direction="column" alignItems="center" spacing={2} sx={{ width: 1 }}>
               <SurveyStack surveys={surveys} onSurveyActionRequest={onSurveyActionRequest} />
-              <Pagination color="primary" count={pageCount} page={page} onChange={onPageChange} />
+              <Pagination color="primary" count={page.count} page={page.current} onChange={onPageChange} />
             </Stack>
           )}
           {Boolean(surveys.length === 0 && !isLoading) && (

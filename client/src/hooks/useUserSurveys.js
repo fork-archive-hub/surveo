@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import { useDispatch } from 'react-redux';
 
@@ -10,8 +10,14 @@ export const useUserSurveys = (userId, limit) => {
   const [surveys, setSurveys] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
-  const [page, setPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const [pageCount, setPageCount] = useState(0);
+
+  const [refreshId, setRefreshId] = useState(0);
+
+  const updateRefreshId = useCallback(() => {
+    setRefreshId(new Date().getTime());
+  }, []);
 
   const dispatch = useDispatch();
 
@@ -23,7 +29,7 @@ export const useUserSurveys = (userId, limit) => {
         const result = await dispatch(
           feathers.survey.find({
             authorId: userId,
-            skip: (page - 1) * limit,
+            skip: (currentPage - 1) * limit,
             limit: limit,
           })
         );
@@ -42,13 +48,16 @@ export const useUserSurveys = (userId, limit) => {
     };
 
     getUserSurveys();
-  }, [userId, page, limit, dispatch]);
+  }, [userId, limit, currentPage, refreshId, dispatch]);
 
   return {
     surveys: surveys,
     isLoading: isLoading,
-    page: page,
-    pageCount: pageCount,
-    setPage: setPage,
+    page: {
+      current: currentPage,
+      count: pageCount,
+      set: setCurrentPage,
+    },
+    refresh: updateRefreshId,
   };
 };
