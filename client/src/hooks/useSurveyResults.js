@@ -15,6 +15,8 @@ export const useSurveyResults = (surveyId) => {
   useEffect(() => {
     const getSurvey = async (surveyId) => {
       if (surveyId !== null) {
+        setIsLoading(true);
+
         const result = await dispatch(feathers.survey.get({ surveyId: surveyId }));
 
         if (result.error) {
@@ -50,5 +52,8 @@ export const useSurveyResults = (surveyId) => {
     };
   }, [survey._id, isLoading, dispatch]);
 
-  return { survey, isLoading };
+  return {
+    survey: survey,
+    isLoading: isLoading,
+  };
 };
