@@ -1,28 +1,23 @@
-import { useState, useEffect } from 'react';
-
-import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate, useLocation, useOutlet, Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useNavigate, useOutlet, Link } from 'react-router-dom';
 
 import { Grid, Paper, Typography, Stack, Pagination, Backdrop } from '@mui/material';
 
 import { toast } from 'react-toastify';
 
+import { useUserSurveys } from '../hooks';
+
 import { Button } from '../components/Form';
+import { Spinner } from '../components/Elements';
 import { SurveyStack } from '../features/surveys';
 
-import { feathers } from '../redux';
-
 const Dashboard = () => {
-  const [surveys, setSurveys] = useState([]);
-  const [pageCount, setPageCount] = useState(1);
-  const [currentPage, setCurrentPage] = useState(1);
+  const navigate = useNavigate();
+  const outlet = useOutlet();
 
   const user = useSelector((state) => state.authentication.user);
-  const dispatch = useDispatch();
 
-  const navigate = useNavigate();
-  const location = useLocation();
-  const outlet = useOutlet();
+  const { surveys, isLoading, page, pageCount, setPage } = useUserSurveys(user._id, 5);
 
   const handleSurveyActionRequest = (action, surveyId) => {
     const paths = {
@@ -40,30 +35,8 @@ const Dashboard = () => {
   };
 
   const handlePageChange = (_, value) => {
-    setCurrentPage(value);
+    setPage(value);
   };
-
-  useEffect(() => {
-    const loadUserSurveys = async () => {
-      const DEFAULT_SURVEYS_PER_PAGE = 5;
-      const result = await dispatch(
-        feathers.survey.find({
-          authorId: user._id,
-          skip: (currentPage - 1) * DEFAULT_SURVEYS_PER_PAGE,
-          limit: DEFAULT_SURVEYS_PER_PAGE,
-        })
-      );
-
-      if (!result.error) {
-        setSurveys(result.payload.data);
-        setPageCount(Math.ceil(result.payload.total / DEFAULT_SURVEYS_PER_PAGE));
-      } else {
-        toast(result.error);
-      }
-    };
-
-    loadUserSurveys();
-  }, [user._id, currentPage, location, dispatch]);
 
   return (
     <>
@@ -74,13 +47,14 @@ const Dashboard = () => {
           </Button>
         </Grid>
         <Grid container item sx={{ px: 2, pb: 2 }}>
-          {surveys.length > 0 && (
+          {isLoading && <Spinner />}
+          {Boolean(surveys.length > 0 && !isLoading) && (
             <Stack direction="column" alignItems="center" spacing={2} sx={{ width: 1 }}>
               <SurveyStack surveys={surveys} onSurveyActionRequest={handleSurveyActionRequest} />
-              <Pagination color="primary" count={pageCount} page={currentPage} onChange={handlePageChange} />
+              <Pagination color="primary" count={pageCount} page={page} onChange={handlePageChange} />
             </Stack>
           )}
-          {surveys.length === 0 && (
+          {Boolean(surveys.length === 0 && !isLoading) && (
             <Stack direction="column" alignItems="center" sx={{ width: 1 }}>
               <Typography variant="h5">You dont have any surveys yet.</Typography>
               <Typography variant="body1">Create a survey to get started.</Typography>
@@ -88,7 +62,7 @@ const Dashboard = () => {
           )}
         </Grid>
       </Grid>
-      <Backdrop open={!!outlet} sx={{ p: 2 }}>
+      <Backdrop open={Boolean(outlet)} sx={{ p: 2 }}>
         {outlet}
       </Backdrop>
     </>

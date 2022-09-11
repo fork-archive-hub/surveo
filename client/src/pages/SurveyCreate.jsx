@@ -10,19 +10,19 @@ import { SurveyBuilderForm } from '../features/surveys';
 import { feathers } from '../redux';
 
 const SurveyCreate = () => {
-  const dispatch = useDispatch();
-
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   const onSubmitSurvey = async (survey) => {
     const result = await dispatch(feathers.survey.create({ data: survey }));
 
     if (result.error) {
       toast.error(result.error);
-      return navigate('/');
+    } else {
+      toast.success('Survey successfully created');
     }
 
-    toast.success('Survey successfully created');
     navigate('/');
   };
 

@@ -11,14 +11,10 @@ import { Button } from '../components/Form';
 import { feathers } from '../redux';
 
 const SurveyDelete = () => {
-  const dispatch = useDispatch();
-
   const navigate = useNavigate();
   const params = useParams();
 
-  const onClickAway = () => {
-    navigate('/');
-  };
+  const dispatch = useDispatch();
 
   const onCancel = () => {
     navigate('/');
@@ -30,10 +26,10 @@ const SurveyDelete = () => {
 
       if (result.error) {
         toast.error(result.error);
-        return navigate('/');
+      } else {
+        toast.success('Survey deleted');
       }
 
-      toast.success('Survey deleted');
       navigate('/');
     }
   };
@@ -41,7 +37,7 @@ const SurveyDelete = () => {
   return (
     <Grid container justifyContent="center" maxWidth="xl">
       <Grid container item xs={12} sm={8} md={5} lg={4} xl={3}>
-        <ClickAwayListener onClickAway={onClickAway}>
+        <ClickAwayListener onClickAway={onCancel}>
           <Card sx={{ width: 1 }}>
             <CardContent>
               <Stack direction="column" alignItems="center">

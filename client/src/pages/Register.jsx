@@ -10,18 +10,19 @@ import { RegisterForm } from '../features/authentication';
 import { feathers } from '../redux';
 
 const Register = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const onRegister = async ({ username, password }) => {
+  const dispatch = useDispatch();
+
+  const onSubmitCredentials = async ({ username, password }) => {
     const result = await dispatch(feathers.authentication.register({ username, password }));
 
     if (result.error) {
-      return toast.error(result.error);
+      toast.error(result.error);
+    } else {
+      toast.success('Account created successfully');
+      navigate('/login');
     }
-
-    toast.success('Account created successfully');
-    navigate('/login');
   };
 
   return (
@@ -32,7 +33,7 @@ const Register = () => {
       justifyContent={{ xs: 'start', md: 'center' }}
       sx={{ height: '100vh', py: 2 }}
     >
-      <RegisterForm onSubmitCredentials={onRegister} />
+      <RegisterForm onSubmitCredentials={onSubmitCredentials} />
       <Stack direction="row" gap={1} sx={{ my: 1 }}>
         <Typography variant="body2">Already have an account?</Typography>
         <MUILink to="/login" variant="body2" component={Link}>
