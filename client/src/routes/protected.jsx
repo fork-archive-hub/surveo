@@ -1,3 +1,7 @@
+import { Outlet } from 'react-router-dom';
+
+import { Backdrop } from '@mui/material';
+
 import { MainLayout, PresentationLayout } from '../layouts';
 
 import Dashboard from '../pages/Dashboard';
@@ -12,15 +16,28 @@ export const protectedRoutes = [
     children: [
       {
         path: '/',
-        element: <Dashboard />,
+        element: (
+          <>
+            <Dashboard />
+            <Outlet />
+          </>
+        ),
         children: [
           {
             path: '/surveys/:surveyId/edit',
-            element: <SurveyEdit />,
+            element: (
+              <Backdrop open sx={{ p: 2 }}>
+                <SurveyEdit />
+              </Backdrop>
+            ),
           },
           {
             path: '/surveys/:surveyId/delete',
-            element: <SurveyDelete />,
+            element: (
+              <Backdrop open sx={{ p: 2 }}>
+                <SurveyDelete />
+              </Backdrop>
+            ),
           },
         ],
       },
