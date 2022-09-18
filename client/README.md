@@ -52,6 +52,11 @@ src
    |   |   |-- templates   # templates used as default values for form fields
    |   |   |-- utils       # utility functions used across feature
    |   |   |-- index.js    # exports of all required elements from specific feature
+   |-- hooks               # custom hooks used mostly by page level components
+   |   |-- index.js        # exports of all created hooks
+   |-- layouts             # page layouts
+   |   |-- layout_name     # group of components used to create specific layout
+   |   |-- index.js        # exports of all created layouts
    |-- redux
    |   |-- middlewares     # middlewares used by the application
    |   |-- slices          # redux slices used by the application
