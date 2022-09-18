@@ -4,17 +4,18 @@ import { Stack } from '@mui/material';
 
 import SurveyStackItem from './SurveyStackItem';
 
-const SurveyStack = ({ surveys, onSurveyActionRequest }) => {
-  const handleSurveyButtonClick = (action, surveyId) => {
-    if (onSurveyActionRequest) {
-      onSurveyActionRequest(action, surveyId);
-    }
-  };
-
+const SurveyStack = ({ surveys, onPreviewSurvey, onViewSurveyResults, onEditSurvey, onDeleteSurvey }) => {
   return (
     <Stack spacing={2} sx={{ width: 1 }}>
       {surveys.map((survey) => (
-        <SurveyStackItem key={survey._id} survey={survey} onButtonClick={handleSurveyButtonClick} />
+        <SurveyStackItem
+          key={survey._id}
+          survey={survey}
+          onPreviewSurvey={onPreviewSurvey}
+          onViewSurveyResults={onViewSurveyResults}
+          onEditSurvey={onEditSurvey}
+          onDeleteSurvey={onDeleteSurvey}
+        />
       ))}
     </Stack>
   );
@@ -26,7 +27,10 @@ SurveyStack.propTypes = {
       _id: PropTypes.string.isRequired,
     })
   ),
-  onSurveyActionRequest: PropTypes.func.isRequired,
+  onPreviewSurvey: PropTypes.func.isRequired,
+  onViewSurveyResults: PropTypes.func.isRequired,
+  onEditSurvey: PropTypes.func.isRequired,
+  onDeleteSurvey: PropTypes.func.isRequired,
 };
 
 export default SurveyStack;

@@ -7,13 +7,29 @@ import { convertDateToHumanFormat } from '../../utils/convertDateToHumanFormat';
 
 import { IconButton } from '../../../../components/Form';
 
-const SurveyStackItem = ({ survey, onButtonClick }) => {
-  const createActionHandler = (action) => {
-    return () => {
-      if (onButtonClick) {
-        onButtonClick(action, survey._id);
-      }
-    };
+const SurveyStackItem = ({ survey, onPreviewSurvey, onViewSurveyResults, onEditSurvey, onDeleteSurvey }) => {
+  const handleSurveyPreview = () => {
+    if (onPreviewSurvey) {
+      onPreviewSurvey(survey._id);
+    }
+  };
+
+  const handleViewSurveyResults = () => {
+    if (onViewSurveyResults) {
+      onViewSurveyResults(survey._id);
+    }
+  };
+
+  const handleEditSurvey = () => {
+    if (onEditSurvey) {
+      onEditSurvey(survey._id);
+    }
+  };
+
+  const handleDeleteSurvey = () => {
+    if (onDeleteSurvey) {
+      onDeleteSurvey(survey._id);
+    }
   };
 
   return (
@@ -25,22 +41,22 @@ const SurveyStackItem = ({ survey, onButtonClick }) => {
         </Stack>
         <Stack direction="row" justifyContent="flex-end" alignItems="center" spacing={2} sx={{ flexGrow: 1 }}>
           <Tooltip title="Preview survey">
-            <IconButton onClick={createActionHandler('preview')}>
+            <IconButton onClick={handleSurveyPreview}>
               <PreviewOutlined />
             </IconButton>
           </Tooltip>
           <Tooltip title="View survey results">
-            <IconButton onClick={createActionHandler('view_results')}>
+            <IconButton onClick={handleViewSurveyResults}>
               <BarChartOutlined />
             </IconButton>
           </Tooltip>
           <Tooltip title="Edit survey">
-            <IconButton onClick={createActionHandler('edit')}>
+            <IconButton onClick={handleEditSurvey}>
               <EditOutlined />
             </IconButton>
           </Tooltip>
           <Tooltip title="Delete survey">
-            <IconButton onClick={createActionHandler('delete')}>
+            <IconButton onClick={handleDeleteSurvey}>
               <DeleteOutline />
             </IconButton>
           </Tooltip>
@@ -56,7 +72,10 @@ SurveyStackItem.propTypes = {
     name: PropTypes.string.isRequired,
     createdAt: PropTypes.string.isRequired,
   }).isRequired,
-  onButtonClick: PropTypes.func.isRequired,
+  onPreviewSurvey: PropTypes.func.isRequired,
+  onViewSurveyResults: PropTypes.func.isRequired,
+  onEditSurvey: PropTypes.func.isRequired,
+  onDeleteSurvey: PropTypes.func.isRequired,
 };
 
 export default SurveyStackItem;

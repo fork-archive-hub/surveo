@@ -19,17 +19,20 @@ const Dashboard = () => {
 
   const { surveys, isLoading, page, refresh } = useUserSurveys(user._id, 5);
 
-  const onSurveyActionRequest = (action, surveyId) => {
-    const paths = {
-      preview: `/surveys/${surveyId}`,
-      view_results: `/surveys/${surveyId}/results`,
-      edit: `/surveys/${surveyId}/edit`,
-      delete: `/surveys/${surveyId}/delete`,
-    };
+  const onPreviewSurvey = (surveyId) => {
+    navigate(`/surveys/${surveyId}`);
+  };
 
-    if (Object.prototype.hasOwnProperty.call(paths, action)) {
-      navigate(paths[action]);
-    }
+  const onViewSurveyResults = (surveyId) => {
+    navigate(`/surveys/${surveyId}/results`);
+  };
+
+  const onEditSurvey = (surveyId) => {
+    navigate(`/surveys/${surveyId}/edit`);
+  };
+
+  const onDeleteSurvey = (surveyId) => {
+    navigate(`/surveys/${surveyId}/delete`);
   };
 
   const onPageChange = (_, value) => {
@@ -53,7 +56,13 @@ const Dashboard = () => {
         {isLoading && <Spinner />}
         {Boolean(surveys.length > 0 && !isLoading) && (
           <Stack direction="column" alignItems="center" spacing={2} sx={{ width: 1 }}>
-            <SurveyStack surveys={surveys} onSurveyActionRequest={onSurveyActionRequest} />
+            <SurveyStack
+              surveys={surveys}
+              onPreviewSurvey={onPreviewSurvey}
+              onViewSurveyResults={onViewSurveyResults}
+              onEditSurvey={onEditSurvey}
+              onDeleteSurvey={onDeleteSurvey}
+            />
             <Pagination color="primary" count={page.count} page={page.current} onChange={onPageChange} />
           </Stack>
         )}
