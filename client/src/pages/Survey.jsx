@@ -13,15 +13,14 @@ import { SurveyForm } from '../features/surveys';
 import { feathers } from '../redux';
 
 const Survey = () => {
+  const dispatch = useDispatch();
   const params = useParams();
   const navigate = useNavigate();
-
-  const dispatch = useDispatch();
 
   const { survey, isLoading } = useSurvey(params.surveyId);
   const { isIPDisallowed, getCaptchaToken } = useSurveyProtection(survey);
 
-  const onSubmitVotes = async (votes) => {
+  const handleSubmitVotes = async (votes) => {
     try {
       const token = await getCaptchaToken('vote');
       const result = await dispatch(
@@ -49,13 +48,20 @@ const Survey = () => {
       <Grid container item xs={12} sm={8} md={5} lg={4} xl={3}>
         <Stack direction="column" spacing={2} sx={{ width: 1 }}>
           {isLoading && <Spinner />}
-          {Boolean(isIPDisallowed && !isLoading) && (
+          {!survey.open && !isLoading && (
+            <Alert severity="info">This survey is closed and no longer accepting votes.</Alert>
+          )}
+          {survey.open && isIPDisallowed && !isLoading && (
             <Alert severity="info">
               You have already submitted your votes. New votes will not be accepted by the server.
             </Alert>
           )}
-          {Boolean(survey._id && !isLoading) && (
-            <SurveyForm survey={survey} disableForm={isIPDisallowed} onSubmitVotes={onSubmitVotes} />
+          {Boolean(survey._id) && !isLoading && (
+            <SurveyForm
+              survey={survey}
+              disableForm={isIPDisallowed || !survey.open}
+              onSubmitVotes={handleSubmitVotes}
+            />
           )}
         </Stack>
       </Grid>

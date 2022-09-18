@@ -13,10 +13,10 @@ import { Spinner } from '../components/Elements';
 import { SurveyResultCharts } from '../features/surveys';
 
 const SurveyResult = () => {
+  const user = useSelector((state) => state.authentication.user);
+
   const params = useParams();
   const navigate = useNavigate();
-
-  const user = useSelector((state) => state.authentication.user);
 
   const { survey, isLoading } = useSurveyResults(params.surveyId);
 
@@ -35,7 +35,7 @@ const SurveyResult = () => {
     <Grid container justifyContent="center" sx={{ py: 2 }}>
       <Grid container item xs={12} sm={8} md={5} lg={4} xl={3}>
         {isLoading && <Spinner />}
-        {Boolean(survey._id && !isLoading) && <SurveyResultCharts survey={survey} />}
+        {Boolean(survey._id) && !isLoading && <SurveyResultCharts survey={survey} />}
       </Grid>
     </Grid>
   );

@@ -15,20 +15,19 @@ import { SurveyEditorForm } from '../features/surveys';
 import { feathers } from '../redux';
 
 const SurveyEdit = () => {
+  const user = useSelector((state) => state.authentication.user);
+
+  const dispatch = useDispatch();
   const params = useParams();
   const navigate = useNavigate();
 
-  const dispatch = useDispatch();
-
-  const user = useSelector((state) => state.authentication.user);
-
   const { survey, isLoading } = useSurvey(params.surveyId);
 
-  const onClickAway = () => {
+  const handleClickAway = () => {
     navigate('/');
   };
 
-  const onUpdateSurvey = async (data) => {
+  const handleUpdateSurvey = async (data) => {
     const result = await dispatch(
       feathers.survey.patch({
         surveyId: params.surveyId,
@@ -59,10 +58,12 @@ const SurveyEdit = () => {
   return (
     <Grid container justifyContent="center" maxWidth="xl">
       <Grid container item xs={12} sm={8} md={5} lg={4} xl={3}>
-        <ClickAwayListener onClickAway={onClickAway}>
+        <ClickAwayListener onClickAway={handleClickAway}>
           <Box sx={{ width: 1 }}>
             {isLoading && <Spinner />}
-            {Boolean(survey._id && !isLoading) && <SurveyEditorForm survey={survey} onUpdateSurvey={onUpdateSurvey} />}
+            {Boolean(survey._id) && !isLoading && (
+              <SurveyEditorForm survey={survey} onUpdateSurvey={handleUpdateSurvey} />
+            )}
           </Box>
         </ClickAwayListener>
       </Grid>

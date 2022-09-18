@@ -10,11 +10,10 @@ import { SurveyBuilderForm } from '../features/surveys';
 import { feathers } from '../redux';
 
 const SurveyCreate = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const dispatch = useDispatch();
-
-  const onSubmitSurvey = async (survey) => {
+  const handleSubmitSurvey = async (survey) => {
     const result = await dispatch(feathers.survey.create({ data: survey }));
 
     if (result.error) {
@@ -29,7 +28,7 @@ const SurveyCreate = () => {
   return (
     <Grid container justifyContent="center" sx={{ py: 2 }}>
       <Grid container item xs={12} sm={8} md={5} lg={4} xl={3}>
-        <SurveyBuilderForm onSubmitSurvey={onSubmitSurvey} />
+        <SurveyBuilderForm onSubmitSurvey={handleSubmitSurvey} />
       </Grid>
     </Grid>
   );

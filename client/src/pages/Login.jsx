@@ -10,12 +10,11 @@ import { LoginForm } from '../features/authentication';
 import { feathers } from '../redux';
 
 const Login = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const dispatch = useDispatch();
-
-  const onSubmitCredentials = async ({ username, password }) => {
-    const result = await dispatch(feathers.authentication.login({ username, password }));
+  const handleSubmitCredentials = async ({ username, password }) => {
+    const result = await dispatch(feathers.authentication.login({ username: username, password: password }));
 
     if (result.error) {
       toast.error(result.error);
@@ -33,7 +32,7 @@ const Login = () => {
       justifyContent={{ xs: 'start', md: 'center' }}
       sx={{ height: '100vh', py: 2 }}
     >
-      <LoginForm onSubmitCredentials={onSubmitCredentials} />
+      <LoginForm onSubmitCredentials={handleSubmitCredentials} />
       <Stack direction="row" gap={1} sx={{ my: 1 }}>
         <Typography variant="body2">Dont have an account?</Typography>
         <MUILink to="/register" variant="body2" component={Link}>

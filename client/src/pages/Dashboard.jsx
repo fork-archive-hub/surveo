@@ -12,37 +12,41 @@ import { Spinner } from '../components/Elements';
 import { SurveyStack } from '../features/surveys';
 
 const Dashboard = () => {
+  const user = useSelector((state) => state.authentication.user);
+
   const navigate = useNavigate();
   const location = useLocation();
 
-  const user = useSelector((state) => state.authentication.user);
-
   const { surveys, isLoading, page, refresh } = useUserSurveys(user._id, 5);
 
-  const onPreviewSurvey = (surveyId) => {
+  const handlePreviewSurvey = (surveyId) => {
     navigate(`/surveys/${surveyId}`);
   };
 
-  const onViewSurveyResults = (surveyId) => {
+  const handleViewSurveyResults = (surveyId) => {
     navigate(`/surveys/${surveyId}/results`);
   };
 
-  const onEditSurvey = (surveyId) => {
+  const handleEditSurvey = (surveyId) => {
     navigate(`/surveys/${surveyId}/edit`);
   };
 
-  const onDeleteSurvey = (surveyId) => {
+  const handleDeleteSurvey = (surveyId) => {
     navigate(`/surveys/${surveyId}/delete`);
   };
 
-  const onPageChange = (_, value) => {
+  const handlePageChange = (_, value) => {
     page.set(value);
   };
 
   useEffect(() => {
-    if (location.pathname === '/') {
-      refresh();
-    }
+    const refreshCurrentPageResults = () => {
+      if (location.pathname === '/') {
+        refresh();
+      }
+    };
+
+    refreshCurrentPageResults();
   }, [location, refresh]);
 
   return (
@@ -54,19 +58,19 @@ const Dashboard = () => {
       </Grid>
       <Grid container item sx={{ px: 2, pb: 2 }}>
         {isLoading && <Spinner />}
-        {Boolean(surveys.length > 0 && !isLoading) && (
+        {surveys.length > 0 && !isLoading && (
           <Stack direction="column" alignItems="center" spacing={2} sx={{ width: 1 }}>
             <SurveyStack
               surveys={surveys}
-              onPreviewSurvey={onPreviewSurvey}
-              onViewSurveyResults={onViewSurveyResults}
-              onEditSurvey={onEditSurvey}
-              onDeleteSurvey={onDeleteSurvey}
+              onPreviewSurvey={handlePreviewSurvey}
+              onViewSurveyResults={handleViewSurveyResults}
+              onEditSurvey={handleEditSurvey}
+              onDeleteSurvey={handleDeleteSurvey}
             />
-            <Pagination color="primary" count={page.count} page={page.current} onChange={onPageChange} />
+            <Pagination color="primary" count={page.count} page={page.current} onChange={handlePageChange} />
           </Stack>
         )}
-        {Boolean(surveys.length === 0 && !isLoading) && (
+        {surveys.length === 0 && !isLoading && (
           <Stack direction="column" alignItems="center" sx={{ width: 1 }}>
             <Typography variant="h5">You dont have any surveys yet.</Typography>
             <Typography variant="body1">Create a survey to get started.</Typography>

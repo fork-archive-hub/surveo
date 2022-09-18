@@ -1,35 +1,35 @@
 import { updateIndexFields } from '../utils/updateIndexFields';
 
 export class AnswerTemplate {
-  constructor(text = '') {
+  constructor(text = '', index = 0) {
     this.text = text;
-    this.index = 0;
+    this.index = index;
   }
 }
 
 export class SubquestionTemplate {
-  constructor(text = '') {
+  constructor(text = '', requirements = []) {
     this.text = text;
     this.answers = updateIndexFields([new AnswerTemplate(), new AnswerTemplate()]);
-    this.requirements = [];
+    this.requirements = requirements;
   }
 }
 
 export class QuestionTemplate {
-  constructor(text = '') {
+  constructor(text = '', subquestions = []) {
     this.text = text;
     this.answers = updateIndexFields([new AnswerTemplate(), new AnswerTemplate()]);
-    this.subquestions = [];
+    this.subquestions = subquestions;
   }
 }
 
 export class SurveyInformationTemplate {
-  constructor(name = '') {
+  constructor(name = '', open = true, captcha = false, ipRestriction = false) {
     this.name = name;
-    this.open = true;
+    this.open = open;
     this.protection = {
-      captcha: false,
-      ipRestriction: false,
+      captcha: captcha,
+      ipRestriction: ipRestriction,
     };
   }
 }

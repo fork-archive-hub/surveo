@@ -11,16 +11,15 @@ import { Button } from '../components/Form';
 import { feathers } from '../redux';
 
 const SurveyDelete = () => {
-  const navigate = useNavigate();
-  const params = useParams();
-
   const dispatch = useDispatch();
+  const params = useParams();
+  const navigate = useNavigate();
 
-  const onCancel = () => {
+  const handleCancel = () => {
     navigate('/');
   };
 
-  const onDelete = async () => {
+  const handleDelete = async () => {
     if (params.surveyId !== null) {
       const result = await dispatch(feathers.survey.remove({ surveyId: params.surveyId }));
 
@@ -37,7 +36,7 @@ const SurveyDelete = () => {
   return (
     <Grid container justifyContent="center" maxWidth="xl">
       <Grid container item xs={12} sm={8} md={5} lg={4} xl={3}>
-        <ClickAwayListener onClickAway={onCancel}>
+        <ClickAwayListener onClickAway={handleCancel}>
           <Card sx={{ width: 1 }}>
             <CardContent>
               <Stack direction="column" alignItems="center">
@@ -51,8 +50,8 @@ const SurveyDelete = () => {
               </Stack>
             </CardContent>
             <CardActions sx={{ justifyContent: 'center' }}>
-              <Button onClick={onDelete}>Delete survey</Button>
-              <Button onClick={onCancel}>Cancel</Button>
+              <Button onClick={handleDelete}>Delete survey</Button>
+              <Button onClick={handleCancel}>Cancel</Button>
             </CardActions>
           </Card>
         </ClickAwayListener>
