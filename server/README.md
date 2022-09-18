@@ -33,19 +33,19 @@ npm start
 
 ```
 master
-  |-- config             # folder contains application configurations files
-  |-- src                # folder contains source files of application
-  |  |-- hooks           # folder contains hooks that can be used in any service
-  |  |-- middleware      # folder contains express middleware
-  |  |-- models          # folder contains database model files
-  |  |-- services        # folder contains all services registered in our app
-  |  |  |-- service      # folder contains all files related to given service
-  |-- app.js             # file with basic configuration of application
-  |-- app.hook.js        # file with hooks that apply to every service
-  |-- authentication.js  # file with authentication strategies available in our application
-  |-- channels.js        # file with feathers event channels definitions
-  |-- mongoose.js        # file with database connection
-  |-- logger.js          # file with logger configuration
+  |-- config             # application configuration files
+  |-- src                # application source code
+  |  |-- hooks           # hooks used by services
+  |  |-- middleware      # middlewares used by application
+  |  |-- models          # database models definitions
+  |  |-- services        # feathers services
+  |  |  |-- service      # files related to a given service
+  |-- app.js             # basic configuration of feathers application
+  |-- app.hook.js        # global hooks used before and after all requests
+  |-- authentication.js  # authentication configuration
+  |-- channels.js        # socket channels configuration
+  |-- mongoose.js        # mongoose database configuration
+  |-- logger.js          # logger configuration
   |-- index.js           # file that runs the application
 ```
 
@@ -95,13 +95,13 @@ Surveo server currently has 5 services:
 
 Available events that are emitted when a method is executed in a given service.
 
-### Service: `votes`
+- ### Service: `votes`
 
-#### CREATE `"created"`
+  - #### CREATE `"created"`
 
-Event payload It is the same one you get from the `surveys` service when performing a [GET](./docs/services/surveys/GET.md) query.
+    Event payload It is the same one you get from the `surveys` service when performing a [GET](./docs/services/surveys/GET.md) query.
 
-An event is emitted after each successfully approved vote for a survey. The event is emitted only to users in the "survey.SURVEY_ID" channel.
+    Event is emitted after each successfully approved vote for a survey. The event is emitted only to users in the "survey.SURVEY_ID" channel.
 
 ## Request validation
 
