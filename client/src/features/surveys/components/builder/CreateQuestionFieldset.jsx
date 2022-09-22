@@ -7,7 +7,7 @@ import { useFormContext, Controller } from 'react-hook-form';
 import AnswerTextFieldGroup from './AnswerTextFieldGroup';
 import CreateSubquestionFieldsetGroup from './CreateSubquestionFieldsetGroup';
 
-import { TextField, Button } from '../../../../components/Form';
+import { TextField, Button } from '../../../../components/form';
 
 const CreateQuestionFieldset = ({ name, index, isRemoveButtonDisabled, onRemoveQuestion }) => {
   const { control } = useFormContext();

@@ -7,7 +7,7 @@ import { useForm, FormProvider } from 'react-hook-form';
 import SurveyHeader from './SurveyHeader';
 import QuestionGroup from './QuestionGroup';
 
-import { SubmitButton } from '../../../../components/Form';
+import { SubmitButton } from '../../../../components/form';
 
 const SurveyForm = ({ survey, disableForm, onSubmitVotes }) => {
   const methods = useForm({ mode: 'all' });

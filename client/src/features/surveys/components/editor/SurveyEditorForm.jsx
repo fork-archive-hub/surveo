@@ -5,11 +5,11 @@ import { Box, Stack } from '@mui/material';
 import { useForm, FormProvider } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
 
-import ConfigurationFieldset from '../SurveyBuilder/ConfigurationFieldset';
+import ConfigurationFieldset from '../builder/ConfigurationFieldset';
 
 import { surveyInformationFormSchema } from '../../schemas';
 
-import { SubmitButton } from '../../../../components/Form';
+import { SubmitButton } from '../../../../components/form';
 
 const SurveyEditorForm = ({ survey, onUpdateSurvey }) => {
   const methods = useForm({

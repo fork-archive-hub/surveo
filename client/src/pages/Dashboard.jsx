@@ -7,8 +7,8 @@ import { Grid, Paper, Typography, Stack, Pagination } from '@mui/material';
 
 import { useUserSurveys } from '../hooks';
 
-import { Button } from '../components/Form';
-import { Spinner } from '../components/Elements';
+import { Button } from '../components/form';
+import { Spinner } from '../components/elements';
 import { SurveyStack } from '../features/surveys';
 
 const Dashboard = () => {

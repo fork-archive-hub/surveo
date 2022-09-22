@@ -8,7 +8,7 @@ import CreateSubquestionFieldset from './CreateSubquestionFieldset';
 
 import { SubquestionTemplate } from '../../templates';
 
-import { Button } from '../../../../components/Form';
+import { Button } from '../../../../components/form';
 
 const CreateSubquestionFieldsetGroup = ({ name, parentAnswerField }) => {
   const { control } = useFormContext();

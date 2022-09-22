@@ -6,7 +6,7 @@ import { WarningOutlined } from '@mui/icons-material';
 
 import { toast } from 'react-toastify';
 
-import { Button } from '../components/Form';
+import { Button } from '../components/form';
 
 import { feathers } from '../redux';
 

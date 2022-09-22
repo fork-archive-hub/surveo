@@ -8,7 +8,7 @@ import CreateQuestionFieldset from './CreateQuestionFieldset';
 
 import { QuestionTemplate } from '../../templates';
 
-import { Button } from '../../../../components/Form';
+import { Button } from '../../../../components/form';
 
 const CreateQuestionFieldsetGroup = ({ name }) => {
   const { control } = useFormContext();

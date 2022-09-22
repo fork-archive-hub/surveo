@@ -5,7 +5,7 @@ import { InfoOutlined } from '@mui/icons-material';
 
 import { useFormContext } from 'react-hook-form';
 
-import { FormGroup, FormControlLabel, Checkbox } from '../../../../components/Form';
+import { FormGroup, FormControlLabel, Checkbox } from '../../../../components/form';
 
 const RequirementConfigurationFieldset = ({ name, parentAnswerField }) => {
   const { setValue, getValues, watch } = useFormContext();

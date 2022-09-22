@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useId } from 'react';
 
-import { RadioGroup, FormControlLabel, Radio } from '../../../../components/Form';
+import { RadioGroup, FormControlLabel, Radio } from '../../../../components/form';
 
 const AnswerFieldset = ({ answers, onSelectAnswer }) => {
   const groupId = useId();

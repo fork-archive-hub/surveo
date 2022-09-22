@@ -44,9 +44,10 @@ npm run build
 public                     # folder containing static files such as index.html
 src
    |-- components          # shared components used across the entire application
-   |   |-- group           # group of related components
+   |   |-- group_name      # group of related components
+   |   |   |-- index.js    # exports all components from the group
    |-- features            # feature based modules
-   |   |-- feature         # feature module
+   |   |-- feature_name    # feature module
    |   |   |-- components  # feature specific components
    |   |   |-- schemas     # schemas used to validate form data
    |   |   |-- templates   # templates used as default values for form fields
@@ -57,6 +58,9 @@ src
    |-- layouts             # page layouts
    |   |-- layout_name     # group of components used to create specific layout
    |   |-- index.js        # exports of all created layouts
+   |-- pages               # pages used by the application
+   |-- providers           # providers used to provide data to the application
+   |   |-- index.js        # exports of all created providers
    |-- redux
    |   |-- middlewares     # middlewares used by the application
    |   |-- slices          # redux slices used by the application
@@ -67,12 +71,10 @@ src
    |   |-- protected.js    # routes available for authenticated users
    |   |-- public.js       # routes available for unauthenticated users
    |   |-- index.js        # combined routes for the application
-   |-- pages               # pages used by the application
-   |-- Providers.js        # file containing all providers used by the application
-   |-- App.js              # main application component 
-   |-- index.js            # function that renders the application     
-   |-- theme.js            # theme options used by the application      
-   |-- .env                # environment variables used by the application                
+   |-- App.js              # main application component
+   |-- index.js            # function that renders the application
+   |-- theme.js            # theme options used by the application
+   |-- .env                # environment variables used by the application
 ```
 
 ## Author

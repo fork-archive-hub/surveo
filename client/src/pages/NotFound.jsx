@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import { Box, Stack, Typography } from '@mui/material';
 
-import { Button } from '../components/Form';
+import { Button } from '../components/form';
 
 const NotFound = () => {
   return (

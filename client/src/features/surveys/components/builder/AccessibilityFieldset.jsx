@@ -2,7 +2,7 @@ import { Card, CardHeader, CardActions } from '@mui/material';
 
 import { useFormContext, Controller } from 'react-hook-form';
 
-import { FormGroup, FormControlLabel, Switch } from '../../../../components/Form';
+import { FormGroup, FormControlLabel, Switch } from '../../../../components/form';
 
 const AccessibilityFieldset = () => {
   const { control } = useFormContext();

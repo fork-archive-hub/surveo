@@ -11,7 +11,7 @@ import CreateQuestionFieldsetGroup from './CreateQuestionFieldsetGroup';
 import { surveyFormSchema } from '../../schemas';
 import { SurveyTemplate } from '../../templates';
 
-import { SubmitButton } from '../../../../components/Form';
+import { SubmitButton } from '../../../../components/form';
 
 const SurveyBuilderForm = ({ onSubmitSurvey }) => {
   const methods = useForm({

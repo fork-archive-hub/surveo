@@ -5,7 +5,7 @@ import { PreviewOutlined, BarChartOutlined, EditOutlined, DeleteOutline } from '
 
 import { convertDateToHumanFormat } from '../../utils/convertDateToHumanFormat';
 
-import { IconButton } from '../../../../components/Form';
+import { IconButton } from '../../../../components/form';
 
 const SurveyStackItem = ({ survey, onPreviewSurvey, onViewSurveyResults, onEditSurvey, onDeleteSurvey }) => {
   const handleSurveyPreview = () => {

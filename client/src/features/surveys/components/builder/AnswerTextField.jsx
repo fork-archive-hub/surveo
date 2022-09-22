@@ -5,7 +5,7 @@ import { DeleteOutline } from '@mui/icons-material';
 
 import { useFormContext, Controller } from 'react-hook-form';
 
-import { TextField } from '../../../../components/Form';
+import { TextField } from '../../../../components/form';
 
 const AnswerTextField = ({ name, index, isRemoveButtonDisabled, onRemoveAnswer }) => {
   const { control } = useFormContext();
