@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { Grid, ClickAwayListener, Box } from '@mui/material';
+import { Grid, Box } from '@mui/material';
 
 import { toast } from 'react-toastify';
 
@@ -22,10 +22,6 @@ const SurveyEdit = () => {
   const navigate = useNavigate();
 
   const { survey, isLoading } = useSurvey(params.surveyId);
-
-  const handleClickAway = () => {
-    navigate('/');
-  };
 
   const handleUpdateSurvey = async (data) => {
     const result = await dispatch(
@@ -56,16 +52,14 @@ const SurveyEdit = () => {
   }, [survey._id, survey.authorId, user._id, navigate]);
 
   return (
-    <Grid container justifyContent="center" maxWidth="xl">
+    <Grid container justifyContent="center" sx={{ py: 2 }}>
       <Grid container item xs={12} sm={8} md={5} lg={4} xl={3}>
-        <ClickAwayListener onClickAway={handleClickAway}>
-          <Box sx={{ width: 1 }}>
-            {isLoading && <Spinner />}
-            {Boolean(survey._id) && !isLoading && (
-              <SurveyEditorForm survey={survey} onUpdateSurvey={handleUpdateSurvey} />
-            )}
-          </Box>
-        </ClickAwayListener>
+        <Box sx={{ width: 1 }}>
+          {isLoading && <Spinner />}
+          {Boolean(survey._id) && !isLoading && (
+            <SurveyEditorForm survey={survey} onUpdateSurvey={handleUpdateSurvey} />
+          )}
+        </Box>
       </Grid>
     </Grid>
   );

@@ -1,8 +1,8 @@
-import { PresentationLayout } from '../layouts';
+import { PresentationLayout } from '../../layouts';
 
-import Landing from '../pages/Landing';
-import Login from '../pages/Login';
-import Register from '../pages/Register';
+import Landing from '../../pages/Landing';
+import Login from '../../pages/Login';
+import Register from '../../pages/Register';
 
 export const publicRoutes = [
   {
