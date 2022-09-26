@@ -41,39 +41,42 @@ npm run build
 ## Project structure
 
 ```bash
-public                     # folder containing static files such as index.html
+public                        # folder containing static files such as index.html
 src
-   |-- components          # shared components used across the entire application
-   |   |-- group_name      # group of related components
-   |   |   |-- index.js    # exports all components from the group
-   |-- features            # feature based modules
-   |   |-- feature_name    # feature module
-   |   |   |-- components  # feature specific components
-   |   |   |-- schemas     # schemas used to validate form data
-   |   |   |-- templates   # templates used as default values for form fields
-   |   |   |-- utils       # utility functions used across feature
-   |   |   |-- index.js    # exports of all required elements from specific feature
-   |-- hooks               # custom hooks used mostly by page level components
-   |   |-- index.js        # exports of all created hooks
-   |-- layouts             # page layouts
-   |   |-- layout_name     # group of components used to create specific layout
-   |   |-- index.js        # exports of all created layouts
-   |-- pages               # pages used by the application
-   |-- providers           # providers used to provide data to the application
-   |   |-- index.js        # exports of all created providers
+   |-- components             # shared components used across the entire application
+   |   |-- group_name         # group of related components
+   |   |   |-- index.js       # exports all components from the group
+   |-- features               # feature based modules
+   |   |-- feature_name       # feature module
+   |   |   |-- components     # feature specific components
+   |   |   |-- schemas        # schemas used to validate form data
+   |   |   |-- templates      # templates used as default values for form fields
+   |   |   |-- utils          # utility functions used across feature
+   |   |   |-- index.js       # exports of all required elements from specific feature
+   |-- hooks                  # custom hooks used mostly by page level components
+   |   |-- index.js           # exports of all created hooks
+   |-- layouts                # page layouts
+   |   |-- layout_name        # group of components used to create specific layout
+   |   |-- index.js           # exports of all created layouts
+   |-- pages                  # pages used by the application
+   |-- providers              # providers used to provide data to the application
+   |   |-- index.js           # exports of all created providers
    |-- redux
-   |   |-- middlewares     # middlewares used by the application
-   |   |-- slices          # redux slices used by the application
-   |   |-- store.js        # redux store used by the application
-   |   |-- index.js        # exports of all required elements from redux
-   |-- routes
-   |   |-- common.js       # routes available for everyone
-   |   |-- protected.js    # routes available for authenticated users
-   |   |-- public.js       # routes available for unauthenticated users
-   |   |-- index.js        # combined routes for the application
-   |-- App.js              # main application component
-   |-- index.js            # function that renders the application
-   |-- theme.js            # theme options used by the application
+   |   |-- middlewares        # middlewares used by the application
+   |   |-- slices             # redux slices used by the application
+   |   |-- store.js           # redux store used by the application
+   |   |-- index.js           # exports of all required elements from redux
+   |-- router
+   |   |-- routes             # routes definitions
+   |   |   |-- common.js      # routes available for everyone
+   |   |   |-- protected.js   # routes available for authenticated users
+   |   |   |-- public.js      # routes available for unauthenticated users
+   |   |-- AppRoutes.js       # creates react element with available routes
+   |   |-- index.js           # exports of all required elements from router
+   |-- theme                  # theme used by the application
+   |   |-- index.js           # exports of all required elements from theme
+   |-- App.js                 # main application component
+   |-- index.js               # function that renders the application
    |-- .env                # environment variables used by the application
 ```
 
