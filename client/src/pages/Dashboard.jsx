@@ -20,7 +20,7 @@ const Dashboard = () => {
   const { surveys, isLoading, page, refresh } = useUserSurveys(user._id, 5);
 
   const handlePreviewSurvey = (surveyId) => {
-    navigate(`/surveys/${surveyId}`);
+    navigate(`/surveys/${surveyId}/form`);
   };
 
   const handleViewSurveyResults = (surveyId) => {

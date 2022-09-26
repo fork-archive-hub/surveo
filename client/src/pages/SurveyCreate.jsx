@@ -21,7 +21,7 @@ const SurveyCreate = () => {
       navigate('/');
     } else {
       toast.success('Survey successfully created');
-      navigate(`/surveys/${result.payload._id}`);
+      navigate(`/surveys/${result.payload._id}/form`);
     }
   };
 

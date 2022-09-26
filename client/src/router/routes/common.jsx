@@ -12,7 +12,12 @@ export const commonRoutes = [
         children: [
           {
             path: ':surveyId',
-            element: <Survey />,
+            children: [
+              {
+                path: 'form',
+                element: <Survey />,
+              },
+            ],
           },
         ],
       },
