@@ -5,7 +5,7 @@ import { Card, CardHeader, CardActions, Box, Stack } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 
 import { joiResolver } from '@hookform/resolvers/joi';
-import { registerFormSchema } from '../schemas';
+import { RegisterFormSchema } from '../schemas/RegisterFormSchema';
 
 import { TextField, SubmitButton } from '../../../components/form';
 
@@ -18,7 +18,7 @@ const RegisterForm = ({ onSubmitCredentials }) => {
       password: '',
       repeatPassword: '',
     },
-    resolver: joiResolver(registerFormSchema),
+    resolver: joiResolver(RegisterFormSchema),
   });
 
   const onSubmit = (data) => {

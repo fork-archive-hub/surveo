@@ -6,7 +6,7 @@ import { useFormContext, useFieldArray } from 'react-hook-form';
 
 import CreateSubquestionFieldset from './CreateSubquestionFieldset';
 
-import { SubquestionTemplate } from '../../templates';
+import { SubquestionTemplate } from '../../templates/SubquestionTemplate';
 
 import { Button } from '../../../../components/form';
 

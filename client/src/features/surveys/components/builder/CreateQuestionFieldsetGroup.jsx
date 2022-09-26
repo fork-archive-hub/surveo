@@ -6,7 +6,7 @@ import { useFormContext, useFieldArray } from 'react-hook-form';
 
 import CreateQuestionFieldset from './CreateQuestionFieldset';
 
-import { QuestionTemplate } from '../../templates';
+import { QuestionTemplate } from '../../templates/QuestionTemplate';
 
 import { Button } from '../../../../components/form';
 

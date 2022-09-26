@@ -7,7 +7,7 @@ import { joiResolver } from '@hookform/resolvers/joi';
 
 import ConfigurationFieldset from '../builder/ConfigurationFieldset';
 
-import { surveyInformationFormSchema } from '../../schemas';
+import { SurveyInformationSchema } from '../../schemas/SurveyInformationSchema';
 
 import { SubmitButton } from '../../../../components/form';
 
@@ -19,7 +19,7 @@ const SurveyEditorForm = ({ survey, onUpdateSurvey }) => {
       open: survey.open,
       protection: survey.protection,
     },
-    resolver: joiResolver(surveyInformationFormSchema),
+    resolver: joiResolver(SurveyInformationSchema),
   });
 
   const onSubmit = async (data) => {

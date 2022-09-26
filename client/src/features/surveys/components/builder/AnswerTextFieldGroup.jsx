@@ -6,7 +6,7 @@ import { useFormContext, useFieldArray } from 'react-hook-form';
 
 import AnswerTextField from './AnswerTextField';
 
-import { AnswerTemplate } from '../../templates';
+import { AnswerTemplate } from '../../templates/AnswerTemplate';
 import { updateIndexFields } from '../../utils/updateIndexFields';
 
 import { Button } from '../../../../components/form';

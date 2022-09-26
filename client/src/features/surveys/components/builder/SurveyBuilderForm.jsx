@@ -8,8 +8,8 @@ import { joiResolver } from '@hookform/resolvers/joi';
 import ConfigurationFieldset from './ConfigurationFieldset';
 import CreateQuestionFieldsetGroup from './CreateQuestionFieldsetGroup';
 
-import { surveyFormSchema } from '../../schemas';
-import { SurveyTemplate } from '../../templates';
+import { SurveySchema } from '../../schemas/SurveySchema';
+import { SurveyTemplate } from '../../templates/SurveyTemplate';
 
 import { SubmitButton } from '../../../../components/form';
 
@@ -17,7 +17,7 @@ const SurveyBuilderForm = ({ onSubmitSurvey }) => {
   const methods = useForm({
     mode: 'all',
     defaultValues: new SurveyTemplate(),
-    resolver: joiResolver(surveyFormSchema),
+    resolver: joiResolver(SurveySchema),
   });
 
   const onSubmit = async (data) => {

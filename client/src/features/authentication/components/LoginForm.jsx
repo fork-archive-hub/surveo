@@ -5,7 +5,7 @@ import { Card, CardHeader, CardActions, Box, Stack } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 
 import { joiResolver } from '@hookform/resolvers/joi';
-import { loginFormSchema } from '../schemas';
+import { LoginFormSchema } from '../schemas/LoginFormSchema';
 
 import { TextField, SubmitButton } from '../../../components/form';
 
@@ -17,7 +17,7 @@ const LoginForm = ({ onSubmitCredentials }) => {
       username: '',
       password: '',
     },
-    resolver: joiResolver(loginFormSchema),
+    resolver: joiResolver(LoginFormSchema),
   });
 
   const onSubmit = (data) => {
