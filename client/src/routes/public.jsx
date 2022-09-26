@@ -13,12 +13,17 @@ export const publicRoutes = [
         element: <Landing />,
       },
       {
-        path: '/login',
-        element: <Login />,
-      },
-      {
-        path: '/register',
-        element: <Register />,
+        path: 'auth',
+        children: [
+          {
+            path: 'login',
+            element: <Login />,
+          },
+          {
+            path: 'register',
+            element: <Register />,
+          },
+        ],
       },
     ],
   },

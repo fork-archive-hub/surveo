@@ -35,7 +35,7 @@ const Login = () => {
       <LoginForm onSubmitCredentials={handleSubmitCredentials} />
       <Stack direction="row" gap={1} sx={{ my: 1 }}>
         <Typography variant="body2">Dont have an account?</Typography>
-        <MUILink to="/register" variant="body2" component={Link}>
+        <MUILink to="/auth/register" variant="body2" component={Link}>
           Register
         </MUILink>
       </Stack>

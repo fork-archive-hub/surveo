@@ -19,10 +19,10 @@ const Landing = () => {
               Create surveys with any number of questions and answers while tracking the results later in real time.
             </Typography>
             <Stack direction="row" spacing={2} sx={{ justifyContent: { xs: 'center', md: 'start' } }}>
-              <Button to="/register" variant="contained" size="large" component={Link}>
+              <Button to="/auth/register" variant="contained" size="large" component={Link}>
                 Sign up
               </Button>
-              <Button to="/login" variant="outlined" size="large" component={Link}>
+              <Button to="/auth/login" variant="outlined" size="large" component={Link}>
                 Sign in
               </Button>
             </Stack>

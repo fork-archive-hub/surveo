@@ -20,7 +20,7 @@ const Register = () => {
       toast.error(result.error);
     } else {
       toast.success('Account created successfully');
-      navigate('/login');
+      navigate('/auth/login');
     }
   };
 
@@ -35,7 +35,7 @@ const Register = () => {
       <RegisterForm onSubmitCredentials={handleSubmitCredentials} />
       <Stack direction="row" gap={1} sx={{ my: 1 }}>
         <Typography variant="body2">Already have an account?</Typography>
-        <MUILink to="/login" variant="body2" component={Link}>
+        <MUILink to="/auth/login" variant="body2" component={Link}>
           Login
         </MUILink>
       </Stack>

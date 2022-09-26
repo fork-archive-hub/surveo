@@ -5,7 +5,7 @@ const QuestMenu = () => {
   return (
     <Stack direction="row" justifyContent="space-between" alignItems="center" gap={1}>
       <Tooltip title="Login to your account">
-        <MUILink to="/login" variant="body2" size="small" component={Link}>
+        <MUILink to="/auth/login" variant="body2" size="small" component={Link}>
           Sign in
         </MUILink>
       </Tooltip>
@@ -13,7 +13,7 @@ const QuestMenu = () => {
         or
       </Typography>
       <Tooltip title="Create a new account">
-        <MUILink to="/register" variant="body2" size="small" component={Link}>
+        <MUILink to="/auth/register" variant="body2" size="small" component={Link}>
           Sign up
         </MUILink>
       </Tooltip>
