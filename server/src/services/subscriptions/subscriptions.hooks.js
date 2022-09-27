@@ -4,14 +4,14 @@ const { disallow } = require('feathers-hooks-common');
 
 const validateSchema = require('../../hooks/validate-schema.hook');
 
-const { subscriptionSchema } = require('./subscriptions.schemas');
+const { SubscriptionSchema } = require('./subscriptions.schemas');
 
 module.exports = {
   before: {
     all: [disallow('rest', 'primus'), authenticate('jwt')],
     find: [disallow()],
     get: [disallow()],
-    create: [validateSchema(subscriptionSchema)],
+    create: [validateSchema(SubscriptionSchema)],
     update: [disallow()],
     patch: [disallow()],
     remove: [],

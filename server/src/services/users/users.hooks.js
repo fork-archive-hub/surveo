@@ -6,14 +6,14 @@ const { disallow } = require('feathers-hooks-common');
 const validateSchema = require('../../hooks/validate-schema.hook');
 const mapUserFieldToQueryField = require('../../hooks/map-user-field-to-query-field.hook');
 
-const { userSchema } = require('./users.schemas');
+const { UserSchema } = require('./users.schemas');
 
 module.exports = {
   before: {
     all: [],
     find: [authenticate('jwt'), mapUserFieldToQueryField('_id', '_id')],
     get: [authenticate('jwt'), mapUserFieldToQueryField('_id', '_id')],
-    create: [validateSchema(userSchema), hashPassword('password')],
+    create: [validateSchema(UserSchema), hashPassword('password')],
     update: [
       disallow('external'),
       hashPassword('password'),

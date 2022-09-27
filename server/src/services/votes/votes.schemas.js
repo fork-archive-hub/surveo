@@ -1,11 +1,11 @@
 const Joi = require('joi');
 
-const answerSheetSchema = Joi.object().pattern(/^/, Joi.string().length(24).required());
+const AnswerSheetSchema = Joi.object().pattern(/^/, Joi.string().length(24).required());
 
-const voteSchema = Joi.object().keys({
+const VoteSchema = Joi.object().keys({
   surveyId: Joi.string().length(24).required(),
-  answerSheet: answerSheetSchema.required(),
+  answerSheet: AnswerSheetSchema.required(),
   token: Joi.string(),
 });
 
-module.exports = { answerSheetSchema, voteSchema };
+module.exports = { AnswerSheetSchema, VoteSchema };

@@ -11,7 +11,7 @@ const mapUserFieldToDataField = require('../../hooks/map-user-field-to-data-fiel
 const mapUserFieldToQueryField = require('../../hooks/map-user-field-to-query-field.hook');
 const isDocumentOwner = require('../../hooks/is-document-owner.hook');
 
-const { surveyMetadataSchema, surveySchema } = require('./surveys.schemas');
+const { SurveyInformationSchema, SurveySchema } = require('./surveys.schemas');
 
 module.exports = {
   before: {
@@ -20,14 +20,14 @@ module.exports = {
     get: [authenticateIfPossible('jwt')],
     create: [
       authenticate('jwt'),
-      validateSchema(surveySchema),
+      validateSchema(SurveySchema),
       mapUserFieldToDataField('_id', 'authorId'),
       deepDiscard('votes'),
     ],
     update: [authenticate('jwt'), disallow('external')],
     patch: [
       authenticate('jwt'),
-      ifProvider(['external'], mapUserFieldToQueryField('_id', 'authorId'), validateSchema(surveyMetadataSchema)),
+      ifProvider(['external'], mapUserFieldToQueryField('_id', 'authorId'), validateSchema(SurveyInformationSchema)),
     ],
     remove: [authenticate('jwt'), mapUserFieldToQueryField('_id', 'authorId')],
   },

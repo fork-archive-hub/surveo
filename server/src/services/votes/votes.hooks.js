@@ -3,7 +3,7 @@ const mapProtectionHooks = require('../../hooks/map-protection-hooks');
 const verifyCaptchaToken = require('../../hooks/verify-captcha-token.hook');
 const restrictDuplicatedIps = require('../../hooks/restrict-duplicated-ips.hook');
 
-const { voteSchema } = require('./votes.schemas');
+const { VoteSchema } = require('./votes.schemas');
 
 module.exports = {
   before: {
@@ -11,7 +11,7 @@ module.exports = {
     find: [],
     get: [],
     create: [
-      validateSchema(voteSchema),
+      validateSchema(VoteSchema),
       mapProtectionHooks('protection', {
         captcha: verifyCaptchaToken('token'),
         ipRestriction: restrictDuplicatedIps('ips', 'ip'),

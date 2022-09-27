@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
-const subscriptionSchema = Joi.object().keys({
+const SubscriptionSchema = Joi.object().keys({
   surveyId: Joi.string().length(24).required(),
 });
 
-module.exports = { subscriptionSchema };
+module.exports = { SubscriptionSchema };
