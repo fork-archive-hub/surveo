@@ -2,24 +2,27 @@ import PropTypes from 'prop-types';
 
 import { Stack } from '@mui/material';
 
-import ReportHeader from './ReportHeader';
+import SurveyHeader from '../form/SurveyHeader';
 import QuestionResultsGroup from './QuestionResultsGroup';
 
-const SurveyResultCharts = ({ survey }) => {
+const SurveyResults = ({ survey }) => {
   return (
     <Stack direction="column" spacing={2} sx={{ width: 1 }}>
-      <ReportHeader name={survey.name} surveyId={survey._id} />
+      <SurveyHeader name={survey.name} author={survey.author.username} createdAt={survey.createdAt} />
       <QuestionResultsGroup questions={survey.questions} />
     </Stack>
   );
 };
 
-SurveyResultCharts.propTypes = {
+SurveyResults.propTypes = {
   survey: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired,
+    author: PropTypes.shape({
+      username: PropTypes.string.isRequired,
+    }).isRequired,
     questions: PropTypes.array.isRequired,
   }),
 };
 
-export default SurveyResultCharts;
+export default SurveyResults;

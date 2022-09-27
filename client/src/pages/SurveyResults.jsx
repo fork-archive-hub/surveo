@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 import { useSurveyResults } from '../hooks';
 
 import { Spinner } from '../components/elements';
-import { SurveyResultCharts } from '../features/surveys';
+import { SurveyResults } from '../features/surveys';
 
 const SurveyResult = () => {
   const user = useSelector((state) => state.authentication.user);
@@ -35,7 +35,7 @@ const SurveyResult = () => {
     <Grid container justifyContent="center" sx={{ py: 2 }}>
       <Grid container item xs={12} sm={8} md={5} lg={4} xl={3}>
         {isLoading && <Spinner />}
-        {Boolean(survey._id) && !isLoading && <SurveyResultCharts survey={survey} />}
+        {Boolean(survey._id) && !isLoading && <SurveyResults survey={survey} />}
       </Grid>
     </Grid>
   );
