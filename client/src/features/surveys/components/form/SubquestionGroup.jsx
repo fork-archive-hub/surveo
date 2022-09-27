@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 
+import { Stack } from '@mui/material';
+
 import Subquestion from './Subquestion';
 
 const SubquestionGroup = ({ subquestions, selectedAnswerIndex }) => {
@@ -9,11 +11,11 @@ const SubquestionGroup = ({ subquestions, selectedAnswerIndex }) => {
 
   if (requiredSubquestions.length > 0) {
     return (
-      <>
+      <Stack direction="column" spacing={2}>
         {requiredSubquestions.map((subquestion) => (
           <Subquestion key={subquestion._id} subquestion={subquestion} />
         ))}
-      </>
+      </Stack>
     );
   }
 
