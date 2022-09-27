@@ -20,7 +20,7 @@ const SurveyBuilderForm = ({ onSubmitSurvey }) => {
     resolver: joiResolver(SurveySchema),
   });
 
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
     if (onSubmitSurvey) {
       onSubmitSurvey(data);
     }
