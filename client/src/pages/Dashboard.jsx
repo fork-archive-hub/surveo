@@ -9,7 +9,7 @@ import { useUserSurveys } from '../hooks';
 
 import { Button } from '../components/form';
 import { Spinner } from '../components/elements';
-import { SurveyStack } from '../features/surveys';
+import { SurveyBarList } from '../features/surveys';
 
 const Dashboard = () => {
   const user = useSelector((state) => state.authentication.user);
@@ -60,7 +60,7 @@ const Dashboard = () => {
         {isLoading && <Spinner />}
         {surveys.length > 0 && !isLoading && (
           <Stack direction="column" alignItems="center" spacing={2} sx={{ width: 1 }}>
-            <SurveyStack
+            <SurveyBarList
               surveys={surveys}
               onPreviewSurvey={handlePreviewSurvey}
               onViewSurveyResults={handleViewSurveyResults}

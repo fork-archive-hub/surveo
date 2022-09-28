@@ -7,7 +7,7 @@ import { convertDateToHumanFormat } from '../../utils/convertDateToHumanFormat';
 
 import { IconButton } from '../../../../components/form';
 
-const SurveyStackItem = ({ survey, onPreviewSurvey, onViewSurveyResults, onEditSurvey, onDeleteSurvey }) => {
+const SurveyBar = ({ survey, onPreviewSurvey, onViewSurveyResults, onEditSurvey, onDeleteSurvey }) => {
   const handleSurveyPreview = () => {
     if (onPreviewSurvey) {
       onPreviewSurvey(survey._id);
@@ -66,7 +66,7 @@ const SurveyStackItem = ({ survey, onPreviewSurvey, onViewSurveyResults, onEditS
   );
 };
 
-SurveyStackItem.propTypes = {
+SurveyBar.propTypes = {
   survey: PropTypes.shape({
     _id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
@@ -78,4 +78,4 @@ SurveyStackItem.propTypes = {
   onDeleteSurvey: PropTypes.func.isRequired,
 };
 
-export default SurveyStackItem;
+export default SurveyBar;

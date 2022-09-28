@@ -4,10 +4,10 @@ import { useFormContext, Controller } from 'react-hook-form';
 
 import { TextField } from '../../../../components/form';
 
-import AccessibilityFieldset from './AccessibilityFieldset';
-import ProtectionFieldset from './ProtectionFieldset';
+import AccessibilityOptions from './AccessibilityOptions';
+import ProtectionOptions from './ProtectionOptions';
 
-const ConfigurationFieldset = () => {
+const SurveyConfiguration = () => {
   const { control } = useFormContext();
 
   return (
@@ -23,12 +23,12 @@ const ConfigurationFieldset = () => {
             name="name"
             render={(controller) => <TextField label="Survey name" controller={controller} />}
           />
-          <AccessibilityFieldset />
-          <ProtectionFieldset />
+          <AccessibilityOptions />
+          <ProtectionOptions />
         </Stack>
       </CardContent>
     </Card>
   );
 };
 
-export default ConfigurationFieldset;
+export default SurveyConfiguration;

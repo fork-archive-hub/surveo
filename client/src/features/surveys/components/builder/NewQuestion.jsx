@@ -4,12 +4,12 @@ import { Stack, Card, CardHeader, CardActions, Paper } from '@mui/material';
 
 import { useFormContext, Controller } from 'react-hook-form';
 
-import AnswerTextFieldGroup from './AnswerTextFieldGroup';
-import CreateSubquestionFieldsetGroup from './CreateSubquestionFieldsetGroup';
+import NewAnswerManager from './NewAnswerManager';
+import NewSubquestionManager from './NewSubquestionManager';
 
 import { TextField, Button } from '../../../../components/form';
 
-const CreateQuestionFieldset = ({ name, index, isRemoveButtonDisabled, onRemoveQuestion }) => {
+const NewQuestion = ({ name, index, isRemoveButtonDisabled, onRemoveQuestion }) => {
   const { control } = useFormContext();
 
   const handleRemoveQuestion = () => {
@@ -33,7 +33,7 @@ const CreateQuestionFieldset = ({ name, index, isRemoveButtonDisabled, onRemoveQ
               render={(controller) => <TextField label="Question" controller={controller} />}
             />
             <Paper elevation={2} sx={{ p: 2 }}>
-              <AnswerTextFieldGroup name={`${name}.answers`} />
+              <NewAnswerManager name={`${name}.answers`} />
             </Paper>
             <Button disabled={isRemoveButtonDisabled} onClick={handleRemoveQuestion}>
               Remove question #{index + 1}
@@ -41,16 +41,16 @@ const CreateQuestionFieldset = ({ name, index, isRemoveButtonDisabled, onRemoveQ
           </Stack>
         </CardActions>
       </Card>
-      <CreateSubquestionFieldsetGroup name={`${name}.subquestions`} parentAnswerField={`${name}.answers`} />
+      <NewSubquestionManager name={`${name}.subquestions`} parentAnswerField={`${name}.answers`} />
     </Stack>
   );
 };
 
-CreateQuestionFieldset.propTypes = {
+NewQuestion.propTypes = {
   name: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   isRemoveButtonDisabled: PropTypes.bool.isRequired,
   onRemoveQuestion: PropTypes.func.isRequired,
 };
 
-export default CreateQuestionFieldset;
+export default NewQuestion;

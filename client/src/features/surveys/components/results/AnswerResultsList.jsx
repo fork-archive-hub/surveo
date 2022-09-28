@@ -2,21 +2,21 @@ import PropTypes from 'prop-types';
 
 import { Stack } from '@mui/material';
 
-import AnswerStatistics from './AnswerStatistics';
+import AnswerResults from './AnswerResults';
 
-const AnswerStatisticsGroup = ({ answers, totalVotes }) => {
+const AnswerResultsList = ({ answers, totalVotes }) => {
   const sortedAnswers = answers.slice().sort((a, b) => b.votes - a.votes);
 
   return (
     <Stack direction="column" spacing={2}>
       {sortedAnswers.map((answer) => (
-        <AnswerStatistics key={answer._id} answer={answer} totalVotes={totalVotes} />
+        <AnswerResults key={answer._id} answer={answer} totalVotes={totalVotes} />
       ))}
     </Stack>
   );
 };
 
-AnswerStatisticsGroup.propTypes = {
+AnswerResultsList.propTypes = {
   answers: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
@@ -25,4 +25,4 @@ AnswerStatisticsGroup.propTypes = {
   totalVotes: PropTypes.number.isRequired,
 };
 
-export default AnswerStatisticsGroup;
+export default AnswerResultsList;

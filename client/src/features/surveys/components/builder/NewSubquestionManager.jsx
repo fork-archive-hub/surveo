@@ -4,13 +4,13 @@ import { Stack } from '@mui/material';
 
 import { useFormContext, useFieldArray } from 'react-hook-form';
 
-import CreateSubquestionFieldset from './CreateSubquestionFieldset';
+import NewSubquestion from './NewSubquestion';
 
 import { SubquestionTemplate } from '../../templates/SubquestionTemplate';
 
 import { Button } from '../../../../components/form';
 
-const CreateSubquestionFieldsetGroup = ({ name, parentAnswerField }) => {
+const NewSubquestionManager = ({ name, parentAnswerField }) => {
   const { control } = useFormContext();
   const { fields, append, remove } = useFieldArray({
     name: name,
@@ -28,7 +28,7 @@ const CreateSubquestionFieldsetGroup = ({ name, parentAnswerField }) => {
   return (
     <Stack direction="column" spacing={2}>
       {fields.map((field, index) => (
-        <CreateSubquestionFieldset
+        <NewSubquestion
           key={field.id}
           name={`${name}[${index}]`}
           index={index}
@@ -41,9 +41,9 @@ const CreateSubquestionFieldsetGroup = ({ name, parentAnswerField }) => {
   );
 };
 
-CreateSubquestionFieldsetGroup.propTypes = {
+NewSubquestionManager.propTypes = {
   name: PropTypes.string.isRequired,
   parentAnswerField: PropTypes.string.isRequired,
 };
 
-export default CreateSubquestionFieldsetGroup;
+export default NewSubquestionManager;

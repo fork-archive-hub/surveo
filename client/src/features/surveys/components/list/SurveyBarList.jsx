@@ -2,13 +2,13 @@ import PropTypes from 'prop-types';
 
 import { Stack } from '@mui/material';
 
-import SurveyStackItem from './SurveyStackItem';
+import SurveyBar from './SurveyBar';
 
-const SurveyStack = ({ surveys, onPreviewSurvey, onViewSurveyResults, onEditSurvey, onDeleteSurvey }) => {
+const SurveyBarList = ({ surveys, onPreviewSurvey, onViewSurveyResults, onEditSurvey, onDeleteSurvey }) => {
   return (
     <Stack spacing={2} sx={{ width: 1 }}>
       {surveys.map((survey) => (
-        <SurveyStackItem
+        <SurveyBar
           key={survey._id}
           survey={survey}
           onPreviewSurvey={onPreviewSurvey}
@@ -21,7 +21,7 @@ const SurveyStack = ({ surveys, onPreviewSurvey, onViewSurveyResults, onEditSurv
   );
 };
 
-SurveyStack.propTypes = {
+SurveyBarList.propTypes = {
   surveys: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
@@ -33,4 +33,4 @@ SurveyStack.propTypes = {
   onDeleteSurvey: PropTypes.func.isRequired,
 };
 
-export default SurveyStack;
+export default SurveyBarList;

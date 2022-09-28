@@ -5,7 +5,7 @@ import { Stack, Divider, Box } from '@mui/material';
 import { useForm, FormProvider } from 'react-hook-form';
 
 import SurveyHeader from './SurveyHeader';
-import QuestionGroup from './QuestionGroup';
+import QuestionList from './QuestionList';
 
 import { SubmitButton } from '../../../../components/form';
 
@@ -25,7 +25,7 @@ const SurveyForm = ({ survey, disableForm, onSubmitVotes }) => {
       <FormProvider {...methods}>
         <Box component="form" onSubmit={methods.handleSubmit(onSubmit)} sx={{ width: 1 }}>
           <Stack direction="column" spacing={2}>
-            <QuestionGroup questions={survey.questions} />
+            <QuestionList questions={survey.questions} />
             <SubmitButton disabled={!survey.open || disableForm}>Submit</SubmitButton>
           </Stack>
         </Box>

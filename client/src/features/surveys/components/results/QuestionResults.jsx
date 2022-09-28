@@ -4,7 +4,7 @@ import { Card, CardHeader, CardActions, Paper } from '@mui/material';
 
 import { sumQuestionVotes } from '../../utils/sumQuestionVotes';
 
-import AnswerStatisticsGroup from './AnswerStatisticsGroup';
+import AnswerResultsList from './AnswerResultsList';
 
 const QuestionResults = ({ question }) => {
   const totalVotes = sumQuestionVotes(question);
@@ -19,7 +19,7 @@ const QuestionResults = ({ question }) => {
       />
       <CardActions sx={{ p: 2, pt: 0 }}>
         <Paper elevation={2} sx={{ width: 1, p: 2 }}>
-          <AnswerStatisticsGroup answers={question.answers} totalVotes={totalVotes} />
+          <AnswerResultsList answers={question.answers} totalVotes={totalVotes} />
         </Paper>
       </CardActions>
     </Card>

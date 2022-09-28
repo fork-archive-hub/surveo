@@ -5,7 +5,7 @@ import { Box, Stack } from '@mui/material';
 import { useForm, FormProvider } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
 
-import ConfigurationFieldset from '../builder/ConfigurationFieldset';
+import SurveyConfiguration from '../builder/SurveyConfiguration';
 
 import { SurveyInformationSchema } from '../../schemas/SurveyInformationSchema';
 
@@ -32,7 +32,7 @@ const SurveyEditorForm = ({ survey, onUpdateSurvey }) => {
     <FormProvider {...methods}>
       <Box component="form" onSubmit={methods.handleSubmit(onSubmit)} sx={{ width: 1 }}>
         <Stack direction="column" spacing={2}>
-          <ConfigurationFieldset />
+          <SurveyConfiguration />
           <SubmitButton>Save</SubmitButton>
         </Stack>
       </Box>

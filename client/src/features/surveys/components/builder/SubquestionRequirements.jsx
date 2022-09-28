@@ -7,7 +7,7 @@ import { useFormContext } from 'react-hook-form';
 
 import { FormGroup, FormControlLabel, Checkbox } from '../../../../components/form';
 
-const RequirementConfigurationFieldset = ({ name, parentAnswerField }) => {
+const SubquestionRequirements = ({ name, parentAnswerField }) => {
   const { setValue, getValues, watch } = useFormContext();
   const answers = watch(parentAnswerField);
 
@@ -53,9 +53,9 @@ const RequirementConfigurationFieldset = ({ name, parentAnswerField }) => {
   );
 };
 
-RequirementConfigurationFieldset.propTypes = {
+SubquestionRequirements.propTypes = {
   name: PropTypes.string.isRequired,
   parentAnswerField: PropTypes.string.isRequired,
 };
 
-export default RequirementConfigurationFieldset;
+export default SubquestionRequirements;

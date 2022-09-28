@@ -5,8 +5,8 @@ import { Box, Stack, Divider } from '@mui/material';
 import { useForm, FormProvider } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
 
-import ConfigurationFieldset from './ConfigurationFieldset';
-import CreateQuestionFieldsetGroup from './CreateQuestionFieldsetGroup';
+import SurveyConfiguration from './SurveyConfiguration';
+import NewQuestionManager from './NewQuestionManager';
 
 import { SurveySchema } from '../../schemas/SurveySchema';
 import { SurveyTemplate } from '../../templates/SurveyTemplate';
@@ -30,8 +30,8 @@ const SurveyBuilderForm = ({ onSubmitSurvey }) => {
     <FormProvider {...methods}>
       <Box component="form" onSubmit={methods.handleSubmit(onSubmit)} sx={{ width: 1 }}>
         <Stack direction="column" spacing={2} divider={<Divider />}>
-          <ConfigurationFieldset />
-          <CreateQuestionFieldsetGroup name="questions" />
+          <SurveyConfiguration />
+          <NewQuestionManager name="questions" />
           <SubmitButton>Create survey</SubmitButton>
         </Stack>
       </Box>

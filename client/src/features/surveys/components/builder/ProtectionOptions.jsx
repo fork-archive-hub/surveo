@@ -4,23 +4,34 @@ import { useFormContext, Controller } from 'react-hook-form';
 
 import { FormGroup, FormControlLabel, Switch } from '../../../../components/form';
 
-const AccessibilityFieldset = () => {
+const ProtectionOptions = () => {
   const { control } = useFormContext();
 
   return (
     <Card elevation={2}>
       <CardHeader
-        title="Survey Accessibility"
+        title="Survey Protection"
         titleTypographyProps={{ variant: 'body1', display: 'block', align: 'center' }}
       />
       <CardActions sx={{ p: 2, pt: 0 }}>
         <FormGroup sx={{ width: 1 }}>
           <FormControlLabel
-            label="Accept votes"
+            label="Captcha"
             control={
               <Controller
                 control={control}
-                name="open"
+                name="protection.captcha"
+                render={({ field }) => <Switch checked={field.value} {...field} />}
+              />
+            }
+          />
+          <FormControlLabel
+            label="Prevent duplicates"
+            labelPlacement="end"
+            control={
+              <Controller
+                control={control}
+                name="protection.ipRestriction"
                 render={({ field }) => <Switch checked={field.value} {...field} />}
               />
             }
@@ -31,4 +42,4 @@ const AccessibilityFieldset = () => {
   );
 };
 
-export default AccessibilityFieldset;
+export default ProtectionOptions;

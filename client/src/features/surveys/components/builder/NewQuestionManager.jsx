@@ -4,13 +4,13 @@ import { Stack, Divider } from '@mui/material';
 
 import { useFormContext, useFieldArray } from 'react-hook-form';
 
-import CreateQuestionFieldset from './CreateQuestionFieldset';
+import NewQuestion from './NewQuestion';
 
 import { QuestionTemplate } from '../../templates/QuestionTemplate';
 
 import { Button } from '../../../../components/form';
 
-const CreateQuestionFieldsetGroup = ({ name }) => {
+const NewQuestionManager = ({ name }) => {
   const { control } = useFormContext();
   const { fields, append, remove } = useFieldArray({
     name: name,
@@ -30,7 +30,7 @@ const CreateQuestionFieldsetGroup = ({ name }) => {
   return (
     <Stack direction="column" spacing={2} divider={<Divider />}>
       {fields.map((field, index) => (
-        <CreateQuestionFieldset
+        <NewQuestion
           key={field.id}
           name={`${name}[${index}]`}
           index={index}
@@ -43,8 +43,8 @@ const CreateQuestionFieldsetGroup = ({ name }) => {
   );
 };
 
-CreateQuestionFieldsetGroup.propTypes = {
+NewQuestionManager.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
-export default CreateQuestionFieldsetGroup;
+export default NewQuestionManager;

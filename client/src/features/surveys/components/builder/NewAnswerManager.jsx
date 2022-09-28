@@ -4,14 +4,14 @@ import { Stack } from '@mui/material';
 
 import { useFormContext, useFieldArray } from 'react-hook-form';
 
-import AnswerTextField from './AnswerTextField';
+import NewAnswer from './NewAnswer';
 
 import { AnswerTemplate } from '../../templates/AnswerTemplate';
 import { updateIndexFields } from '../../utils/updateIndexFields';
 
 import { Button } from '../../../../components/form';
 
-const AnswerTextFieldGroup = ({ name }) => {
+const NewAnswerManager = ({ name }) => {
   const { control, getValues, setValue } = useFormContext();
   const { fields, append, remove } = useFieldArray({
     name: name,
@@ -37,7 +37,7 @@ const AnswerTextFieldGroup = ({ name }) => {
   return (
     <Stack direction="column" spacing={2}>
       {fields.map((field, index) => (
-        <AnswerTextField
+        <NewAnswer
           key={field.id}
           name={`${name}[${index}]`}
           index={index}
@@ -50,8 +50,8 @@ const AnswerTextFieldGroup = ({ name }) => {
   );
 };
 
-AnswerTextFieldGroup.propTypes = {
+NewAnswerManager.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
-export default AnswerTextFieldGroup;
+export default NewAnswerManager;
