@@ -1,6 +1,6 @@
 import { PresentationLayout } from '../../layouts';
 
-import Survey from '../../pages/Survey';
+import SurveyForm from '../../pages/SurveyForm';
 import NotFound from '../../pages/NotFound';
 
 export const commonRoutes = [
@@ -15,7 +15,7 @@ export const commonRoutes = [
             children: [
               {
                 path: 'form',
-                element: <Survey />,
+                element: <SurveyForm />,
               },
             ],
           },

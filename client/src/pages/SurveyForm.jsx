@@ -8,11 +8,11 @@ import { toast } from 'react-toastify';
 import { useSurvey, useSurveyProtection } from '../hooks';
 
 import { Spinner } from '../components/elements';
-import { SurveyForm } from '../features/surveys';
+import { SurveySheetForm } from '../features/surveys';
 
 import { feathers } from '../redux';
 
-const Survey = () => {
+const SurveyForm = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ const Survey = () => {
 
   return (
     <Grid container justifyContent="center" sx={{ py: 2 }}>
-      <Grid container item xs={12} sm={8} md={5} lg={4} xl={3}>
+      <Grid item xs={12} sm={8} md={5} lg={4} xl={3}>
         <Stack direction="column" spacing={2} sx={{ width: 1 }}>
           {isLoading && <Spinner />}
           {!survey.open && !isLoading && (
@@ -57,7 +57,7 @@ const Survey = () => {
             </Alert>
           )}
           {Boolean(survey._id) && !isLoading && (
-            <SurveyForm
+            <SurveySheetForm
               survey={survey}
               disableForm={isIPDisallowed || !survey.open}
               onSubmitVotes={handleSubmitVotes}
@@ -69,4 +69,4 @@ const Survey = () => {
   );
 };
 
-export default Survey;
+export default SurveyForm;

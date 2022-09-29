@@ -4,7 +4,7 @@ import { Card, CardHeader } from '@mui/material';
 
 import { convertDateToHumanFormat } from '../../utils/convertDateToHumanFormat';
 
-const SurveyHeader = ({ name, author, createdAt }) => {
+const SurveySheetHeader = ({ name, author, createdAt }) => {
   return (
     <Card>
       <CardHeader
@@ -17,10 +17,10 @@ const SurveyHeader = ({ name, author, createdAt }) => {
   );
 };
 
-SurveyHeader.propTypes = {
+SurveySheetHeader.propTypes = {
   name: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
 };
 
-export default SurveyHeader;
+export default SurveySheetHeader;

@@ -5,7 +5,7 @@ import { Grid } from '@mui/material';
 
 import { toast } from 'react-toastify';
 
-import { SurveyBuilderForm } from '../features/surveys';
+import { SurveySheetBuilderForm } from '../features/surveys';
 
 import { feathers } from '../redux';
 
@@ -27,8 +27,8 @@ const SurveyCreate = () => {
 
   return (
     <Grid container justifyContent="center" sx={{ py: 2 }}>
-      <Grid container item xs={12} sm={8} md={5} lg={4} xl={3}>
-        <SurveyBuilderForm onSubmitSurvey={handleSubmitSurvey} />
+      <Grid item xs={12} sm={8} md={5} lg={4} xl={3}>
+        <SurveySheetBuilderForm onSubmitSurvey={handleSubmitSurvey} />
       </Grid>
     </Grid>
   );
