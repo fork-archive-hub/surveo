@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 import { useSelector } from 'react-redux';
-import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
 import { Grid, Paper, Typography, Stack, Pagination } from '@mui/material';
 
@@ -14,26 +14,9 @@ import { SurveyBarList } from '../features/surveys';
 const Dashboard = () => {
   const user = useSelector((state) => state.authentication.user);
 
-  const navigate = useNavigate();
   const location = useLocation();
 
   const { surveys, isLoading, page, refresh } = useUserSurveys(user._id, 5);
-
-  const handlePreviewSurvey = (surveyId) => {
-    navigate(`/surveys/${surveyId}/form`);
-  };
-
-  const handleViewSurveyResults = (surveyId) => {
-    navigate(`/surveys/${surveyId}/results`);
-  };
-
-  const handleEditSurvey = (surveyId) => {
-    navigate(`/surveys/${surveyId}/edit`);
-  };
-
-  const handleDeleteSurvey = (surveyId) => {
-    navigate(`/surveys/${surveyId}/delete`);
-  };
 
   const handlePageChange = (_, value) => {
     page.set(value);
@@ -60,13 +43,7 @@ const Dashboard = () => {
         {isLoading && <Spinner />}
         {surveys.length > 0 && !isLoading && (
           <Stack direction="column" alignItems="center" spacing={2} sx={{ width: 1 }}>
-            <SurveyBarList
-              surveys={surveys}
-              onPreviewSurvey={handlePreviewSurvey}
-              onViewSurveyResults={handleViewSurveyResults}
-              onEditSurvey={handleEditSurvey}
-              onDeleteSurvey={handleDeleteSurvey}
-            />
+            <SurveyBarList surveys={surveys} />
             <Pagination color="primary" count={page.count} page={page.current} onChange={handlePageChange} />
           </Stack>
         )}
