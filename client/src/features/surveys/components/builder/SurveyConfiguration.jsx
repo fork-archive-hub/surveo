@@ -21,7 +21,14 @@ const SurveyConfiguration = () => {
           <Controller
             control={control}
             name="name"
-            render={(controller) => <TextField label="Survey name" controller={controller} />}
+            render={({ field, fieldState }) => (
+              <TextField
+                label="Survey name"
+                error={Boolean(fieldState.error)}
+                helperText={fieldState.error?.message}
+                {...field}
+              />
+            )}
           />
           <AccessibilityOptions />
           <ProtectionOptions />

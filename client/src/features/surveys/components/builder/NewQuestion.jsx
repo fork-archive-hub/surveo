@@ -30,7 +30,14 @@ const NewQuestion = ({ name, index, isRemoveButtonDisabled, onRemoveQuestion }) 
             <Controller
               control={control}
               name={`${name}.text`}
-              render={(controller) => <TextField label="Question" controller={controller} />}
+              render={({ field, fieldState }) => (
+                <TextField
+                  label="Question"
+                  error={Boolean(fieldState.error)}
+                  helperText={fieldState.error?.message}
+                  {...field}
+                />
+              )}
             />
             <Paper elevation={2} sx={{ p: 2 }}>
               <NewAnswerManager name={`${name}.answers`} />

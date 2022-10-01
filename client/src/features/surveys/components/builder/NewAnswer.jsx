@@ -20,10 +20,11 @@ const NewAnswer = ({ name, index, isRemoveButtonDisabled, onRemoveAnswer }) => {
     <Controller
       control={control}
       name={`${name}.text`}
-      render={(controller) => (
+      render={({ field, fieldState }) => (
         <TextField
           label="Answer"
-          controller={controller}
+          error={Boolean(fieldState.error)}
+          helperText={fieldState.error?.message}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -33,6 +34,7 @@ const NewAnswer = ({ name, index, isRemoveButtonDisabled, onRemoveAnswer }) => {
               </InputAdornment>
             ),
           }}
+          {...field}
         />
       )}
     />
