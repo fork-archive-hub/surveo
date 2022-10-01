@@ -12,7 +12,7 @@ const AppBar = ({ isAuthenticated, user, onLogout }) => {
   };
 
   return (
-    <MUIAppBar position="static">
+    <MUIAppBar sx={{ position: 'static' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Logo />

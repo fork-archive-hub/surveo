@@ -5,13 +5,16 @@ import { Grid, Box, Paper, Stack, Typography, Button } from '@mui/material';
 const Landing = () => {
   return (
     <Box
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-      justifyContent={{ xs: 'start', md: 'center' }}
-      sx={{ height: '100vh', py: 2 }}
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: { xs: 'start', md: 'center' },
+        height: '100vh',
+        py: 2,
+      }}
     >
-      <Grid container component={Paper} elevation={1} justifyContent="center" alignItems="center">
+      <Grid container component={Paper} elevation={1} sx={{ alignItems: 'center', justifyContent: 'center' }}>
         <Grid item xs={12} md={7} sx={{ p: 2 }}>
           <Stack spacing={2} sx={{ textAlign: { xs: 'center', md: 'inherit' } }}>
             <Typography variant="h2">Quickly get answers to your questions with Surveo.</Typography>

@@ -40,7 +40,7 @@ const UserMenu = ({ user, onLogout }) => {
         onClose={handleMenuClose}
       >
         <MenuItem disabled>
-          <Typography variant="body1" align="center" sx={{ width: 1, textTransform: 'capitalize' }}>
+          <Typography variant="body1" sx={{ width: 1, textTransform: 'capitalize', textAlign: 'center' }}>
             Hello, {user.username}!
           </Typography>
         </MenuItem>

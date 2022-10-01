@@ -12,12 +12,12 @@ import { IconButton } from '../../../../components/form';
 const SurveyBar = ({ survey }) => {
   return (
     <Paper elevation={2} sx={{ p: 2 }}>
-      <Stack direction="row" flexWrap="wrap" spacing={2}>
+      <Stack direction="row" spacing={2} sx={{ flexWrap: 'wrap' }}>
         <Stack direction="column">
           <Typography variant="h6">{survey.name}</Typography>
           <Typography variant="caption">Created on {convertDateToHumanFormat(survey.createdAt)}</Typography>
         </Stack>
-        <Stack direction="row" justifyContent="flex-end" alignItems="center" spacing={2} sx={{ flexGrow: 1 }}>
+        <Stack direction="row" spacing={2} sx={{ flexGrow: 1, alignItems: 'center', justifyContent: 'flex-end' }}>
           <Tooltip title="Preview survey">
             <IconButton to={`/surveys/${survey._id}/form`} component={Link}>
               <PreviewOutlined />

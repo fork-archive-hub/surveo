@@ -26,14 +26,17 @@ const Register = () => {
 
   return (
     <Box
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-      justifyContent={{ xs: 'start', md: 'center' }}
-      sx={{ height: '100vh', py: 2 }}
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: { xs: 'start', md: 'center' },
+        height: '100vh',
+        py: 2,
+      }}
     >
       <RegisterForm onSubmitCredentials={handleSubmitCredentials} />
-      <Stack direction="row" gap={1} sx={{ my: 1 }}>
+      <Stack direction="row" spacing={1} sx={{ my: 1 }}>
         <Typography variant="body2">Already have an account?</Typography>
         <MUILink to="/auth/login" variant="body2" component={Link}>
           Login

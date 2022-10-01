@@ -32,7 +32,7 @@ const SurveyResults = () => {
   }, [survey._id, survey.authorId, user._id, navigate]);
 
   return (
-    <Grid container justifyContent="center" sx={{ py: 2 }}>
+    <Grid container sx={{ justifyContent: 'center', py: 2 }}>
       <Grid item xs={12} sm={8} md={5} lg={4} xl={3}>
         {isLoading && <Spinner />}
         {Boolean(survey._id) && !isLoading && <SurveySheetResults survey={survey} />}

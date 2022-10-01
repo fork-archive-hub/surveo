@@ -29,10 +29,10 @@ const SubquestionRequirements = ({ name, parentAnswerField }) => {
     <Card elevation={2}>
       <CardHeader
         title={
-          <Stack direction="row" alignItems="center" justifyContent="center" spacing={1}>
+          <Stack direction="row" spacing={1} sx={{ alignItems: 'center', justifyContent: 'center' }}>
             <Typography variant="h6">Requirements</Typography>
             <Tooltip title="Requirements are used to determine which answer from the parent question needs to be selected to show this subquestion.">
-              <InfoOutlined fontSize="small" />
+              <InfoOutlined sx={{ fontSize: 'medium' }} />
             </Tooltip>
           </Stack>
         }

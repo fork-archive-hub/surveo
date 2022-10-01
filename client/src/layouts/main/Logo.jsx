@@ -14,8 +14,8 @@ const Logo = () => {
         sx={{
           fontFamily: 'monospace',
           letterSpacing: '.2rem',
-          color: 'inherit',
           textDecoration: 'none',
+          color: 'inherit',
         }}
       >
         SURVEO

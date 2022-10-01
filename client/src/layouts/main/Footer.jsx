@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <Container maxWidth="xl">
       <Paper sx={{ p: 1 }}>
-        <Typography align="center" variant="caption" display="block" sx={{ color: 'text.secondary' }}>
+        <Typography variant="caption" sx={{ display: 'block', color: 'text.secondary', textAlign: 'center' }}>
           © Krawczyk Patryk {currentYear}. All Rights Reserved.
         </Typography>
       </Paper>

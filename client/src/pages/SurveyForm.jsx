@@ -44,7 +44,7 @@ const SurveyForm = () => {
   };
 
   return (
-    <Grid container justifyContent="center" sx={{ py: 2 }}>
+    <Grid container sx={{ justifyContent: 'center', py: 2 }}>
       <Grid item xs={12} sm={8} md={5} lg={4} xl={3}>
         <Stack direction="column" spacing={2} sx={{ width: 1 }}>
           {isLoading && <Spinner />}

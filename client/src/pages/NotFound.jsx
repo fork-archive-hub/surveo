@@ -7,17 +7,20 @@ import { Button } from '../components/form';
 const NotFound = () => {
   return (
     <Box
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
-      sx={{ height: '100vh', py: 2 }}
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+        py: 2,
+      }}
     >
-      <Stack direction="column" alignItems="center" spacing={2}>
+      <Stack direction="column" spacing={2} sx={{ alignItems: 'center' }}>
         <Typography variant="h2" component="span">
           404 Not Found
         </Typography>
-        <Typography variant="body1" align="center">
+        <Typography variant="body1" sx={{ textAlign: 'center' }}>
           The page you are looking for does not exist. Click the button below to go back to the home page.
         </Typography>
         <Button to="/" variant="outlined" size="large" component={Link}>

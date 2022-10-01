@@ -34,16 +34,16 @@ const SurveyDelete = () => {
   };
 
   return (
-    <Grid container justifyContent="center" sx={{ py: 2 }}>
+    <Grid container sx={{ justifyContent: 'center', py: 2 }}>
       <Grid item xs={12} sm={8} md={5} lg={4} xl={3}>
         <Card sx={{ width: 1 }}>
           <CardContent>
-            <Stack direction="column" alignItems="center">
+            <Stack direction="column" sx={{ alignItems: 'center' }}>
               <WarningOutlined sx={{ fontSize: 128 }} />
-              <Typography variant="h5" align="center">
+              <Typography variant="h5" sx={{ textAlign: 'center' }}>
                 Delete Survey
               </Typography>
-              <Typography variant="caption" align="center">
+              <Typography variant="caption" sx={{ textAlign: 'center' }}>
                 Are you sure you want to delete this survey?
               </Typography>
             </Stack>
