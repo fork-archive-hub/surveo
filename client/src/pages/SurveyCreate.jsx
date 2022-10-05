@@ -5,6 +5,8 @@ import { Grid } from '@mui/material';
 
 import { toast } from 'react-toastify';
 
+import { useDocumentTitle } from '../hooks';
+
 import { SurveySheetBuilderForm } from '../features/surveys';
 
 import { feathers } from '../redux';
@@ -24,6 +26,8 @@ const SurveyCreate = () => {
       navigate(`/surveys/${result.payload._id}/form`);
     }
   };
+
+  useDocumentTitle('Create survey');
 
   return (
     <Grid container sx={{ justifyContent: 'center', py: 2 }}>

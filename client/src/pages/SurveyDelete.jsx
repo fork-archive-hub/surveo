@@ -6,6 +6,8 @@ import { WarningOutlined } from '@mui/icons-material';
 
 import { toast } from 'react-toastify';
 
+import { useDocumentTitle } from '../hooks';
+
 import { Button } from '../components/form';
 
 import { feathers } from '../redux';
@@ -32,6 +34,8 @@ const SurveyDelete = () => {
       navigate('/');
     }
   };
+
+  useDocumentTitle('Delete survey');
 
   return (
     <Grid container sx={{ justifyContent: 'center', py: 2 }}>

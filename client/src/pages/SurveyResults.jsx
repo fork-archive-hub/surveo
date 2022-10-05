@@ -7,7 +7,7 @@ import { Grid } from '@mui/material';
 
 import { toast } from 'react-toastify';
 
-import { useSurveyResults } from '../hooks';
+import { useDocumentTitle, useSurveyResults } from '../hooks';
 
 import { Spinner } from '../components/elements';
 import { SurveySheetResults } from '../features/surveys';
@@ -30,6 +30,8 @@ const SurveyResults = () => {
 
     validateSurveyAuthor();
   }, [survey._id, survey.authorId, user._id, navigate]);
+
+  useDocumentTitle(isLoading ? 'Survey results' : `${survey.name} results`);
 
   return (
     <Grid container sx={{ justifyContent: 'center', py: 2 }}>

@@ -7,7 +7,7 @@ import { Grid, Box } from '@mui/material';
 
 import { toast } from 'react-toastify';
 
-import { useSurvey } from '../hooks';
+import { useDocumentTitle, useSurvey } from '../hooks';
 
 import { Spinner } from '../components/elements';
 import { SurveyEditorForm } from '../features/surveys';
@@ -50,6 +50,8 @@ const SurveyEdit = () => {
 
     validateSurveyAuthor();
   }, [survey._id, survey.authorId, user._id, navigate]);
+
+  useDocumentTitle('Edit survey');
 
   return (
     <Grid container sx={{ justifyContent: 'center', py: 2 }}>

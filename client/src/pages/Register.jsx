@@ -5,6 +5,8 @@ import { Box, Stack, Typography, Link as MUILink } from '@mui/material';
 
 import { toast } from 'react-toastify';
 
+import { useDocumentTitle } from '../hooks';
+
 import { RegisterForm } from '../features/authentication';
 
 import { feathers } from '../redux';
@@ -23,6 +25,8 @@ const Register = () => {
       navigate('/auth/login');
     }
   };
+
+  useDocumentTitle('Register');
 
   return (
     <Box

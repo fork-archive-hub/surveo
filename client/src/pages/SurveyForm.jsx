@@ -5,7 +5,7 @@ import { Grid, Stack, Alert } from '@mui/material';
 
 import { toast } from 'react-toastify';
 
-import { useSurvey, useSurveyProtection } from '../hooks';
+import { useDocumentTitle, useSurvey, useSurveyProtection } from '../hooks';
 
 import { Spinner } from '../components/elements';
 import { SurveySheetForm } from '../features/surveys';
@@ -42,6 +42,8 @@ const SurveyForm = () => {
       console.error(error);
     }
   };
+
+  useDocumentTitle(isLoading ? 'Survey form' : `${survey.name} form`);
 
   return (
     <Grid container sx={{ justifyContent: 'center', py: 2 }}>

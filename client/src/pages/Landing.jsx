@@ -2,7 +2,11 @@ import { Link } from 'react-router-dom';
 
 import { Grid, Box, Paper, Stack, Typography, Button } from '@mui/material';
 
+import { useDocumentTitle } from '../hooks';
+
 const Landing = () => {
+  useDocumentTitle('Survey creator');
+
   return (
     <Box
       sx={{

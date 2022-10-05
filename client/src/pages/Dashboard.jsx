@@ -5,7 +5,7 @@ import { useLocation, Link } from 'react-router-dom';
 
 import { Grid, Paper, Typography, Stack, Pagination } from '@mui/material';
 
-import { useUserSurveys } from '../hooks';
+import { useDocumentTitle, useUserSurveys } from '../hooks';
 
 import { Button } from '../components/form';
 import { Spinner } from '../components/elements';
@@ -31,6 +31,8 @@ const Dashboard = () => {
 
     refreshCurrentPageResults();
   }, [location, refresh]);
+
+  useDocumentTitle('Dashboard');
 
   return (
     <Grid container component={Paper} elevation={1}>

@@ -2,9 +2,13 @@ import { Link } from 'react-router-dom';
 
 import { Box, Stack, Typography } from '@mui/material';
 
+import { useDocumentTitle } from '../hooks';
+
 import { Button } from '../components/form';
 
 const NotFound = () => {
+  useDocumentTitle('Page not found');
+
   return (
     <Box
       sx={{
