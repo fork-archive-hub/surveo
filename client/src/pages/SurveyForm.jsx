@@ -61,7 +61,7 @@ const SurveyForm = () => {
           {Boolean(survey._id) && !isLoading && (
             <SurveySheetForm
               survey={survey}
-              disableForm={isIPDisallowed || !survey.open}
+              isFormDisabled={isIPDisallowed || !survey.open}
               onSubmitVotes={handleSubmitVotes}
             />
           )}
