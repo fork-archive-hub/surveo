@@ -2,7 +2,7 @@ import { Card, CardHeader, CardActions } from '@mui/material';
 
 import { useFormContext, Controller } from 'react-hook-form';
 
-import { FormGroup, FormControlLabel, Switch } from '../../../../components/form';
+import { FormGroup, FormControlLabel, Checkbox } from '../../../../components/form';
 
 const AccessibilityOptions = () => {
   const { control } = useFormContext();
@@ -21,7 +21,7 @@ const AccessibilityOptions = () => {
               <Controller
                 control={control}
                 name="open"
-                render={({ field }) => <Switch checked={field.value} {...field} />}
+                render={({ field }) => <Checkbox checked={field.value} {...field} />}
               />
             }
           />

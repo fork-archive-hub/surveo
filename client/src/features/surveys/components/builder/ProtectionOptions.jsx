@@ -2,7 +2,7 @@ import { Card, CardHeader, CardActions } from '@mui/material';
 
 import { useFormContext, Controller } from 'react-hook-form';
 
-import { FormGroup, FormControlLabel, Switch } from '../../../../components/form';
+import { FormGroup, FormControlLabel, Checkbox } from '../../../../components/form';
 
 const ProtectionOptions = () => {
   const { control } = useFormContext();
@@ -21,7 +21,7 @@ const ProtectionOptions = () => {
               <Controller
                 control={control}
                 name="protection.captcha"
-                render={({ field }) => <Switch checked={field.value} {...field} />}
+                render={({ field }) => <Checkbox checked={field.value} {...field} />}
               />
             }
           />
@@ -32,7 +32,7 @@ const ProtectionOptions = () => {
               <Controller
                 control={control}
                 name="protection.ipRestriction"
-                render={({ field }) => <Switch checked={field.value} {...field} />}
+                render={({ field }) => <Checkbox checked={field.value} {...field} />}
               />
             }
           />
