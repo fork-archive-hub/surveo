@@ -5,7 +5,7 @@ import { useLocation, Link } from 'react-router-dom';
 
 import { Grid, Paper, Typography, Stack, Pagination } from '@mui/material';
 
-import { useDocumentTitle, useUserSurveys } from '../hooks';
+import { useDocumentTitle, useGetUserSurveysQuery } from '../hooks';
 
 import { Button } from '../components/form';
 import { Spinner } from '../components/elements';
@@ -16,7 +16,7 @@ const Dashboard = () => {
 
   const location = useLocation();
 
-  const { surveys, isLoading, page, refresh } = useUserSurveys(user._id, 5);
+  const { surveys, isLoading, page, refresh } = useGetUserSurveysQuery(user._id, 5);
 
   const handlePageChange = (_, value) => {
     page.set(value);

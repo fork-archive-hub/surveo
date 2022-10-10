@@ -7,7 +7,7 @@ import { Grid, Box } from '@mui/material';
 
 import { toast } from 'react-toastify';
 
-import { useDocumentTitle, useSurvey } from '../hooks';
+import { useDocumentTitle, useGetSurveyQuery } from '../hooks';
 
 import { Spinner } from '../components/elements';
 import { SurveyEditorForm } from '../features/surveys';
@@ -21,7 +21,7 @@ const SurveyEdit = () => {
   const params = useParams();
   const navigate = useNavigate();
 
-  const { survey, isLoading } = useSurvey(params.surveyId);
+  const { survey, isLoading } = useGetSurveyQuery(params.surveyId);
 
   const handleUpdateSurvey = async (data) => {
     const result = await dispatch(

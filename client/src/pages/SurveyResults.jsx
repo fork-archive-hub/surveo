@@ -7,7 +7,7 @@ import { Grid } from '@mui/material';
 
 import { toast } from 'react-toastify';
 
-import { useDocumentTitle, useSurveyResults } from '../hooks';
+import { useDocumentTitle, useGetSurveyQuery, useSubscribeSurveyResultsQuery } from '../hooks';
 
 import { Spinner } from '../components/elements';
 import { SurveySheetResults } from '../features/surveys';
@@ -18,7 +18,7 @@ const SurveyResults = () => {
   const params = useParams();
   const navigate = useNavigate();
 
-  const { survey, isLoading } = useSurveyResults(params.surveyId);
+  const { survey, isLoading } = useGetSurveyQuery(params.surveyId);
 
   useEffect(() => {
     const validateSurveyAuthor = () => {
@@ -31,6 +31,7 @@ const SurveyResults = () => {
     validateSurveyAuthor();
   }, [survey._id, survey.authorId, user._id, navigate]);
 
+  useSubscribeSurveyResultsQuery(survey?._id);
   useDocumentTitle(isLoading ? 'Survey results' : `${survey.name} results`);
 
   return (

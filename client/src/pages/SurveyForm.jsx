@@ -5,7 +5,7 @@ import { Grid, Stack, Alert } from '@mui/material';
 
 import { toast } from 'react-toastify';
 
-import { useDocumentTitle, useSurvey, useSurveyProtection } from '../hooks';
+import { useDocumentTitle, useGetSurveyQuery, useSurveyProtection } from '../hooks';
 
 import { Spinner } from '../components/elements';
 import { SurveySheetForm } from '../features/surveys';
@@ -17,7 +17,7 @@ const SurveyForm = () => {
   const params = useParams();
   const navigate = useNavigate();
 
-  const { survey, isLoading } = useSurvey(params.surveyId);
+  const { survey, isLoading } = useGetSurveyQuery(params.surveyId);
   const { isIPDisallowed, getCaptchaToken } = useSurveyProtection(survey);
 
   const handleSubmitVotes = async (votes) => {

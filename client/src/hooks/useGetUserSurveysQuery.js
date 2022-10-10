@@ -6,7 +6,7 @@ import { feathers } from '../redux';
 
 import { toast } from 'react-toastify';
 
-export const useUserSurveys = (userId, limit) => {
+export const useGetUserSurveysQuery = (userId, limit) => {
   const [surveys, setSurveys] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
@@ -36,7 +36,7 @@ export const useUserSurveys = (userId, limit) => {
 
         if (result.error) {
           toast.error(result.error, {
-            toastId: 'use-user-surveys-hook-error',
+            toastId: 'use-get-user-surveys-query',
           });
         } else {
           setSurveys(result.payload.data);

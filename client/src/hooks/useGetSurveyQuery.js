@@ -6,7 +6,7 @@ import { feathers } from '../redux';
 
 import { toast } from 'react-toastify';
 
-export const useSurveyResults = (surveyId) => {
+export const useGetSurveyQuery = (surveyId) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const survey = useSelector((state) => state.survey.data);
@@ -21,7 +21,7 @@ export const useSurveyResults = (surveyId) => {
 
         if (result.error) {
           toast.error(result.error, {
-            toastId: 'use-survey-results-hook-error',
+            toastId: 'use-get-survey-query',
           });
         }
 
@@ -31,26 +31,6 @@ export const useSurveyResults = (surveyId) => {
 
     getSurvey(surveyId);
   }, [surveyId, dispatch]);
-
-  useEffect(() => {
-    const subscribe = () => {
-      if (survey._id && !isLoading) {
-        dispatch(feathers.survey.subscribe({ surveyId: survey._id }));
-      }
-    };
-
-    subscribe();
-
-    return () => {
-      const unsubscribe = () => {
-        if (survey._id && !isLoading) {
-          dispatch(feathers.survey.unsubscribe({ surveyId: survey._id }));
-        }
-      };
-
-      unsubscribe();
-    };
-  }, [survey._id, isLoading, dispatch]);
 
   return {
     survey: survey,
