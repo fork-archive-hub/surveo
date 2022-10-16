@@ -7,7 +7,7 @@ import { useFormContext, Controller } from 'react-hook-form';
 
 import { TextField } from '../../../../components/form';
 
-const NewAnswer = ({ name, index, isRemoveButtonDisabled, onRemoveAnswer }) => {
+const AnswerTextField = ({ name, index, isRemoveButtonDisabled, onRemoveAnswer }) => {
   const { control } = useFormContext();
 
   const handleRemoveAnswer = () => {
@@ -41,11 +41,11 @@ const NewAnswer = ({ name, index, isRemoveButtonDisabled, onRemoveAnswer }) => {
   );
 };
 
-NewAnswer.propTypes = {
+AnswerTextField.propTypes = {
   name: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   isRemoveButtonDisabled: PropTypes.bool.isRequired,
   onRemoveAnswer: PropTypes.func.isRequired,
 };
 
-export default NewAnswer;
+export default AnswerTextField;
