@@ -1,11 +1,8 @@
+import ManagementModule from '../lib/ManagementModule';
+
 import { vote } from '../actions';
 
-export default class VoteModule {
-  constructor(client, store) {
-    this.client = client;
-    this.store = store;
-  }
-
+class VoteModule extends ManagementModule {
   getModuleActions = () => {
     return {
       [vote.create.type]: this.handleVoteCreateAction,
@@ -15,10 +12,6 @@ export default class VoteModule {
 
   initializeEventListeners = () => {
     this.client.service('votes').on('created', this.handleVoteCreatedEvent);
-  };
-
-  handleVoteCreatedEvent = (data) => {
-    this.store.dispatch(vote.onCreated(data));
   };
 
   handleVoteCreateAction = async (action) => {
@@ -36,4 +29,10 @@ export default class VoteModule {
 
     return vote.get(result);
   };
+
+  handleVoteCreatedEvent = (data) => {
+    this.store.dispatch(vote.onCreated(data));
+  };
 }
+
+export default VoteModule;

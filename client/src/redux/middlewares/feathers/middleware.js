@@ -2,11 +2,11 @@ import feathers from '@feathersjs/client';
 import socketio from '@feathersjs/socketio-client';
 import io from 'socket.io-client';
 
+import ErrorHandler from './lib/ErrorHandler';
+
 import AuthenticationModule from './modules/AuthenticationModule';
 import SurveyModule from './modules/SurveyModule';
 import VoteModule from './modules/VoteModule';
-
-import { stringifyError } from './utils/stringifyError';
 
 export const middleware = (store) => {
   const client = feathers();
@@ -37,7 +37,7 @@ export const middleware = (store) => {
           return next(result);
         }
       } catch (error) {
-        return next({ ...action, error: stringifyError(error) });
+        return next({ ...action, error: ErrorHandler.stringifyError(error) });
       }
     } else {
       return next(action);

@@ -1,11 +1,8 @@
+import ManagementModule from '../lib/ManagementModule';
+
 import { survey } from '../actions';
 
-export default class SurveyModule {
-  constructor(client, store) {
-    this.client = client;
-    this.store = store;
-  }
-
+class SurveyModule extends ManagementModule {
   getModuleActions = () => {
     return {
       [survey.create.type]: this.handleSurveyCreateAction,
@@ -18,8 +15,6 @@ export default class SurveyModule {
       [survey.unsubscribe.type]: this.handleSurveyUnsubscribeAction,
     };
   };
-
-  initializeEventListeners = () => {};
 
   handleSurveyCreateAction = async (action) => {
     const result = await this.client.service('surveys').create(action.payload.data);
@@ -72,3 +67,5 @@ export default class SurveyModule {
     return survey.unsubscribe(result);
   };
 }
+
+export default SurveyModule;

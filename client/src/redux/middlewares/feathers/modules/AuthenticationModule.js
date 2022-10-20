@@ -1,11 +1,8 @@
+import ManagementModule from '../lib/ManagementModule';
+
 import { authentication } from '../actions';
 
-export default class AuthenticationModule {
-  constructor(client, store) {
-    this.client = client;
-    this.store = store;
-  }
-
+class AuthenticationModule extends ManagementModule {
   getModuleActions = () => {
     return {
       [authentication.register.type]: this.handleRegisterAction,
@@ -22,14 +19,6 @@ export default class AuthenticationModule {
     this.client.reAuthenticate().catch((error) => {
       console.log('Reauthentication failed:', error.message);
     });
-  };
-
-  handleAuthenticatedEvent = (data) => {
-    this.store.dispatch(authentication.onLogin(data));
-  };
-
-  handleLogoutEvent = (data) => {
-    this.store.dispatch(authentication.onLogout(data));
   };
 
   handleRegisterAction = async (action) => {
@@ -62,4 +51,14 @@ export default class AuthenticationModule {
 
     return authentication.reauthenticate(result);
   };
+
+  handleAuthenticatedEvent = (data) => {
+    this.store.dispatch(authentication.onLogin(data));
+  };
+
+  handleLogoutEvent = (data) => {
+    this.store.dispatch(authentication.onLogout(data));
+  };
 }
+
+export default AuthenticationModule;
