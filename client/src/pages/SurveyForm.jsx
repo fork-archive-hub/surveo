@@ -50,7 +50,7 @@ const SurveyForm = () => {
       <Grid item xs={12} sm={8} md={5} lg={4} xl={3}>
         <Stack direction="column" spacing={2} sx={{ width: 1 }}>
           {isLoading && <Spinner />}
-          {!survey.open && !isLoading && (
+          {Boolean(survey._id) && !survey.open && !isLoading && (
             <Alert severity="info">This survey is closed and no longer accepting votes.</Alert>
           )}
           {survey.open && isIPDisallowed && !isLoading && (
