@@ -20,12 +20,12 @@ const Landing = () => {
     >
       <Grid container component={Paper} elevation={1} sx={{ alignItems: 'center', justifyContent: 'center' }}>
         <Grid item xs={12} md={7} sx={{ p: 2 }}>
-          <Stack spacing={2} sx={{ textAlign: { xs: 'center', md: 'inherit' } }}>
+          <Stack sx={{ textAlign: { xs: 'center', md: 'inherit' } }}>
             <Typography variant="h2">Quickly get answers to your questions with Surveo.</Typography>
             <Typography variant="h5" sx={{ opacity: 0.7 }}>
               Create surveys with any number of questions and answers while tracking the results later in real time.
             </Typography>
-            <Stack direction="row" spacing={2} sx={{ justifyContent: { xs: 'center', md: 'start' } }}>
+            <Stack direction="row" sx={{ justifyContent: { xs: 'center', md: 'start' } }}>
               <Button to="/auth/register" variant="contained" size="large" component={Link}>
                 Sign up
               </Button>

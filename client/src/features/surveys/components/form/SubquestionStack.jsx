@@ -11,7 +11,7 @@ const SubquestionStack = ({ subquestions, selectedAnswerIndex }) => {
 
   if (requiredSubquestions.length > 0) {
     return (
-      <Stack direction="column" spacing={2}>
+      <Stack>
         {requiredSubquestions.map((subquestion) => (
           <Subquestion key={subquestion._id} subquestion={subquestion} />
         ))}

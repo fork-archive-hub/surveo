@@ -11,13 +11,8 @@ const QuestionResult = ({ question }) => {
 
   return (
     <Card>
-      <CardHeader
-        title={question.text}
-        subheader={`${totalVotes} vote${totalVotes === 1 ? '' : 's'}`}
-        titleTypographyProps={{ variant: 'h6', display: 'block', align: 'center' }}
-        subheaderTypographyProps={{ variant: 'caption', display: 'block', align: 'center' }}
-      />
-      <CardActions sx={{ p: 2, pt: 0 }}>
+      <CardHeader title={question.text} subheader={`${totalVotes} vote${totalVotes === 1 ? '' : 's'}`} />
+      <CardActions>
         <Paper elevation={2} sx={{ width: 1, p: 2 }}>
           <AnswerResultStack answers={question.answers} totalVotes={totalVotes} />
         </Paper>

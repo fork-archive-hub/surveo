@@ -35,7 +35,7 @@ const AnswerTextFieldStack = ({ path }) => {
   };
 
   return (
-    <Stack direction="column" spacing={2}>
+    <Stack>
       {fields.map((field, index) => (
         <AnswerTextField
           key={field.id}

@@ -7,7 +7,7 @@ import QuestionResult from './QuestionResult';
 
 const QuestionResultStack = ({ questions }) => {
   return (
-    <Stack direction="column" spacing={2}>
+    <Stack>
       {questions.map((question) => (
         <Fragment key={question._id}>
           <QuestionResult question={question} />

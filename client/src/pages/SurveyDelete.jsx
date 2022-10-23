@@ -42,7 +42,7 @@ const SurveyDelete = () => {
       <Grid item xs={12} sm={8} md={5} lg={4} xl={3}>
         <Card sx={{ width: 1 }}>
           <CardContent>
-            <Stack direction="column" sx={{ alignItems: 'center' }}>
+            <Stack sx={{ alignItems: 'center' }}>
               <WarningOutlined sx={{ fontSize: 128 }} />
               <Typography variant="h5" sx={{ textAlign: 'center' }}>
                 Delete Survey

@@ -15,11 +15,8 @@ const Subquestion = ({ subquestion }) => {
 
   return (
     <Card>
-      <CardHeader
-        title={subquestion.text}
-        titleTypographyProps={{ variant: 'h6', display: 'block', align: 'center' }}
-      />
-      <CardActions sx={{ p: 2, pt: 0 }}>
+      <CardHeader title={subquestion.text} />
+      <CardActions>
         <Paper elevation={2} sx={{ width: 1, p: 2 }}>
           <AnswerGroup answers={subquestion.answers} onSelectAnswer={handleSelectAnswer} />
         </Paper>

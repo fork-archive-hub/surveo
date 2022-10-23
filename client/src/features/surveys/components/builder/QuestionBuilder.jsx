@@ -19,14 +19,11 @@ const QuestionBuilder = ({ path, index, isRemoveButtonDisabled, onRemoveQuestion
   };
 
   return (
-    <Stack direction="column" spacing={2}>
+    <Stack>
       <Card>
-        <CardHeader
-          title={`Question ${index + 1}`}
-          titleTypographyProps={{ variant: 'h6', display: 'block', align: 'center' }}
-        />
-        <CardActions sx={{ p: 2, pt: 0 }}>
-          <Stack direction="column" spacing={2} sx={{ width: 1 }}>
+        <CardHeader title={`Question ${index + 1}`} />
+        <CardActions>
+          <Stack sx={{ width: 1 }}>
             <Controller
               control={control}
               name={`${path}.text`}

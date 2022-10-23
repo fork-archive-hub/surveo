@@ -28,7 +28,7 @@ const QuestionBuilderStack = ({ path }) => {
   };
 
   return (
-    <Stack direction="column" spacing={2} divider={<Divider />}>
+    <Stack divider={<Divider />}>
       {fields.map((field, index) => (
         <QuestionBuilder
           key={field.id}

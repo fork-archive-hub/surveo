@@ -20,7 +20,7 @@ const NotFound = () => {
         py: 2,
       }}
     >
-      <Stack direction="column" spacing={2} sx={{ alignItems: 'center' }}>
+      <Stack sx={{ alignItems: 'center' }}>
         <Typography variant="h2" component="span">
           404 Not Found
         </Typography>

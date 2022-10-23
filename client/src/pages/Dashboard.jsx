@@ -44,13 +44,13 @@ const Dashboard = () => {
       <Grid container item sx={{ px: 2, pb: 2 }}>
         {isLoading && <Spinner />}
         {surveys.length > 0 && !isLoading && (
-          <Stack direction="column" spacing={2} sx={{ width: 1, alignItems: 'center' }}>
+          <Stack sx={{ width: 1, alignItems: 'center' }}>
             <UserSurveyStack surveys={surveys} />
             <Pagination color="primary" count={page.count} page={page.current} onChange={handlePageChange} />
           </Stack>
         )}
         {surveys.length === 0 && !isLoading && (
-          <Stack direction="column" sx={{ width: 1, alignItems: 'center' }}>
+          <Stack sx={{ width: 1, alignItems: 'center' }}>
             <Typography variant="h5">You dont have any surveys yet.</Typography>
             <Typography variant="body1">Create a survey to get started.</Typography>
           </Stack>

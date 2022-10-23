@@ -9,11 +9,8 @@ const ProtectionOptions = () => {
 
   return (
     <Card elevation={2}>
-      <CardHeader
-        title="Survey Protection"
-        titleTypographyProps={{ variant: 'body1', display: 'block', align: 'center' }}
-      />
-      <CardActions sx={{ p: 2, pt: 0 }}>
+      <CardHeader title="Survey Protection" />
+      <CardActions>
         <FormGroup sx={{ width: 1 }}>
           <FormControlLabel
             label="Captcha"

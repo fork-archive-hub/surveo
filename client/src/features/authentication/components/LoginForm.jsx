@@ -28,10 +28,10 @@ const LoginForm = ({ onSubmitCredentials }) => {
 
   return (
     <Card sx={{ width: 340 }}>
-      <CardHeader title="Sign in" titleTypographyProps={{ variant: 'h4', display: 'block', align: 'center' }} />
-      <CardActions sx={{ p: 2, pt: 0 }}>
+      <CardHeader title="Sign in" />
+      <CardActions>
         <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ width: 1 }}>
-          <Stack direction="column" spacing={2}>
+          <Stack>
             <Controller
               control={control}
               name="username"

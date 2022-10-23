@@ -8,7 +8,7 @@ const AnswerResultStack = ({ answers, totalVotes }) => {
   const sortedAnswers = answers.slice().sort((a, b) => b.votes - a.votes);
 
   return (
-    <Stack direction="column" spacing={2}>
+    <Stack>
       {sortedAnswers.map((answer) => (
         <AnswerResult key={answer._id} answer={answer} totalVotes={totalVotes} />
       ))}

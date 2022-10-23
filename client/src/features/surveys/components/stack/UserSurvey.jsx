@@ -12,12 +12,12 @@ import { IconButton } from '../../../../components/form';
 const UserSurvey = ({ survey }) => {
   return (
     <Paper elevation={2} sx={{ p: 2 }}>
-      <Stack direction="row" spacing={2} sx={{ flexWrap: 'wrap' }}>
-        <Stack direction="column">
+      <Stack direction="row" sx={{ flexWrap: 'wrap' }}>
+        <Stack spacing={1}>
           <Typography variant="h6">{survey.name}</Typography>
           <Typography variant="caption">Created on {convertDateToHumanFormat(survey.createdAt)}</Typography>
         </Stack>
-        <Stack direction="row" spacing={2} sx={{ flexGrow: 1, alignItems: 'center', justifyContent: 'flex-end' }}>
+        <Stack direction="row" sx={{ flexGrow: 1, alignItems: 'center', justifyContent: 'flex-end' }}>
           <Tooltip title="Preview survey">
             <IconButton to={`/surveys/${survey._id}/form`} component={Link}>
               <PreviewOutlined />

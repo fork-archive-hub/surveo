@@ -12,12 +12,9 @@ const SurveyConfiguration = () => {
 
   return (
     <Card>
-      <CardHeader
-        title="Survey Configuration"
-        titleTypographyProps={{ variant: 'h6', display: 'block', align: 'center' }}
-      />
+      <CardHeader title="Survey Configuration" />
       <CardContent sx={{ px: 2, pt: 0, '&:last-child': { pb: 2 } }}>
-        <Stack direction="column" spacing={2} sx={{ width: 1 }}>
+        <Stack sx={{ width: 1 }}>
           <Controller
             control={control}
             name="name"

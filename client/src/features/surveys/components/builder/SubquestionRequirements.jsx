@@ -38,7 +38,7 @@ const SubquestionRequirements = ({ path, questionAnswersPath }) => {
         }
         disableTypography
       />
-      <CardActions sx={{ p: 2, pt: 0 }}>
+      <CardActions>
         <FormGroup onChange={handleChange} sx={{ width: 1 }}>
           {answers.map((answer, index) => (
             <FormControlLabel

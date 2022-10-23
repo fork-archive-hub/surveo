@@ -7,12 +7,7 @@ import { convertDateToHumanFormat } from '../../utils/convertDateToHumanFormat';
 const SurveySheetHeader = ({ name, author, createdAt }) => {
   return (
     <Card>
-      <CardHeader
-        title={name}
-        subheader={`Created by ${author} on ${convertDateToHumanFormat(createdAt)}`}
-        titleTypographyProps={{ variant: 'h5', display: 'block', align: 'center' }}
-        subheaderTypographyProps={{ variant: 'caption', display: 'block', align: 'center' }}
-      />
+      <CardHeader title={name} subheader={`Created by ${author} on ${convertDateToHumanFormat(createdAt)}`} />
     </Card>
   );
 };

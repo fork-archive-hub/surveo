@@ -6,7 +6,7 @@ import Question from './Question';
 
 const QuestionStack = ({ questions }) => {
   return (
-    <Stack direction="column" spacing={2}>
+    <Stack>
       {questions.map((question) => (
         <Question key={question._id} question={question} />
       ))}

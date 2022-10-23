@@ -18,10 +18,10 @@ const Question = ({ question }) => {
   };
 
   return (
-    <Stack direction="column" spacing={2}>
+    <Stack>
       <Card>
-        <CardHeader title={question.text} titleTypographyProps={{ variant: 'h6', display: 'block', align: 'center' }} />
-        <CardActions sx={{ p: 2, pt: 0 }}>
+        <CardHeader title={question.text} />
+        <CardActions>
           <Paper elevation={2} sx={{ width: 1, p: 2 }}>
             <AnswerGroup answers={question.answers} onSelectAnswer={handleSelectAnswer} />
           </Paper>

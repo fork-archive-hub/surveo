@@ -6,7 +6,7 @@ import UserSurvey from './UserSurvey';
 
 const UserSurveyStack = ({ surveys }) => {
   return (
-    <Stack spacing={2} sx={{ width: 1 }}>
+    <Stack sx={{ width: 1 }}>
       {surveys.map((survey) => (
         <UserSurvey key={survey._id} survey={survey} />
       ))}
