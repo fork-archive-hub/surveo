@@ -9,7 +9,7 @@ import { useDocumentTitle, useGetUserSurveysQuery } from '../hooks';
 
 import { Button } from '../components/form';
 import { Spinner } from '../components/elements';
-import { SurveyBarList } from '../features/surveys';
+import { UserSurveyStack } from '../features/surveys';
 
 const Dashboard = () => {
   const user = useSelector((state) => state.authentication.user);
@@ -45,7 +45,7 @@ const Dashboard = () => {
         {isLoading && <Spinner />}
         {surveys.length > 0 && !isLoading && (
           <Stack direction="column" spacing={2} sx={{ width: 1, alignItems: 'center' }}>
-            <SurveyBarList surveys={surveys} />
+            <UserSurveyStack surveys={surveys} />
             <Pagination color="primary" count={page.count} page={page.current} onChange={handlePageChange} />
           </Stack>
         )}

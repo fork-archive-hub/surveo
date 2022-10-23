@@ -3,7 +3,7 @@ import { useId } from 'react';
 
 import { RadioGroup, FormControlLabel, Radio } from '../../../../components/form';
 
-const Answers = ({ answers, onSelectAnswer }) => {
+const AnswerGroup = ({ answers, onSelectAnswer }) => {
   const groupId = useId();
 
   const handleChange = (event) => {
@@ -27,7 +27,7 @@ const Answers = ({ answers, onSelectAnswer }) => {
   );
 };
 
-Answers.propTypes = {
+AnswerGroup.propTypes = {
   answers: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
@@ -38,4 +38,4 @@ Answers.propTypes = {
   onSelectAnswer: PropTypes.func.isRequired,
 };
 
-export default Answers;
+export default AnswerGroup;

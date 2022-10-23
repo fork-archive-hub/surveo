@@ -11,15 +11,15 @@ import { updateIndexFields } from '../../utils/updateIndexFields';
 
 import { Button } from '../../../../components/form';
 
-const AnswerTextFieldStack = ({ name }) => {
+const AnswerTextFieldStack = ({ path }) => {
   const { control, getValues, setValue } = useFormContext();
   const { fields, append, remove } = useFieldArray({
-    name: name,
+    name: path,
     control: control,
   });
 
   const updateAnswerIndexes = () => {
-    setValue(name, updateIndexFields(getValues(name)));
+    setValue(path, updateIndexFields(getValues(path)));
   };
 
   const handleAddAnswer = () => {
@@ -39,7 +39,7 @@ const AnswerTextFieldStack = ({ name }) => {
       {fields.map((field, index) => (
         <AnswerTextField
           key={field.id}
-          name={`${name}[${index}]`}
+          path={`${path}[${index}]`}
           index={index}
           isRemoveButtonDisabled={fields.length <= 2}
           onRemoveAnswer={handleRemoveAnswer}
@@ -51,7 +51,7 @@ const AnswerTextFieldStack = ({ name }) => {
 };
 
 AnswerTextFieldStack.propTypes = {
-  name: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
 };
 
 export default AnswerTextFieldStack;

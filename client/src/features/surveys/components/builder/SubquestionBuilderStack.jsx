@@ -10,10 +10,10 @@ import { SubquestionTemplate } from '../../templates/SubquestionTemplate';
 
 import { Button } from '../../../../components/form';
 
-const SubquestionBuilderStack = ({ name, parentAnswerField }) => {
+const SubquestionBuilderStack = ({ path, questionAnswersPath }) => {
   const { control } = useFormContext();
   const { fields, append, remove } = useFieldArray({
-    name: name,
+    name: path,
     control: control,
   });
 
@@ -30,9 +30,9 @@ const SubquestionBuilderStack = ({ name, parentAnswerField }) => {
       {fields.map((field, index) => (
         <SubquestionBuilder
           key={field.id}
-          name={`${name}[${index}]`}
+          path={`${path}[${index}]`}
           index={index}
-          parentAnswerField={parentAnswerField}
+          questionAnswersPath={questionAnswersPath}
           onRemoveSubquestion={handleRemoveSubquestion}
         />
       ))}
@@ -42,8 +42,8 @@ const SubquestionBuilderStack = ({ name, parentAnswerField }) => {
 };
 
 SubquestionBuilderStack.propTypes = {
-  name: PropTypes.string.isRequired,
-  parentAnswerField: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
+  questionAnswersPath: PropTypes.string.isRequired,
 };
 
 export default SubquestionBuilderStack;

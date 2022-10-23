@@ -9,7 +9,7 @@ import { convertDateToHumanFormat } from '../../utils/convertDateToHumanFormat';
 
 import { IconButton } from '../../../../components/form';
 
-const SurveyBar = ({ survey }) => {
+const UserSurvey = ({ survey }) => {
   return (
     <Paper elevation={2} sx={{ p: 2 }}>
       <Stack direction="row" spacing={2} sx={{ flexWrap: 'wrap' }}>
@@ -44,7 +44,7 @@ const SurveyBar = ({ survey }) => {
   );
 };
 
-SurveyBar.propTypes = {
+UserSurvey.propTypes = {
   survey: PropTypes.shape({
     _id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
@@ -52,4 +52,4 @@ SurveyBar.propTypes = {
   }).isRequired,
 };
 
-export default SurveyBar;
+export default UserSurvey;

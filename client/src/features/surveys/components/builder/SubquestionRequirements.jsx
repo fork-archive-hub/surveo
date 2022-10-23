@@ -7,16 +7,16 @@ import { useFormContext } from 'react-hook-form';
 
 import { FormGroup, FormControlLabel, Checkbox } from '../../../../components/form';
 
-const SubquestionRequirements = ({ name, parentAnswerField }) => {
+const SubquestionRequirements = ({ path, questionAnswersPath }) => {
   const { setValue, getValues, watch } = useFormContext();
-  const answers = watch(parentAnswerField);
+  const answers = watch(questionAnswersPath);
 
   const setRequirements = (requirements) => {
-    setValue(name, requirements);
+    setValue(path, requirements);
   };
 
   const handleChange = (event) => {
-    const requirements = getValues(name);
+    const requirements = getValues(path);
 
     if (event.target.checked) {
       setRequirements([...requirements, event.target.value]);
@@ -54,8 +54,8 @@ const SubquestionRequirements = ({ name, parentAnswerField }) => {
 };
 
 SubquestionRequirements.propTypes = {
-  name: PropTypes.string.isRequired,
-  parentAnswerField: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
+  questionAnswersPath: PropTypes.string.isRequired,
 };
 
 export default SubquestionRequirements;

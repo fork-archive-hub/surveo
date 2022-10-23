@@ -9,7 +9,7 @@ import SubquestionBuilderStack from './SubquestionBuilderStack';
 
 import { TextField, Button } from '../../../../components/form';
 
-const QuestionBuilder = ({ name, index, isRemoveButtonDisabled, onRemoveQuestion }) => {
+const QuestionBuilder = ({ path, index, isRemoveButtonDisabled, onRemoveQuestion }) => {
   const { control } = useFormContext();
 
   const handleRemoveQuestion = () => {
@@ -29,7 +29,7 @@ const QuestionBuilder = ({ name, index, isRemoveButtonDisabled, onRemoveQuestion
           <Stack direction="column" spacing={2} sx={{ width: 1 }}>
             <Controller
               control={control}
-              name={`${name}.text`}
+              name={`${path}.text`}
               render={({ field, fieldState }) => (
                 <TextField
                   label="Question"
@@ -40,7 +40,7 @@ const QuestionBuilder = ({ name, index, isRemoveButtonDisabled, onRemoveQuestion
               )}
             />
             <Paper elevation={2} sx={{ p: 2 }}>
-              <AnswerTextFieldStack name={`${name}.answers`} />
+              <AnswerTextFieldStack path={`${path}.answers`} />
             </Paper>
             <Button disabled={isRemoveButtonDisabled} onClick={handleRemoveQuestion}>
               Remove question #{index + 1}
@@ -48,13 +48,13 @@ const QuestionBuilder = ({ name, index, isRemoveButtonDisabled, onRemoveQuestion
           </Stack>
         </CardActions>
       </Card>
-      <SubquestionBuilderStack name={`${name}.subquestions`} parentAnswerField={`${name}.answers`} />
+      <SubquestionBuilderStack path={`${path}.subquestions`} questionAnswersPath={`${path}.answers`} />
     </Stack>
   );
 };
 
 QuestionBuilder.propTypes = {
-  name: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   isRemoveButtonDisabled: PropTypes.bool.isRequired,
   onRemoveQuestion: PropTypes.func.isRequired,

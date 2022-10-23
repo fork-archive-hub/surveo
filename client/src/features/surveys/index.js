@@ -2,4 +2,4 @@ export { default as SurveySheetBuilderForm } from './components/builder/SurveySh
 export { default as SurveyEditorForm } from './components/editor/SurveyEditorForm';
 export { default as SurveySheetResults } from './components/results/SurveySheetResults';
 export { default as SurveySheetForm } from './components/form/SurveySheetForm';
-export { default as SurveyBarList } from './components/list/SurveyBarList';
+export { default as UserSurveyStack } from './components/stack/UserSurveyStack';

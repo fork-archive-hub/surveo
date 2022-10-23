@@ -4,9 +4,9 @@ import { Card, CardHeader, CardActions, Paper } from '@mui/material';
 
 import { sumQuestionVotes } from '../../utils/sumQuestionVotes';
 
-import AnswerResultsList from './AnswerResultsList';
+import AnswerResultStack from './AnswerResultStack';
 
-const QuestionResults = ({ question }) => {
+const QuestionResult = ({ question }) => {
   const totalVotes = sumQuestionVotes(question);
 
   return (
@@ -19,14 +19,14 @@ const QuestionResults = ({ question }) => {
       />
       <CardActions sx={{ p: 2, pt: 0 }}>
         <Paper elevation={2} sx={{ width: 1, p: 2 }}>
-          <AnswerResultsList answers={question.answers} totalVotes={totalVotes} />
+          <AnswerResultStack answers={question.answers} totalVotes={totalVotes} />
         </Paper>
       </CardActions>
     </Card>
   );
 };
 
-QuestionResults.propTypes = {
+QuestionResult.propTypes = {
   question: PropTypes.shape({
     _id: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
@@ -34,4 +34,4 @@ QuestionResults.propTypes = {
   }),
 };
 
-export default QuestionResults;
+export default QuestionResult;

@@ -31,7 +31,7 @@ const SurveySheetBuilderForm = ({ onSubmitSurvey }) => {
       <Box component="form" onSubmit={methods.handleSubmit(onSubmit)} sx={{ width: 1 }}>
         <Stack direction="column" spacing={2} divider={<Divider />}>
           <SurveyConfiguration />
-          <QuestionBuilderStack name="questions" />
+          <QuestionBuilderStack path="questions" />
           <SubmitButton>Create survey</SubmitButton>
         </Stack>
       </Box>

@@ -9,7 +9,7 @@ import SubquestionRequirements from './SubquestionRequirements';
 
 import { TextField, Button } from '../../../../components/form';
 
-const SubquestionBuilder = ({ name, index, parentAnswerField, onRemoveSubquestion }) => {
+const SubquestionBuilder = ({ path, index, questionAnswersPath, onRemoveSubquestion }) => {
   const { control } = useFormContext();
 
   const handleRemoveSubquestion = () => {
@@ -28,7 +28,7 @@ const SubquestionBuilder = ({ name, index, parentAnswerField, onRemoveSubquestio
         <Stack direction="column" spacing={2} sx={{ width: 1 }}>
           <Controller
             control={control}
-            name={`${name}.text`}
+            name={`${path}.text`}
             render={({ field, fieldState }) => (
               <TextField
                 label="Question"
@@ -39,9 +39,9 @@ const SubquestionBuilder = ({ name, index, parentAnswerField, onRemoveSubquestio
             )}
           />
           <Paper elevation={2} sx={{ p: 2 }}>
-            <AnswerTextFieldStack name={`${name}.answers`} />
+            <AnswerTextFieldStack path={`${path}.answers`} />
           </Paper>
-          <SubquestionRequirements name={`${name}.requirements`} parentAnswerField={parentAnswerField} />
+          <SubquestionRequirements path={`${path}.requirements`} questionAnswersPath={questionAnswersPath} />
           <Button onClick={handleRemoveSubquestion}>Remove subquestion #{index + 1}</Button>
         </Stack>
       </CardActions>
@@ -50,9 +50,9 @@ const SubquestionBuilder = ({ name, index, parentAnswerField, onRemoveSubquestio
 };
 
 SubquestionBuilder.propTypes = {
-  name: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
-  parentAnswerField: PropTypes.string.isRequired,
+  questionAnswersPath: PropTypes.string.isRequired,
   onRemoveSubquestion: PropTypes.func.isRequired,
 };
 

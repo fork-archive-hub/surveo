@@ -4,7 +4,7 @@ import { Stack } from '@mui/material';
 
 import Question from './Question';
 
-const QuestionList = ({ questions }) => {
+const QuestionStack = ({ questions }) => {
   return (
     <Stack direction="column" spacing={2}>
       {questions.map((question) => (
@@ -14,7 +14,7 @@ const QuestionList = ({ questions }) => {
   );
 };
 
-QuestionList.propTypes = {
+QuestionStack.propTypes = {
   questions: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
@@ -22,4 +22,4 @@ QuestionList.propTypes = {
   ).isRequired,
 };
 
-export default QuestionList;
+export default QuestionStack;

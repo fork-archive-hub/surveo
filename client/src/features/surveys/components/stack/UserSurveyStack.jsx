@@ -2,19 +2,19 @@ import PropTypes from 'prop-types';
 
 import { Stack } from '@mui/material';
 
-import SurveyBar from './SurveyBar';
+import UserSurvey from './UserSurvey';
 
-const SurveyBarList = ({ surveys }) => {
+const UserSurveyStack = ({ surveys }) => {
   return (
     <Stack spacing={2} sx={{ width: 1 }}>
       {surveys.map((survey) => (
-        <SurveyBar key={survey._id} survey={survey} />
+        <UserSurvey key={survey._id} survey={survey} />
       ))}
     </Stack>
   );
 };
 
-SurveyBarList.propTypes = {
+UserSurveyStack.propTypes = {
   surveys: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
@@ -22,4 +22,4 @@ SurveyBarList.propTypes = {
   ),
 };
 
-export default SurveyBarList;
+export default UserSurveyStack;

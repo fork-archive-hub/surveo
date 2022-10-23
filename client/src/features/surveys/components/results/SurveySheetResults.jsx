@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { Stack } from '@mui/material';
 
 import SurveySheetHeader from '../form/SurveySheetHeader';
-import QuestionResultsList from './QuestionResultsList';
+import QuestionResultStack from './QuestionResultStack';
 
 const SurveySheetResults = ({ survey }) => {
   return (
     <Stack direction="column" spacing={2} sx={{ width: 1 }}>
       <SurveySheetHeader name={survey.name} author={survey.author.username} createdAt={survey.createdAt} />
-      <QuestionResultsList questions={survey.questions} />
+      <QuestionResultStack questions={survey.questions} />
     </Stack>
   );
 };
