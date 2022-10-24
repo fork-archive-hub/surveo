@@ -36,12 +36,14 @@ const Dashboard = () => {
 
   return (
     <Grid container component={Paper} elevation={1}>
-      <Grid container item xs={12} sx={{ alignItems: 'center', justifyContent: 'end', p: 2 }}>
-        <Button to="/surveys/create" size="large" component={Link}>
-          Create survey
-        </Button>
+      <Grid item xs={12} sx={{ p: 2 }}>
+        <Stack direction="row-reverse">
+          <Button to="/surveys/create" size="large" component={Link}>
+            Create survey
+          </Button>
+        </Stack>
       </Grid>
-      <Grid container item sx={{ px: 2, pb: 2 }}>
+      <Grid item xs={12} sx={{ px: 2, pb: 2 }}>
         {isLoading && <Spinner />}
         {surveys.length > 0 && !isLoading && (
           <Stack sx={{ width: 1, alignItems: 'center' }}>

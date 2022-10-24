@@ -11,7 +11,7 @@ const ProtectionOptions = () => {
     <Card elevation={2}>
       <CardHeader title="Survey Protection" />
       <CardActions>
-        <FormGroup sx={{ width: 1 }}>
+        <FormGroup>
           <FormControlLabel
             label="Captcha"
             control={

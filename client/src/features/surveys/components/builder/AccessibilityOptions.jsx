@@ -11,7 +11,7 @@ const AccessibilityOptions = () => {
     <Card elevation={2}>
       <CardHeader title="Survey Accessibility" />
       <CardActions>
-        <FormGroup sx={{ width: 1 }}>
+        <FormGroup>
           <FormControlLabel
             label="Accept votes"
             control={

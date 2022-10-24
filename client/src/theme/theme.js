@@ -34,6 +34,23 @@ export const theme = responsiveFontSizes(
           }),
         },
       },
+
+      MuiFormGroup: {
+        styleOverrides: {
+          root: {
+            width: '100%',
+          },
+        },
+      },
+
+      MuiFormControlLabel: {
+        styleOverrides: {
+          root: {
+            marginLeft: 0,
+            marginRight: 0,
+          },
+        },
+      },
     },
   })
 );
