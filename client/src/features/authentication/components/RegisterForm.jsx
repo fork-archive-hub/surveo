@@ -28,9 +28,9 @@ const RegisterForm = ({ onSubmitCredentials }) => {
   };
 
   return (
-    <Card sx={{ width: 340 }}>
+    <Card>
       <CardHeader title="Sign up" />
-      <CardActions sx={{ '> form': { width: 1 } }}>
+      <CardActions>
         <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ width: 1 }}>
           <Stack>
             <Controller

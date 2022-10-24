@@ -28,7 +28,7 @@ const SurveySheetBuilderForm = ({ onSubmitSurvey }) => {
 
   return (
     <FormProvider {...methods}>
-      <Box component="form" onSubmit={methods.handleSubmit(onSubmit)} sx={{ width: 1 }}>
+      <Box component="form" onSubmit={methods.handleSubmit(onSubmit)}>
         <Stack divider={<Divider />}>
           <SurveyConfiguration />
           <QuestionBuilderStack path="questions" />

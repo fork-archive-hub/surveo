@@ -7,7 +7,7 @@ import QuestionResultStack from './QuestionResultStack';
 
 const SurveySheetResults = ({ survey }) => {
   return (
-    <Stack sx={{ width: 1 }}>
+    <Stack>
       <SurveySheetHeader name={survey.name} author={survey.author.username} createdAt={survey.createdAt} />
       <QuestionResultStack questions={survey.questions} />
     </Stack>

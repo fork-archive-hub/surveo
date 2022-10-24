@@ -40,7 +40,7 @@ const SurveyDelete = () => {
   return (
     <Grid container sx={{ justifyContent: 'center', py: 2 }}>
       <Grid item xs={12} sm={8} md={5} lg={4} xl={3}>
-        <Card sx={{ width: 1 }}>
+        <Card>
           <CardContent>
             <Stack spacing={1} sx={{ alignItems: 'center' }}>
               <WarningOutlined sx={{ fontSize: 128 }} />

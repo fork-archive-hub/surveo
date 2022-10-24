@@ -27,7 +27,7 @@ const LoginForm = ({ onSubmitCredentials }) => {
   };
 
   return (
-    <Card sx={{ width: 340 }}>
+    <Card>
       <CardHeader title="Sign in" />
       <CardActions>
         <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ width: 1 }}>

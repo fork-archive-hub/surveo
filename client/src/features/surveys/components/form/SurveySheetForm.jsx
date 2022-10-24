@@ -19,11 +19,11 @@ const SurveySheetForm = ({ survey, isFormDisabled, onSubmitVotes }) => {
   };
 
   return (
-    <Stack sx={{ width: 1 }}>
+    <Stack>
       <SurveySheetHeader name={survey.name} author={survey.author.username} createdAt={survey.createdAt} />
       <Divider />
       <FormProvider {...methods}>
-        <Box component="form" onSubmit={methods.handleSubmit(onSubmit)} sx={{ width: 1 }}>
+        <Box component="form" onSubmit={methods.handleSubmit(onSubmit)}>
           <Stack>
             <QuestionStack questions={survey.questions} />
             <SubmitButton disabled={!survey.open || isFormDisabled}>Submit</SubmitButton>

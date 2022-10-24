@@ -14,7 +14,7 @@ const SurveyConfiguration = () => {
     <Card>
       <CardHeader title="Survey Configuration" />
       <CardContent sx={{ px: 2, pt: 0, '&:last-child': { pb: 2 } }}>
-        <Stack sx={{ width: 1 }}>
+        <Stack>
           <Controller
             control={control}
             name="name"

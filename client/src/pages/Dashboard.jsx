@@ -35,7 +35,7 @@ const Dashboard = () => {
   useDocumentTitle('Dashboard');
 
   return (
-    <Grid container component={Paper} elevation={1}>
+    <Grid container component={Paper}>
       <Grid item xs={12} sx={{ p: 2 }}>
         <Stack direction="row-reverse">
           <Button to="/surveys/create" size="large" component={Link}>
@@ -46,13 +46,13 @@ const Dashboard = () => {
       <Grid item xs={12} sx={{ px: 2, pb: 2 }}>
         {isLoading && <Spinner />}
         {surveys.length > 0 && !isLoading && (
-          <Stack sx={{ width: 1, alignItems: 'center' }}>
+          <Stack sx={{ alignItems: 'center' }}>
             <UserSurveyStack surveys={surveys} />
             <Pagination color="primary" count={page.count} page={page.current} onChange={handlePageChange} />
           </Stack>
         )}
         {surveys.length === 0 && !isLoading && (
-          <Stack sx={{ width: 1, alignItems: 'center' }}>
+          <Stack sx={{ alignItems: 'center' }}>
             <Typography variant="h5">You dont have any surveys yet.</Typography>
             <Typography variant="body1">Create a survey to get started.</Typography>
           </Stack>
