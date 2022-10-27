@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 
 import { useDocumentTitle } from '../hooks';
 
-import { SurveySheetBuilderForm } from '../features/surveys';
+import { SurveySheetBuilderForm } from '../features/survey';
 
 import { feathers } from '../redux';
 

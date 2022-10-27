@@ -9,7 +9,7 @@ import { useDocumentTitle, useGetUserSurveysQuery } from '../hooks';
 
 import { Button } from '../components/form';
 import { Spinner } from '../components/elements';
-import { UserSurveyStack } from '../features/surveys';
+import { UserSurveyStack } from '../features/survey';
 
 const Dashboard = () => {
   const user = useSelector((state) => state.authentication.user);

@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 import { useDocumentTitle, useGetSurveyQuery, useSubscribeSurveyResultsQuery } from '../hooks';
 
 import { Spinner } from '../components/elements';
-import { SurveySheetResults } from '../features/surveys';
+import { SurveySheetResults } from '../features/survey';
 
 const SurveyResults = () => {
   const user = useSelector((state) => state.authentication.user);

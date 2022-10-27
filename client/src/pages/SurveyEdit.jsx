@@ -3,14 +3,14 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { Grid, Box } from '@mui/material';
+import { Grid } from '@mui/material';
 
 import { toast } from 'react-toastify';
 
 import { useDocumentTitle, useGetSurveyQuery } from '../hooks';
 
 import { Spinner } from '../components/elements';
-import { SurveyEditorForm } from '../features/surveys';
+import { SurveyEditorForm } from '../features/survey';
 
 import { feathers } from '../redux';
 
