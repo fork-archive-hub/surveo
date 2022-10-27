@@ -10,23 +10,22 @@ const UserMenu = ({ user, onLogout }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const anchorElement = useRef(null);
 
-  const handleMenuOpen = () => {
+  const handleOpenMenu = () => {
     setIsMenuOpen(true);
   };
 
-  const handleMenuClose = (callback) => {
-    return () => {
-      setIsMenuOpen(false);
+  const handleCloseMenu = () => {
+    setIsMenuOpen(false);
+  };
 
-      if (callback) {
-        callback();
-      }
-    };
+  const handleLogout = () => {
+    onLogout();
+    handleCloseMenu();
   };
 
   return (
     <>
-      <IconButton onClick={handleMenuOpen} ref={anchorElement} sx={{ p: 0 }}>
+      <IconButton onClick={handleOpenMenu} ref={anchorElement} sx={{ p: 0 }}>
         <Avatar alt="Profile">
           <PersonOutline />
         </Avatar>
@@ -37,19 +36,24 @@ const UserMenu = ({ user, onLogout }) => {
         anchorEl={anchorElement.current}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        onClose={handleMenuClose}
+        PaperProps={{
+          sx: {
+            width: Math.min(200, window.innerWidth),
+          },
+        }}
+        onClose={handleCloseMenu}
       >
         <MenuItem disabled>
-          <Typography variant="body1" sx={{ width: 1, textTransform: 'capitalize', textAlign: 'center' }}>
+          <Typography variant="body1" sx={{ width: 1, textAlign: 'center' }}>
             Hello, {user.username}!
           </Typography>
         </MenuItem>
         <Divider />
-        <MenuItem to="/" component={Link} onClick={handleMenuClose()}>
+        <MenuItem to="/" component={Link} onClick={handleCloseMenu}>
           <BallotOutlined sx={{ mr: 1 }} /> My Surveys
         </MenuItem>
         <Divider />
-        <MenuItem to="/" component={Link} onClick={handleMenuClose(onLogout)}>
+        <MenuItem to="/" component={Link} onClick={handleLogout}>
           <LogoutOutlined sx={{ mr: 1 }} /> Logout
         </MenuItem>
       </Menu>
@@ -59,7 +63,6 @@ const UserMenu = ({ user, onLogout }) => {
 
 UserMenu.propTypes = {
   user: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
   }).isRequired,
   onLogout: PropTypes.func.isRequired,

@@ -1,35 +1,47 @@
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import { AppBar as MUIAppBar, Container, Box, Toolbar } from '@mui/material';
+import { AppBar as MUIAppBar, Container, Box, Toolbar, Typography } from '@mui/material';
 
-import Logo from './Logo';
+import { PollOutlined } from '@mui/icons-material';
+
 import UserMenu from './UserMenu';
-import QuestMenu from './QuestMenu';
 
-const AppBar = ({ isAuthenticated, user, onLogout }) => {
+import { feathers } from '../../redux';
+
+const AppBar = () => {
+  const user = useSelector((state) => state.authentication.user);
+
+  const dispatch = useDispatch();
+
   const handleLogout = () => {
-    onLogout();
+    dispatch(feathers.authentication.logout());
   };
 
   return (
     <MUIAppBar sx={{ position: 'static' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Logo />
+          <PollOutlined sx={{ mr: 1 }} />
+          <Typography
+            variant="h6"
+            component={Link}
+            to="/"
+            sx={{
+              fontFamily: 'monospace',
+              letterSpacing: '.2rem',
+              textDecoration: 'none',
+              color: 'inherit',
+            }}
+          >
+            SURVEO
+          </Typography>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ flexGrow: 0 }}>
-            {isAuthenticated ? <UserMenu user={user} onLogout={handleLogout} /> : <QuestMenu />}
-          </Box>
+          <UserMenu user={user} onLogout={handleLogout} />
         </Toolbar>
       </Container>
     </MUIAppBar>
   );
-};
-
-AppBar.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired,
-  user: PropTypes.object,
-  onLogout: PropTypes.func.isRequired,
 };
 
 export default AppBar;
