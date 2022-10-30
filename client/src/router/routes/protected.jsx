@@ -1,10 +1,12 @@
+import { lazy } from 'react';
+
 import { MainLayout, PresentationLayout } from '../../layouts';
 
-import Dashboard from '../../pages/Dashboard';
-import SurveyEdit from '../../pages/SurveyEdit';
-import SurveyDelete from '../../pages/SurveyDelete';
-import SurveyCreate from '../../pages/SurveyCreate';
-import SurveyResults from '../../pages/SurveyResults';
+const Dashboard = lazy(() => import('../../pages/Dashboard'));
+const SurveyEdit = lazy(() => import('../../pages/SurveyEdit'));
+const SurveyDelete = lazy(() => import('../../pages/SurveyDelete'));
+const SurveyCreate = lazy(() => import('../../pages/SurveyCreate'));
+const SurveyResults = lazy(() => import('../../pages/SurveyResults'));
 
 export const protectedRoutes = [
   {

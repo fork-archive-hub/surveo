@@ -1,7 +1,9 @@
+import { lazy } from 'react';
+
 import { PresentationLayout } from '../../layouts';
 
-import SurveyForm from '../../pages/SurveyForm';
-import NotFound from '../../pages/NotFound';
+const SurveyForm = lazy(() => import('../../pages/SurveyForm'));
+const NotFound = lazy(() => import('../../pages/NotFound'));
 
 export const commonRoutes = [
   {

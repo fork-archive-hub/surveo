@@ -1,15 +1,21 @@
+import { Suspense } from 'react';
+
 import { Outlet } from 'react-router-dom';
 
 import { Container } from '@mui/material';
 
 import FixedBackground from './FixedBackground';
 
+import { Spinner } from '../../components';
+
 const PresentationLayout = () => {
   return (
     <>
       <FixedBackground />
       <Container maxWidth="xl">
-        <Outlet />
+        <Suspense fallback={<Spinner />}>
+          <Outlet />
+        </Suspense>
       </Container>
     </>
   );
