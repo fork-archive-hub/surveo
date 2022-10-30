@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import { useState, useRef } from 'react';
 
 import { Link } from 'react-router-dom';
-import { Menu, MenuItem, IconButton, Avatar, Typography, Divider } from '@mui/material';
 
+import { Menu, MenuItem, IconButton, Avatar, Typography, Divider } from '@mui/material';
 import { BallotOutlined, LogoutOutlined, PersonOutline } from '@mui/icons-material';
 
 const UserMenu = ({ user, onLogout }) => {

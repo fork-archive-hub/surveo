@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { AppBar as MUIAppBar, Container, Box, Toolbar, Typography } from '@mui/material';
-
 import { PollOutlined } from '@mui/icons-material';
 
 import UserMenu from './UserMenu';
