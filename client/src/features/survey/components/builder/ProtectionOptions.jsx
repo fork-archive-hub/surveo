@@ -2,7 +2,7 @@ import { Card, CardHeader, CardActions } from '@mui/material';
 
 import { useFormContext, Controller } from 'react-hook-form';
 
-import { FormGroup, FormControlLabel, Checkbox } from '../../../../components/form';
+import { FormGroup, FormControlLabel, Checkbox } from '../../../../components';
 
 const ProtectionOptions = () => {
   const { control } = useFormContext();

@@ -4,7 +4,7 @@ import { Grid, Paper, Stack, Typography } from '@mui/material';
 
 import { useDocumentTitle } from '../hooks';
 
-import { Button } from '../components/form';
+import { Button } from '../components';
 
 const NotFound = () => {
   useDocumentTitle('Page not found');

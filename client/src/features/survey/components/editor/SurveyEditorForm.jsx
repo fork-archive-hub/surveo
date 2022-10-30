@@ -9,7 +9,7 @@ import SurveyConfiguration from '../builder/SurveyConfiguration';
 
 import { SurveyInformationSchema } from '../../schemas/SurveyInformationSchema';
 
-import { SubmitButton } from '../../../../components/form';
+import { SubmitButton } from '../../../../components';
 
 const SurveyEditorForm = ({ survey, onUpdateSurvey }) => {
   const methods = useForm({

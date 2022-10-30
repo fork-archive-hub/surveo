@@ -8,7 +8,7 @@ import SubquestionBuilder from './SubquestionBuilder';
 
 import { SubquestionTemplate } from '../../templates/SubquestionTemplate';
 
-import { Button } from '../../../../components/form';
+import { Button } from '../../../../components';
 
 const SubquestionBuilderStack = ({ path, questionAnswersPath }) => {
   const { control } = useFormContext();

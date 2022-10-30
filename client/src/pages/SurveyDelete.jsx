@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 
 import { useDocumentTitle } from '../hooks';
 
-import { Button } from '../components/form';
+import { Button } from '../components';
 
 import { feathers } from '../redux';
 

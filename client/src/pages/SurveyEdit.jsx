@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 
 import { useDocumentTitle, useGetSurveyQuery } from '../hooks';
 
-import { Spinner } from '../components/elements';
+import { Spinner } from '../components';
 import { SurveyEditorForm } from '../features/survey';
 
 import { feathers } from '../redux';

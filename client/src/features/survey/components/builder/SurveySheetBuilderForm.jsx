@@ -11,7 +11,7 @@ import QuestionBuilderStack from './QuestionBuilderStack';
 import { SurveySchema } from '../../schemas/SurveySchema';
 import { SurveyTemplate } from '../../templates/SurveyTemplate';
 
-import { SubmitButton } from '../../../../components/form';
+import { SubmitButton } from '../../../../components';
 
 const SurveySheetBuilderForm = ({ onSubmitSurvey }) => {
   const methods = useForm({

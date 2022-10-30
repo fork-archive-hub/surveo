@@ -7,8 +7,7 @@ import { Grid, Paper, Typography, Stack, Pagination } from '@mui/material';
 
 import { useDocumentTitle, useGetUserSurveysQuery } from '../hooks';
 
-import { Button } from '../components/form';
-import { Spinner } from '../components/elements';
+import { Button, Spinner } from '../components';
 import { UserSurveyStack } from '../features/survey';
 
 const Dashboard = () => {

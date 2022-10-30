@@ -5,7 +5,7 @@ import { InfoOutlined } from '@mui/icons-material';
 
 import { useFormContext } from 'react-hook-form';
 
-import { FormGroup, FormControlLabel, Checkbox } from '../../../../components/form';
+import { FormGroup, FormControlLabel, Checkbox } from '../../../../components';
 
 const SubquestionRequirements = ({ path, questionAnswersPath }) => {
   const { setValue, getValues, watch } = useFormContext();

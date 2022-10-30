@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 
 import { useDocumentTitle, useGetSurveyQuery, useSubscribeSurveyResultsQuery } from '../hooks';
 
-import { Spinner } from '../components/elements';
+import { Spinner } from '../components';
 import { SurveySheetResults } from '../features/survey';
 
 const SurveyResults = () => {
