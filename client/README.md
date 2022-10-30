@@ -73,6 +73,9 @@ src
    |   |-- AppRoutes.js         # creates react element with available routes
    |   |-- index.js             # exports of all required elements from router
    |-- theme                    # theme used by the application
+   |   |-- theme.js             # theme object used by the application
+   |   |-- pallette.js          # pallette object containing colors used by the application
+   |   |-- components.js        # components object containing style overrides for Mui components
    |   |-- index.js             # exports of all required elements from theme
    |-- App.js                   # main application component
    |-- index.js                 # function that renders the application
