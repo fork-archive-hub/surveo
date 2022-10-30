@@ -8,7 +8,7 @@ const Landing = () => {
   useDocumentTitle('Survey creator');
 
   return (
-    <Grid container sx={{ height: '100vh', alignItems: 'center', justifyContent: 'center' }} spacing={0}>
+    <Grid container sx={{ height: '100vh', alignItems: 'center', justifyContent: 'center' }}>
       <Grid item xs={8} md={5} sx={{ p: 2, '& > img': { width: 1 } }}>
         <img src="/images/survey-laptop.svg" alt="surveo" />
       </Grid>
