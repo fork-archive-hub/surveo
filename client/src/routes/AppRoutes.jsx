@@ -1,9 +1,9 @@
 import { useRoutes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import { protectedRoutes } from './routes/protected';
-import { publicRoutes } from './routes/public';
-import { commonRoutes } from './routes/common';
+import { protectedRoutes } from './protected-routes';
+import { publicRoutes } from './public-routes';
+import { commonRoutes } from './common-routes';
 
 const AppRoutes = () => {
   const isAuthenticated = useSelector((state) => state.authentication.isAuthenticated);

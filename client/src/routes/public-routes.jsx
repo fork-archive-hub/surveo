@@ -1,11 +1,11 @@
 import { lazy } from 'react';
 
-import { PresentationLayout } from '../../layouts';
+import { PresentationLayout } from '../layouts';
 
-import Landing from '../../pages/Landing';
+import Landing from '../pages/Landing';
 
-const Login = lazy(() => import('../../pages/Login'));
-const Register = lazy(() => import('../../pages/Register'));
+const Login = lazy(() => import('../pages/Login'));
+const Register = lazy(() => import('../pages/Register'));
 
 export const publicRoutes = [
   {
