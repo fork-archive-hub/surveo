@@ -1,30 +1,36 @@
-## **Create Vote**
+## Create Vote
 
 Endpoint used to receive votes for a specific survey.
 Returns the status of whether the vote was accepted.
 
-- **URL**  
-  `/votes`
+### Request
 
-- **Allowed Providers**  
-  `external`
+| URL      | Method | Allowed Providers |
+| -------- | ------ | ----------------- |
+| `/votes` | `POST` | `external`        |
 
-- **Method:**  
-  `POST`
+### Request headers
 
-- **Headers:**  
-  None
+| Header | Required | Description | Example |
+| ------ | -------- | ----------- | ------- |
+| -      | -        | -           | -       |
 
-- **URL Params**  
-  None
+### URL params
 
-- **Data Params**
+| Param | Type | Required | Description | Example |
+| ----- | ---- | -------- | ----------- | ------- |
+| -     | -    | -        | -           | -       |
 
-  > `object`: [Vote](../../requests/VOTE.md)
+### Request body
 
-- **Success Response:**
-  ```json
-  {
-    "success": true
-  }
-  ```
+| Type                                   | Required | Reference                     |
+| -------------------------------------- | -------- | ----------------------------- |
+| object ([Vote](../../schemas/VOTE.md)) | yes      | [Vote](../../schemas/VOTE.md) |
+
+### Success Response
+
+```json
+{
+  "success": true
+}
+```

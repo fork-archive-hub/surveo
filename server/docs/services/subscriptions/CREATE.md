@@ -1,32 +1,36 @@
-## **Create Subscription**
+## Create Subscription
 
 Creates subscriptions for the currently authenticated user for the specified survey.
 The user connection is added to the `survey.SURVEY_ID` channel.
 
-- **URL**  
-  `/subscriptions`
+### Request
 
-- **Allowed Providers**  
-  `socketio`
+| URL              | Method | Allowed Providers |
+| ---------------- | ------ | ----------------- |
+| `/subscriptions` | `POST` | `socketio`        |
 
-- **Method:**  
-  `POST`
+### Request Headers
 
-- **Headers:**
+| Header          | Required | Description              | Example                           |
+| --------------- | -------- | ------------------------ | --------------------------------- |
+| `Authorization` | yes      | The authorization token. | `Bearer 123412341234123412341234` |
 
-  - **Required:**  
-    `Authorization = 'Bearer {token}'`
+### URL Params
 
-- **URL Params**  
-  None
+| Param | Type | Required | Description | Example |
+| ----- | ---- | -------- | ----------- | ------- |
+| -     | -    | -        | -           | -       |
 
-- **Data Params**
+### Request Body
 
-  > `object`: [Subscription](../../requests/SUBSCRIPTION.md)
+| Type                                                   | Required | Reference                                     |
+| ------------------------------------------------------ | -------- | --------------------------------------------- |
+| object ([Subscription](../../schemas/SUBSCRIPTION.md)) | yes      | [Subscription](../../schemas/SUBSCRIPTION.md) |
 
-- **Success Response:**
-  ```json
-  {
-    "success": true
-  }
-  ```
+### Success Response
+
+```json
+{
+  "success": true
+}
+```

@@ -1,37 +1,40 @@
-## **Get Users**
+## Get User
 
 Endpoint partially unlocked, used to receive survey author data.
 Endpoint always returns the data of the currently authenticated user.
 
-- **URL**  
-  `/users/:userId`
+### Request
 
-- **Allowed Providers**  
-  `external`
+| URL              | Method | Allowed Providers |
+| ---------------- | ------ | ----------------- |
+| `/users/:userId` | `GET`  | `external`        |
 
-- **Method:**  
-  `GET`
+### Request headers
 
-- **Headers:**
+| Header          | Required | Description              | Example                           |
+| --------------- | -------- | ------------------------ | --------------------------------- |
+| `Authorization` | yes      | The authorization token. | `Bearer 123412341234123412341234` |
 
-  - **Required:**  
-    `Authorization = 'Bearer {token}'`
+### URL params
 
-- **URL Params**
+| Param    | Type   | Required | Description | Example                           |
+| -------- | ------ | -------- | ----------- | --------------------------------- |
+| `userId` | string | yes      | User Id     | `/users/111111111111111111111111` |
 
-  - **Required:**  
-    `userId = [string]`
+### Request body
 
-- **Data Params**  
-  None
+| Type | Required | Reference |
+| ---- | -------- | --------- |
+| -    | -        | -         |
 
-- **Success Response:**
-  ```json
-  {
-    "_id": "123412341234123412341234",
-    "username": "username",
-    "createdAt": "2022-05-23T19:19:23.989Z",
-    "updatedAt": "2022-05-23T19:19:23.989Z",
-    "__v": 0
-  }
-  ```
+### Success Response
+
+```json
+{
+  "_id": "123412341234123412341234",
+  "username": "username",
+  "createdAt": "2022-05-23T19:19:23.989Z",
+  "updatedAt": "2022-05-23T19:19:23.989Z",
+  "__v": 0
+}
+```

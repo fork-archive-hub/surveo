@@ -1,31 +1,33 @@
-## **Remove Subscription**
+## Remove Subscription
 
 Deletes a user's subscriptions for a specified survey.
 Removes user connection from `survey.SURVEY_ID` channel.
 
-- **URL**  
-  `/subscriptions/:surveyId`
+### Request
 
-- **Allowed Providers**  
-  `socketio`
+| URL                        | Method   | Allowed Providers |
+| -------------------------- | -------- | ----------------- |
+| `/subscriptions/:surveyId` | `DELETE` | `socketio`        |
 
-- **Method:**  
-  `DELETE`
+### Request Headers
 
-- **Headers:**
+| Header          | Required | Description              | Example                           |
+| --------------- | -------- | ------------------------ | --------------------------------- |
+| `Authorization` | yes      | The authorization token. | `Bearer 123412341234123412341234` |
 
-  - **Required:**  
-    `Authorization = 'Bearer {token}'`
+### URL Params
 
-- **URL Params**
+| Param      | Type   | Required | Description | Example                                   |
+| ---------- | ------ | -------- | ----------- | ----------------------------------------- |
+| `surveyId` | string | yes      | Survey Id   | `/subscriptions/111111111111111111111111` |
 
-  - **Required:**  
-    `surveyId = [string]`
+### Request Body
 
-- **Data Params**  
-  None
+| Type | Required | Reference |
+| ---- | -------- | --------- |
+| -    | -        | -         |
 
-- **Success Response:**
+### Success Response
   ```json
   {
     "success": true

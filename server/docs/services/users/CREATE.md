@@ -1,33 +1,39 @@
-## **Create User**
+## Create User
 
 Creates a new user which is later used for authentication.
 
-- **URL**  
-  `/users`
+### Request
 
-- **Allowed Providers**  
-  `external`
+| URL      | Method | Allowed Providers |
+| -------- | ------ | ----------------- |
+| `/users` | `POST` | `external`        |
 
-- **Method:**  
-  `POST`
+### Request headers
 
-- **Headers:**  
-  None
+| Header | Required | Description | Example |
+| ------ | -------- | ----------- | ------- |
+| -      | -        | -           | -       |
 
-- **URL Params**  
-  None
+### URL Params
 
-- **Data Params**
+| Param | Type | Required | Description | Example |
+| ----- | ---- | -------- | ----------- | ------- |
+| -     | -    | -        | -           | -       |
 
-  > `object`: [User](../../requests/USER.md)
+### Request Body
 
-- **Success Response:**
-  ```json
-  {
-    "username": "username",
-    "_id": "123412341234123412341234",
-    "createdAt": "2022-05-26T22:07:36.078Z",
-    "updatedAt": "2022-05-26T22:07:36.078Z",
-    "__v": 0
-  }
-  ```
+| Type                                   | Required | Reference                     |
+| -------------------------------------- | -------- | ----------------------------- |
+| object ([User](../../schemas/USER.md)) | yes      | [User](../../schemas/USER.md) |
+
+### Success Response
+
+```json
+{
+  "username": "username",
+  "_id": "123412341234123412341234",
+  "createdAt": "2022-05-26T22:07:36.078Z",
+  "updatedAt": "2022-05-26T22:07:36.078Z",
+  "__v": 0
+}
+```

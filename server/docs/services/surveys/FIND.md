@@ -1,43 +1,48 @@
-## **Find Surveys**
+## Find Surveys
 
 Returns reduced survey objects that match the query in the URL.
 
-- **URL**  
-  `/surveys?authorId=:authorId`
+### Request
 
-- **Allowed Providers**  
-  `external`
+| URL                           | Method | Allowed Providers |
+| ----------------------------- | ------ | ----------------- |
+| `/surveys?authorId=:authorId` | `GET`  | `external`        |
 
-- **Method:**  
-  `GET`
+### Request Headers
 
-- **Headers:**  
-  None
+| Header | Required | Description | Example |
+| ------ | -------- | ----------- | ------- |
+| -      | -        | -           | -       |
 
-- **URL Params**
+### URL Params
 
-  - **Optional:**  
-    `authorId = [string]`
+| Param      | Type   | Required | Description | Example                                      |
+| ---------- | ------ | -------- | ----------- | -------------------------------------------- |
+| `authorId` | string | no       | Author Id   | `/surveys?authorId=111111111111111111111111` |
 
-- **Data Params**  
-  None
+### Request Body
 
-- **Success Response:**
-  ```json
-  {
-    "total": 1,
-    "limit": 10,
-    "skip": 0,
-    "data": [
-      {
-        "_id": "123412341234123412341234",
-        "authorId": "123412341234123412341234",
-        "name": "name",
-        "open": true,
-        "createdAt": "2022-05-23T19:22:32.195Z",
-        "updatedAt": "2022-05-24T20:12:09.489Z",
-        "__v": 0
-      }
-    ]
-  }
-  ```
+| Type | Required | Reference |
+| ---- | -------- | --------- |
+| -    | -        | -         |
+
+### Success Response
+
+```json
+{
+  "total": 1,
+  "limit": 10,
+  "skip": 0,
+  "data": [
+    {
+      "_id": "123412341234123412341234",
+      "authorId": "123412341234123412341234",
+      "name": "name",
+      "open": true,
+      "createdAt": "2022-05-23T19:22:32.195Z",
+      "updatedAt": "2022-05-24T20:12:09.489Z",
+      "__v": 0
+    }
+  ]
+}
+```
