@@ -17,15 +17,15 @@ const QuestionSchema = Joi.object().keys({
   subquestions: Joi.array().items(SubquestionSchema).required(),
 });
 
+const ProtectionSchema = Joi.object().keys({
+  captcha: Joi.boolean().default(false),
+  ipRestriction: Joi.boolean().default(false),
+});
+
 const SurveyInformationSchema = Joi.object().keys({
   name: Joi.string().min(3).max(240).required(),
   open: Joi.boolean().default(true),
-  protection: Joi.object()
-    .keys({
-      captcha: Joi.boolean().default(false),
-      ipRestriction: Joi.boolean().default(false),
-    })
-    .required(),
+  protection: ProtectionSchema.required(),
 });
 
 const SurveySchema = SurveyInformationSchema.append({
