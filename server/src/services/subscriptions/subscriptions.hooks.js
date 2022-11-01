@@ -8,13 +8,13 @@ const { SubscriptionSchema } = require('./subscriptions.schemas');
 
 module.exports = {
   before: {
-    all: [disallow('rest', 'primus'), authenticate('jwt')],
+    all: [],
     find: [disallow()],
     get: [disallow()],
-    create: [validateSchema(SubscriptionSchema)],
+    create: [disallow('rest', 'primus'), authenticate('jwt'), validateSchema(SubscriptionSchema)],
     update: [disallow()],
     patch: [disallow()],
-    remove: [],
+    remove: [disallow('rest', 'primus'), authenticate('jwt')],
   },
 
   after: {

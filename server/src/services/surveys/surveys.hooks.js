@@ -18,13 +18,8 @@ module.exports = {
     all: [],
     find: [],
     get: [authenticateIfPossible('jwt')],
-    create: [
-      authenticate('jwt'),
-      validateSchema(SurveySchema),
-      mapUserFieldToDataField('_id', 'authorId'),
-      deepDiscard('votes'),
-    ],
-    update: [authenticate('jwt'), disallow('external')],
+    create: [authenticate('jwt'), validateSchema(SurveySchema), mapUserFieldToDataField('_id', 'authorId')],
+    update: [disallow('external')],
     patch: [
       authenticate('jwt'),
       ifProvider(['external'], mapUserFieldToQueryField('_id', 'authorId'), validateSchema(SurveyInformationSchema)),
