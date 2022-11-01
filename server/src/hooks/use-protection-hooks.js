@@ -2,7 +2,7 @@ const { checkContext } = require('feathers-hooks-common');
 
 module.exports = (surveyField, protectionHooks) => {
   return async (context) => {
-    checkContext(context, 'before', null, 'mapProtectionHooks');
+    checkContext(context, 'before', null, 'useProtectionHooks');
 
     const protectionNames = Object.keys(protectionHooks);
 

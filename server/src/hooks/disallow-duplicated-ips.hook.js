@@ -3,7 +3,7 @@ const { Unprocessable } = require('@feathersjs/errors');
 
 module.exports = (surveyField, paramsField) => {
   return async (context) => {
-    checkContext(context, 'before', null, 'restrictDuplicatedIps');
+    checkContext(context, 'before', null, 'disallowDuplicatedIps');
 
     const survey = await context.app.service('surveys').get(context.data.surveyId);
     const ip = context.params[paramsField];
