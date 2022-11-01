@@ -15,12 +15,12 @@ exports.Subscriptions = class Subscriptions {
 
     this.app.channel(`survey.${data.surveyId}`).join(params.connection);
 
-    return { success: true };
+    return {};
   }
 
   async remove(id, params) {
     this.app.channel(`survey.${id}`).leave(params.connection);
 
-    return { success: true };
+    return {};
   }
 };

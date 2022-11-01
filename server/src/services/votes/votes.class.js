@@ -24,24 +24,24 @@ exports.Votes = class Votes {
     }
 
     for (const question of questions) {
-      const answerForQuestion = this.getUserAnswer(question, data.answerSheet);
+      const questionAnswer = this.getUserAnswer(question, data.answerSheet);
 
       for (const subquestion of question.subquestions) {
-        if (subquestion.requirements.includes(answerForQuestion.index)) {
-          const answerForSubquestion = this.getUserAnswer(subquestion, data.answerSheet);
+        if (subquestion.requirements.includes(questionAnswer.index)) {
+          const subquestionAnswer = this.getUserAnswer(subquestion, data.answerSheet);
 
-          answerForSubquestion.votes += 1;
+          subquestionAnswer.votes += 1;
         }
       }
 
-      answerForQuestion.votes += 1;
+      questionAnswer.votes += 1;
     }
 
     ips.push(params.ip);
 
     await this.app.service('surveys').patch(data.surveyId, { questions, ips });
 
-    return { success: true };
+    return {};
   }
 
   getUserAnswer(question, answerSheet) {
