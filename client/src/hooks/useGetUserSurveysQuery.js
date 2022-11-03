@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
@@ -12,12 +12,6 @@ export const useGetUserSurveysQuery = (userId, limit) => {
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageCount, setPageCount] = useState(0);
-
-  const [refreshId, setRefreshId] = useState(0);
-
-  const updateRefreshId = useCallback(() => {
-    setRefreshId(new Date().getTime());
-  }, []);
 
   const dispatch = useDispatch();
 
@@ -48,7 +42,7 @@ export const useGetUserSurveysQuery = (userId, limit) => {
     };
 
     getUserSurveys();
-  }, [userId, limit, currentPage, refreshId, dispatch]);
+  }, [userId, limit, currentPage, dispatch]);
 
   return {
     surveys: surveys,
@@ -58,6 +52,5 @@ export const useGetUserSurveysQuery = (userId, limit) => {
       count: pageCount,
       set: setCurrentPage,
     },
-    refresh: updateRefreshId,
   };
 };

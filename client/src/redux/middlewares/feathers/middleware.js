@@ -17,7 +17,7 @@ export const middleware = (store) => {
     new SurveyModule(client, store),
     new VoteModule(client, store),
   ];
-  const actions = modules.reduce((actions, module) => ({ ...actions, ...module.getModuleActions() }), {});
+  const availableActions = modules.reduce((actions, module) => ({ ...actions, ...module.getModuleActions() }), {});
 
   client.configure(socketio(socket));
   client.configure(feathers.authentication({ storage: window.localStorage }));
@@ -29,9 +29,9 @@ export const middleware = (store) => {
   });
 
   return (next) => async (action) => {
-    if (Object.prototype.hasOwnProperty.call(actions, action.type)) {
+    if (Object.prototype.hasOwnProperty.call(availableActions, action.type)) {
       try {
-        const result = await actions[action.type](action);
+        const result = await availableActions[action.type](action);
 
         if (result) {
           return next(result);

@@ -13,7 +13,7 @@ export const useGetSurveyQuery = (surveyId) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const getSurvey = async (surveyId) => {
+    const getSurvey = async () => {
       if (surveyId !== null) {
         setIsLoading(true);
 
@@ -29,7 +29,7 @@ export const useGetSurveyQuery = (surveyId) => {
       }
     };
 
-    getSurvey(surveyId);
+    getSurvey();
   }, [surveyId, dispatch]);
 
   return {

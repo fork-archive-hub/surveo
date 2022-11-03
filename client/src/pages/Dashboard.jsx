@@ -1,7 +1,5 @@
-import { useEffect } from 'react';
-
 import { useSelector } from 'react-redux';
-import { useLocation, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { Grid, Paper, Typography, Stack, Pagination } from '@mui/material';
 
@@ -13,23 +11,11 @@ import { UserSurveyStack } from '../features/survey';
 const Dashboard = () => {
   const user = useSelector((state) => state.authentication.user);
 
-  const location = useLocation();
-
-  const { surveys, isLoading, page, refresh } = useGetUserSurveysQuery(user._id, 5);
+  const { surveys, isLoading, page } = useGetUserSurveysQuery(user._id, 5);
 
   const handlePageChange = (_, value) => {
     page.set(value);
   };
-
-  useEffect(() => {
-    const refreshCurrentPageResults = () => {
-      if (location.pathname === '/') {
-        refresh();
-      }
-    };
-
-    refreshCurrentPageResults();
-  }, [location, refresh]);
 
   useDocumentTitle('Dashboard');
 
