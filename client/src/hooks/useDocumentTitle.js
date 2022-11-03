@@ -2,9 +2,17 @@ import { useEffect } from 'react';
 
 export const useDocumentTitle = (title) => {
   useEffect(() => {
-    document.title = `${process.env.REACT_APP_BASE_TITLE} - ${title}`;
+    const setDocumentTitle = () => {
+      document.title = `${process.env.REACT_APP_BASE_TITLE} - ${title}`;
+    };
+
+    setDocumentTitle();
     return () => {
-      document.title = process.env.REACT_APP_BASE_TITLE;
+      const setDefaultDocumentTitle = () => {
+        document.title = process.env.REACT_APP_BASE_TITLE;
+      };
+
+      setDefaultDocumentTitle();
     };
   }, [title]);
 };
