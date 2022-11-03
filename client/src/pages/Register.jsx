@@ -20,10 +20,11 @@ const Register = () => {
 
     if (result.error) {
       toast.error(result.error);
-    } else {
-      toast.success('Account created successfully');
-      navigate('/auth/login');
+      return;
     }
+
+    toast.success('Account created successfully');
+    navigate('/auth/login');
   };
 
   useDocumentTitle('Register');

@@ -22,17 +22,20 @@ const SurveyDelete = () => {
   };
 
   const handleDelete = async () => {
-    if (params.surveyId !== null) {
-      const result = await dispatch(feathers.survey.remove({ surveyId: params.surveyId }));
-
-      if (result.error) {
-        toast.error(result.error);
-      } else {
-        toast.success('Survey deleted');
-      }
-
-      navigate('/');
+    if (params.surveyId === null) {
+      return;
     }
+
+    const result = await dispatch(feathers.survey.remove({ surveyId: params.surveyId }));
+
+    if (result.error) {
+      toast.error(result.error);
+      navigate('/');
+      return;
+    }
+
+    toast.success('Survey deleted');
+    navigate('/');
   };
 
   useDocumentTitle('Delete survey');

@@ -9,17 +9,17 @@ const SubquestionStack = ({ subquestions, selectedAnswerIndex }) => {
     subquestion.requirements.includes(selectedAnswerIndex)
   );
 
-  if (requiredSubquestions.length > 0) {
-    return (
-      <Stack>
-        {requiredSubquestions.map((subquestion) => (
-          <Subquestion key={subquestion._id} subquestion={subquestion} />
-        ))}
-      </Stack>
-    );
+  if (requiredSubquestions.length === 0) {
+    return null;
   }
 
-  return null;
+  return (
+    <Stack>
+      {requiredSubquestions.map((subquestion) => (
+        <Subquestion key={subquestion._id} subquestion={subquestion} />
+      ))}
+    </Stack>
+  );
 };
 
 SubquestionStack.propTypes = {

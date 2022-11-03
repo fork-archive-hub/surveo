@@ -20,10 +20,11 @@ const Login = () => {
 
     if (result.error) {
       toast.error(result.error);
-    } else {
-      toast.success('Login successful');
-      navigate('/');
+      return;
     }
+
+    toast.success('Login successful');
+    navigate('/');
   };
 
   useDocumentTitle('Login');

@@ -29,18 +29,18 @@ export const middleware = (store) => {
   });
 
   return (next) => async (action) => {
-    if (Object.prototype.hasOwnProperty.call(availableActions, action.type)) {
-      try {
-        const result = await availableActions[action.type](action);
-
-        if (result) {
-          return next(result);
-        }
-      } catch (error) {
-        return next({ ...action, error: ErrorHandler.stringifyError(error) });
-      }
-    } else {
+    if (!Object.prototype.hasOwnProperty.call(availableActions, action.type)) {
       return next(action);
+    }
+
+    try {
+      const result = await availableActions[action.type](action);
+
+      if (result) {
+        return next(result);
+      }
+    } catch (error) {
+      return next({ ...action, error: ErrorHandler.stringifyError(error) });
     }
   };
 };

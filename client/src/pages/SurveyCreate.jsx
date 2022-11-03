@@ -21,10 +21,11 @@ const SurveyCreate = () => {
     if (result.error) {
       toast.error(result.error);
       navigate('/');
-    } else {
-      toast.success('Survey successfully created');
-      navigate(`/surveys/${result.payload._id}/form`);
+      return;
     }
+
+    toast.success('Survey successfully created');
+    navigate(`/surveys/${result.payload._id}/form`);
   };
 
   useDocumentTitle('Create survey');

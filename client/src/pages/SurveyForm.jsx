@@ -33,10 +33,11 @@ const SurveyForm = () => {
 
       if (result.error) {
         toast.error(result.error);
-      } else {
-        toast.success('Votes submitted successfully');
-        navigate('/');
+        return;
       }
+
+      toast.success('Votes submitted successfully');
+      navigate('/');
     } catch (error) {
       toast.error('Something went wrong');
       console.error(error);

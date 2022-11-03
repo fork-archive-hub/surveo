@@ -17,28 +17,31 @@ export const useGetUserSurveysQuery = (userId, limit) => {
 
   useEffect(() => {
     const getUserSurveys = async () => {
-      if (userId) {
-        setIsLoading(true);
-
-        const result = await dispatch(
-          feathers.survey.find({
-            authorId: userId,
-            skip: (currentPage - 1) * limit,
-            limit: limit,
-          })
-        );
-
-        if (result.error) {
-          toast.error(result.error, {
-            toastId: 'use-get-user-surveys-query',
-          });
-        } else {
-          setSurveys(result.payload.data);
-          setPageCount(Math.ceil(result.payload.total / limit));
-        }
-
-        setIsLoading(false);
+      if (!userId) {
+        return;
       }
+
+      setIsLoading(true);
+
+      const result = await dispatch(
+        feathers.survey.find({
+          authorId: userId,
+          skip: (currentPage - 1) * limit,
+          limit: limit,
+        })
+      );
+
+      if (result.error) {
+        toast.error(result.error, {
+          toastId: 'use-get-user-surveys-query',
+        });
+        setIsLoading(false);
+        return;
+      }
+
+      setSurveys(result.payload.data);
+      setPageCount(Math.ceil(result.payload.total / limit));
+      setIsLoading(false);
     };
 
     getUserSurveys();

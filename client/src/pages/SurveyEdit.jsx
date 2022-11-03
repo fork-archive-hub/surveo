@@ -33,10 +33,11 @@ const SurveyEdit = () => {
 
     if (result.error) {
       toast.error(result.error);
-    } else {
-      toast.success('Survey updated');
+      navigate('/');
+      return;
     }
 
+    toast.success('Survey updated');
     navigate('/');
   };
 
