@@ -27,7 +27,7 @@
       "passwordField": "password"
     }
   },
-  "recaptcha": {
+  "captcha": {
     "secret": ""
   },
   "mongodb": ""
