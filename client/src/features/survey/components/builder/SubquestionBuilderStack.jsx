@@ -28,13 +28,12 @@ const SubquestionBuilderStack = ({ path, questionAnswersPath }) => {
   return (
     <Stack>
       {fields.map((field, index) => (
-        <SubquestionBuilder
-          key={field.id}
-          path={`${path}[${index}]`}
-          index={index}
-          questionAnswersPath={questionAnswersPath}
-          onRemoveSubquestion={handleRemoveSubquestion}
-        />
+        <Stack key={field.id}>
+          <SubquestionBuilder path={`${path}[${index}]`} index={index} questionAnswersPath={questionAnswersPath} />
+          <Button color="error" onClick={handleRemoveSubquestion}>
+            Remove subquestion #{index + 1}
+          </Button>
+        </Stack>
       ))}
       <Button onClick={handleAddSubquestion}>Add subquestion</Button>
     </Stack>

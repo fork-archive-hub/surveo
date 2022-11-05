@@ -7,16 +7,10 @@ import { useFormContext, Controller } from 'react-hook-form';
 import AnswerTextFieldStack from './AnswerTextFieldStack';
 import SubquestionBuilderStack from './SubquestionBuilderStack';
 
-import { TextField, Button } from '../../../../components';
+import { TextField } from '../../../../components';
 
-const QuestionBuilder = ({ path, index, isRemoveButtonDisabled, onRemoveQuestion }) => {
+const QuestionBuilder = ({ path, index }) => {
   const { control } = useFormContext();
-
-  const handleRemoveQuestion = () => {
-    if (onRemoveQuestion) {
-      onRemoveQuestion(index);
-    }
-  };
 
   return (
     <Stack>
@@ -39,9 +33,6 @@ const QuestionBuilder = ({ path, index, isRemoveButtonDisabled, onRemoveQuestion
             <Paper elevation={2} sx={{ p: 2 }}>
               <AnswerTextFieldStack path={`${path}.answers`} />
             </Paper>
-            <Button disabled={isRemoveButtonDisabled} onClick={handleRemoveQuestion}>
-              Remove question #{index + 1}
-            </Button>
           </Stack>
         </CardActions>
       </Card>
@@ -53,8 +44,6 @@ const QuestionBuilder = ({ path, index, isRemoveButtonDisabled, onRemoveQuestion
 QuestionBuilder.propTypes = {
   path: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
-  isRemoveButtonDisabled: PropTypes.bool.isRequired,
-  onRemoveQuestion: PropTypes.func.isRequired,
 };
 
 export default QuestionBuilder;

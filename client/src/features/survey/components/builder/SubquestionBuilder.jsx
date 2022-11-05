@@ -7,16 +7,10 @@ import { useFormContext, Controller } from 'react-hook-form';
 import AnswerTextFieldStack from './AnswerTextFieldStack';
 import SubquestionRequirements from './SubquestionRequirements';
 
-import { TextField, Button } from '../../../../components';
+import { TextField } from '../../../../components';
 
-const SubquestionBuilder = ({ path, index, questionAnswersPath, onRemoveSubquestion }) => {
+const SubquestionBuilder = ({ path, index, questionAnswersPath }) => {
   const { control } = useFormContext();
-
-  const handleRemoveSubquestion = () => {
-    if (onRemoveSubquestion) {
-      onRemoveSubquestion(index);
-    }
-  };
 
   return (
     <Card>
@@ -39,7 +33,6 @@ const SubquestionBuilder = ({ path, index, questionAnswersPath, onRemoveSubquest
             <AnswerTextFieldStack path={`${path}.answers`} />
           </Paper>
           <SubquestionRequirements path={`${path}.requirements`} questionAnswersPath={questionAnswersPath} />
-          <Button onClick={handleRemoveSubquestion}>Remove subquestion #{index + 1}</Button>
         </Stack>
       </CardActions>
     </Card>
@@ -50,7 +43,6 @@ SubquestionBuilder.propTypes = {
   path: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   questionAnswersPath: PropTypes.string.isRequired,
-  onRemoveSubquestion: PropTypes.func.isRequired,
 };
 
 export default SubquestionBuilder;

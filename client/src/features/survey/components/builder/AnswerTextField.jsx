@@ -1,20 +1,11 @@
 import PropTypes from 'prop-types';
 
-import { InputAdornment, IconButton } from '@mui/material';
-import { DeleteOutline } from '@mui/icons-material';
-
 import { useFormContext, Controller } from 'react-hook-form';
 
 import { TextField } from '../../../../components';
 
-const AnswerTextField = ({ path, index, isRemoveButtonDisabled, onRemoveAnswer }) => {
+const AnswerTextField = ({ path }) => {
   const { control } = useFormContext();
-
-  const handleRemoveAnswer = () => {
-    if (onRemoveAnswer) {
-      onRemoveAnswer(index);
-    }
-  };
 
   return (
     <Controller
@@ -25,15 +16,7 @@ const AnswerTextField = ({ path, index, isRemoveButtonDisabled, onRemoveAnswer }
           label="Answer"
           error={Boolean(fieldState.error)}
           helperText={fieldState.error?.message}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton disabled={isRemoveButtonDisabled} onClick={handleRemoveAnswer}>
-                  <DeleteOutline />
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
+          fullWidth
           {...field}
         />
       )}
@@ -43,9 +26,6 @@ const AnswerTextField = ({ path, index, isRemoveButtonDisabled, onRemoveAnswer }
 
 AnswerTextField.propTypes = {
   path: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired,
-  isRemoveButtonDisabled: PropTypes.bool.isRequired,
-  onRemoveAnswer: PropTypes.func.isRequired,
 };
 
 export default AnswerTextField;

@@ -17,12 +17,14 @@ const QuestionBuilderStack = ({ path }) => {
     control: control,
   });
 
+  const enoughFields = fields.length > 1;
+
   const handleAddQuestion = () => {
     append(new QuestionTemplate());
   };
 
   const handleRemoveQuestion = (index) => {
-    if (fields.length > 1) {
+    if (enoughFields) {
       remove(index);
     }
   };
@@ -30,13 +32,12 @@ const QuestionBuilderStack = ({ path }) => {
   return (
     <Stack divider={<Divider />}>
       {fields.map((field, index) => (
-        <QuestionBuilder
-          key={field.id}
-          path={`${path}[${index}]`}
-          index={index}
-          isRemoveButtonDisabled={fields.length <= 1}
-          onRemoveQuestion={handleRemoveQuestion}
-        />
+        <Stack key={field.id}>
+          <QuestionBuilder path={`${path}[${index}]`} index={index} />
+          <Button color="error" disabled={!enoughFields} onClick={() => handleRemoveQuestion(index)}>
+            Remove question #{index + 1}
+          </Button>
+        </Stack>
       ))}
       <Button onClick={handleAddQuestion}>Add question</Button>
     </Stack>

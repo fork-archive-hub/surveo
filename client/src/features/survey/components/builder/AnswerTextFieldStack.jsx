@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 
-import { Stack } from '@mui/material';
+import { Stack, IconButton } from '@mui/material';
+import { DeleteOutline } from '@mui/icons-material';
 
 import { useFormContext, useFieldArray } from 'react-hook-form';
 
@@ -18,6 +19,8 @@ const AnswerTextFieldStack = ({ path }) => {
     control: control,
   });
 
+  const enoughFields = fields.length > 2;
+
   const updateAnswerIndexes = () => {
     setValue(path, updateIndexFields(getValues(path)));
   };
@@ -28,7 +31,7 @@ const AnswerTextFieldStack = ({ path }) => {
   };
 
   const handleRemoveAnswer = (index) => {
-    if (fields.length > 2) {
+    if (enoughFields) {
       remove(index);
       updateAnswerIndexes();
     }
@@ -37,13 +40,12 @@ const AnswerTextFieldStack = ({ path }) => {
   return (
     <Stack>
       {fields.map((field, index) => (
-        <AnswerTextField
-          key={field.id}
-          path={`${path}[${index}]`}
-          index={index}
-          isRemoveButtonDisabled={fields.length <= 2}
-          onRemoveAnswer={handleRemoveAnswer}
-        />
+        <Stack direction="row" key={field.id}>
+          <AnswerTextField path={`${path}[${index}]`} />
+          <IconButton color="error" disabled={!enoughFields} onClick={() => handleRemoveAnswer(index)}>
+            <DeleteOutline />
+          </IconButton>
+        </Stack>
       ))}
       <Button onClick={handleAddAnswer}>Add answer</Button>
     </Stack>
