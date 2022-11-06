@@ -24,7 +24,12 @@ export const middleware = (store) => {
   const availableActions = modules.reduce((actions, module) => ({ ...actions, ...module.getModuleActions() }), {});
 
   client.configure(socketio(socket));
-  client.configure(feathers.authentication({ storage: window.localStorage }));
+  client.configure(
+    feathers.authentication({
+      storage: window.localStorage,
+      storageKey: process.env.REACT_APP_AUTH_TOKEN_STORAGE_KEY,
+    })
+  );
 
   modules.forEach((module) => {
     if (module.initializeEventListeners) {

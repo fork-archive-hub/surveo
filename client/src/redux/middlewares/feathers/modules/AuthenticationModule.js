@@ -15,9 +15,13 @@ class AuthenticationModule extends ManagementModule {
     this.client.on('authenticated', this.handleAuthenticatedEvent);
     this.client.on('logout', this.handleLogoutEvent);
 
-    this.client.reAuthenticate().catch((error) => {
-      console.log('Reauthentication failed:', error.message);
-    });
+    if (localStorage.getItem(process.env.REACT_APP_AUTH_TOKEN_STORAGE_KEY) !== null) {
+      this.client.reAuthenticate().catch((error) => {
+        window.location.reload();
+
+        console.log('Reauthentication failed:', error.message);
+      });
+    }
   };
 
   handleLoginAction = async (action) => {
@@ -43,10 +47,12 @@ class AuthenticationModule extends ManagementModule {
   };
 
   handleAuthenticatedEvent = (data) => {
+    localStorage.setItem(process.env.REACT_APP_AUTH_USER_STORAGE_KEY, JSON.stringify(data.user));
     this.store.dispatch(authentication.onLogin(data));
   };
 
   handleLogoutEvent = (data) => {
+    localStorage.removeItem(process.env.REACT_APP_AUTH_USER_STORAGE_KEY);
     this.store.dispatch(authentication.onLogout(data));
   };
 }

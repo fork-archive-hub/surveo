@@ -22,8 +22,11 @@ Before running the application, configure the environment variables.
 
 ```env
 GENERATE_SOURCEMAP=false
-REACT_APP_FEATHERS_SERVER_URL=    # URL of the feathers server
-REACT_APP_GOOGLE_RECAPTCHA_KEY=   # Google reCaptcha key
+REACT_APP_BASE_TITLE=Surveo                        # Application title
+REACT_APP_AUTH_TOKEN_STORAGE_KEY=auth-token        # Local storage key for auth token
+REACT_APP_AUTH_USER_STORAGE_KEY=auth-user          # Local storage key for last logged user data
+REACT_APP_FEATHERS_SERVER_URL=                     # Feathers server url
+REACT_APP_GOOGLE_RECAPTCHA_KEY=                    # Google reCAPTCHA key
 ```
 
 Run the app in development mode
