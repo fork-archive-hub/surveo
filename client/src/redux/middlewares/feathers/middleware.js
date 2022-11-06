@@ -5,7 +5,9 @@ import io from 'socket.io-client';
 import ErrorHandler from './lib/ErrorHandler';
 
 import AuthenticationModule from './modules/AuthenticationModule';
+import SubscriptionModule from './modules/SubscriptionModule';
 import SurveyModule from './modules/SurveyModule';
+import UserModule from './modules/UserModule';
 import VoteModule from './modules/VoteModule';
 
 export const middleware = (store) => {
@@ -14,7 +16,9 @@ export const middleware = (store) => {
 
   const modules = [
     new AuthenticationModule(client, store),
+    new SubscriptionModule(client, store),
     new SurveyModule(client, store),
+    new UserModule(client, store),
     new VoteModule(client, store),
   ];
   const availableActions = modules.reduce((actions, module) => ({ ...actions, ...module.getModuleActions() }), {});

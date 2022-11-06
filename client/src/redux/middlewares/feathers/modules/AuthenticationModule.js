@@ -5,7 +5,6 @@ import { authentication } from '../actions';
 class AuthenticationModule extends ManagementModule {
   getModuleActions = () => {
     return {
-      [authentication.register.type]: this.handleRegisterAction,
       [authentication.login.type]: this.handleLoginAction,
       [authentication.logout.type]: this.handleLogoutAction,
       [authentication.reauthenticate.type]: this.handleReauthenticateAction,
@@ -19,15 +18,6 @@ class AuthenticationModule extends ManagementModule {
     this.client.reAuthenticate().catch((error) => {
       console.log('Reauthentication failed:', error.message);
     });
-  };
-
-  handleRegisterAction = async (action) => {
-    const result = await this.client.service('users').create({
-      username: action.payload.username,
-      password: action.payload.password,
-    });
-
-    return authentication.register(result);
   };
 
   handleLoginAction = async (action) => {

@@ -10,9 +10,6 @@ class SurveyModule extends ManagementModule {
       [survey.get.type]: this.handleSurveyGetAction,
       [survey.patch.type]: this.handleSurveyPatchAction,
       [survey.remove.type]: this.handleSurveyRemoveAction,
-
-      [survey.subscribe.type]: this.handleSurveySubscribeAction,
-      [survey.unsubscribe.type]: this.handleSurveyUnsubscribeAction,
     };
   };
 
@@ -53,18 +50,6 @@ class SurveyModule extends ManagementModule {
     const result = await this.client.service('surveys').remove(action.payload.surveyId);
 
     return survey.remove(result);
-  };
-
-  handleSurveySubscribeAction = async (action) => {
-    const result = await this.client.service('subscriptions').create({ surveyId: action.payload.surveyId });
-
-    return survey.subscribe(result);
-  };
-
-  handleSurveyUnsubscribeAction = async (action) => {
-    const result = await this.client.service('subscriptions').remove(action.payload.surveyId);
-
-    return survey.unsubscribe(result);
   };
 }
 

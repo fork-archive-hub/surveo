@@ -10,7 +10,7 @@ export const useSubscribeSurveyResultsQuery = (surveyId) => {
   useEffect(() => {
     const subscribe = () => {
       if (surveyId) {
-        dispatch(feathers.survey.subscribe({ surveyId: surveyId }));
+        dispatch(feathers.subscription.create({ surveyId: surveyId }));
       }
     };
 
@@ -19,7 +19,7 @@ export const useSubscribeSurveyResultsQuery = (surveyId) => {
     return () => {
       const unsubscribe = () => {
         if (surveyId) {
-          dispatch(feathers.survey.unsubscribe({ surveyId: surveyId }));
+          dispatch(feathers.subscription.remove({ surveyId: surveyId }));
         }
       };
 

@@ -16,7 +16,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const handleSubmitCredentials = async ({ username, password }) => {
-    const result = await dispatch(feathers.authentication.register({ username: username, password: password }));
+    const result = await dispatch(feathers.user.create({ username: username, password: password }));
 
     if (result.error) {
       toast.error(result.error);
