@@ -1,14 +1,21 @@
-import PropTypes from 'prop-types';
 import { useState, useRef } from 'react';
 
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { Menu, MenuItem, IconButton, Avatar, Typography, Divider } from '@mui/material';
+import { Menu, MenuItem, Button, Avatar, Typography, Divider } from '@mui/material';
 import { BallotOutlined, LogoutOutlined, PersonOutline } from '@mui/icons-material';
 
-const UserMenu = ({ user, onLogout }) => {
+import { feathers } from '../../redux';
+
+import { toast } from 'react-toastify';
+
+const UserMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const anchorElement = useRef(null);
+
+  const user = useSelector((state) => state.authentication.user);
+  const dispatch = useDispatch();
 
   const handleOpenMenu = () => {
     setIsMenuOpen(true);
@@ -18,18 +25,22 @@ const UserMenu = ({ user, onLogout }) => {
     setIsMenuOpen(false);
   };
 
-  const handleLogout = () => {
-    onLogout();
+  const handleLogout = async () => {
     handleCloseMenu();
+    await dispatch(feathers.authentication.logout());
+    toast.success('You have been successfully logged out.');
   };
 
   return (
     <>
-      <IconButton onClick={handleOpenMenu} ref={anchorElement} sx={{ p: 0 }}>
-        <Avatar alt="Profile">
+      <Button size="large" onClick={handleOpenMenu} ref={anchorElement} sx={{ color: 'inherit' }}>
+        <Typography variant="button" sx={{ mr: 1 }}>
+          {user.username}
+        </Typography>
+        <Avatar alt={user.username}>
           <PersonOutline />
         </Avatar>
-      </IconButton>
+      </Button>
       <Menu
         keepMounted
         open={isMenuOpen}
@@ -53,19 +64,12 @@ const UserMenu = ({ user, onLogout }) => {
           <BallotOutlined sx={{ mr: 1 }} /> My Surveys
         </MenuItem>
         <Divider />
-        <MenuItem to="/" component={Link} onClick={handleLogout}>
+        <MenuItem to="/auth/login" component={Link} onClick={handleLogout}>
           <LogoutOutlined sx={{ mr: 1 }} /> Logout
         </MenuItem>
       </Menu>
     </>
   );
-};
-
-UserMenu.propTypes = {
-  user: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-  }).isRequired,
-  onLogout: PropTypes.func.isRequired,
 };
 
 export default UserMenu;
