@@ -19,7 +19,7 @@ module.exports = {
     find: [],
     get: [authenticateIfPossible('jwt')],
     create: [authenticate('jwt'), validateSchema(SurveySchema), mapUserFieldToDataField('_id', 'authorId')],
-    update: [disallow('external')],
+    update: [disallow()],
     patch: [authenticate('jwt'), mapUserFieldToQueryField('_id', 'authorId'), validateSchema(SurveyInformationSchema)],
     remove: [authenticate('jwt'), mapUserFieldToQueryField('_id', 'authorId')],
   },

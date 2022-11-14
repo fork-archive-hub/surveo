@@ -14,19 +14,9 @@ module.exports = {
     find: [authenticate('jwt'), mapUserFieldToQueryField('_id', '_id')],
     get: [authenticate('jwt'), mapUserFieldToQueryField('_id', '_id')],
     create: [validateSchema(UserSchema), hashPassword('password')],
-    update: [
-      disallow('external'),
-      hashPassword('password'),
-      authenticate('jwt'),
-      mapUserFieldToQueryField('_id', '_id'),
-    ],
-    patch: [
-      disallow('external'),
-      hashPassword('password'),
-      authenticate('jwt'),
-      mapUserFieldToQueryField('_id', '_id'),
-    ],
-    remove: [disallow('external'), authenticate('jwt'), mapUserFieldToQueryField('_id', '_id')],
+    update: [disallow()],
+    patch: [disallow()],
+    remove: [disallow()],
   },
 
   after: {
