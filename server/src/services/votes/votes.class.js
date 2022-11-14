@@ -1,4 +1,4 @@
-const { BadRequest, NotAcceptable } = require('@feathersjs/errors');
+const { NotFound, BadRequest, NotAcceptable } = require('@feathersjs/errors');
 
 exports.Votes = class Votes {
   constructor(options, app) {
@@ -7,7 +7,12 @@ exports.Votes = class Votes {
   }
 
   async get(id, params) {
-    const survey = await this.app.service('surveys').get(id);
+    const survey = await this.app.service('surveys').Model.findById(id).lean();
+
+    if (!survey) {
+      throw new NotFound(`Survey with id '${id}' not found`);
+    }
+
     const votes = survey.ips.filter((ip) => ip === params.ip).length;
 
     return {
@@ -17,13 +22,17 @@ exports.Votes = class Votes {
   }
 
   async create(data, params) {
-    const { open, questions, ips } = await this.app.service('surveys').get(data.surveyId);
+    const survey = await this.app.service('surveys').Model.findById(data.surveyId).lean();
 
-    if (!open) {
+    if (!survey) {
+      throw new NotFound(`Survey with id '${id}' not found`);
+    }
+
+    if (!survey.open) {
       throw new NotAcceptable('Survey is closed');
     }
 
-    for (const question of questions) {
+    for (const question of survey.questions) {
       const questionAnswer = this.getUserAnswer(question, data.answerSheet);
 
       for (const subquestion of question.subquestions) {
@@ -37,9 +46,10 @@ exports.Votes = class Votes {
       questionAnswer.votes += 1;
     }
 
-    ips.push(params.ip);
+    survey.ips.push(params.ip);
 
-    await this.app.service('surveys').patch(data.surveyId, { questions, ips });
+    const { questions, ips } = survey;
+    await this.app.service('surveys').Model.findByIdAndUpdate(data.surveyId, { questions, ips });
 
     return {};
   }

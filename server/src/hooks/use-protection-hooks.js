@@ -10,7 +10,7 @@ module.exports = (surveyField, protectionHooks) => {
       return context;
     }
 
-    const survey = await context.app.service('surveys').get(context.data.surveyId);
+    const survey = await context.app.service('surveys').Model.findById(context.data.surveyId).lean();
 
     for (const protectionName of protectionNames) {
       if (survey[surveyField][protectionName]) {

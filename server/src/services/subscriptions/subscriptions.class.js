@@ -1,4 +1,4 @@
-const { Forbidden } = require('@feathersjs/errors');
+const { NotFound, Forbidden } = require('@feathersjs/errors');
 
 exports.Subscriptions = class Subscriptions {
   constructor(options, app) {
@@ -7,7 +7,11 @@ exports.Subscriptions = class Subscriptions {
   }
 
   async create(data, params) {
-    const survey = await this.app.service('surveys').get(data.surveyId);
+    const survey = await this.app.service('surveys').Model.findById(data.surveyId).lean();
+
+    if (!survey) {
+      throw new NotFound(`Survey with id '${id}' not found`);
+    }
 
     if (survey.authorId.toString() !== params.user._id.toString()) {
       throw new Forbidden('You can only subscribe to surveys you have created');

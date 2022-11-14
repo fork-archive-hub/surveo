@@ -5,7 +5,7 @@ module.exports = (surveyField, paramsField) => {
   return async (context) => {
     checkContext(context, 'before', null, 'disallowDuplicatedIps');
 
-    const survey = await context.app.service('surveys').get(context.data.surveyId);
+    const survey = await context.app.service('surveys').Model.findById(context.data.surveyId).lean();
     const ip = context.params[paramsField];
 
     if (survey[surveyField].includes(ip)) {

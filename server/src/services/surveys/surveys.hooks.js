@@ -20,16 +20,13 @@ module.exports = {
     get: [authenticateIfPossible('jwt')],
     create: [authenticate('jwt'), validateSchema(SurveySchema), mapUserFieldToDataField('_id', 'authorId')],
     update: [disallow('external')],
-    patch: [
-      authenticate('jwt'),
-      ifProvider(['external'], mapUserFieldToQueryField('_id', 'authorId'), validateSchema(SurveyInformationSchema)),
-    ],
+    patch: [authenticate('jwt'), mapUserFieldToQueryField('_id', 'authorId'), validateSchema(SurveyInformationSchema)],
     remove: [authenticate('jwt'), mapUserFieldToQueryField('_id', 'authorId')],
   },
 
   after: {
-    all: [ifProvider(['external'], discard('ips'))],
-    find: [ifProvider(['external'], deepDiscard('votes'), discard('protection', 'questions'))],
+    all: [discard('ips')],
+    find: [deepDiscard('votes'), discard('protection', 'questions')],
     get: [
       ifProvider(['external'], ifNot(isDocumentOwner('_id', 'authorId'), deepDiscard('votes'))),
       populate({
