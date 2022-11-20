@@ -14,7 +14,7 @@ const slice = createSlice({
       }
     });
 
-    builder.addCase(vote.onCreated.type, (state, action) => {
+    builder.addCase(vote.events.created.type, (state, action) => {
       if (state.data._id === action.payload._id) {
         state.data = action.payload;
       }

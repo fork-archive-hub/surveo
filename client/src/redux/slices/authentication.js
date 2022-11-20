@@ -12,12 +12,12 @@ const slice = createSlice({
     user: authTokenExists ? lastLoggedUser : {},
   },
   extraReducers: (builder) => {
-    builder.addCase(authentication.onLogin.type, (state, action) => {
+    builder.addCase(authentication.events.authenticated.type, (state, action) => {
       state.isAuthenticated = true;
       state.user = action.payload.user;
     });
 
-    builder.addCase(authentication.onLogout.type, (state, action) => {
+    builder.addCase(authentication.events.logout.type, (state, action) => {
       state.isAuthenticated = false;
       state.user = {};
     });

@@ -31,7 +31,7 @@ class VoteModule extends ManagementModule {
   };
 
   handleVoteCreatedEvent = (data) => {
-    this.store.dispatch(vote.onCreated(data));
+    this.store.dispatch(vote.events.created(data));
   };
 }
 

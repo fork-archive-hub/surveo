@@ -48,12 +48,12 @@ class AuthenticationModule extends ManagementModule {
 
   handleAuthenticatedEvent = (data) => {
     localStorage.setItem(process.env.REACT_APP_AUTH_USER_STORAGE_KEY, JSON.stringify(data.user));
-    this.store.dispatch(authentication.onLogin(data));
+    this.store.dispatch(authentication.events.authenticated(data));
   };
 
   handleLogoutEvent = (data) => {
     localStorage.removeItem(process.env.REACT_APP_AUTH_USER_STORAGE_KEY);
-    this.store.dispatch(authentication.onLogout(data));
+    this.store.dispatch(authentication.events.logout(data));
   };
 }
 

@@ -5,8 +5,10 @@ export const authentication = {
   logout: createAction('feathers/authentication/logout'),
   reauthenticate: createAction('feathers/authentication/reauthenticate'),
 
-  onLogin: createAction('feathers/authentication/onLogin'),
-  onLogout: createAction('feathers/authentication/onLogout'),
+  events: {
+    authenticated: createAction('feathers/authentication/events/authenticated'),
+    logout: createAction('feathers/authentication/events/logout'),
+  },
 };
 
 export const user = {
@@ -30,5 +32,7 @@ export const vote = {
   create: createAction('feathers/vote/create'),
   get: createAction('feathers/vote/get'),
 
-  onCreated: createAction('feathers/vote/onCreated'),
+  events: {
+    created: createAction('feathers/vote/events/created'),
+  },
 };
