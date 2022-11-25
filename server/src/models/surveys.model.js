@@ -9,14 +9,14 @@ module.exports = function (app) {
     },
     text: {
       type: String,
-      required: [true, 'Answer text is required!'],
-      minlength: [2, 'Answer text must be at least 2 characters long!'],
-      maxLength: [140, 'Answer text cannot be more than 140 characters long!'],
+      required: [true, 'Answer text is required'],
+      minlength: [2, 'Answer text must be at least 2 characters long'],
+      maxLength: [140, 'Answer text cannot be more than 140 characters long'],
     },
     votes: {
       type: Number,
       default: 0,
-      min: [0, 'Vote count cannot be less than 0!'],
+      min: [0, 'Vote count cannot be less than 0'],
     },
   });
 
@@ -24,9 +24,9 @@ module.exports = function (app) {
     requirements: [Number],
     text: {
       type: String,
-      required: [true, 'Question text is required!'],
-      minlength: [3, 'Question text must be at least 3 characters long!'],
-      maxLength: [140, 'Question text cannot be more than 140 characters long!'],
+      required: [true, 'Question text is required'],
+      minlength: [3, 'Question text must be at least 3 characters long'],
+      maxLength: [140, 'Question text cannot be more than 140 characters long'],
     },
     answers: [AnswerSchema],
   });
@@ -34,9 +34,9 @@ module.exports = function (app) {
   const QuestionSchema = new mongooseClient.Schema({
     text: {
       type: String,
-      required: [true, 'Question text is required!'],
-      minlength: [3, 'Question text must be at least 3 characters long!'],
-      maxLength: [140, 'Question text cannot be more than 140 characters long!'],
+      required: [true, 'Question text is required'],
+      minlength: [3, 'Question text must be at least 3 characters long'],
+      maxLength: [140, 'Question text cannot be more than 140 characters long'],
     },
     answers: [AnswerSchema],
     subquestions: [SubquestionSchema],
@@ -50,9 +50,9 @@ module.exports = function (app) {
       },
       name: {
         type: String,
-        required: [true, 'Survey name is required!'],
-        minlength: [3, 'Survey name must be at least 3 characters long!'],
-        maxLength: [240, 'Survey name cannot be more than 240 characters long!'],
+        required: [true, 'Survey name is required'],
+        minlength: [3, 'Survey name must be at least 3 characters long'],
+        maxLength: [240, 'Survey name cannot be more than 240 characters long'],
       },
       open: {
         type: Boolean,

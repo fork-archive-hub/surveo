@@ -13,7 +13,7 @@ module.exports = (dataField) => {
     const responseData = await response.json();
 
     if (!responseData.success) {
-      throw new Unprocessable('Invalid captcha response!');
+      throw new Unprocessable('Invalid captcha response');
     }
 
     return context;

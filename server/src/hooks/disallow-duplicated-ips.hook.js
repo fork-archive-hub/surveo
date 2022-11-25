@@ -9,7 +9,7 @@ module.exports = (surveyField, paramsField) => {
     const ip = context.params[paramsField];
 
     if (survey[surveyField].includes(ip)) {
-      throw new Unprocessable('You have already voted on this survey!');
+      throw new Unprocessable('You have already voted on this survey');
     }
   };
 };

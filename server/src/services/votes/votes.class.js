@@ -59,7 +59,7 @@ exports.Votes = class Votes {
     const answerIndex = question.answers.findIndex((answer) => answer._id.toString() === answerSheet[questionId]);
 
     if (answerIndex === -1) {
-      throw new BadRequest(`Answer for question '${questionId}' not found!`);
+      throw new BadRequest(`Answer for question '${questionId}' not found`);
     }
 
     return question.answers[answerIndex];
