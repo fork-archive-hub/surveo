@@ -6,13 +6,35 @@ exports.Votes = class Votes {
     this.options = options || {};
   }
 
-  async get(id, params) {
+  async getSurvey(id) {
     const survey = await this.app.service('surveys').Model.findById(id).lean();
 
     if (!survey) {
       throw new NotFound(`Survey with id '${id}' not found`);
     }
 
+    return survey;
+  }
+
+  async updateSurvey(id, survey) {
+    const { questions, ips } = survey;
+
+    await this.app.service('surveys').Model.findByIdAndUpdate(id, { questions, ips });
+  }
+
+  getUserAnswer(question, answerSheet) {
+    const questionId = question._id.toString();
+    const answer = question.answers.find((answer) => answer._id.toString() === answerSheet[questionId]);
+
+    if (!answer) {
+      throw new BadRequest(`Answer for question '${questionId}' not found`);
+    }
+
+    return answer;
+  }
+
+  async get(id, params) {
+    const survey = await this.getSurvey(id);
     const votes = survey.ips.filter((ip) => ip === params.ip).length;
 
     return {
@@ -22,11 +44,7 @@ exports.Votes = class Votes {
   }
 
   async create(data, params) {
-    const survey = await this.app.service('surveys').Model.findById(data.surveyId).lean();
-
-    if (!survey) {
-      throw new NotFound(`Survey with id '${id}' not found`);
-    }
+    const survey = await this.getSurvey(data.surveyId);
 
     if (!survey.open) {
       throw new NotAcceptable('Survey is closed');
@@ -48,20 +66,8 @@ exports.Votes = class Votes {
 
     survey.ips.push(params.ip);
 
-    const { questions, ips } = survey;
-    await this.app.service('surveys').Model.findByIdAndUpdate(data.surveyId, { questions, ips });
+    await this.updateSurvey(data.surveyId, survey);
 
     return {};
-  }
-
-  getUserAnswer(question, answerSheet) {
-    const questionId = question._id.toString();
-    const answerIndex = question.answers.findIndex((answer) => answer._id.toString() === answerSheet[questionId]);
-
-    if (answerIndex === -1) {
-      throw new BadRequest(`Answer for question '${questionId}' not found`);
-    }
-
-    return question.answers[answerIndex];
   }
 };
