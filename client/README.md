@@ -62,18 +62,16 @@ src
    |   |-- layout_name          # group of components used to create specific layout
    |   |-- index.js             # exports of all created layouts
    |-- pages                    # pages used by the application
-   |-- providers                # providers used to provide data to the application
-   |   |-- index.js             # exports of all created providers
    |-- redux
    |   |-- middlewares          # middlewares used by the application
    |   |-- slices               # redux slices used by the application
    |   |-- store.js             # redux store used by the application
    |   |-- index.js             # exports of all required elements from redux
    |-- routes                   # routes used by the application
-   |   |-- common-routes.js     # routes available for everyone
-   |   |-- protected-routes.js  # routes available for authenticated users
-   |   |-- public-routes.js     # routes available for unauthenticated users
-   |   |-- AppRoutes.js         # creates react element with available routes
+   |   |-- common-routes.jsx    # routes available for everyone
+   |   |-- protected-routes.jsx # routes available for authenticated users
+   |   |-- public-routes.jsx    # routes available for unauthenticated users
+   |   |-- Routes.jsx           # creates react element with available routes
    |   |-- index.js             # exports of all required elements from router
    |-- theme                    # theme used by the application
    |   |-- theme.js             # theme object used by the application

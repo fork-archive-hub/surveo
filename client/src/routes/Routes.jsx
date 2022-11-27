@@ -5,7 +5,7 @@ import { protectedRoutes } from './protected-routes';
 import { publicRoutes } from './public-routes';
 import { commonRoutes } from './common-routes';
 
-const AppRoutes = () => {
+const Routes = () => {
   const isAuthenticated = useSelector((state) => state.authentication.isAuthenticated);
 
   const routes = isAuthenticated ? protectedRoutes : publicRoutes;
@@ -14,4 +14,4 @@ const AppRoutes = () => {
   return element;
 };
 
-export default AppRoutes;
+export default Routes;
