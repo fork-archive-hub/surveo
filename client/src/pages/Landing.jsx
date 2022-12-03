@@ -18,7 +18,7 @@ const Landing = () => {
           <Typography variant="h5" sx={{ opacity: 0.7 }}>
             Create surveys with any number of questions and answers while tracking the results later in real time.
           </Typography>
-          <Stack direction="row" sx={{ justifyContent: { xs: 'center', md: 'start' } }}>
+          <Stack direction="row" sx={{ justifyContent: { xs: 'center', md: 'flex-start' } }}>
             <Button to="/auth/register" variant="contained" size="large" component={Link}>
               Sign up
             </Button>

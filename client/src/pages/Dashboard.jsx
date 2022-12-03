@@ -22,7 +22,7 @@ const Dashboard = () => {
   return (
     <Grid container component={Paper}>
       <Grid item xs={12} sx={{ p: 2 }}>
-        <Stack direction="row-reverse">
+        <Stack direction="row" sx={{ justifyContent: 'flex-end' }}>
           <Button to="/surveys/create" size="large" component={Link}>
             Create survey
           </Button>

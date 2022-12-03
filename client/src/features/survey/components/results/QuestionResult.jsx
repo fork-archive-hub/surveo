@@ -24,7 +24,7 @@ const QuestionResult = ({ question }) => {
       <CardHeader title={question.text} subheader={`${totalVotes} vote${totalVotes === 1 ? '' : 's'}`} />
       <CardActions>
         <Stack direction="column" spacing={1} sx={{ width: 1 }}>
-          <Stack direction="row-reverse" spacing={2} sx={{ width: 1 }}>
+          <Stack direction="row" spacing={2} sx={{ width: 1, justifyContent: 'flex-end' }}>
             <Button onClick={handleToggleShowPolarChart} size="small">
               {showPolarChart ? 'Hide polar chart' : 'Show polar chart'}
             </Button>
