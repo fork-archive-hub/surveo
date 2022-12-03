@@ -14,7 +14,7 @@ class ErrorHandler {
 
   static humanizeBadRequestError(error) {
     switch (error.message) {
-      case 'users validation failed: username: username must be unique!':
+      case 'users validation failed: username: username must be unique':
         return 'Username is already taken';
       default:
         return error.message;
