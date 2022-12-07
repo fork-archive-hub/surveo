@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
 import { useId } from 'react';
 
-import { RadioGroup, FormControlLabel, Radio } from '../../../../components';
+import Answer from './Answer';
+
+import { RadioGroup } from '../../../../components';
 
 const AnswerGroup = ({ answers, onSelectAnswer }) => {
   const groupId = useId();
@@ -15,13 +17,9 @@ const AnswerGroup = ({ answers, onSelectAnswer }) => {
   };
 
   return (
-    <RadioGroup name={groupId} onChange={handleChange}>
+    <RadioGroup name={groupId} onChange={handleChange} sx={{ '> *:last-child': { m: 0 } }}>
       {answers.map((answer) => (
-        <FormControlLabel
-          key={answer._id}
-          label={answer.text}
-          control={<Radio size="small" value={answer._id} required />}
-        />
+        <Answer key={answer._id} answer={answer} />
       ))}
     </RadioGroup>
   );
@@ -31,7 +29,6 @@ AnswerGroup.propTypes = {
   answers: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
-      text: PropTypes.string.isRequired,
     })
   ).isRequired,
   onSelectAnswer: PropTypes.func.isRequired,

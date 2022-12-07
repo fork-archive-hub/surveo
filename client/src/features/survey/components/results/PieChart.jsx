@@ -5,6 +5,8 @@ import { Box, useTheme } from '@mui/material';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, Colors } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 
+import { findImageMarkdown } from '../../utils/findImageMarkdown';
+
 ChartJS.register(ArcElement, Tooltip, Legend, Colors);
 
 const PieChart = ({ answers }) => {
@@ -21,7 +23,11 @@ const PieChart = ({ answers }) => {
   };
 
   const data = {
-    labels: answers.map((answer) => answer.text),
+    labels: answers.map((answer) => {
+      const image = findImageMarkdown(answer.text);
+
+      return image.found ? image.title : answer.text;
+    }),
     datasets: [
       {
         label: 'Votes',
