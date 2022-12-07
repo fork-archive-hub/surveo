@@ -7,7 +7,7 @@ import { PolarArea } from 'react-chartjs-2';
 
 ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend, Colors);
 
-const PolarResultChart = ({ answers }) => {
+const PolarChart = ({ answers }) => {
   const theme = useTheme();
 
   const options = {
@@ -38,12 +38,13 @@ const PolarResultChart = ({ answers }) => {
   );
 };
 
-PolarResultChart.propTypes = {
+PolarChart.propTypes = {
   answers: PropTypes.arrayOf(
     PropTypes.shape({
-      _id: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+      votes: PropTypes.number.isRequired,
     }).isRequired
   ).isRequired,
 };
 
-export default PolarResultChart;
+export default PolarChart;

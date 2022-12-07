@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import { Box, Typography, LinearProgress } from '@mui/material';
 
-const AnswerResult = ({ answer, totalVotes }) => {
+const StackChartItem = ({ answer, totalVotes }) => {
   const votePercentage = (answer.votes / (totalVotes || 1)) * 100;
 
   return (
@@ -16,7 +16,7 @@ const AnswerResult = ({ answer, totalVotes }) => {
   );
 };
 
-AnswerResult.propTypes = {
+StackChartItem.propTypes = {
   answer: PropTypes.shape({
     text: PropTypes.string.isRequired,
     votes: PropTypes.number.isRequired,
@@ -24,4 +24,4 @@ AnswerResult.propTypes = {
   totalVotes: PropTypes.number.isRequired,
 };
 
-export default AnswerResult;
+export default StackChartItem;
