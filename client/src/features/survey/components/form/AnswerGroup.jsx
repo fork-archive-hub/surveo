@@ -32,7 +32,6 @@ AnswerGroup.propTypes = {
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
-      index: PropTypes.number.isRequired,
     })
   ).isRequired,
   onSelectAnswer: PropTypes.func.isRequired,

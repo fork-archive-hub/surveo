@@ -44,10 +44,7 @@ SurveyEditorForm.propTypes = {
   survey: PropTypes.shape({
     name: PropTypes.string.isRequired,
     open: PropTypes.bool.isRequired,
-    protection: PropTypes.shape({
-      captcha: PropTypes.bool.isRequired,
-      ipRestriction: PropTypes.bool.isRequired,
-    }).isRequired,
+    protection: PropTypes.object.isRequired,
   }).isRequired,
   onUpdateSurvey: PropTypes.func.isRequired,
 };

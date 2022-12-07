@@ -26,6 +26,7 @@ SubquestionStack.propTypes = {
   subquestions: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
+      requirements: PropTypes.arrayOf(PropTypes.number).isRequired,
     }).isRequired
   ).isRequired,
   selectedAnswerIndex: PropTypes.number.isRequired,
