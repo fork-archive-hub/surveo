@@ -4,7 +4,7 @@ import { Box, Stack, Typography, LinearProgress } from '@mui/material';
 
 import { findImageMarkdown } from '../../utils/findImageMarkdown';
 
-const StackChartItem = ({ answer, totalVotes }) => {
+const AnswerStackItem = ({ answer, totalVotes }) => {
   const image = findImageMarkdown(answer.text);
   const votePercentage = (answer.votes / (totalVotes || 1)) * 100;
 
@@ -24,7 +24,7 @@ const StackChartItem = ({ answer, totalVotes }) => {
   );
 };
 
-StackChartItem.propTypes = {
+AnswerStackItem.propTypes = {
   answer: PropTypes.shape({
     text: PropTypes.string.isRequired,
     votes: PropTypes.number.isRequired,
@@ -32,4 +32,4 @@ StackChartItem.propTypes = {
   totalVotes: PropTypes.number.isRequired,
 };
 
-export default StackChartItem;
+export default AnswerStackItem;

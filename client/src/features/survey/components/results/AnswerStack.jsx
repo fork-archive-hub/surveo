@@ -2,22 +2,22 @@ import PropTypes from 'prop-types';
 
 import { Stack } from '@mui/material';
 
-import StackChartItem from './StackChartItem';
+import AnswerStackItem from './AnswerStackItem';
 
-const StackChart = ({ answers }) => {
+const AnswerStack = ({ answers }) => {
   const totalVotes = answers.reduce((acc, answer) => acc + answer.votes, 0);
   const sortedAnswers = answers.slice().sort((a, b) => b.votes - a.votes);
 
   return (
     <Stack>
       {sortedAnswers.map((answer) => (
-        <StackChartItem key={answer._id} answer={answer} totalVotes={totalVotes} />
+        <AnswerStackItem key={answer._id} answer={answer} totalVotes={totalVotes} />
       ))}
     </Stack>
   );
 };
 
-StackChart.propTypes = {
+AnswerStack.propTypes = {
   answers: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
@@ -26,4 +26,4 @@ StackChart.propTypes = {
   ).isRequired,
 };
 
-export default StackChart;
+export default AnswerStack;
