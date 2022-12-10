@@ -21,7 +21,7 @@ const QuestionResult = ({ question }) => {
     <Card>
       <CardHeader title={question.text} subheader={`${totalVotes} vote${totalVotes === 1 ? '' : 's'}`} />
       <CardActions>
-        <Stack direction="column" spacing={2} sx={{ width: 1 }}>
+        <Stack direction="column" sx={{ width: 1 }}>
           <Tabs centered variant="fullWidth" value={chartType} onChange={handleChangeChartType}>
             <Tab icon={<AnswerStackIcon />} value="stack" />
             <Tab icon={<PieChartIcon />} value="pie" />
