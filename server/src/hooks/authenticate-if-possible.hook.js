@@ -6,9 +6,7 @@ module.exports = (originalSettings, ...originalStrategies) => {
     checkContext(context, null, null, 'authenticateIfPossible');
 
     if (Object.prototype.hasOwnProperty.call(context.params, 'authentication')) {
-      return await authenticate(originalSettings, ...originalStrategies)(context);
+      await authenticate(originalSettings, ...originalStrategies)(context);
     }
-
-    return context;
   };
 };

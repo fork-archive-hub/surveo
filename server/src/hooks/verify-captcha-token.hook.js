@@ -15,7 +15,5 @@ module.exports = (dataField) => {
     if (!responseData.success) {
       throw new Unprocessable('Invalid captcha response');
     }
-
-    return context;
   };
 };

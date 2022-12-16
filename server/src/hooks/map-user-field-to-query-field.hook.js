@@ -7,7 +7,7 @@ module.exports = (userField, queryField) => {
     checkContext(context, 'before', null, 'mapUserFieldToQueryField');
 
     if (isProvider('server')(context)) {
-      return context;
+      return;
     }
 
     const isUserAuthenticated = Object.prototype.hasOwnProperty.call(context.params, 'user');
@@ -16,6 +16,6 @@ module.exports = (userField, queryField) => {
       throw new Forbidden('You must be authenticated to perform this action');
     }
 
-    return await setField({ from: `params.user.${userField}`, as: `params.query.${queryField}` })(context);
+    await setField({ from: `params.user.${userField}`, as: `params.query.${queryField}` })(context);
   };
 };

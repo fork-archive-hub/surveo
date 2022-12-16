@@ -6,10 +6,8 @@ module.exports = (providers, ...hooks) => {
 
     if (isProvider(...providers)(context)) {
       for (const hook of hooks) {
-        context = await hook(context);
+        await hook(context);
       }
     }
-
-    return context;
   };
 };

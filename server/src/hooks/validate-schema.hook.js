@@ -7,8 +7,6 @@ module.exports = (schema) => {
 
     try {
       context.data = await schema.validateAsync(context.data);
-
-      return context;
     } catch (error) {
       throw new BadRequest(error.message);
     }

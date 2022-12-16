@@ -15,7 +15,5 @@ module.exports = (...fields) => {
     } else {
       omitDeep(items, fields);
     }
-
-    return context;
   };
 };

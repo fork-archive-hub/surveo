@@ -12,6 +12,6 @@ module.exports = (userField, dataField) => {
       throw new Forbidden('You must be authenticated to perform this action');
     }
 
-    return await setField({ from: `params.user.${userField}`, as: `data.${dataField}` })(context);
+    await setField({ from: `params.user.${userField}`, as: `data.${dataField}` })(context);
   };
 };
