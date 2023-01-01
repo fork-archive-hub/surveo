@@ -5,7 +5,7 @@ const { discard, disallow, populate } = require('feathers-hooks-common');
 const validateSchema = require('../../hooks/validate-schema.hook');
 const ifProvider = require('../../hooks/if-provider.hook');
 const ifNot = require('../../hooks/if-not.hook');
-const authenticateIfPossible = require('../../hooks/authenticate-if-possible.hook');
+const authenticateWhenCredentialsProvided = require('../../hooks/authenticate-when-credentials-provided');
 const deepDiscard = require('../../hooks/deep-discard.hook');
 const mapUserFieldToDataField = require('../../hooks/map-user-field-to-data-field.hook');
 const mapUserFieldToQueryField = require('../../hooks/map-user-field-to-query-field.hook');
@@ -17,7 +17,7 @@ module.exports = {
   before: {
     all: [],
     find: [],
-    get: [authenticateIfPossible('jwt')],
+    get: [authenticateWhenCredentialsProvided('jwt')],
     create: [authenticate('jwt'), validateSchema(SurveySchema), mapUserFieldToDataField('_id', 'authorId')],
     update: [disallow()],
     patch: [authenticate('jwt'), mapUserFieldToQueryField('_id', 'authorId'), validateSchema(SurveyInformationSchema)],
