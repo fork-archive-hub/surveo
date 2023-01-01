@@ -4,8 +4,8 @@ import { Navigate } from 'react-router-dom';
 
 import { PresentationLayout } from '../layouts';
 
-const SurveyForm = lazy(() => import('../pages/SurveyForm'));
-const NotFound = lazy(() => import('../pages/NotFound'));
+const SurveySheetPage = lazy(() => import('../pages/SurveySheetPage'));
+const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
 export const commonRoutes = [
   {
@@ -27,7 +27,7 @@ export const commonRoutes = [
               },
               {
                 path: 'form',
-                element: <SurveyForm />,
+                element: <SurveySheetPage />,
               },
             ],
           },
@@ -35,7 +35,7 @@ export const commonRoutes = [
       },
       {
         path: '*',
-        element: <NotFound />,
+        element: <NotFoundPage />,
       },
     ],
   },

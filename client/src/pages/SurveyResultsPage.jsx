@@ -10,9 +10,9 @@ import { toast } from 'react-toastify';
 import { useDocumentTitle, useGetSurveyQuery, useSubscribeSurveyResultsQuery } from '../hooks';
 
 import { Spinner } from '../components';
-import { SurveySheetResults } from '../features/survey';
+import { SurveyResults } from '../features/survey';
 
-const SurveyResults = () => {
+const SurveyResultsPage = () => {
   const user = useSelector((state) => state.authentication.user);
 
   const params = useParams();
@@ -38,10 +38,10 @@ const SurveyResults = () => {
     <Grid container sx={{ justifyContent: 'center', py: 2 }}>
       <Grid item xs={12} sm={8} md={5} lg={4} xl={3}>
         {isLoading && <Spinner />}
-        {Boolean(survey._id) && !isLoading && <SurveySheetResults survey={survey} />}
+        {Boolean(survey._id) && !isLoading && <SurveyResults survey={survey} />}
       </Grid>
     </Grid>
   );
 };
 
-export default SurveyResults;
+export default SurveyResultsPage;

@@ -2,10 +2,10 @@ import { lazy } from 'react';
 
 import { PresentationLayout } from '../layouts';
 
-import Landing from '../pages/Landing';
+import LandingPage from '../pages/LandingPage';
 
-const Login = lazy(() => import('../pages/Login'));
-const Register = lazy(() => import('../pages/Register'));
+const LoginPage = lazy(() => import('../pages/LoginPage'));
+const RegisterPage = lazy(() => import('../pages/RegisterPage'));
 
 export const publicRoutes = [
   {
@@ -13,18 +13,18 @@ export const publicRoutes = [
     children: [
       {
         path: '/',
-        element: <Landing />,
+        element: <LandingPage />,
       },
       {
         path: 'auth',
         children: [
           {
             path: 'login',
-            element: <Login />,
+            element: <LoginPage />,
           },
           {
             path: 'register',
-            element: <Register />,
+            element: <RegisterPage />,
           },
         ],
       },

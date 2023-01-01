@@ -13,7 +13,7 @@ import { SurveyTemplate } from '../../templates/SurveyTemplate';
 
 import { SubmitButton } from '../../../../components';
 
-const SurveySheetBuilderForm = ({ onSubmitSurvey }) => {
+const SurveyBuilderForm = ({ onSubmitSurvey }) => {
   const methods = useForm({
     mode: 'all',
     defaultValues: new SurveyTemplate(),
@@ -39,8 +39,8 @@ const SurveySheetBuilderForm = ({ onSubmitSurvey }) => {
   );
 };
 
-SurveySheetBuilderForm.propTypes = {
+SurveyBuilderForm.propTypes = {
   onSubmitSurvey: PropTypes.func.isRequired,
 };
 
-export default SurveySheetBuilderForm;
+export default SurveyBuilderForm;

@@ -12,7 +12,7 @@ import { SurveySheetForm } from '../features/survey';
 
 import { feathers } from '../redux';
 
-const SurveyForm = () => {
+const SurveySheetPage = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const navigate = useNavigate();
@@ -72,4 +72,4 @@ const SurveyForm = () => {
   );
 };
 
-export default SurveyForm;
+export default SurveySheetPage;

@@ -8,7 +8,7 @@ import { useDocumentTitle, useGetUserSurveysQuery } from '../hooks';
 import { Button, Spinner } from '../components';
 import { UserSurveyStack } from '../features/survey';
 
-const Dashboard = () => {
+const DashboardPage = () => {
   const user = useSelector((state) => state.authentication.user);
 
   const { surveys, isLoading, page } = useGetUserSurveysQuery(user._id, 5);
@@ -47,4 +47,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DashboardPage;

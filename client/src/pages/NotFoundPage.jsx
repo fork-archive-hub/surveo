@@ -6,7 +6,7 @@ import { useDocumentTitle } from '../hooks';
 
 import { Button } from '../components';
 
-const NotFound = () => {
+const NotFoundPage = () => {
   useDocumentTitle('Page not found');
 
   return (
@@ -28,4 +28,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default NotFoundPage;

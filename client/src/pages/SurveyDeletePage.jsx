@@ -12,7 +12,7 @@ import { Button } from '../components';
 
 import { feathers } from '../redux';
 
-const SurveyDelete = () => {
+const SurveyDeletePage = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const navigate = useNavigate();
@@ -65,4 +65,4 @@ const SurveyDelete = () => {
   );
 };
 
-export default SurveyDelete;
+export default SurveyDeletePage;

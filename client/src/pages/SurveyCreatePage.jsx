@@ -7,11 +7,11 @@ import { toast } from 'react-toastify';
 
 import { useDocumentTitle } from '../hooks';
 
-import { SurveySheetBuilderForm } from '../features/survey';
+import { SurveyBuilderForm } from '../features/survey';
 
 import { feathers } from '../redux';
 
-const SurveyCreate = () => {
+const SurveyCreatePage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -33,10 +33,10 @@ const SurveyCreate = () => {
   return (
     <Grid container sx={{ justifyContent: 'center', py: 2 }}>
       <Grid item xs={12} sm={8} md={5} lg={4} xl={3}>
-        <SurveySheetBuilderForm onSubmitSurvey={handleSubmitSurvey} />
+        <SurveyBuilderForm onSubmitSurvey={handleSubmitSurvey} />
       </Grid>
     </Grid>
   );
 };
 
-export default SurveyCreate;
+export default SurveyCreatePage;

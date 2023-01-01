@@ -2,11 +2,11 @@ import { lazy } from 'react';
 
 import { MainLayout, PresentationLayout } from '../layouts';
 
-const Dashboard = lazy(() => import('../pages/Dashboard'));
-const SurveyEdit = lazy(() => import('../pages/SurveyEdit'));
-const SurveyDelete = lazy(() => import('../pages/SurveyDelete'));
-const SurveyCreate = lazy(() => import('../pages/SurveyCreate'));
-const SurveyResults = lazy(() => import('../pages/SurveyResults'));
+const DashboardPage = lazy(() => import('../pages/DashboardPage'));
+const SurveyEditPage = lazy(() => import('../pages/SurveyEditPage'));
+const SurveyDeletePage = lazy(() => import('../pages/SurveyDeletePage'));
+const SurveyCreatePage = lazy(() => import('../pages/SurveyCreatePage'));
+const SurveyResultsPage = lazy(() => import('../pages/SurveyResultsPage'));
 
 export const protectedRoutes = [
   {
@@ -14,7 +14,7 @@ export const protectedRoutes = [
     children: [
       {
         path: '/',
-        element: <Dashboard />,
+        element: <DashboardPage />,
       },
     ],
   },
@@ -26,22 +26,22 @@ export const protectedRoutes = [
         children: [
           {
             path: 'create',
-            element: <SurveyCreate />,
+            element: <SurveyCreatePage />,
           },
           {
             path: ':surveyId',
             children: [
               {
                 path: 'edit',
-                element: <SurveyEdit />,
+                element: <SurveyEditPage />,
               },
               {
                 path: 'delete',
-                element: <SurveyDelete />,
+                element: <SurveyDeletePage />,
               },
               {
                 path: 'results',
-                element: <SurveyResults />,
+                element: <SurveyResultsPage />,
               },
             ],
           },

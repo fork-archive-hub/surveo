@@ -4,7 +4,7 @@ import { Grid, Paper, Stack, Typography, Button } from '@mui/material';
 
 import { useDocumentTitle } from '../hooks';
 
-const Landing = () => {
+const LandingPage = () => {
   useDocumentTitle('Survey creator');
 
   return (
@@ -40,4 +40,4 @@ const Landing = () => {
   );
 };
 
-export default Landing;
+export default LandingPage;

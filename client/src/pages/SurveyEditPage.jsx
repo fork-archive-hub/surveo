@@ -14,7 +14,7 @@ import { SurveyEditorForm } from '../features/survey';
 
 import { feathers } from '../redux';
 
-const SurveyEdit = () => {
+const SurveyEditPage = () => {
   const user = useSelector((state) => state.authentication.user);
 
   const dispatch = useDispatch();
@@ -64,4 +64,4 @@ const SurveyEdit = () => {
   );
 };
 
-export default SurveyEdit;
+export default SurveyEditPage;

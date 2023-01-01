@@ -2,19 +2,19 @@ import PropTypes from 'prop-types';
 
 import { Stack } from '@mui/material';
 
-import SurveySheetHeader from '../form/SurveySheetHeader';
+import SurveyHeader from '../sheet/SurveyHeader';
 import QuestionResultStack from './QuestionResultStack';
 
-const SurveySheetResults = ({ survey }) => {
+const SurveyResults = ({ survey }) => {
   return (
     <Stack>
-      <SurveySheetHeader name={survey.name} author={survey.author.username} createdAt={survey.createdAt} />
+      <SurveyHeader name={survey.name} author={survey.author.username} createdAt={survey.createdAt} />
       <QuestionResultStack questions={survey.questions} />
     </Stack>
   );
 };
 
-SurveySheetResults.propTypes = {
+SurveyResults.propTypes = {
   survey: PropTypes.shape({
     name: PropTypes.string.isRequired,
     createdAt: PropTypes.string.isRequired,
@@ -25,4 +25,4 @@ SurveySheetResults.propTypes = {
   }),
 };
 
-export default SurveySheetResults;
+export default SurveyResults;
