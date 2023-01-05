@@ -50,8 +50,12 @@ const SurveyEditPage = () => {
 
   useEffect(() => {
     const validateSurveyAuthor = () => {
-      if (Boolean(survey._id) && survey.authorId !== user._id) {
-        toast.error('You cannot edit this survey');
+      if (!survey._id) {
+        return;
+      }
+
+      if (survey.authorId !== user._id) {
+        toast.error('You are not authorized to edit this survey');
         navigate('/');
       }
     };

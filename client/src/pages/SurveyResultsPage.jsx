@@ -30,7 +30,11 @@ const SurveyResultsPage = () => {
 
   useEffect(() => {
     const validateSurveyAuthor = () => {
-      if (Boolean(survey._id) && survey.authorId !== user._id) {
+      if (!survey._id) {
+        return;
+      }
+
+      if (survey.authorId !== user._id) {
         toast.error('You are not authorized to view this survey results');
         navigate('/');
       }
