@@ -44,7 +44,6 @@ const AppRoutes = () => {
             <Route path="surveys">
               <Route path="create" element={<SurveyCreatePage />} />
               <Route path=":surveyId">
-                <Route index element={<Navigate to="form" replace />} />
                 <Route path="edit" element={<SurveyEditPage />} />
                 <Route path="delete" element={<SurveyDeletePage />} />
                 <Route path="results" element={<SurveyResultsPage />} />
