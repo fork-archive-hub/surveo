@@ -54,14 +54,14 @@ const SurveyEditPage = () => {
         return;
       }
 
-      if (survey.authorId !== user._id) {
+      if (survey._id === params.surveyId && survey.authorId !== user._id) {
         toast.error('You are not authorized to edit this survey');
         navigate('/');
       }
     };
 
     validateSurveyAuthor();
-  }, [survey._id, survey.authorId, user._id, navigate]);
+  }, [survey._id, params.surveyId, survey.authorId, user._id, navigate]);
 
   useDocumentTitle('Edit survey');
 

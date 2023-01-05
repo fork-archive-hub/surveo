@@ -34,14 +34,14 @@ const SurveyResultsPage = () => {
         return;
       }
 
-      if (survey.authorId !== user._id) {
+      if (survey._id === params.surveyId && survey.authorId !== user._id) {
         toast.error('You are not authorized to view this survey results');
         navigate('/');
       }
     };
 
     validateSurveyAuthor();
-  }, [survey._id, survey.authorId, user._id, navigate]);
+  }, [survey._id, params.surveyId, survey.authorId, user._id, navigate]);
 
   useSubscribeSurveyResultsQuery(survey?._id);
   useDocumentTitle(isLoading ? 'Survey results' : `${survey.name} results`);
