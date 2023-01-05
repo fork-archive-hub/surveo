@@ -20,7 +20,13 @@ const SurveyResultsPage = () => {
   const params = useParams();
   const navigate = useNavigate();
 
-  const { survey, isLoading } = useGetSurveyQuery(params.surveyId);
+  const { survey, isLoading, isError } = useGetSurveyQuery(params.surveyId);
+
+  useEffect(() => {
+    if (!isLoading && isError) {
+      navigate('/');
+    }
+  }, [isLoading, isError, navigate]);
 
   useEffect(() => {
     const validateSurveyAuthor = () => {

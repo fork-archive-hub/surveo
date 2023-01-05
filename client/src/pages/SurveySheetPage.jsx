@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import { useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 
@@ -19,7 +21,7 @@ const SurveySheetPage = () => {
   const params = useParams();
   const navigate = useNavigate();
 
-  const { survey, isLoading } = useGetSurveyQuery(params.surveyId);
+  const { survey, isLoading, isError } = useGetSurveyQuery(params.surveyId);
   const { isIPDisallowed, getCaptchaToken } = useSurveyProtection(survey);
 
   const handleSubmitVotes = async (votes) => {
@@ -45,6 +47,12 @@ const SurveySheetPage = () => {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    if (!isLoading && isError) {
+      navigate('/');
+    }
+  }, [isLoading, isError, navigate]);
 
   useDocumentTitle(isLoading ? 'Survey form' : `${survey.name} form`);
 

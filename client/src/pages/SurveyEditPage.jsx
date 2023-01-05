@@ -22,7 +22,7 @@ const SurveyEditPage = () => {
   const params = useParams();
   const navigate = useNavigate();
 
-  const { survey, isLoading } = useGetSurveyQuery(params.surveyId);
+  const { survey, isLoading, isError } = useGetSurveyQuery(params.surveyId);
 
   const handleUpdateSurvey = async (data) => {
     const result = await dispatch(
@@ -41,6 +41,12 @@ const SurveyEditPage = () => {
     toast.success('Survey updated');
     navigate('/');
   };
+
+  useEffect(() => {
+    if (!isLoading && isError) {
+      navigate('/');
+    }
+  }, [isLoading, isError, navigate]);
 
   useEffect(() => {
     const validateSurveyAuthor = () => {

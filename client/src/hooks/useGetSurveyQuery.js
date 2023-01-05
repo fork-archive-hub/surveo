@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 
 export const useGetSurveyQuery = (surveyId) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   const survey = useSelector((state) => state.survey.data);
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ export const useGetSurveyQuery = (surveyId) => {
       }
 
       setIsLoading(true);
+      setIsError(false);
 
       const result = await dispatch(feathers.survey.get({ surveyId: surveyId }));
 
@@ -26,6 +28,9 @@ export const useGetSurveyQuery = (surveyId) => {
         toast.error(result.error, {
           toastId: 'use-get-survey-query',
         });
+        setIsLoading(false);
+        setIsError(true);
+        return;
       }
 
       setIsLoading(false);
@@ -37,5 +42,6 @@ export const useGetSurveyQuery = (surveyId) => {
   return {
     survey: survey,
     isLoading: isLoading,
+    isError: isError,
   };
 };

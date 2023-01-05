@@ -10,6 +10,8 @@ export const useGetUserSurveysQuery = (userId, limit) => {
   const [surveys, setSurveys] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [pageCount, setPageCount] = useState(0);
 
@@ -22,6 +24,7 @@ export const useGetUserSurveysQuery = (userId, limit) => {
       }
 
       setIsLoading(true);
+      setIsError(false);
 
       const result = await dispatch(
         feathers.survey.find({
@@ -36,6 +39,7 @@ export const useGetUserSurveysQuery = (userId, limit) => {
           toastId: 'use-get-user-surveys-query',
         });
         setIsLoading(false);
+        setIsError(true);
         return;
       }
 
@@ -50,6 +54,7 @@ export const useGetUserSurveysQuery = (userId, limit) => {
   return {
     surveys: surveys,
     isLoading: isLoading,
+    isError: isError,
     page: {
       current: currentPage,
       count: pageCount,
