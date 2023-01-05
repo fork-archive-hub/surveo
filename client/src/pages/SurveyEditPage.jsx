@@ -65,7 +65,9 @@ const SurveyEditPage = () => {
     <Grid container sx={{ justifyContent: 'center', py: 2 }}>
       <Grid item xs={12} sm={8} md={5} lg={4} xl={3}>
         {isLoading && <Spinner />}
-        {Boolean(survey._id) && !isLoading && <SurveyEditorForm survey={survey} onUpdateSurvey={handleUpdateSurvey} />}
+        {Boolean(survey._id) && !isLoading && !isError && (
+          <SurveyEditorForm survey={survey} onUpdateSurvey={handleUpdateSurvey} />
+        )}
       </Grid>
     </Grid>
   );

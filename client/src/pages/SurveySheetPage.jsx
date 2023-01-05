@@ -61,15 +61,15 @@ const SurveySheetPage = () => {
       <Grid item xs={12} sm={8} md={5} lg={4} xl={3}>
         <Stack>
           {isLoading && <Spinner />}
-          {Boolean(survey._id) && !survey.open && !isLoading && (
+          {Boolean(survey._id) && !survey.open && !isLoading && !isError && (
             <Alert severity="info">This survey is closed and no longer accepting votes.</Alert>
           )}
-          {survey.open && isIPDisallowed && !isLoading && (
+          {survey.open && isIPDisallowed && !isLoading && !isError && (
             <Alert severity="info">
               You have already submitted your votes. New votes will not be accepted by the server.
             </Alert>
           )}
-          {Boolean(survey._id) && !isLoading && (
+          {Boolean(survey._id) && !isLoading && !isError && (
             <SurveySheetForm
               survey={survey}
               isFormDisabled={isIPDisallowed || !survey.open}
