@@ -2,7 +2,7 @@ import { Card, CardHeader, CardContent, Stack } from '@mui/material';
 
 import { useFormContext, Controller } from 'react-hook-form';
 
-import { TextField } from '../../../../components';
+import TextField from '../../../../components/form/TextField';
 
 import AccessibilityOptions from './AccessibilityOptions';
 import ProtectionOptions from './ProtectionOptions';

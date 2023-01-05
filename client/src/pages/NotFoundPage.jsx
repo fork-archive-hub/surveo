@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 
 import { Grid, Paper, Stack, Typography } from '@mui/material';
 
-import { useDocumentTitle } from '../hooks';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
-import { Button } from '../components';
+import Button from '../components/form/Button';
 
 const NotFoundPage = () => {
   useDocumentTitle('Page not found');

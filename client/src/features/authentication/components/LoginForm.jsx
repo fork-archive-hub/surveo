@@ -7,7 +7,8 @@ import { useForm, Controller } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
 import { LoginFormSchema } from '../schemas/LoginFormSchema';
 
-import { TextField, SubmitButton } from '../../../components';
+import TextField from '../../../components/form/TextField';
+import SubmitButton from '../../../components/form/SubmitButton';
 
 const LoginForm = ({ onSubmitCredentials }) => {
   const { control, handleSubmit } = useForm({

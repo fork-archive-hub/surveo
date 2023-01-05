@@ -2,7 +2,9 @@ import { Card, CardHeader, CardActions } from '@mui/material';
 
 import { useFormContext, Controller } from 'react-hook-form';
 
-import { FormGroup, FormControlLabel, Checkbox } from '../../../../components';
+import FormGroup from '../../../../components/form/FormGroup';
+import FormControlLabel from '../../../../components/form/FormControlLabel';
+import Checkbox from '../../../../components/form/Checkbox';
 
 const AccessibilityOptions = () => {
   const { control } = useFormContext();

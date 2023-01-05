@@ -3,7 +3,7 @@ import { useId } from 'react';
 
 import Answer from './Answer';
 
-import { RadioGroup } from '../../../../components';
+import RadioGroup from '../../../../components/form/RadioGroup';
 
 const AnswerGroup = ({ answers, onSelectAnswer }) => {
   const groupId = useId();

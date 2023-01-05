@@ -7,9 +7,11 @@ import { Grid } from '@mui/material';
 
 import { toast } from 'react-toastify';
 
-import { useDocumentTitle, useGetSurveyQuery, useSubscribeSurveyResultsQuery } from '../hooks';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { useGetSurveyQuery } from '../hooks/useGetSurveyQuery';
+import { useSubscribeSurveyResultsQuery } from '../hooks/useSubscribeSurveyResultsQuery';
 
-import { Spinner } from '../components';
+import Spinner from '../components/elements/Spinner';
 import { SurveyResults } from '../features/survey';
 
 const SurveyResultsPage = () => {

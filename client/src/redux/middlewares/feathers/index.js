@@ -1,3 +1,3 @@
-export * as feathers from './actions';
+export * as actions from './actions';
 
-export { middleware as default } from './middleware';
+export { middleware } from './middleware';

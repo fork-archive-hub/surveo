@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import { useFormContext, Controller } from 'react-hook-form';
 
-import { TextField } from '../../../../components';
+import TextField from '../../../../components/form/TextField';
 
 const AnswerTextField = ({ path }) => {
   const { control } = useFormContext();

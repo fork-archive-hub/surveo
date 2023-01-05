@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import { Grid, Paper, Stack, Typography, Button } from '@mui/material';
 
-import { useDocumentTitle } from '../hooks';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 const LandingPage = () => {
   useDocumentTitle('Survey creator');

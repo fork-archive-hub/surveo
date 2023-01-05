@@ -5,7 +5,7 @@ import { Grid, Stack, Typography, Link as MUILink } from '@mui/material';
 
 import { toast } from 'react-toastify';
 
-import { useDocumentTitle } from '../hooks';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 import { RegisterForm } from '../features/authentication';
 

@@ -6,7 +6,7 @@ import { Container } from '@mui/material';
 
 import FixedBackground from './FixedBackground';
 
-import { Spinner } from '../../components';
+import Spinner from '../../components/elements/Spinner';
 
 const PresentationLayout = () => {
   return (

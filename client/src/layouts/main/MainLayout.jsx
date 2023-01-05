@@ -6,7 +6,7 @@ import { Container } from '@mui/material';
 import AppBar from './AppBar';
 import Footer from './Footer';
 
-import { Spinner } from '../../components';
+import Spinner from '../../components/elements/Spinner';
 
 const MainLayout = () => {
   return (

@@ -4,7 +4,8 @@ import { Stack, Typography, Box } from '@mui/material';
 
 import { findImageMarkdown } from '../../utils/findImageMarkdown';
 
-import { FormControlLabel, Radio } from '../../../../components';
+import FormControlLabel from '../../../../components/form/FormControlLabel';
+import Radio from '../../../../components/form/Radio';
 
 const Answer = ({ answer }) => {
   const image = findImageMarkdown(answer.text);

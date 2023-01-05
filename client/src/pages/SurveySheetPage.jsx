@@ -5,9 +5,11 @@ import { Grid, Stack, Alert } from '@mui/material';
 
 import { toast } from 'react-toastify';
 
-import { useDocumentTitle, useGetSurveyQuery, useSurveyProtection } from '../hooks';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { useGetSurveyQuery } from '../hooks/useGetSurveyQuery';
+import { useSurveyProtection } from '../hooks/useSurveyProtection';
 
-import { Spinner } from '../components';
+import Spinner from '../components/elements/Spinner';
 import { SurveySheetForm } from '../features/survey';
 
 import { feathers } from '../redux';

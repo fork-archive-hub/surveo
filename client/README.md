@@ -47,37 +47,30 @@ npm run build
 public                          # folder containing static files such as index.html
 src
    |-- components               # shared components used across the entire application
-   |   |-- group_name           # group of related components
-   |   |   |-- index.js         # exports all components from the group
+   |   |-- group                # group of related components
    |-- features                 # feature based modules
-   |   |-- feature_name         # feature module
+   |   |-- feature              # feature module
    |   |   |-- components       # feature specific components
    |   |   |-- schemas          # schemas used to validate form data
    |   |   |-- templates        # templates used as default values for form fields
    |   |   |-- utils            # utility functions used across feature
    |   |   |-- index.js         # exports of all required elements from specific feature
    |-- hooks                    # custom hooks used mostly by page level components
-   |   |-- index.js             # exports of all created hooks
    |-- layouts                  # page layouts
-   |   |-- layout_name          # group of components used to create specific layout
-   |   |-- index.js             # exports of all created layouts
+   |   |-- layout               # single layout
+   |   |   |-- index.js         # export main component of the layout
    |-- pages                    # pages used by the application
    |-- redux
    |   |-- middlewares          # middlewares used by the application
+   |   |   |-- middleware       # middleware
+   |   |   |  |-- index.js      # exports middleware and actions from the folder
    |   |-- slices               # redux slices used by the application
    |   |-- store.js             # redux store used by the application
    |   |-- index.js             # exports of all required elements from redux
    |-- routes                   # routes used by the application
-   |   |-- common-routes.jsx    # routes available for everyone
-   |   |-- protected-routes.jsx # routes available for authenticated users
-   |   |-- public-routes.jsx    # routes available for unauthenticated users
-   |   |-- Routes.jsx           # creates react element with available routes
-   |   |-- index.js             # exports of all required elements from router
+   |   |-- AppRoutes.jsx        # available routes in the application
    |-- theme                    # theme used by the application
-   |   |-- theme.js             # theme object used by the application
-   |   |-- pallette.js          # pallette object containing colors used by the application
-   |   |-- components.js        # components object containing style overrides for Mui components
-   |   |-- index.js             # exports of all required elements from theme
+   |   |-- darkTheme.js           # dark theme object used in the application
    |-- App.js                   # main application component
    |-- index.js                 # function that renders the application
    |-- .env                     # environment variables used by the application

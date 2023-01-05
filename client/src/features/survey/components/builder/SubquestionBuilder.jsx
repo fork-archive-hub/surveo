@@ -7,7 +7,7 @@ import { useFormContext, Controller } from 'react-hook-form';
 import AnswerTextFieldStack from './AnswerTextFieldStack';
 import SubquestionRequirements from './SubquestionRequirements';
 
-import { TextField } from '../../../../components';
+import TextField from '../../../../components/form/TextField';
 
 const SubquestionBuilder = ({ path, index, questionAnswersPath }) => {
   const { control } = useFormContext();

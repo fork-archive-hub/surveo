@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Card, CardContent, CardActions, Typography, Stack } from '@mui/material';
 import { WarningOutlined } from '@mui/icons-material';
 
-import { Button } from '../../../../components';
+import Button from '../../../../components/form/Button';
 
 const SurveyDeleteDialog = ({ onDeleteSurvey, onCancelAction }) => {
   const handleDeleteSurvey = () => {

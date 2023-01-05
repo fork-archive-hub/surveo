@@ -5,7 +5,7 @@ import { Grid } from '@mui/material';
 
 import { toast } from 'react-toastify';
 
-import { useDocumentTitle } from '../hooks';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 import { SurveyBuilderForm } from '../features/survey';
 

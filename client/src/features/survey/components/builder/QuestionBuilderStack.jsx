@@ -8,7 +8,7 @@ import QuestionBuilder from './QuestionBuilder';
 
 import { QuestionTemplate } from '../../templates/QuestionTemplate';
 
-import { Button } from '../../../../components';
+import Button from '../../../../components/form/Button';
 
 const QuestionBuilderStack = ({ path }) => {
   const { control } = useFormContext();

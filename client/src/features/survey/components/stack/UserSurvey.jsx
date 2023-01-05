@@ -7,7 +7,7 @@ import { PreviewOutlined, BarChartOutlined, EditOutlined, DeleteOutline } from '
 
 import { convertDateToHumanFormat } from '../../utils/convertDateToHumanFormat';
 
-import { IconButton } from '../../../../components';
+import IconButton from '../../../../components/form/IconButton';
 
 const UserSurvey = ({ survey }) => {
   return (
