@@ -1,5 +1,9 @@
 export const convertDateToHumanFormat = (isoFormat) => {
-  const [date] = new Date(isoFormat).toLocaleString().split(', ');
+  const date = new Date(isoFormat);
 
-  return date;
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
 };
