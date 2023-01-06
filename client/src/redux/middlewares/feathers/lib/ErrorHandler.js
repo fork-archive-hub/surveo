@@ -8,7 +8,7 @@ class ErrorHandler {
       case 'Invalid login':
         return 'Invalid username or password';
       default:
-        return error.message;
+        return this.humanizeDynamicErrorMessages(error.message);
     }
   }
 
@@ -17,19 +17,27 @@ class ErrorHandler {
       case 'users validation failed: username: username must be unique':
         return 'Username is already taken';
       default:
-        return error.message;
+        return this.humanizeDynamicErrorMessages(error.message);
     }
   }
 
-  static stringifyError(error) {
-    const { name, message } = error;
+  static humanizeDynamicErrorMessages(message) {
+    if (message.includes('Cast to ObjectId failed for value')) {
+      return 'Provided identifier is invalid';
+    }
 
-    switch (name) {
-      case 'NotFound':
+    return message;
+  }
+
+  static stringifyError(error) {
+    const { code, message } = error;
+
+    switch (code) {
+      case 404:
         return this.humanizeNotFoundError(error);
-      case 'NotAuthenticated':
+      case 401:
         return this.humanizeNotAuthenticatedError(error);
-      case 'BadRequest':
+      case 400:
         return this.humanizeBadRequestError(error);
       default:
         return message;
