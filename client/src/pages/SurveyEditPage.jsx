@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 import Spinner from '../components/elements/Spinner';
-import { SurveyEditorForm, useGetSurveyQuery } from '../features/survey';
+import { SurveyEditorForm, useGetSurveyQuery, useSurveyAuthorValidator } from '../features/survey';
 
 import { feathers } from '../redux';
 
@@ -47,21 +47,7 @@ const SurveyEditPage = () => {
     }
   }, [isLoading, isError, navigate]);
 
-  useEffect(() => {
-    const validateSurveyAuthor = () => {
-      if (!survey._id) {
-        return;
-      }
-
-      if (survey._id === params.surveyId && survey.authorId !== user._id) {
-        toast.error('You are not authorized to edit this survey');
-        navigate('/');
-      }
-    };
-
-    validateSurveyAuthor();
-  }, [survey._id, params.surveyId, survey.authorId, user._id, navigate]);
-
+  useSurveyAuthorValidator(survey._id === params.surveyId, survey, user, '/');
   useDocumentTitle('Edit survey');
 
   return (

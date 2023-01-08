@@ -8,4 +8,5 @@ export { default as UserSurveyStack } from './components/stack/UserSurveyStack';
 export { useGetSurveyQuery } from './hooks/useGetSurveyQuery';
 export { useGetUserSurveysQuery } from './hooks/useGetUserSurveysQuery';
 export { useSubscribeSurveyResultsQuery } from './hooks/useSubscribeSurveyResultsQuery';
+export { useSurveyAuthorValidator } from './hooks/useSurveyAuthorValidator';
 export { useSurveyProtection } from './hooks/useSurveyProtection';

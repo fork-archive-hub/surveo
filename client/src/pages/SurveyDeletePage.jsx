@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 import Spinner from '../components/elements/Spinner';
-import { SurveyDeleteDialog, useGetSurveyQuery } from '../features/survey';
+import { SurveyDeleteDialog, useGetSurveyQuery, useSurveyAuthorValidator } from '../features/survey';
 
 import { feathers } from '../redux';
 
@@ -50,21 +50,7 @@ const SurveyDeletePage = () => {
     }
   }, [isLoading, isError, navigate]);
 
-  useEffect(() => {
-    const validateSurveyAuthor = () => {
-      if (!survey._id) {
-        return;
-      }
-
-      if (survey._id === params.surveyId && survey.authorId !== user._id) {
-        toast.error('You are not authorized to delete this survey');
-        navigate('/');
-      }
-    };
-
-    validateSurveyAuthor();
-  }, [survey._id, params.surveyId, survey.authorId, user._id, navigate]);
-
+  useSurveyAuthorValidator(survey._id === params.surveyId, survey, user, '/');
   useDocumentTitle('Delete survey');
 
   return (
