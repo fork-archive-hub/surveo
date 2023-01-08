@@ -8,11 +8,9 @@ import { Grid } from '@mui/material';
 import { toast } from 'react-toastify';
 
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
-import { useGetSurveyQuery } from '../hooks/useGetSurveyQuery';
-import { useSubscribeSurveyResultsQuery } from '../hooks/useSubscribeSurveyResultsQuery';
 
 import Spinner from '../components/elements/Spinner';
-import { SurveyResults } from '../features/survey';
+import { SurveyResults, useGetSurveyQuery, useSubscribeSurveyResultsQuery } from '../features/survey';
 
 const SurveyResultsPage = () => {
   const user = useSelector((state) => state.authentication.user);

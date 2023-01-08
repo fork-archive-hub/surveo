@@ -8,11 +8,9 @@ import { Grid, Stack, Alert } from '@mui/material';
 import { toast } from 'react-toastify';
 
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
-import { useGetSurveyQuery } from '../hooks/useGetSurveyQuery';
-import { useSurveyProtection } from '../hooks/useSurveyProtection';
 
 import Spinner from '../components/elements/Spinner';
-import { SurveySheetForm } from '../features/survey';
+import { SurveySheetForm, useGetSurveyQuery, useSurveyProtection } from '../features/survey';
 
 import { feathers } from '../redux';
 

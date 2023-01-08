@@ -8,10 +8,9 @@ import { Grid } from '@mui/material';
 import { toast } from 'react-toastify';
 
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
-import { useGetSurveyQuery } from '../hooks/useGetSurveyQuery';
 
 import Spinner from '../components/elements/Spinner';
-import { SurveyDeleteDialog } from '../features/survey';
+import { SurveyDeleteDialog, useGetSurveyQuery } from '../features/survey';
 
 import { feathers } from '../redux';
 

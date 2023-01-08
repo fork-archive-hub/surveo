@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import { feathers } from '../redux';
+import { feathers } from '../../../redux';
 
 export const useSubscribeSurveyResultsQuery = (surveyId) => {
   const dispatch = useDispatch();

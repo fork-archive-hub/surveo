@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 import { Grid, Paper, Typography, Stack, Pagination } from '@mui/material';
 
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
-import { useGetUserSurveysQuery } from '../hooks/useGetUserSurveysQuery';
 
 import Button from '../components/form/Button';
 import Spinner from '../components/elements/Spinner';
-import { UserSurveyStack } from '../features/survey';
+import { UserSurveyStack, useGetUserSurveysQuery } from '../features/survey';
 
 const DashboardPage = () => {
   const user = useSelector((state) => state.authentication.user);

@@ -51,6 +51,7 @@ src
    |-- features                 # feature based modules
    |   |-- feature              # feature module
    |   |   |-- components       # feature specific components
+   |   |   |-- hooks            # feature specific hooks
    |   |   |-- schemas          # schemas used to validate form data
    |   |   |-- templates        # templates used as default values for form fields
    |   |   |-- utils            # utility functions used across feature

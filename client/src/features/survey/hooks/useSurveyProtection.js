@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
-import { feathers } from '../redux';
+import { feathers } from '../../../redux';
 
 export const useSurveyProtection = (survey) => {
   const [isIPDisallowed, setIsIPDisallowed] = useState(false);
