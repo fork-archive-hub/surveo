@@ -14,7 +14,7 @@ import { SurveyTemplate } from '../../templates/SurveyTemplate';
 import SubmitButton from '../../../../components/form/SubmitButton';
 
 const SurveyBuilderForm = ({ onSubmitSurvey }) => {
-  const methods = useForm({
+  const form = useForm({
     mode: 'all',
     defaultValues: new SurveyTemplate(),
     resolver: joiResolver(SurveySchema),
@@ -27,12 +27,12 @@ const SurveyBuilderForm = ({ onSubmitSurvey }) => {
   };
 
   return (
-    <FormProvider {...methods}>
-      <Box component="form" onSubmit={methods.handleSubmit(onSubmit)}>
+    <FormProvider {...form}>
+      <Box component="form" onSubmit={form.handleSubmit(onSubmit)}>
         <Stack divider={<Divider />}>
           <SurveyConfiguration />
           <QuestionBuilderStack path="questions" />
-          <SubmitButton>Create survey</SubmitButton>
+          <SubmitButton disabled={!form.formState.isValid || !form.formState.isDirty}>Create survey</SubmitButton>
         </Stack>
       </Box>
     </FormProvider>

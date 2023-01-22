@@ -11,7 +11,7 @@ import TextField from '../../../components/form/TextField';
 import SubmitButton from '../../../components/form/SubmitButton';
 
 const RegisterForm = ({ onSubmitCredentials }) => {
-  const { control, handleSubmit } = useForm({
+  const { formState, control, handleSubmit } = useForm({
     mode: 'all',
     reValidateMode: 'onChange',
     defaultValues: {
@@ -72,7 +72,7 @@ const RegisterForm = ({ onSubmitCredentials }) => {
                 />
               )}
             />
-            <SubmitButton>Register</SubmitButton>
+            <SubmitButton disabled={!formState.isValid || !formState.isDirty}>Register</SubmitButton>
           </Stack>
         </Box>
       </CardActions>

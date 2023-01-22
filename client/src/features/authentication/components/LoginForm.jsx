@@ -11,7 +11,7 @@ import TextField from '../../../components/form/TextField';
 import SubmitButton from '../../../components/form/SubmitButton';
 
 const LoginForm = ({ onSubmitCredentials }) => {
-  const { control, handleSubmit } = useForm({
+  const { formState, control, handleSubmit } = useForm({
     mode: 'all',
     reValidateMode: 'onChange',
     defaultValues: {
@@ -58,7 +58,7 @@ const LoginForm = ({ onSubmitCredentials }) => {
                 />
               )}
             />
-            <SubmitButton>Login</SubmitButton>
+            <SubmitButton disabled={!formState.isValid || !formState.isDirty}>Login</SubmitButton>
           </Stack>
         </Box>
       </CardActions>

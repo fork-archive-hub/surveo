@@ -12,7 +12,7 @@ import { SurveyInformationSchema } from '../../schemas/SurveyInformationSchema';
 import SubmitButton from '../../../../components/form/SubmitButton';
 
 const SurveyEditorForm = ({ survey, onUpdateSurvey }) => {
-  const methods = useForm({
+  const form = useForm({
     mode: 'all',
     defaultValues: {
       name: survey.name,
@@ -29,11 +29,11 @@ const SurveyEditorForm = ({ survey, onUpdateSurvey }) => {
   };
 
   return (
-    <FormProvider {...methods}>
-      <Box component="form" onSubmit={methods.handleSubmit(onSubmit)}>
+    <FormProvider {...form}>
+      <Box component="form" onSubmit={form.handleSubmit(onSubmit)}>
         <Stack>
           <SurveyConfiguration />
-          <SubmitButton>Save</SubmitButton>
+          <SubmitButton disabled={!form.formState.isValid || !form.formState.isDirty}>Save</SubmitButton>
         </Stack>
       </Box>
     </FormProvider>

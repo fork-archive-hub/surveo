@@ -10,7 +10,7 @@ import QuestionStack from './QuestionStack';
 import SubmitButton from '../../../../components/form/SubmitButton';
 
 const SurveySheetForm = ({ survey, isFormDisabled, onSubmitVotes }) => {
-  const methods = useForm({ mode: 'all' });
+  const form = useForm({ mode: 'all' });
 
   const onSubmit = (data) => {
     if (onSubmitVotes && !isFormDisabled) {
@@ -22,8 +22,8 @@ const SurveySheetForm = ({ survey, isFormDisabled, onSubmitVotes }) => {
     <Stack>
       <SurveyHeader name={survey.name} author={survey.author.username} createdAt={survey.createdAt} />
       <Divider />
-      <FormProvider {...methods}>
-        <Box component="form" onSubmit={methods.handleSubmit(onSubmit)}>
+      <FormProvider {...form}>
+        <Box component="form" onSubmit={form.handleSubmit(onSubmit)}>
           <Stack>
             <QuestionStack questions={survey.questions} />
             <SubmitButton disabled={!survey.open || isFormDisabled}>Submit</SubmitButton>
