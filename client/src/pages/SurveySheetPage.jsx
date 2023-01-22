@@ -24,25 +24,18 @@ const SurveySheetPage = () => {
 
   const handleSubmitVotes = async (votes) => {
     try {
-      const token = await getCaptchaToken('vote');
-      const result = await dispatch(
+      await dispatch(
         feathers.vote.create({
           surveyId: params.surveyId,
           answerSheet: votes,
-          token: token,
+          token: await getCaptchaToken('vote'),
         })
       );
 
-      if (result.error) {
-        toast.error(result.error);
-        return;
-      }
-
-      toast.success('Votes submitted successfully');
+      toast.success('Votes submitted successfully', { toastId: 'success-submit-votes' });
       navigate('/');
     } catch (error) {
-      toast.error('Something went wrong');
-      console.error(error);
+      toast.error(error.message, { toastId: 'error-submit-votes' });
     }
   };
 

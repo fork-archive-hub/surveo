@@ -24,21 +24,14 @@ const SurveyEditPage = () => {
   const { survey, isLoading, isError } = useGetSurveyQuery(params.surveyId);
 
   const handleUpdateSurvey = async (data) => {
-    const result = await dispatch(
-      feathers.survey.patch({
-        surveyId: params.surveyId,
-        data: data,
-      })
-    );
+    try {
+      await dispatch(feathers.survey.patch({ surveyId: params.surveyId, data: data }));
 
-    if (result.error) {
-      toast.error(result.error);
+      toast.success('Survey updated', { toastId: 'success-update-survey' });
       navigate('/');
-      return;
+    } catch (error) {
+      toast.error(error.message, { toastId: 'error-update-survey' });
     }
-
-    toast.success('Survey updated');
-    navigate('/');
   };
 
   useEffect(() => {

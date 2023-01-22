@@ -9,8 +9,12 @@ export const useSubscribeSurveyResultsQuery = (surveyId) => {
 
   useEffect(() => {
     const subscribe = () => {
-      if (surveyId) {
-        dispatch(feathers.subscription.create({ surveyId: surveyId }));
+      try {
+        if (surveyId) {
+          dispatch(feathers.subscription.create({ surveyId: surveyId }));
+        }
+      } catch (error) {
+        console.error(error);
       }
     };
 
@@ -18,8 +22,12 @@ export const useSubscribeSurveyResultsQuery = (surveyId) => {
 
     return () => {
       const unsubscribe = () => {
-        if (surveyId) {
-          dispatch(feathers.subscription.remove({ surveyId: surveyId }));
+        try {
+          if (surveyId) {
+            dispatch(feathers.subscription.remove({ surveyId: surveyId }));
+          }
+        } catch (error) {
+          console.error(error);
         }
       };
 

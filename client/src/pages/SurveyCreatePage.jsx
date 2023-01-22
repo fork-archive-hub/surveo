@@ -16,16 +16,14 @@ const SurveyCreatePage = () => {
   const navigate = useNavigate();
 
   const handleSubmitSurvey = async (survey) => {
-    const result = await dispatch(feathers.survey.create({ data: survey }));
+    try {
+      const result = await dispatch(feathers.survey.create({ data: survey }));
 
-    if (result.error) {
-      toast.error(result.error);
-      navigate('/');
-      return;
+      toast.success('Survey successfully created', { toastId: 'success-create-survey' });
+      navigate(`/surveys/${result.payload._id}/form`);
+    } catch (error) {
+      toast.error(error.message, { toastId: 'error-create-survey' });
     }
-
-    toast.success('Survey successfully created');
-    navigate(`/surveys/${result.payload._id}/form`);
   };
 
   useDocumentTitle('Create survey');

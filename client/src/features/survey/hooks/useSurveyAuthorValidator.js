@@ -14,7 +14,7 @@ export const useSurveyAuthorValidator = (isActive, survey, user, redirectPath) =
       }
 
       if (survey.authorId !== user._id) {
-        toast.error('You are not authorized to access this page');
+        toast.error('You are not authorized to access this page', { toastId: 'use-survey-author-validator' });
         navigate(redirectPath);
       }
     };

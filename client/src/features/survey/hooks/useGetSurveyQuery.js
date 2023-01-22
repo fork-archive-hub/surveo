@@ -15,25 +15,21 @@ export const useGetSurveyQuery = (surveyId) => {
 
   useEffect(() => {
     const getSurvey = async () => {
-      if (surveyId === null) {
-        return;
-      }
+      try {
+        if (surveyId === null) {
+          return;
+        }
 
-      setIsLoading(true);
-      setIsError(false);
+        setIsLoading(true);
+        setIsError(false);
 
-      const result = await dispatch(feathers.survey.get({ surveyId: surveyId }));
-
-      if (result.error) {
-        toast.error(result.error, {
-          toastId: 'use-get-survey-query',
-        });
-        setIsLoading(false);
+        await dispatch(feathers.survey.get({ surveyId: surveyId }));
+      } catch (error) {
+        toast.error(error.message, { toastId: 'use-get-survey-query' });
         setIsError(true);
-        return;
+      } finally {
+        setIsLoading(false);
       }
-
-      setIsLoading(false);
     };
 
     getSurvey();

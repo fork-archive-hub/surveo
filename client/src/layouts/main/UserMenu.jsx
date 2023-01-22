@@ -26,9 +26,15 @@ const UserMenu = () => {
   };
 
   const handleLogout = async () => {
-    handleCloseMenu();
-    await dispatch(feathers.authentication.logout());
-    toast.success('You have been successfully logged out.');
+    try {
+      await dispatch(feathers.authentication.logout());
+
+      toast.success('You have been successfully logged out.', { toastId: 'success-logout' });
+    } catch (error) {
+      toast.error('An error occurred while logging out.', { toastId: 'error-logout' });
+    } finally {
+      handleCloseMenu();
+    }
   };
 
   return (

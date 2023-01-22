@@ -15,16 +15,20 @@ export const useSurveyProtection = (survey) => {
 
   useEffect(() => {
     const checkIfIPDisallowed = async () => {
-      if (!survey._id) {
-        return;
-      }
+      try {
+        if (!survey._id) {
+          return;
+        }
 
-      if (survey.protection.ipRestriction) {
+        if (!survey.protection.ipRestriction) {
+          return;
+        }
+
         const result = await dispatch(feathers.vote.get({ surveyId: survey._id }));
 
-        if (!result.error) {
-          setIsIPDisallowed(result.payload.voted);
-        }
+        setIsIPDisallowed(result.payload.voted);
+      } catch (error) {
+        console.error(error);
       }
     };
 

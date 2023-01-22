@@ -16,15 +16,14 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const handleSubmitCredentials = async ({ username, password }) => {
-    const result = await dispatch(feathers.authentication.login({ username: username, password: password }));
+    try {
+      await dispatch(feathers.authentication.login({ username: username, password: password }));
 
-    if (result.error) {
-      toast.error(result.error);
-      return;
+      toast.success('Login successful', { toastId: 'success-login' });
+      navigate('/');
+    } catch (error) {
+      toast.error(error.message, { toastId: 'error-login' });
     }
-
-    toast.success('Login successful');
-    navigate('/');
   };
 
   useDocumentTitle('Login');

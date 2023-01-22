@@ -16,15 +16,14 @@ const RegisterPage = () => {
   const navigate = useNavigate();
 
   const handleSubmitCredentials = async ({ username, password }) => {
-    const result = await dispatch(feathers.user.create({ username: username, password: password }));
+    try {
+      await dispatch(feathers.user.create({ username: username, password: password }));
 
-    if (result.error) {
-      toast.error(result.error);
-      return;
+      toast.success('Account created successfully', { toastId: 'success-register' });
+      navigate('/auth/login');
+    } catch (error) {
+      toast.error(error.message, { toastId: 'error-register' });
     }
-
-    toast.success('Account created successfully');
-    navigate('/auth/login');
   };
 
   useDocumentTitle('Register');

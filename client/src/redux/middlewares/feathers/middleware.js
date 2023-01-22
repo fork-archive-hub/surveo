@@ -49,7 +49,7 @@ export const middleware = (store) => {
         return next(result);
       }
     } catch (error) {
-      return next({ ...action, error: ErrorHandler.stringifyError(error) });
+      throw new Error(ErrorHandler.stringifyError(error));
     }
   };
 };

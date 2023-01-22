@@ -28,20 +28,18 @@ const SurveyDeletePage = () => {
   };
 
   const handleDelete = async () => {
-    if (params.surveyId === null) {
-      return;
-    }
+    try {
+      if (params.surveyId === null) {
+        return;
+      }
 
-    const result = await dispatch(feathers.survey.remove({ surveyId: params.surveyId }));
+      await dispatch(feathers.survey.remove({ surveyId: params.surveyId }));
 
-    if (result.error) {
-      toast.error(result.error);
+      toast.success('Survey deleted', { toastId: 'success-delete-survey' });
       navigate('/');
-      return;
+    } catch (error) {
+      toast.error(error.message, { toastId: 'error-delete-survey' });
     }
-
-    toast.success('Survey deleted');
-    navigate('/');
   };
 
   useEffect(() => {
