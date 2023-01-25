@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 
-import { Stack, Typography, Box } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 
 import { findImageMarkdown } from '../../utils/findImageMarkdown';
 
 import FormControlLabel from '../../../../components/form/FormControlLabel';
 import Radio from '../../../../components/form/Radio';
+import Image from '../../../../components/elements/Image';
 
 const Answer = ({ answer }) => {
   const image = findImageMarkdown(answer.text);
@@ -26,7 +27,7 @@ const Answer = ({ answer }) => {
       label={
         <Stack spacing={0}>
           <Typography variant="body1">{image.title}</Typography>
-          <Box component="img" loading="lazy" src={image.url} alt={image.title} sx={{ maxWidth: 1, borderRadius: 1 }} />
+          <Image url={image.url} title={image.title} />
         </Stack>
       }
       control={<Radio size="small" value={answer._id} required />}
