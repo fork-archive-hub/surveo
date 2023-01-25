@@ -30,7 +30,7 @@ const LoginPage = () => {
 
   return (
     <Grid container sx={{ height: '100vh', alignItems: { md: 'center' }, justifyContent: 'center', py: 2 }}>
-      <Grid item xs={12} sm={8} md={5} lg={4} xl={3}>
+      <Grid item xs={12} sm={8} md={5} lg={4} xl={3.5}>
         <LoginForm onSubmitCredentials={handleSubmitCredentials} />
         <Stack direction="row" spacing={1} sx={{ justifyContent: 'center', my: 1 }}>
           <Typography variant="body2">Dont have an account?</Typography>

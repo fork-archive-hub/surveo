@@ -49,7 +49,7 @@ const SurveySheetPage = () => {
 
   return (
     <Grid container sx={{ justifyContent: 'center', py: 2 }}>
-      <Grid item xs={12} sm={8} md={5} lg={4} xl={3}>
+      <Grid item xs={12} sm={8} md={5} lg={4} xl={3.5}>
         <Stack>
           {isLoading && <Spinner />}
           {Boolean(survey._id) && !survey.open && !isLoading && !isError && (
