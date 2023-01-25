@@ -11,27 +11,16 @@ import Image from '../../../../components/elements/Image';
 const Answer = ({ answer }) => {
   const image = findImageMarkdown(answer.text);
 
-  if (!image.found) {
-    return (
-      <FormControlLabel
-        key={answer._id}
-        label={answer.text}
-        control={<Radio size="small" value={answer._id} required />}
-      />
-    );
-  }
-
   return (
     <FormControlLabel
       key={answer._id}
       label={
         <Stack spacing={0}>
-          <Typography variant="body1">{image.title}</Typography>
-          <Image url={image.url} title={image.title} />
+          <Typography variant="body1">{image.found ? image.title : answer.text}</Typography>
+          {image.found && <Image url={image.url} title={image.title} />}
         </Stack>
       }
       control={<Radio size="small" value={answer._id} required />}
-      sx={{ mb: 1 }}
     />
   );
 };

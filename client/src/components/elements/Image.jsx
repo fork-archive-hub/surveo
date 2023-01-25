@@ -10,7 +10,7 @@ const Image = forwardRef((props, ref) => {
       loading="lazy"
       src={props.url}
       alt={props.title}
-      sx={{ maxWidth: 1, borderRadius: 1 }}
+      sx={{ maxWidth: 1, borderRadius: 1, my: 1 }}
       ref={ref}
     />
   );
