@@ -6,7 +6,7 @@ import { findImageMarkdown } from '../../utils/findImageMarkdown';
 
 import Image from '../../../../components/elements/Image';
 
-const AnswerStackItem = ({ answer, totalVotes }) => {
+const AnswerResult = ({ answer, totalVotes }) => {
   const image = findImageMarkdown(answer.text);
   const votePercentage = (answer.votes / (totalVotes || 1)) * 100;
 
@@ -24,7 +24,7 @@ const AnswerStackItem = ({ answer, totalVotes }) => {
   );
 };
 
-AnswerStackItem.propTypes = {
+AnswerResult.propTypes = {
   answer: PropTypes.shape({
     text: PropTypes.string.isRequired,
     votes: PropTypes.number.isRequired,
@@ -32,4 +32,4 @@ AnswerStackItem.propTypes = {
   totalVotes: PropTypes.number.isRequired,
 };
 
-export default AnswerStackItem;
+export default AnswerResult;

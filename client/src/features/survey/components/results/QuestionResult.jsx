@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Card, CardHeader, CardActions, Stack, Tabs, Tab, Paper } from '@mui/material';
 import { TableRows as AnswerStackIcon, PieChart as PieChartIcon, Hexagon as PolarChartIcon } from '@mui/icons-material';
 
-import AnswerStack from './AnswerStack';
+import AnswerResultStack from './AnswerResultStack';
 import PieChart from './PieChart';
 import PolarChart from './PolarChart';
 
@@ -28,7 +28,7 @@ const QuestionResult = ({ question }) => {
             <Tab icon={<PolarChartIcon />} value="polar" />
           </Tabs>
           <Paper elevation={2} sx={{ width: 1, p: 2 }}>
-            {chartType === 'stack' && <AnswerStack answers={question.answers} />}
+            {chartType === 'stack' && <AnswerResultStack answers={question.answers} />}
             {chartType === 'pie' && <PieChart answers={question.answers} />}
             {chartType === 'polar' && <PolarChart answers={question.answers} />}
           </Paper>

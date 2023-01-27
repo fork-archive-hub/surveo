@@ -2,22 +2,22 @@ import PropTypes from 'prop-types';
 
 import { Stack } from '@mui/material';
 
-import AnswerStackItem from './AnswerStackItem';
+import AnswerResult from './AnswerResult';
 
-const AnswerStack = ({ answers }) => {
+const AnswerResultStack = ({ answers }) => {
   const totalVotes = answers.reduce((acc, answer) => acc + answer.votes, 0);
   const sortedAnswers = answers.slice().sort((a, b) => b.votes - a.votes);
 
   return (
     <Stack>
       {sortedAnswers.map((answer) => (
-        <AnswerStackItem key={answer._id} answer={answer} totalVotes={totalVotes} />
+        <AnswerResult key={answer._id} answer={answer} totalVotes={totalVotes} />
       ))}
     </Stack>
   );
 };
 
-AnswerStack.propTypes = {
+AnswerResultStack.propTypes = {
   answers: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
@@ -26,4 +26,4 @@ AnswerStack.propTypes = {
   ).isRequired,
 };
 
-export default AnswerStack;
+export default AnswerResultStack;
