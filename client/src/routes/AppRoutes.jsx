@@ -56,15 +56,13 @@ const AppRoutes = () => {
 
       {/* Public Routes */}
       {!isAuthenticated && (
-        <>
-          <Route element={<PresentationLayout />}>
-            <Route index element={<LandingPage />} />
-            <Route path="auth">
-              <Route path="login" element={<LoginPage />} />
-              <Route path="register" element={<RegisterPage />} />
-            </Route>
+        <Route element={<PresentationLayout />}>
+          <Route index element={<LandingPage />} />
+          <Route path="auth">
+            <Route path="login" element={<LoginPage />} />
+            <Route path="register" element={<RegisterPage />} />
           </Route>
-        </>
+        </Route>
       )}
     </Routes>
   );
