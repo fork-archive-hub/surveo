@@ -1,8 +1,8 @@
 {
   "name": "surveo-server",
   "description": "Backend for Surveo application written in Node.js using Feathers.js framework.",
-  "version": "0.0.0",
-  "homepage": "",
+  "version": "1.0.0",
+  "homepage": "https://github.com/r1pk/surveo-server",
   "private": true,
   "main": "src",
   "keywords": [
@@ -13,28 +13,11 @@
     "name": "Patryk Krawczyk",
     "email": "patrykekrawczyk@gmail.com"
   },
-  "contributors": [],
-  "bugs": {},
-  "directories": {
-    "lib": "src",
-    "test": "test/",
-    "config": "config/"
-  },
-  "engines": {
-    "node": "^17.0.0",
-    "npm": ">= 3.0.0"
-  },
   "scripts": {
     "lint": "eslint src/. --config .eslintrc.json --fix",
     "dev": "nodemon src/",
     "start": "node src/",
     "prettier": "prettier --write ./src"
-  },
-  "standard": {
-    "env": [
-      "mocha"
-    ],
-    "ignore": []
   },
   "dependencies": {
     "@feathersjs/authentication": "^4.5.12",
