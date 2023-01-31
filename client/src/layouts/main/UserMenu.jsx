@@ -70,7 +70,7 @@ const UserMenu = () => {
           <BallotOutlined sx={{ mr: 1 }} /> My Surveys
         </MenuItem>
         <Divider />
-        <MenuItem to="/auth/login" component={Link} onClick={handleLogout}>
+        <MenuItem to="/" component={Link} onClick={handleLogout}>
           <LogoutOutlined sx={{ mr: 1 }} /> Logout
         </MenuItem>
       </Menu>
