@@ -7,7 +7,7 @@ import UserMenu from './UserMenu';
 
 const AppBar = () => {
   return (
-    <MUIAppBar sx={{ position: 'static' }}>
+    <MUIAppBar sx={{ position: 'sticky', top: 0, left: 0 }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <PollOutlined sx={{ mr: 1 }} />
