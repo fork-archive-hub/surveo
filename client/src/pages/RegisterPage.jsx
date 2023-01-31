@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
+import BrandHeader from '../components/elements/BrandHeader';
 import { RegisterForm } from '../features/authentication';
 
 import { feathers } from '../redux';
@@ -31,6 +32,7 @@ const RegisterPage = () => {
   return (
     <Grid container sx={{ height: '100vh', alignItems: { md: 'center' }, justifyContent: 'center', py: 2 }}>
       <Grid item xs={12} sm={8} md={5} lg={4} xl={3.5}>
+        <BrandHeader />
         <RegisterForm onSubmitCredentials={handleSubmitCredentials} />
         <Stack direction="row" spacing={1} sx={{ justifyContent: 'center', my: 1 }}>
           <Typography variant="body2">Already have an account?</Typography>

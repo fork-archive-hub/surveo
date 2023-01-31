@@ -7,6 +7,7 @@ import { Grid } from '@mui/material';
 
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
+import BrandHeader from '../components/elements/BrandHeader';
 import Spinner from '../components/elements/Spinner';
 import {
   SurveyResults,
@@ -36,6 +37,7 @@ const SurveyResultsPage = () => {
   return (
     <Grid container sx={{ justifyContent: 'center', py: 2 }}>
       <Grid item xs={12} sm={8} md={5} lg={4} xl={3.5}>
+        <BrandHeader />
         {isLoading && <Spinner />}
         {Boolean(survey._id) && !isLoading && !isError && <SurveyResults survey={survey} />}
       </Grid>

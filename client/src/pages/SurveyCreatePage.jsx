@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
+import BrandHeader from '../components/elements/BrandHeader';
 import { SurveyBuilderForm } from '../features/survey';
 
 import { feathers } from '../redux';
@@ -31,6 +32,7 @@ const SurveyCreatePage = () => {
   return (
     <Grid container sx={{ justifyContent: 'center', py: 2 }}>
       <Grid item xs={12} sm={8} md={5} lg={4} xl={3.5}>
+        <BrandHeader />
         <SurveyBuilderForm onSubmitSurvey={handleSubmitSurvey} />
       </Grid>
     </Grid>
