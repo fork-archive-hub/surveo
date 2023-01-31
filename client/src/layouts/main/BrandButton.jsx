@@ -8,8 +8,8 @@ import Button from '../../components/form/Button';
 const BrandButton = () => {
   return (
     <Button variant="text" size="large" color="inherit" to="/" startIcon={<PollOutlined />} component={Link}>
-      <Typography variant="body1" sx={{ letterSpacing: '.2rem', textDecoration: 'none' }}>
-        SURVEO
+      <Typography variant="body1" sx={{ letterSpacing: '.2rem', textDecoration: 'none', textTransform: 'uppercase' }}>
+        {process.env.REACT_APP_BASE_TITLE}
       </Typography>
     </Button>
   );

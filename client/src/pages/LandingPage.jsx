@@ -18,11 +18,13 @@ const LandingPage = () => {
       }}
     >
       <Grid item xs={8} md={5} sx={{ p: 2, '& > img': { width: 1 } }}>
-        <img src="/images/survey-laptop.svg" alt="surveo" />
+        <img src="/images/survey-laptop.svg" alt={process.env.REACT_APP_BASE_TITLE} />
       </Grid>
       <Grid item xs={12} md={7} sx={{ p: 2 }} component={Paper}>
         <Stack sx={{ textAlign: { xs: 'center', md: 'inherit' } }}>
-          <Typography variant="h2">Quickly get answers to your questions with Surveo.</Typography>
+          <Typography variant="h2">
+            Quickly get answers to your questions with {process.env.REACT_APP_BASE_TITLE}.
+          </Typography>
           <Typography variant="h5" sx={{ opacity: 0.7 }}>
             Create surveys with any number of questions and answers while tracking the results later in real time.
           </Typography>
