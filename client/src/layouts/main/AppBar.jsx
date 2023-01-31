@@ -1,8 +1,6 @@
-import { Link } from 'react-router-dom';
+import { AppBar as MUIAppBar, Container, Box, Toolbar } from '@mui/material';
 
-import { AppBar as MUIAppBar, Container, Box, Toolbar, Typography } from '@mui/material';
-import { PollOutlined } from '@mui/icons-material';
-
+import BrandButton from './BrandButton';
 import UserMenu from './UserMenu';
 
 const AppBar = () => {
@@ -10,20 +8,7 @@ const AppBar = () => {
     <MUIAppBar sx={{ position: 'sticky', top: 0, left: 0 }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <PollOutlined sx={{ mr: 1 }} />
-          <Typography
-            variant="h6"
-            component={Link}
-            to="/"
-            sx={{
-              fontFamily: 'monospace',
-              letterSpacing: '.2rem',
-              textDecoration: 'none',
-              color: 'inherit',
-            }}
-          >
-            SURVEO
-          </Typography>
+          <BrandButton />
           <Box sx={{ flexGrow: 1 }} />
           <UserMenu />
         </Toolbar>
