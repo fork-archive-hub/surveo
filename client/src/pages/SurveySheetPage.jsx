@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 
-import { useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import { Grid, Stack, Alert } from '@mui/material';
@@ -12,25 +11,22 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import Spinner from '../components/elements/Spinner';
 import { SurveySheetForm, useGetSurveyQuery, useSurveyProtection } from '../features/survey';
 
-import { feathers } from '../redux';
+import { feathers } from '../api/feathers';
 
 const SurveySheetPage = () => {
-  const dispatch = useDispatch();
   const params = useParams();
   const navigate = useNavigate();
 
   const { survey, isLoading, isError } = useGetSurveyQuery(params.surveyId);
-  const { isIPDisallowed, getCaptchaToken } = useSurveyProtection(survey);
+  const { isIPDisallowed, getCaptchaToken } = useSurveyProtection(survey._id, survey.protection?.ipRestriction);
 
   const handleSubmitVotes = async (votes) => {
     try {
-      await dispatch(
-        feathers.vote.create({
-          surveyId: params.surveyId,
-          answerSheet: votes,
-          token: await getCaptchaToken('vote'),
-        })
-      );
+      await feathers.client.service('votes').create({
+        surveyId: params.surveyId,
+        answerSheet: votes,
+        token: await getCaptchaToken('vote'),
+      });
 
       toast.success('Votes submitted successfully', { toastId: 'success-submit-votes' });
       navigate('/');

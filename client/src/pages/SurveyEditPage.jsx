@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { Grid } from '@mui/material';
@@ -12,12 +12,11 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import Spinner from '../components/elements/Spinner';
 import { SurveyEditorForm, useGetSurveyQuery, useSurveyAuthorValidator } from '../features/survey';
 
-import { feathers } from '../redux';
+import { feathers } from '../api/feathers';
 
 const SurveyEditPage = () => {
   const user = useSelector((state) => state.authentication.user);
 
-  const dispatch = useDispatch();
   const params = useParams();
   const navigate = useNavigate();
 
@@ -25,7 +24,7 @@ const SurveyEditPage = () => {
 
   const handleUpdateSurvey = async (data) => {
     try {
-      await dispatch(feathers.survey.patch({ surveyId: params.surveyId, data: data }));
+      await feathers.client.service('surveys').patch(params.surveyId, data);
 
       toast.success('Survey updated', { toastId: 'success-update-survey' });
       navigate('/');

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { Grid } from '@mui/material';
@@ -12,12 +12,11 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import Spinner from '../components/elements/Spinner';
 import { SurveyDeleteDialog, useGetSurveyQuery, useSurveyAuthorValidator } from '../features/survey';
 
-import { feathers } from '../redux';
+import { feathers } from '../api/feathers';
 
 const SurveyDeletePage = () => {
   const user = useSelector((state) => state.authentication.user);
 
-  const dispatch = useDispatch();
   const params = useParams();
   const navigate = useNavigate();
 
@@ -33,7 +32,7 @@ const SurveyDeletePage = () => {
         return;
       }
 
-      await dispatch(feathers.survey.remove({ surveyId: params.surveyId }));
+      await feathers.client.service('surveys').remove(params.surveyId);
 
       toast.success('Survey deleted', { toastId: 'success-delete-survey' });
       navigate('/');

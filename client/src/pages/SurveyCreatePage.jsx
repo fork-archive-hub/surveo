@@ -1,4 +1,3 @@
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { Grid } from '@mui/material';
@@ -9,18 +8,17 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 import { SurveyBuilderForm } from '../features/survey';
 
-import { feathers } from '../redux';
+import { feathers } from '../api/feathers';
 
 const SurveyCreatePage = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmitSurvey = async (survey) => {
     try {
-      const result = await dispatch(feathers.survey.create({ data: survey }));
+      const result = await feathers.client.service('surveys').create(survey);
 
       toast.success('Survey successfully created', { toastId: 'success-create-survey' });
-      navigate(`/surveys/${result.payload._id}/form`);
+      navigate(`/surveys/${result._id}/form`);
     } catch (error) {
       toast.error(error.message, { toastId: 'error-create-survey' });
     }

@@ -1,3 +1,6 @@
-export { store } from './store';
+import { actions as authentication } from './slices/authentication';
 
-export { actions as feathers } from './middlewares/feathers';
+export { store } from './store';
+export const actions = {
+  authentication: authentication,
+};

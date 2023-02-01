@@ -1,39 +1,35 @@
 import { useState, useEffect } from 'react';
 
-import { useDispatch } from 'react-redux';
-
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
-import { feathers } from '../../../redux';
+import { feathers } from '../../../api/feathers';
 
-export const useSurveyProtection = (survey) => {
+export const useSurveyProtection = (surveyId, isIPProtectionEnabled) => {
   const [isIPDisallowed, setIsIPDisallowed] = useState(false);
 
   const { executeRecaptcha } = useGoogleReCaptcha();
 
-  const dispatch = useDispatch();
-
   useEffect(() => {
     const checkIfIPDisallowed = async () => {
       try {
-        if (!survey._id) {
+        if (!surveyId) {
           return;
         }
 
-        if (!survey.protection.ipRestriction) {
+        if (!isIPProtectionEnabled) {
           return;
         }
 
-        const result = await dispatch(feathers.vote.get({ surveyId: survey._id }));
+        const result = await feathers.client.service('votes').get(surveyId);
 
-        setIsIPDisallowed(result.payload.voted);
+        setIsIPDisallowed(result.voted);
       } catch (error) {
         console.error(error);
       }
     };
 
     checkIfIPDisallowed();
-  }, [survey._id, survey.protection, dispatch]);
+  }, [surveyId, isIPProtectionEnabled]);
 
   return {
     isIPDisallowed: isIPDisallowed,

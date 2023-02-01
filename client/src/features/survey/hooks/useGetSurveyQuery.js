@@ -1,29 +1,28 @@
 import { useState, useEffect } from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
-
-import { feathers } from '../../../redux';
+import { feathers } from '../../../api/feathers';
 
 import { toast } from 'react-toastify';
 
 export const useGetSurveyQuery = (surveyId) => {
+  const [survey, setSurvey] = useState({});
+
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-
-  const survey = useSelector((state) => state.survey.data);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const getSurvey = async () => {
       try {
-        if (surveyId === null) {
+        if (!surveyId) {
           return;
         }
 
         setIsLoading(true);
         setIsError(false);
 
-        await dispatch(feathers.survey.get({ surveyId: surveyId }));
+        const result = await feathers.client.service('surveys').get(surveyId);
+
+        setSurvey(result);
       } catch (error) {
         toast.error(error.message, { toastId: 'use-get-survey-query' });
         setIsError(true);
@@ -33,11 +32,7 @@ export const useGetSurveyQuery = (surveyId) => {
     };
 
     getSurvey();
-  }, [surveyId, dispatch]);
+  }, [surveyId]);
 
-  return {
-    survey: survey,
-    isLoading: isLoading,
-    isError: isError,
-  };
+  return { survey: survey, isLoading: isLoading, isError: isError };
 };

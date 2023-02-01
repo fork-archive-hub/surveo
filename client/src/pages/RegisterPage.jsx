@@ -1,4 +1,3 @@
-import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { Grid, Stack, Typography, Link as MUILink } from '@mui/material';
@@ -10,15 +9,14 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import BrandHeader from '../components/elements/BrandHeader';
 import { RegisterForm } from '../features/authentication';
 
-import { feathers } from '../redux';
+import { feathers } from '../api/feathers';
 
 const RegisterPage = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmitCredentials = async ({ username, password }) => {
     try {
-      await dispatch(feathers.user.create({ username: username, password: password }));
+      await feathers.client.service('users').create({ username: username, password: password });
 
       toast.success('Account created successfully', { toastId: 'success-register' });
       navigate('/auth/login');

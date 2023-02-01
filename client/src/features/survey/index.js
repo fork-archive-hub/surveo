@@ -5,8 +5,8 @@ export { default as SurveyResults } from './components/results/SurveyResults';
 export { default as SurveySheetForm } from './components/sheet/SurveySheetForm';
 export { default as UserSurveyStack } from './components/stack/UserSurveyStack';
 
+export { useFindSurveysQuery } from './hooks/useFindSurveysQuery';
 export { useGetSurveyQuery } from './hooks/useGetSurveyQuery';
-export { useGetUserSurveysQuery } from './hooks/useGetUserSurveysQuery';
-export { useSubscribeSurveyResultsQuery } from './hooks/useSubscribeSurveyResultsQuery';
+export { useGetSurveyResultsQuery } from './hooks/useGetSurveyResultsQuery';
 export { useSurveyAuthorValidator } from './hooks/useSurveyAuthorValidator';
 export { useSurveyProtection } from './hooks/useSurveyProtection';

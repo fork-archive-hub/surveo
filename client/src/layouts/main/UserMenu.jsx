@@ -1,12 +1,12 @@
 import { useState, useRef } from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { Menu, MenuItem, Button, Avatar, Typography, Divider } from '@mui/material';
 import { BallotOutlined, LogoutOutlined, PersonOutline } from '@mui/icons-material';
 
-import { feathers } from '../../redux';
+import { feathers } from '../../api/feathers';
 
 import { toast } from 'react-toastify';
 
@@ -15,7 +15,6 @@ const UserMenu = () => {
   const anchorElement = useRef(null);
 
   const user = useSelector((state) => state.authentication.user);
-  const dispatch = useDispatch();
 
   const handleOpenMenu = () => {
     setIsMenuOpen(true);
@@ -27,7 +26,7 @@ const UserMenu = () => {
 
   const handleLogout = async () => {
     try {
-      await dispatch(feathers.authentication.logout());
+      await feathers.client.logout();
 
       toast.success('You have been successfully logged out.', { toastId: 'success-logout' });
     } catch (error) {

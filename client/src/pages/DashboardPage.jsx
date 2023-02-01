@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -7,15 +9,17 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 import Button from '../components/form/Button';
 import Spinner from '../components/elements/Spinner';
-import { UserSurveyStack, useGetUserSurveysQuery } from '../features/survey';
+import { UserSurveyStack, useFindSurveysQuery } from '../features/survey';
 
 const DashboardPage = () => {
+  const [page, setPage] = useState(1);
+
   const user = useSelector((state) => state.authentication.user);
 
-  const { surveys, isLoading, page } = useGetUserSurveysQuery(user._id, 5);
+  const { surveys, isLoading, pages } = useFindSurveysQuery(user._id, 5, page);
 
   const handlePageChange = (_, value) => {
-    page.set(value);
+    setPage(value);
   };
 
   useDocumentTitle('Dashboard');
@@ -34,7 +38,7 @@ const DashboardPage = () => {
         {surveys.length > 0 && !isLoading && (
           <Stack sx={{ alignItems: 'center' }}>
             <UserSurveyStack surveys={surveys} />
-            <Pagination color="primary" count={page.count} page={page.current} onChange={handlePageChange} />
+            <Pagination color="primary" count={pages} page={page} onChange={handlePageChange} />
           </Stack>
         )}
         {surveys.length === 0 && !isLoading && (

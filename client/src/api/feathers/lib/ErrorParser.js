@@ -1,4 +1,4 @@
-class ErrorHandler {
+class ErrorParser {
   static humanizeNotFoundError() {
     return 'Requested resource not found';
   }
@@ -29,7 +29,7 @@ class ErrorHandler {
     return message;
   }
 
-  static stringifyError(error) {
+  static humanizeError(error) {
     const { code, message } = error;
 
     switch (code) {
@@ -45,4 +45,4 @@ class ErrorHandler {
   }
 }
 
-export default ErrorHandler;
+export default ErrorParser;

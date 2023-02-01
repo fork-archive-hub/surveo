@@ -8,12 +8,7 @@ import { Grid } from '@mui/material';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 import Spinner from '../components/elements/Spinner';
-import {
-  SurveyResults,
-  useGetSurveyQuery,
-  useSubscribeSurveyResultsQuery,
-  useSurveyAuthorValidator,
-} from '../features/survey';
+import { SurveyResults, useGetSurveyResultsQuery, useSurveyAuthorValidator } from '../features/survey';
 
 const SurveyResultsPage = () => {
   const user = useSelector((state) => state.authentication.user);
@@ -21,7 +16,7 @@ const SurveyResultsPage = () => {
   const params = useParams();
   const navigate = useNavigate();
 
-  const { survey, isLoading, isError } = useGetSurveyQuery(params.surveyId);
+  const { survey, isLoading, isError } = useGetSurveyResultsQuery(params.surveyId);
 
   useEffect(() => {
     if (!isLoading && isError) {
@@ -30,7 +25,6 @@ const SurveyResultsPage = () => {
   }, [isLoading, isError, navigate]);
 
   useSurveyAuthorValidator(survey._id === params.surveyId, survey, user, '/');
-  useSubscribeSurveyResultsQuery(survey?._id);
   useDocumentTitle(isLoading ? 'Survey results' : `${survey.name} results`);
 
   return (
