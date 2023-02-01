@@ -45,10 +45,13 @@ export const useGetSurveyResultsQuery = (surveyId) => {
           return;
         }
 
+        setIsError(false);
+
         feathers.client.service('votes').on('created', updateSurvey);
         await feathers.client.service('subscriptions').create({ surveyId: surveyId });
       } catch (error) {
         toast.error(error.message, { toastId: 'use-get-survey-results-query' });
+        setIsError(true);
       }
     };
 
@@ -60,10 +63,13 @@ export const useGetSurveyResultsQuery = (surveyId) => {
             return;
           }
 
+          setIsError(false);
+
           feathers.client.service('votes').off('created', updateSurvey);
           await feathers.client.service('subscriptions').remove(surveyId);
         } catch (error) {
           toast.error(error.message, { toastId: 'use-get-survey-query' });
+          setIsError(true);
         }
       };
 
