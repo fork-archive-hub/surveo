@@ -9,7 +9,6 @@ import { toast } from 'react-toastify';
 
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
-import BrandHeader from '../components/elements/BrandHeader';
 import Spinner from '../components/elements/Spinner';
 import { SurveyDeleteDialog, useGetSurveyQuery, useSurveyAuthorValidator } from '../features/survey';
 
@@ -55,7 +54,6 @@ const SurveyDeletePage = () => {
   return (
     <Grid container sx={{ justifyContent: 'center', py: 2 }}>
       <Grid item xs={12} sm={8} md={5} lg={4} xl={3.5}>
-        <BrandHeader />
         {isLoading && <Spinner />}
         {Boolean(survey._id) && !isLoading && !isError && (
           <SurveyDeleteDialog onDeleteSurvey={handleDelete} onCancelAction={handleCancel} />

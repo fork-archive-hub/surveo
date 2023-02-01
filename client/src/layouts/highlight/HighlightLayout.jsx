@@ -2,23 +2,23 @@ import { Suspense } from 'react';
 
 import { Outlet } from 'react-router-dom';
 
-import { Container } from '@mui/material';
+import { Box, Container } from '@mui/material';
 
-import FixedBackground from './FixedBackground';
+import HighlighBackground from './HighlighBackground';
 
 import Spinner from '../../components/elements/Spinner';
 
-const PresentationLayout = () => {
+const HighlightLayout = () => {
   return (
-    <>
-      <FixedBackground />
+    <Box>
       <Container maxWidth="xl">
         <Suspense fallback={<Spinner />}>
           <Outlet />
         </Suspense>
       </Container>
-    </>
+      <HighlighBackground />
+    </Box>
   );
 };
 
-export default PresentationLayout;
+export default HighlightLayout;

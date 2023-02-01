@@ -9,7 +9,6 @@ import { toast } from 'react-toastify';
 
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
-import BrandHeader from '../components/elements/BrandHeader';
 import Spinner from '../components/elements/Spinner';
 import { SurveySheetForm, useGetSurveyQuery, useSurveyProtection } from '../features/survey';
 
@@ -52,7 +51,6 @@ const SurveySheetPage = () => {
     <Grid container sx={{ justifyContent: 'center', py: 2 }}>
       <Grid item xs={12} sm={8} md={5} lg={4} xl={3.5}>
         <Stack spacing={1}>
-          <BrandHeader />
           {isLoading && <Spinner />}
           {Boolean(survey._id) && !survey.open && !isLoading && !isError && (
             <Alert severity="info">This survey is closed and no longer accepting votes.</Alert>

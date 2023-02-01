@@ -4,7 +4,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { MainLayout } from '../layouts/main';
-import { PresentationLayout } from '../layouts/presentation';
+import { HighlightLayout } from '../layouts/highlight';
 
 import LandingPage from '../pages/LandingPage';
 
@@ -24,12 +24,11 @@ const AppRoutes = () => {
   return (
     <Routes>
       {/* Common Routes */}
-      <Route element={<PresentationLayout />}>
+      <Route element={<MainLayout />}>
         <Route path="surveys">
           <Route index element={<Navigate to="/not-found" replace />} />
           <Route path=":surveyId">
             <Route index element={<Navigate to="form" replace />} />
-            <Route path="form" element={<SurveySheetPage />} />
           </Route>
         </Route>
         <Route path="*" element={<NotFoundPage />} />
@@ -41,13 +40,14 @@ const AppRoutes = () => {
           <Route element={<MainLayout />}>
             <Route index element={<DashboardPage />} />
           </Route>
-          <Route element={<PresentationLayout />}>
+          <Route element={<MainLayout />}>
             <Route path="surveys">
               <Route path="create" element={<SurveyCreatePage />} />
               <Route path=":surveyId">
                 <Route path="edit" element={<SurveyEditPage />} />
                 <Route path="delete" element={<SurveyDeletePage />} />
                 <Route path="results" element={<SurveyResultsPage />} />
+                <Route path="form" element={<SurveySheetPage />} />
               </Route>
             </Route>
           </Route>
@@ -56,11 +56,16 @@ const AppRoutes = () => {
 
       {/* Public Routes */}
       {!isAuthenticated && (
-        <Route element={<PresentationLayout />}>
+        <Route element={<HighlightLayout />}>
           <Route index element={<LandingPage />} />
           <Route path="auth">
             <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<RegisterPage />} />
+          </Route>
+          <Route path="surveys">
+            <Route path=":surveyId">
+              <Route path="form" element={<SurveySheetPage />} />
+            </Route>
           </Route>
         </Route>
       )}
