@@ -24,7 +24,7 @@ const AppRoutes = () => {
   return (
     <Routes>
       {/* Common Routes */}
-      <Route element={<MainLayout />}>
+      <Route element={<HighlightLayout />}>
         <Route path="surveys">
           <Route index element={<Navigate to="/not-found" replace />} />
           <Route path=":surveyId">
