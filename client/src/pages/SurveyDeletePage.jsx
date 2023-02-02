@@ -47,7 +47,7 @@ const SurveyDeletePage = () => {
     }
   }, [isLoading, isError, navigate]);
 
-  useSurveyAuthorValidator(survey._id === params.surveyId, survey, user, '/');
+  useSurveyAuthorValidator(survey._id === params.surveyId, survey.author?._id, user._id, '/');
   useDocumentTitle('Delete survey');
 
   return (
