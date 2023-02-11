@@ -16,10 +16,26 @@ exports.Votes = class Votes {
     return survey;
   }
 
-  async updateSurvey(id, survey) {
-    const { questions, ips } = survey;
+  async getTracker(id) {
+    const tracker = await this.app.service('trackers').Model.findOne({ surveyId: id }).lean();
 
-    await this.app.service('surveys').Model.findByIdAndUpdate(id, { questions, ips });
+    if (!tracker) {
+      throw new NotFound(`Tracker for survey with id '${id}' not found`);
+    }
+
+    return tracker;
+  }
+
+  async updateSurvey(id, survey) {
+    const { questions } = survey;
+
+    await this.app.service('surveys').Model.findByIdAndUpdate(id, { questions });
+  }
+
+  async updateTracker(id, tracker) {
+    const { ips } = tracker;
+
+    await this.app.service('trackers').Model.findOneAndUpdate({ surveyId: id }, { ips });
   }
 
   getUserAnswer(question, answerSheet) {
@@ -34,8 +50,8 @@ exports.Votes = class Votes {
   }
 
   async get(id, params) {
-    const survey = await this.getSurvey(id);
-    const votes = survey.ips.filter((ip) => ip === params.ip).length;
+    const tracker = await this.getTracker(id);
+    const votes = tracker.ips.filter((ip) => ip === params.ip).length;
 
     return {
       voted: votes > 0,
@@ -45,6 +61,7 @@ exports.Votes = class Votes {
 
   async create(data, params) {
     const survey = await this.getSurvey(data.surveyId);
+    const tracker = await this.getTracker(data.surveyId);
 
     if (!survey.open) {
       throw new NotAcceptable('Survey is closed');
@@ -64,9 +81,10 @@ exports.Votes = class Votes {
       questionAnswer.votes += 1;
     }
 
-    survey.ips.push(params.ip);
+    tracker.ips.push(params.ip);
 
     await this.updateSurvey(data.surveyId, survey);
+    await this.updateTracker(data.surveyId, tracker);
 
     return {};
   }

@@ -25,7 +25,7 @@ module.exports = {
   },
 
   after: {
-    all: [discard('ips')],
+    all: [],
     find: [deepDiscard('votes'), discard('protection', 'questions')],
     get: [
       ifProvider(['external'], ifNot(isDocumentOwner('_id', 'authorId'), deepDiscard('votes'))),

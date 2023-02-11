@@ -69,7 +69,6 @@ module.exports = function (app) {
         },
       },
       questions: [QuestionSchema],
-      ips: [String],
     },
     {
       timestamps: true,
