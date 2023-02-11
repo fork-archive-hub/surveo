@@ -1,9 +1,8 @@
 const { NotFound, Forbidden } = require('@feathersjs/errors');
 
 exports.Subscriptions = class Subscriptions {
-  constructor(options, app) {
+  async setup(app) {
     this.app = app;
-    this.options = options || {};
   }
 
   async create(data, params) {

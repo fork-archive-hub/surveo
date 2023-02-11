@@ -1,9 +1,8 @@
 const { NotFound, BadRequest, NotAcceptable } = require('@feathersjs/errors');
 
 exports.Votes = class Votes {
-  constructor(options, app) {
+  async setup(app) {
     this.app = app;
-    this.options = options || {};
   }
 
   async getSurvey(id) {
