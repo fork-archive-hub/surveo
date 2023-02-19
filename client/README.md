@@ -22,10 +22,11 @@ Before running the application, configure the environment variables.
 
 ```env
 GENERATE_SOURCEMAP=false
-REACT_APP_BASE_TITLE=Surveo                                   # title of the application
-REACT_APP_FEATHERS_SERVER_URL=                                # feathers server url
-REACT_APP_FEATHERS_JWT_STORAGE_KEY=feathers-jwt               # local storage key for feathers jwt
-REACT_APP_GOOGLE_RECAPTCHA_KEY=                               # google recaptcha key
+REACT_APP_BASE_TITLE=Surveo                                     # title of the application
+REACT_APP_FEATHERS_SERVER_URL=                                  # feathers server url
+REACT_APP_FEATHERS_JWT_STORAGE_KEY=feathers-jwt                 # local storage key for feathers jwt
+REACT_APP_AUTHENTICATION_SLICE_STORAGE_KEY=authentication-slice # local storage key for authentication slice
+REACT_APP_GOOGLE_RECAPTCHA_KEY=                                 # google recaptcha key
 ```
 
 Run the app in development mode

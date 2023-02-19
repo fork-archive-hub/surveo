@@ -1,10 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 
 const initialState = { isAuthenticated: false, user: {} };
+const persistedState = JSON.parse(localStorage.getItem(process.env.REACT_APP_AUTHENTICATION_SLICE_STORAGE_KEY));
 
 const slice = createSlice({
   name: 'authentication',
-  initialState: initialState,
+  initialState: Object.assign({}, initialState, persistedState),
   reducers: {
     login: (state, action) => {
       state.isAuthenticated = true;
@@ -16,6 +17,18 @@ const slice = createSlice({
     },
   },
 });
+
+export const listeners = [
+  {
+    matcher: isAnyOf(slice.actions.login, slice.actions.logout),
+    effect: (action, api) => {
+      localStorage.setItem(
+        process.env.REACT_APP_AUTHENTICATION_SLICE_STORAGE_KEY,
+        JSON.stringify(api.getState().authentication)
+      );
+    },
+  },
+];
 
 export const actions = slice.actions;
 export default slice.reducer;
