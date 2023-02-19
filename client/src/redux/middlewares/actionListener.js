@@ -1,9 +1,9 @@
 import { createListenerMiddleware } from '@reduxjs/toolkit';
 
-import { listeners as authentication } from '../slices/authentication';
+import { authentication } from '../slices/authentication';
 
 const listenerMiddleware = createListenerMiddleware();
-const listeners = [...authentication];
+const listeners = [...authentication.listeners];
 
 listeners.forEach((listener) => {
   listenerMiddleware.startListening(listener);

@@ -18,7 +18,7 @@ const slice = createSlice({
   },
 });
 
-export const listeners = [
+const listeners = [
   {
     matcher: isAnyOf(slice.actions.login, slice.actions.logout),
     effect: (action, api) => {
@@ -30,5 +30,8 @@ export const listeners = [
   },
 ];
 
-export const actions = slice.actions;
-export default slice.reducer;
+export const authentication = {
+  reducer: slice.reducer,
+  actions: slice.actions,
+  listeners: listeners,
+};

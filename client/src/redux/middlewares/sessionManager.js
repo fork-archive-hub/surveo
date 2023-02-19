@@ -1,14 +1,14 @@
 import { feathers } from '../../api/feathers';
 
-import { actions } from '../slices/authentication';
+import { authentication } from '../slices/authentication';
 
 export const sessionManager = (store) => {
   const handleLogin = (data) => {
-    store.dispatch(actions.login(data));
+    store.dispatch(authentication.actions.login(data));
   };
 
   const handleLogout = () => {
-    store.dispatch(actions.logout());
+    store.dispatch(authentication.actions.logout());
   };
 
   const tryReAuthenticate = () => {

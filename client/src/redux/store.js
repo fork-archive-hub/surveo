@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import authentication from './slices/authentication';
+import { authentication } from './slices/authentication';
 
 import { actionListener } from './middlewares/actionListener';
 import { sessionManager } from './middlewares/sessionManager';
 
 export const store = configureStore({
   reducer: {
-    authentication: authentication,
+    authentication: authentication.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(actionListener, sessionManager),
 });
