@@ -22,11 +22,10 @@ Before running the application, configure the environment variables.
 
 ```env
 GENERATE_SOURCEMAP=false
-REACT_APP_BASE_TITLE=Surveo                        # Application title
-REACT_APP_AUTH_TOKEN_STORAGE_KEY=auth-token        # Local storage key for auth token
-REACT_APP_AUTH_USER_STORAGE_KEY=auth-user          # Local storage key for last logged user data
-REACT_APP_FEATHERS_SERVER_URL=                     # Feathers server url
-REACT_APP_GOOGLE_RECAPTCHA_KEY=                    # Google reCAPTCHA key
+REACT_APP_BASE_TITLE=Surveo                                   # title of the application
+REACT_APP_FEATHERS_SERVER_URL=                                # feathers server url
+REACT_APP_FEATHERS_JWT_STORAGE_KEY=feathers-jwt               # local storage key for feathers jwt
+REACT_APP_GOOGLE_RECAPTCHA_KEY=                               # google recaptcha key
 ```
 
 Run the app in development mode
@@ -46,9 +45,9 @@ npm run build
 ```bash
 public                          # folder containing static files such as index.html
 src
-   |-- api                        # api related folders and files
-   |   |-- group                  # group of files related to a single api
-   |   |   |-- index.js           # exports main api instance from the folder
+   |-- api                      # api related folders and files
+   |   |-- group                # group of files related to a single api
+   |   |   |-- index.js         # exports main api instance from the folder
    |-- components               # shared components used across the entire application
    |   |-- group                # group of related components
    |-- features                 # feature based modules

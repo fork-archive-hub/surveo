@@ -1,14 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const authTokenExists = localStorage.getItem(process.env.REACT_APP_AUTH_TOKEN_STORAGE_KEY) !== null;
-const lastLoggedUser = JSON.parse(localStorage.getItem(process.env.REACT_APP_AUTH_USER_STORAGE_KEY));
+const initialState = { isAuthenticated: false, user: {} };
 
 const slice = createSlice({
   name: 'authentication',
-  initialState: {
-    isAuthenticated: authTokenExists,
-    user: authTokenExists ? lastLoggedUser : {},
-  },
+  initialState: initialState,
   reducers: {
     login: (state, action) => {
       state.isAuthenticated = true;
