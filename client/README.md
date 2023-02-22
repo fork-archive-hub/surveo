@@ -1,7 +1,7 @@
 # Surveo-client
 
-Surveo-client is a responsive web application that allows you to create simple surveys. Users can create, edit and share surveys and later watch auto updated results.
-Application is built with [React](https://reactjs.org/), [Redux](https://redux.js.org/), [React Router](https://reacttraining.com/react-router/), [Material UI](https://mui.com/).
+Surveo-client is a responsive web application written in [React](https://reactjs.org/), allowing users to create online surveys with basic security measures.  
+Application is built using [Redux](https://redux.js.org/), [React Router](https://reacttraining.com/react-router/), [Material UI](https://mui.com/).
 
 ## Installation
 
