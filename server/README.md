@@ -1,7 +1,7 @@
 # Surveo-server
 
-Surveo-server is a server written in Node.js using the Feathers.js framework for the Surveo application.
-Surveo is application that allows you to create surveys and store them in a database and process the received votes with basic protection.
+Surveo-server is a server written in [Node.js](https://nodejs.org/en/) using [Feathers.js](https://feathersjs.com/) framework for Surveo application.  
+Server is responsible for processing data and providing an external API.
 
 ## Pre-requisites
 
