@@ -18,12 +18,12 @@ const SurveyConfiguration = () => {
           <Controller
             control={control}
             name="name"
-            render={({ field, fieldState }) => (
+            render={(controller) => (
               <TextField
                 label="Survey name"
-                error={Boolean(fieldState.error)}
-                helperText={fieldState.error?.message}
-                {...field}
+                error={Boolean(controller.fieldState.error)}
+                helperText={controller.fieldState.error?.message}
+                {...controller.field}
               />
             )}
           />

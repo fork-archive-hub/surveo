@@ -20,7 +20,7 @@ const AccessibilityOptions = () => {
               <Controller
                 control={control}
                 name="open"
-                render={({ field }) => <Checkbox checked={field.value} {...field} />}
+                render={(controller) => <Checkbox checked={controller.field.value} {...controller.field} />}
               />
             }
           />

@@ -36,25 +36,25 @@ const LoginForm = ({ onSubmitCredentials }) => {
             <Controller
               control={control}
               name="username"
-              render={({ field, fieldState }) => (
+              render={(controller) => (
                 <TextField
                   label="Username"
-                  error={Boolean(fieldState.error)}
-                  helperText={fieldState.error?.message}
-                  {...field}
+                  error={Boolean(controller.fieldState.error)}
+                  helperText={controller.fieldState.error?.message}
+                  {...controller.field}
                 />
               )}
             />
             <Controller
               control={control}
               name="password"
-              render={({ field, fieldState }) => (
+              render={(controller) => (
                 <TextField
                   label="Password"
                   type="password"
-                  error={Boolean(fieldState.error)}
-                  helperText={fieldState.error?.message}
-                  {...field}
+                  error={Boolean(controller.fieldState.error)}
+                  helperText={controller.fieldState.error?.message}
+                  {...controller.field}
                 />
               )}
             />

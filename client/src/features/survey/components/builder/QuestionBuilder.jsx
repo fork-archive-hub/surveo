@@ -21,12 +21,12 @@ const QuestionBuilder = ({ path, index }) => {
             <Controller
               control={control}
               name={`${path}.text`}
-              render={({ field, fieldState }) => (
+              render={(controller) => (
                 <TextField
                   label="Question"
-                  error={Boolean(fieldState.error)}
-                  helperText={fieldState.error?.message}
-                  {...field}
+                  error={Boolean(controller.fieldState.error)}
+                  helperText={controller.fieldState.error?.message}
+                  {...controller.field}
                 />
               )}
             />

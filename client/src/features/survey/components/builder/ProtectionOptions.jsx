@@ -20,7 +20,7 @@ const ProtectionOptions = () => {
               <Controller
                 control={control}
                 name="protection.captcha"
-                render={({ field }) => <Checkbox checked={field.value} {...field} />}
+                render={(controller) => <Checkbox checked={controller.field.value} {...controller.field} />}
               />
             }
           />
@@ -31,7 +31,7 @@ const ProtectionOptions = () => {
               <Controller
                 control={control}
                 name="protection.ipRestriction"
-                render={({ field }) => <Checkbox checked={field.value} {...field} />}
+                render={(controller) => <Checkbox checked={controller.field.value} {...controller.field} />}
               />
             }
           />

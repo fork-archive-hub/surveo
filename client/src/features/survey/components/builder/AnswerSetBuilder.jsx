@@ -43,13 +43,13 @@ const AnswerSetBuilder = ({ path }) => {
           <Controller
             control={control}
             name={`${path}[${index}].text`}
-            render={({ field, fieldState }) => (
+            render={(controller) => (
               <TextField
                 label="Answer"
-                error={Boolean(fieldState.error)}
-                helperText={fieldState.error?.message}
+                error={Boolean(controller.fieldState.error)}
+                helperText={controller.fieldState.error?.message}
                 fullWidth
-                {...field}
+                {...controller.field}
               />
             )}
           />
