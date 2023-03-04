@@ -24,8 +24,8 @@ const QuestionResult = ({ question }) => {
         <Stack direction="column" sx={{ width: 1 }}>
           <Tabs centered variant="fullWidth" value={chartType} onChange={handleChangeChartType}>
             <Tab icon={<AnswerStackIcon />} value="stack" />
-            <Tab icon={<PieChartIcon />} value="pie" />
-            <Tab icon={<PolarChartIcon />} value="polar" />
+            <Tab icon={<PieChartIcon />} value="pie" disabled={totalVotes === 0} />
+            <Tab icon={<PolarChartIcon />} value="polar" disabled={totalVotes === 0} />
           </Tabs>
           <Paper elevation={2} sx={{ width: 1, p: 2 }}>
             {chartType === 'stack' && <AnswerResultStack answers={question.answers} />}
