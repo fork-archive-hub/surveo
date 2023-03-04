@@ -13,7 +13,8 @@ export const sessionManager = (store) => {
 
   const tryReAuthenticate = () => {
     if (localStorage.getItem(process.env.REACT_APP_FEATHERS_JWT_STORAGE_KEY)) {
-      feathers.client.reAuthenticate().catch(() => {
+      feathers.client.reAuthenticate().catch(async () => {
+        await store.dispatch(authentication.actions.logout());
         window.location.reload();
       });
     }
