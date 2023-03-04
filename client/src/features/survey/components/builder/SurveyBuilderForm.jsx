@@ -6,7 +6,7 @@ import { useForm, FormProvider } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
 
 import SurveyConfiguration from './SurveyConfiguration';
-import QuestionBuilderStack from './QuestionBuilderStack';
+import QuestionSetBuilder from './QuestionSetBuilder';
 
 import { SurveySchema } from '../../schemas/SurveySchema';
 import { SurveyTemplate } from '../../templates/SurveyTemplate';
@@ -31,7 +31,7 @@ const SurveyBuilderForm = ({ onSubmitSurvey }) => {
       <Box component="form" onSubmit={form.handleSubmit(onSubmit)}>
         <Stack divider={<Divider />}>
           <SurveyConfiguration />
-          <QuestionBuilderStack path="questions" />
+          <QuestionSetBuilder path="questions" />
           <SubmitButton disabled={!form.formState.isValid || !form.formState.isDirty}>Create survey</SubmitButton>
         </Stack>
       </Box>

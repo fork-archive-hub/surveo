@@ -5,7 +5,7 @@ import Answer from './Answer';
 
 import RadioGroup from '../../../../components/form/RadioGroup';
 
-const AnswerGroup = ({ answers, onSelectAnswer }) => {
+const AnswerList = ({ answers, onSelectAnswer }) => {
   const groupId = useId();
 
   const handleChange = (event) => {
@@ -25,7 +25,7 @@ const AnswerGroup = ({ answers, onSelectAnswer }) => {
   );
 };
 
-AnswerGroup.propTypes = {
+AnswerList.propTypes = {
   answers: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
@@ -34,4 +34,4 @@ AnswerGroup.propTypes = {
   onSelectAnswer: PropTypes.func.isRequired,
 };
 
-export default AnswerGroup;
+export default AnswerList;

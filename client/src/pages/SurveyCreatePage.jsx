@@ -18,7 +18,7 @@ const SurveyCreatePage = () => {
       const result = await feathers.client.service('surveys').create(survey);
 
       toast.success('Survey successfully created', { toastId: 'success-create-survey' });
-      navigate(`/surveys/${result._id}/form`);
+      navigate(`/surveys/${result._id}/questionnaire`);
     } catch (error) {
       toast.error(error.message, { toastId: 'error-create-survey' });
     }

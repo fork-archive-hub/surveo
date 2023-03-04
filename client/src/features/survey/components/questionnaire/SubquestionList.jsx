@@ -4,7 +4,7 @@ import { Stack } from '@mui/material';
 
 import Subquestion from './Subquestion';
 
-const SubquestionStack = ({ subquestions, selectedAnswerIndex }) => {
+const SubquestionList = ({ subquestions, selectedAnswerIndex }) => {
   const requiredSubquestions = subquestions.filter((subquestion) =>
     subquestion.requirements.includes(selectedAnswerIndex)
   );
@@ -22,7 +22,7 @@ const SubquestionStack = ({ subquestions, selectedAnswerIndex }) => {
   );
 };
 
-SubquestionStack.propTypes = {
+SubquestionList.propTypes = {
   subquestions: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
@@ -32,4 +32,4 @@ SubquestionStack.propTypes = {
   selectedAnswerIndex: PropTypes.number.isRequired,
 };
 
-export default SubquestionStack;
+export default SubquestionList;

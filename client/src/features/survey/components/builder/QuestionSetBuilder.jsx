@@ -10,7 +10,7 @@ import { QuestionTemplate } from '../../templates/QuestionTemplate';
 
 import Button from '../../../../components/form/Button';
 
-const QuestionBuilderStack = ({ path }) => {
+const QuestionSetBuilder = ({ path }) => {
   const { control } = useFormContext();
   const { fields, append, remove } = useFieldArray({
     name: path,
@@ -44,8 +44,8 @@ const QuestionBuilderStack = ({ path }) => {
   );
 };
 
-QuestionBuilderStack.propTypes = {
+QuestionSetBuilder.propTypes = {
   path: PropTypes.string.isRequired,
 };
 
-export default QuestionBuilderStack;
+export default QuestionSetBuilder;

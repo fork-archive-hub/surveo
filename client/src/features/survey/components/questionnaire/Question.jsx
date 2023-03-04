@@ -5,8 +5,8 @@ import { Stack, Card, CardHeader, CardActions, Paper } from '@mui/material';
 
 import { useFormContext } from 'react-hook-form';
 
-import AnswerGroup from './AnswerGroup';
-import SubquestionStack from './SubquestionStack';
+import AnswerList from './AnswerList';
+import SubquestionList from './SubquestionList';
 
 const Question = ({ question }) => {
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(-1);
@@ -23,11 +23,11 @@ const Question = ({ question }) => {
         <CardHeader title={question.text} />
         <CardActions>
           <Paper elevation={2} sx={{ width: 1, p: 2 }}>
-            <AnswerGroup answers={question.answers} onSelectAnswer={handleSelectAnswer} />
+            <AnswerList answers={question.answers} onSelectAnswer={handleSelectAnswer} />
           </Paper>
         </CardActions>
       </Card>
-      <SubquestionStack subquestions={question.subquestions} selectedAnswerIndex={selectedAnswerIndex} />
+      <SubquestionList subquestions={question.subquestions} selectedAnswerIndex={selectedAnswerIndex} />
     </Stack>
   );
 };

@@ -5,11 +5,11 @@ import { Stack, Divider, Box } from '@mui/material';
 import { useForm, FormProvider } from 'react-hook-form';
 
 import SurveyHeader from './SurveyHeader';
-import QuestionStack from './QuestionStack';
+import QuestionList from './QuestionList';
 
 import SubmitButton from '../../../../components/form/SubmitButton';
 
-const SurveySheetForm = ({ survey, isFormDisabled, onSubmitVotes }) => {
+const SurveyQuestionnaireForm = ({ survey, isFormDisabled, onSubmitVotes }) => {
   const form = useForm({ mode: 'all' });
 
   const onSubmit = (data) => {
@@ -25,7 +25,7 @@ const SurveySheetForm = ({ survey, isFormDisabled, onSubmitVotes }) => {
       <FormProvider {...form}>
         <Box component="form" onSubmit={form.handleSubmit(onSubmit)}>
           <Stack>
-            <QuestionStack questions={survey.questions} />
+            <QuestionList questions={survey.questions} />
             <SubmitButton disabled={!survey.open || isFormDisabled}>Submit</SubmitButton>
           </Stack>
         </Box>
@@ -34,7 +34,7 @@ const SurveySheetForm = ({ survey, isFormDisabled, onSubmitVotes }) => {
   );
 };
 
-SurveySheetForm.propTypes = {
+SurveyQuestionnaireForm.propTypes = {
   survey: PropTypes.shape({
     name: PropTypes.string.isRequired,
     open: PropTypes.bool.isRequired,
@@ -48,4 +48,4 @@ SurveySheetForm.propTypes = {
   onSubmitVotes: PropTypes.func.isRequired,
 };
 
-export default SurveySheetForm;
+export default SurveyQuestionnaireForm;

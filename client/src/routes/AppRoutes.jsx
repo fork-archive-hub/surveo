@@ -15,7 +15,7 @@ const SurveyEditPage = lazy(() => import('../pages/SurveyEditPage'));
 const SurveyDeletePage = lazy(() => import('../pages/SurveyDeletePage'));
 const SurveyCreatePage = lazy(() => import('../pages/SurveyCreatePage'));
 const SurveyResultsPage = lazy(() => import('../pages/SurveyResultsPage'));
-const SurveySheetPage = lazy(() => import('../pages/SurveySheetPage'));
+const SurveyQuestionnairePage = lazy(() => import('../pages/SurveyQuestionnairePage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
 const AppRoutes = () => {
@@ -28,7 +28,7 @@ const AppRoutes = () => {
         <Route path="surveys">
           <Route index element={<Navigate to="/not-found" replace />} />
           <Route path=":surveyId">
-            <Route index element={<Navigate to="form" replace />} />
+            <Route index element={<Navigate to="questionnaire" replace />} />
           </Route>
         </Route>
         <Route path="*" element={<NotFoundPage />} />
@@ -47,7 +47,7 @@ const AppRoutes = () => {
                 <Route path="edit" element={<SurveyEditPage />} />
                 <Route path="delete" element={<SurveyDeletePage />} />
                 <Route path="results" element={<SurveyResultsPage />} />
-                <Route path="form" element={<SurveySheetPage />} />
+                <Route path="questionnaire" element={<SurveyQuestionnairePage />} />
               </Route>
             </Route>
           </Route>
@@ -64,7 +64,7 @@ const AppRoutes = () => {
           </Route>
           <Route path="surveys">
             <Route path=":surveyId">
-              <Route path="form" element={<SurveySheetPage />} />
+              <Route path="questionnaire" element={<SurveyQuestionnairePage />} />
             </Route>
           </Route>
         </Route>

@@ -2,14 +2,14 @@ import PropTypes from 'prop-types';
 
 import { Stack } from '@mui/material';
 
-import SurveyHeader from '../sheet/SurveyHeader';
-import QuestionResultStack from './QuestionResultStack';
+import SurveyHeader from '../questionnaire/SurveyHeader';
+import QuestionResultsList from './QuestionResultsList';
 
 const SurveyResults = ({ survey }) => {
   return (
     <Stack>
       <SurveyHeader name={survey.name} author={survey.author.username} createdAt={survey.createdAt} />
-      <QuestionResultStack questions={survey.questions} />
+      <QuestionResultsList questions={survey.questions} />
     </Stack>
   );
 };

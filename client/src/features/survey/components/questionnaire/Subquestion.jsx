@@ -4,7 +4,7 @@ import { Card, CardHeader, CardActions, Paper } from '@mui/material';
 
 import { useFormContext } from 'react-hook-form';
 
-import AnswerGroup from './AnswerGroup';
+import AnswerList from './AnswerList';
 
 const Subquestion = ({ subquestion }) => {
   const { setValue } = useFormContext();
@@ -18,7 +18,7 @@ const Subquestion = ({ subquestion }) => {
       <CardHeader title={subquestion.text} />
       <CardActions>
         <Paper elevation={2} sx={{ width: 1, p: 2 }}>
-          <AnswerGroup answers={subquestion.answers} onSelectAnswer={handleSelectAnswer} />
+          <AnswerList answers={subquestion.answers} onSelectAnswer={handleSelectAnswer} />
         </Paper>
       </CardActions>
     </Card>

@@ -3,16 +3,15 @@ import PropTypes from 'prop-types';
 import { Stack, IconButton } from '@mui/material';
 import { DeleteOutline } from '@mui/icons-material';
 
-import { useFormContext, useFieldArray } from 'react-hook-form';
-
-import AnswerTextField from './AnswerTextField';
+import { Controller, useFormContext, useFieldArray } from 'react-hook-form';
 
 import { AnswerTemplate } from '../../templates/AnswerTemplate';
 import { updateIndexFields } from '../../utils/updateIndexFields';
 
 import Button from '../../../../components/form/Button';
+import TextField from '../../../../components/form/TextField';
 
-const AnswerTextFieldStack = ({ path }) => {
+const AnswerSetBuilder = ({ path }) => {
   const { control, getValues, setValue } = useFormContext();
   const { fields, append, remove } = useFieldArray({
     name: path,
@@ -41,7 +40,19 @@ const AnswerTextFieldStack = ({ path }) => {
     <Stack>
       {fields.map((field, index) => (
         <Stack direction="row" key={field.id}>
-          <AnswerTextField path={`${path}[${index}]`} />
+          <Controller
+            control={control}
+            name={`${path}[${index}].text`}
+            render={({ field, fieldState }) => (
+              <TextField
+                label="Answer"
+                error={Boolean(fieldState.error)}
+                helperText={fieldState.error?.message}
+                fullWidth
+                {...field}
+              />
+            )}
+          />
           <IconButton color="error" disabled={!enoughFields} onClick={() => handleRemoveAnswer(index)}>
             <DeleteOutline />
           </IconButton>
@@ -52,8 +63,8 @@ const AnswerTextFieldStack = ({ path }) => {
   );
 };
 
-AnswerTextFieldStack.propTypes = {
+AnswerSetBuilder.propTypes = {
   path: PropTypes.string.isRequired,
 };
 
-export default AnswerTextFieldStack;
+export default AnswerSetBuilder;

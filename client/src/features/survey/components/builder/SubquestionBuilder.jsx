@@ -4,7 +4,7 @@ import { Card, CardHeader, CardActions, Paper, Stack } from '@mui/material';
 
 import { useFormContext, Controller } from 'react-hook-form';
 
-import AnswerTextFieldStack from './AnswerTextFieldStack';
+import AnswerSetBuilder from './AnswerSetBuilder';
 import SubquestionRequirements from './SubquestionRequirements';
 
 import TextField from '../../../../components/form/TextField';
@@ -30,7 +30,7 @@ const SubquestionBuilder = ({ path, index, questionAnswersPath }) => {
             )}
           />
           <Paper elevation={2} sx={{ p: 2 }}>
-            <AnswerTextFieldStack path={`${path}.answers`} />
+            <AnswerSetBuilder path={`${path}.answers`} />
           </Paper>
           <SubquestionRequirements path={`${path}.requirements`} questionAnswersPath={questionAnswersPath} />
         </Stack>

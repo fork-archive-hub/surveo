@@ -9,11 +9,11 @@ import { toast } from 'react-toastify';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 import Spinner from '../components/elements/Spinner';
-import { SurveySheetForm, useGetSurveyQuery, useSurveyProtection } from '../features/survey';
+import { SurveyQuestionnaireForm, useGetSurveyQuery, useSurveyProtection } from '../features/survey';
 
 import { feathers } from '../api/feathers';
 
-const SurveySheetPage = () => {
+const SurveyQuestionnairePage = () => {
   const params = useParams();
   const navigate = useNavigate();
 
@@ -57,7 +57,7 @@ const SurveySheetPage = () => {
             </Alert>
           )}
           {Boolean(survey._id) && !isLoading && !isError && (
-            <SurveySheetForm
+            <SurveyQuestionnaireForm
               survey={survey}
               isFormDisabled={isIPDisallowed || !survey.open}
               onSubmitVotes={handleSubmitVotes}
@@ -69,4 +69,4 @@ const SurveySheetPage = () => {
   );
 };
 
-export default SurveySheetPage;
+export default SurveyQuestionnairePage;

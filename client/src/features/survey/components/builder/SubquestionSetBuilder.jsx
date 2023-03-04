@@ -10,7 +10,7 @@ import { SubquestionTemplate } from '../../templates/SubquestionTemplate';
 
 import Button from '../../../../components/form/Button';
 
-const SubquestionBuilderStack = ({ path, questionAnswersPath }) => {
+const SubquestionSetBuilder = ({ path, questionAnswersPath }) => {
   const { control } = useFormContext();
   const { fields, append, remove } = useFieldArray({
     name: path,
@@ -40,9 +40,9 @@ const SubquestionBuilderStack = ({ path, questionAnswersPath }) => {
   );
 };
 
-SubquestionBuilderStack.propTypes = {
+SubquestionSetBuilder.propTypes = {
   path: PropTypes.string.isRequired,
   questionAnswersPath: PropTypes.string.isRequired,
 };
 
-export default SubquestionBuilderStack;
+export default SubquestionSetBuilder;

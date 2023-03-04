@@ -19,7 +19,7 @@ const UserSurvey = ({ survey }) => {
         </Stack>
         <Stack direction="row" sx={{ flexGrow: 1, alignItems: 'center', justifyContent: 'flex-end' }}>
           <Tooltip title="Preview survey">
-            <IconButton to={`/surveys/${survey._id}/form`} component={Link}>
+            <IconButton to={`/surveys/${survey._id}/questionnaire`} component={Link}>
               <PreviewOutlined />
             </IconButton>
           </Tooltip>
