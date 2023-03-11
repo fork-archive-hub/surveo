@@ -12,17 +12,18 @@ export const useFindSurveysQuery = (authorId, limit, page) => {
 
   const [pages, setPages] = useState(0);
 
-  useEffect(() => {
-    const findSurveys = async () => {
-      try {
-        if (!authorId) {
-          return;
-        }
+  useEffect(
+    function findSurveys() {
+      if (!authorId) {
+        return;
+      }
 
-        setIsLoading(true);
-        setIsError(false);
+      setIsLoading(true);
+      setIsError(false);
 
-        const result = await feathers.client.service('surveys').find({
+      feathers.client
+        .service('surveys')
+        .find({
           query: {
             authorId: authorId,
             $skip: (page - 1) * limit,
@@ -31,20 +32,19 @@ export const useFindSurveysQuery = (authorId, limit, page) => {
               createdAt: -1,
             },
           },
-        });
-
-        setSurveys(result.data);
-        setPages(Math.ceil(result.total / limit));
-      } catch (error) {
-        toast.error(error.message, { toastId: 'use-find-surveys-query' });
-        setIsError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    findSurveys();
-  }, [authorId, limit, page]);
+        })
+        .then((result) => {
+          setSurveys(result.data);
+          setPages(Math.ceil(result.total / limit));
+        })
+        .catch((error) => {
+          toast.error(error.message, { toastId: 'use-find-surveys-query' });
+          setIsError(true);
+        })
+        .finally(() => setIsLoading(false));
+    },
+    [authorId, limit, page]
+  );
 
   return { surveys: surveys, isLoading: isLoading, isError: isError, pages: pages };
 };

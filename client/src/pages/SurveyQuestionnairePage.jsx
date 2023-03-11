@@ -35,11 +35,14 @@ const SurveyQuestionnairePage = () => {
     }
   };
 
-  useEffect(() => {
-    if (!isLoading && isError) {
-      navigate('/');
-    }
-  }, [isLoading, isError, navigate]);
+  useEffect(
+    function fallbackToMainPage() {
+      if (!isLoading && isError) {
+        navigate('/');
+      }
+    },
+    [isLoading, isError, navigate]
+  );
 
   useDocumentTitle(isLoading ? 'Survey form' : `${survey.name} form`);
 

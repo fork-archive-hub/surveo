@@ -7,8 +7,8 @@ import { toast } from 'react-toastify';
 export const useSurveyAuthorValidator = (isActive, authorId, userId, redirectPath) => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const validateSurveyAuthor = () => {
+  useEffect(
+    function validateSurveyAuthor() {
       if (!isActive) {
         return;
       }
@@ -17,8 +17,7 @@ export const useSurveyAuthorValidator = (isActive, authorId, userId, redirectPat
         toast.error('You are not authorized to access this page', { toastId: 'use-survey-author-validator' });
         navigate(redirectPath);
       }
-    };
-
-    validateSurveyAuthor();
-  }, [isActive, authorId, userId, redirectPath, navigate]);
+    },
+    [isActive, authorId, userId, redirectPath, navigate]
+  );
 };

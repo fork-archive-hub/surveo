@@ -33,11 +33,14 @@ const SurveyEditPage = () => {
     }
   };
 
-  useEffect(() => {
-    if (!isLoading && isError) {
-      navigate('/');
-    }
-  }, [isLoading, isError, navigate]);
+  useEffect(
+    function fallbackToMainPage() {
+      if (!isLoading && isError) {
+        navigate('/');
+      }
+    },
+    [isLoading, isError, navigate]
+  );
 
   useSurveyAuthorValidator(survey._id === params.surveyId, survey.author?._id, user._id, '/');
   useDocumentTitle('Edit survey');

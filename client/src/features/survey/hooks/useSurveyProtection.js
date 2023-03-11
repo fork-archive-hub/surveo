@@ -9,27 +9,24 @@ export const useSurveyProtection = (surveyId, isIPProtectionEnabled) => {
 
   const { executeRecaptcha } = useGoogleReCaptcha();
 
-  useEffect(() => {
-    const checkIfIPDisallowed = async () => {
-      try {
-        if (!surveyId) {
-          return;
-        }
-
-        if (!isIPProtectionEnabled) {
-          return;
-        }
-
-        const result = await feathers.client.service('votes').get(surveyId);
-
-        setIsIPDisallowed(result.voted);
-      } catch (error) {
-        console.error(error);
+  useEffect(
+    function checkIfIPDisallowed() {
+      if (!surveyId) {
+        return;
       }
-    };
 
-    checkIfIPDisallowed();
-  }, [surveyId, isIPProtectionEnabled]);
+      if (!isIPProtectionEnabled) {
+        return;
+      }
+
+      feathers.client
+        .service('votes')
+        .get(surveyId)
+        .then((result) => setIsIPDisallowed(result.voted))
+        .catch((error) => console.error(error));
+    },
+    [surveyId, isIPProtectionEnabled]
+  );
 
   return {
     isIPDisallowed: isIPDisallowed,
