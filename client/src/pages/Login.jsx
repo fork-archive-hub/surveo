@@ -11,7 +11,7 @@ import { LoginForm } from '../features/authentication';
 
 import { feathers } from '../api/feathers';
 
-const LoginPage = () => {
+const Login = () => {
   const navigate = useNavigate();
 
   const handleSubmitCredentials = async ({ username, password }) => {
@@ -43,4 +43,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Login;

@@ -14,7 +14,7 @@ import { SurveyEditorForm, useGetSurveyQuery, useSurveyAuthorValidator } from '.
 
 import { feathers } from '../api/feathers';
 
-const SurveyEditPage = () => {
+const SurveyEdit = () => {
   const user = useSelector((state) => state.authentication.user);
 
   const params = useParams();
@@ -57,4 +57,4 @@ const SurveyEditPage = () => {
   );
 };
 
-export default SurveyEditPage;
+export default SurveyEdit;

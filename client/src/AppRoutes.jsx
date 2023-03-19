@@ -6,17 +6,17 @@ import { useSelector } from 'react-redux';
 import { MainLayout } from './layouts/main';
 import { HighlightLayout } from './layouts/highlight';
 
-import LandingPage from './pages/LandingPage';
+import Landing from './pages/Landing';
 
-const LoginPage = lazy(() => import('./pages/LoginPage'));
-const RegisterPage = lazy(() => import('./pages/RegisterPage'));
-const DashboardPage = lazy(() => import('./pages/DashboardPage'));
-const SurveyEditPage = lazy(() => import('./pages/SurveyEditPage'));
-const SurveyDeletePage = lazy(() => import('./pages/SurveyDeletePage'));
-const SurveyCreatePage = lazy(() => import('./pages/SurveyCreatePage'));
-const SurveyResultsPage = lazy(() => import('./pages/SurveyResultsPage'));
-const SurveyQuestionnairePage = lazy(() => import('./pages/SurveyQuestionnairePage'));
-const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+const Login = lazy(() => import('./pages/Login'));
+const Register = lazy(() => import('./pages/Register'));
+const Dashboard = lazy(() => import('./pages/Dashboard'));
+const SurveyEdit = lazy(() => import('./pages/SurveyEdit'));
+const SurveyDelete = lazy(() => import('./pages/SurveyDelete'));
+const SurveyCreate = lazy(() => import('./pages/SurveyCreate'));
+const SurveyResults = lazy(() => import('./pages/SurveyResults'));
+const SurveyQuestionnaire = lazy(() => import('./pages/SurveyQuestionnaire'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 const AppRoutes = () => {
   const isAuthenticated = useSelector((state) => state.authentication.isAuthenticated);
@@ -31,23 +31,23 @@ const AppRoutes = () => {
             <Route index element={<Navigate to="questionnaire" replace />} />
           </Route>
         </Route>
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
 
       {/* Protected Routes */}
       {isAuthenticated && (
         <>
           <Route element={<MainLayout />}>
-            <Route index element={<DashboardPage />} />
+            <Route index element={<Dashboard />} />
           </Route>
           <Route element={<MainLayout />}>
             <Route path="surveys">
-              <Route path="create" element={<SurveyCreatePage />} />
+              <Route path="create" element={<SurveyCreate />} />
               <Route path=":surveyId">
-                <Route path="edit" element={<SurveyEditPage />} />
-                <Route path="delete" element={<SurveyDeletePage />} />
-                <Route path="results" element={<SurveyResultsPage />} />
-                <Route path="questionnaire" element={<SurveyQuestionnairePage />} />
+                <Route path="edit" element={<SurveyEdit />} />
+                <Route path="delete" element={<SurveyDelete />} />
+                <Route path="results" element={<SurveyResults />} />
+                <Route path="questionnaire" element={<SurveyQuestionnaire />} />
               </Route>
             </Route>
           </Route>
@@ -57,14 +57,14 @@ const AppRoutes = () => {
       {/* Public Routes */}
       {!isAuthenticated && (
         <Route element={<HighlightLayout />}>
-          <Route index element={<LandingPage />} />
+          <Route index element={<Landing />} />
           <Route path="auth">
-            <Route path="login" element={<LoginPage />} />
-            <Route path="register" element={<RegisterPage />} />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
           </Route>
           <Route path="surveys">
             <Route path=":surveyId">
-              <Route path="questionnaire" element={<SurveyQuestionnairePage />} />
+              <Route path="questionnaire" element={<SurveyQuestionnaire />} />
             </Route>
           </Route>
         </Route>

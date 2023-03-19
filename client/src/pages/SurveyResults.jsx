@@ -10,7 +10,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import Spinner from '../components/elements/Spinner';
 import { SurveyResultInspector, useGetSurveyResultsQuery, useSurveyAuthorValidator } from '../features/survey';
 
-const SurveyResultsPage = () => {
+const SurveyResults = () => {
   const user = useSelector((state) => state.authentication.user);
 
   const params = useParams();
@@ -40,4 +40,4 @@ const SurveyResultsPage = () => {
   );
 };
 
-export default SurveyResultsPage;
+export default SurveyResults;

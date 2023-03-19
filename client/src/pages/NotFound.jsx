@@ -6,7 +6,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 import Button from '../components/form/Button';
 
-const NotFoundPage = () => {
+const NotFound = () => {
   useDocumentTitle('Page not found');
 
   return (
@@ -28,4 +28,4 @@ const NotFoundPage = () => {
   );
 };
 
-export default NotFoundPage;
+export default NotFound;

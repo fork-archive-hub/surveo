@@ -11,7 +11,7 @@ import Button from '../components/form/Button';
 import Spinner from '../components/elements/Spinner';
 import { UserSurveyStack, useFindSurveysQuery } from '../features/survey';
 
-const DashboardPage = () => {
+const Dashboard = () => {
   const [page, setPage] = useState(1);
 
   const user = useSelector((state) => state.authentication.user);
@@ -52,4 +52,4 @@ const DashboardPage = () => {
   );
 };
 
-export default DashboardPage;
+export default Dashboard;

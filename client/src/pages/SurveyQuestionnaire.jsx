@@ -13,7 +13,7 @@ import { SurveyQuestionnaireForm, useGetSurveyQuery, useSurveyProtection } from 
 
 import { feathers } from '../api/feathers';
 
-const SurveyQuestionnairePage = () => {
+const SurveyQuestionnaire = () => {
   const params = useParams();
   const navigate = useNavigate();
 
@@ -72,4 +72,4 @@ const SurveyQuestionnairePage = () => {
   );
 };
 
-export default SurveyQuestionnairePage;
+export default SurveyQuestionnaire;

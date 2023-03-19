@@ -10,7 +10,7 @@ import { SurveyBuilderForm } from '../features/survey';
 
 import { feathers } from '../api/feathers';
 
-const SurveyCreatePage = () => {
+const SurveyCreate = () => {
   const navigate = useNavigate();
 
   const handleSubmitSurvey = async (survey) => {
@@ -35,4 +35,4 @@ const SurveyCreatePage = () => {
   );
 };
 
-export default SurveyCreatePage;
+export default SurveyCreate;

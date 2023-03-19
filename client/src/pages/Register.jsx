@@ -11,7 +11,7 @@ import { RegisterForm } from '../features/authentication';
 
 import { feathers } from '../api/feathers';
 
-const RegisterPage = () => {
+const Register = () => {
   const navigate = useNavigate();
 
   const handleSubmitCredentials = async ({ username, password }) => {
@@ -43,4 +43,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default Register;

@@ -14,7 +14,7 @@ import { SurveyDeleteDialog, useGetSurveyQuery, useSurveyAuthorValidator } from 
 
 import { feathers } from '../api/feathers';
 
-const SurveyDeletePage = () => {
+const SurveyDelete = () => {
   const user = useSelector((state) => state.authentication.user);
 
   const params = useParams();
@@ -65,4 +65,4 @@ const SurveyDeletePage = () => {
   );
 };
 
-export default SurveyDeletePage;
+export default SurveyDelete;
