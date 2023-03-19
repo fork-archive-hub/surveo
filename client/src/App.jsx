@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { store } from './redux';
 
 import { ThemeProvider, CssBaseline } from '@mui/material';
-import { darkTheme } from './theme/darkTheme';
+import { dark } from './themes/dark';
 
 import { BrowserRouter } from 'react-router-dom';
 import AppRoutes from './routes/AppRoutes';
@@ -16,7 +16,7 @@ const App = () => {
   return (
     <GoogleReCaptchaProvider reCaptchaKey={process.env.REACT_APP_GOOGLE_RECAPTCHA_KEY}>
       <Provider store={store}>
-        <ThemeProvider theme={darkTheme}>
+        <ThemeProvider theme={dark}>
           <CssBaseline />
           <BrowserRouter>
             <AppRoutes />
