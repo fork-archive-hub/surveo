@@ -8,7 +8,7 @@ import { Grid } from '@mui/material';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 import Spinner from '../components/elements/Spinner';
-import { SurveyResults, useGetSurveyResultsQuery, useSurveyAuthorValidator } from '../features/survey';
+import { SurveyResultInspector, useGetSurveyResultsQuery, useSurveyAuthorValidator } from '../features/survey';
 
 const SurveyResultsPage = () => {
   const user = useSelector((state) => state.authentication.user);
@@ -34,7 +34,7 @@ const SurveyResultsPage = () => {
     <Grid container sx={{ justifyContent: 'center', py: 2 }}>
       <Grid item xs={12} sm={8} md={5} lg={4} xl={3.5}>
         {isLoading && <Spinner />}
-        {Boolean(survey._id) && !isLoading && !isError && <SurveyResults survey={survey} />}
+        {Boolean(survey._id) && !isLoading && !isError && <SurveyResultInspector survey={survey} />}
       </Grid>
     </Grid>
   );

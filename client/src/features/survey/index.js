@@ -1,7 +1,7 @@
 export { default as SurveyBuilderForm } from './components/builder/SurveyBuilderForm';
 export { default as SurveyDeleteDialog } from './components/misc/SurveyDeleteDialog';
 export { default as SurveyEditorForm } from './components/misc/SurveyEditorForm';
-export { default as SurveyResults } from './components/results/SurveyResults';
+export { default as SurveyResultInspector } from './components/results/SurveyResultInspector';
 export { default as SurveyQuestionnaireForm } from './components/questionnaire/SurveyQuestionnaireForm';
 export { default as UserSurveyStack } from './components/misc/UserSurveyStack';
 

@@ -5,7 +5,7 @@ import { Stack } from '@mui/material';
 import SurveyHeader from '../questionnaire/SurveyHeader';
 import QuestionResultsList from './QuestionResultsList';
 
-const SurveyResults = ({ survey }) => {
+const SurveyResultInspector = ({ survey }) => {
   return (
     <Stack>
       <SurveyHeader name={survey.name} author={survey.author.username} createdAt={survey.createdAt} />
@@ -14,7 +14,7 @@ const SurveyResults = ({ survey }) => {
   );
 };
 
-SurveyResults.propTypes = {
+SurveyResultInspector.propTypes = {
   survey: PropTypes.shape({
     name: PropTypes.string.isRequired,
     createdAt: PropTypes.string.isRequired,
@@ -25,4 +25,4 @@ SurveyResults.propTypes = {
   }),
 };
 
-export default SurveyResults;
+export default SurveyResultInspector;
