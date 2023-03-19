@@ -3,20 +3,20 @@ import { lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import { MainLayout } from '../layouts/main';
-import { HighlightLayout } from '../layouts/highlight';
+import { MainLayout } from './layouts/main';
+import { HighlightLayout } from './layouts/highlight';
 
-import LandingPage from '../pages/LandingPage';
+import LandingPage from './pages/LandingPage';
 
-const LoginPage = lazy(() => import('../pages/LoginPage'));
-const RegisterPage = lazy(() => import('../pages/RegisterPage'));
-const DashboardPage = lazy(() => import('../pages/DashboardPage'));
-const SurveyEditPage = lazy(() => import('../pages/SurveyEditPage'));
-const SurveyDeletePage = lazy(() => import('../pages/SurveyDeletePage'));
-const SurveyCreatePage = lazy(() => import('../pages/SurveyCreatePage'));
-const SurveyResultsPage = lazy(() => import('../pages/SurveyResultsPage'));
-const SurveyQuestionnairePage = lazy(() => import('../pages/SurveyQuestionnairePage'));
-const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
+const LoginPage = lazy(() => import('./pages/LoginPage'));
+const RegisterPage = lazy(() => import('./pages/RegisterPage'));
+const DashboardPage = lazy(() => import('./pages/DashboardPage'));
+const SurveyEditPage = lazy(() => import('./pages/SurveyEditPage'));
+const SurveyDeletePage = lazy(() => import('./pages/SurveyDeletePage'));
+const SurveyCreatePage = lazy(() => import('./pages/SurveyCreatePage'));
+const SurveyResultsPage = lazy(() => import('./pages/SurveyResultsPage'));
+const SurveyQuestionnairePage = lazy(() => import('./pages/SurveyQuestionnairePage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 const AppRoutes = () => {
   const isAuthenticated = useSelector((state) => state.authentication.isAuthenticated);
