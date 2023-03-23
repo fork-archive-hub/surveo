@@ -13,7 +13,7 @@ const SurveyQuestionnaireForm = ({ survey, isFormDisabled, onSubmitVotes }) => {
   const form = useForm({ mode: 'all' });
 
   const onSubmit = (data) => {
-    if (onSubmitVotes && !isFormDisabled) {
+    if (!isFormDisabled) {
       onSubmitVotes(data);
     }
   };

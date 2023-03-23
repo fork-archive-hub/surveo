@@ -7,15 +7,11 @@ import Button from '../../../../components/form/Button';
 
 const SurveyDeleteDialog = ({ onDeleteSurvey, onCancelAction }) => {
   const handleDeleteSurvey = () => {
-    if (onDeleteSurvey) {
-      onDeleteSurvey();
-    }
+    onDeleteSurvey();
   };
 
   const handleActionCancel = () => {
-    if (onCancelAction) {
-      onCancelAction();
-    }
+    onCancelAction();
   };
 
   return (

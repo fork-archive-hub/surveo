@@ -11,9 +11,7 @@ const AnswerList = ({ answers, onSelectAnswer }) => {
   const handleChange = (event) => {
     const answerIndex = answers.findIndex((answer) => answer._id === event.target.value);
 
-    if (onSelectAnswer) {
-      onSelectAnswer(event.target.value, answerIndex);
-    }
+    onSelectAnswer(event.target.value, answerIndex);
   };
 
   return (
