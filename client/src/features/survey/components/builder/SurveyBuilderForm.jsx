@@ -19,9 +19,10 @@ const SurveyBuilderForm = ({ onSubmitSurvey }) => {
     defaultValues: new SurveyTemplate(),
     resolver: joiResolver(SurveySchema),
   });
+  const { isValid, isDirty } = form.formState;
 
   const onSubmit = (data) => {
-    if (onSubmitSurvey) {
+    if (isValid && isDirty) {
       onSubmitSurvey(data);
     }
   };
@@ -32,7 +33,7 @@ const SurveyBuilderForm = ({ onSubmitSurvey }) => {
         <Stack divider={<Divider />}>
           <SurveyConfiguration />
           <QuestionSetBuilder path="questions" />
-          <SubmitButton disabled={!form.formState.isValid || !form.formState.isDirty}>Create survey</SubmitButton>
+          <SubmitButton disabled={!(isValid && isDirty)}>Create survey</SubmitButton>
         </Stack>
       </Box>
     </FormProvider>

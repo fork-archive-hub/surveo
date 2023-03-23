@@ -21,9 +21,10 @@ const SurveyEditorForm = ({ survey, onUpdateSurvey }) => {
     },
     resolver: joiResolver(SurveyInformationSchema),
   });
+  const { isValid, isDirty } = form.formState;
 
   const onSubmit = async (data) => {
-    if (onUpdateSurvey) {
+    if (isValid && isDirty) {
       onUpdateSurvey(data);
     }
   };
@@ -33,7 +34,7 @@ const SurveyEditorForm = ({ survey, onUpdateSurvey }) => {
       <Box component="form" onSubmit={form.handleSubmit(onSubmit)}>
         <Stack>
           <SurveyConfiguration />
-          <SubmitButton disabled={!form.formState.isValid || !form.formState.isDirty}>Save</SubmitButton>
+          <SubmitButton disabled={!(isValid && isDirty)}>Save</SubmitButton>
         </Stack>
       </Box>
     </FormProvider>

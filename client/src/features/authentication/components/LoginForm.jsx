@@ -19,9 +19,10 @@ const LoginForm = ({ onSubmitCredentials }) => {
     },
     resolver: joiResolver(LoginFormSchema),
   });
+  const { isValid } = formState;
 
   const onSubmit = (data) => {
-    if (onSubmitCredentials) {
+    if (isValid) {
       onSubmitCredentials(data);
     }
   };
@@ -57,7 +58,7 @@ const LoginForm = ({ onSubmitCredentials }) => {
                 />
               )}
             />
-            <SubmitButton disabled={!formState.isValid}>Login</SubmitButton>
+            <SubmitButton disabled={!isValid}>Login</SubmitButton>
           </Stack>
         </Box>
       </CardActions>
