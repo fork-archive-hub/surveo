@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { feathers } from '../../../api/feathers';
+import { feathers } from '../../../apis/feathers';
 
 import { toast } from 'react-toastify';
 

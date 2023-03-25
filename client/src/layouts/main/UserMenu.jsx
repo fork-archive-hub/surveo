@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { Menu, MenuItem, Button, Avatar, Typography, Divider } from '@mui/material';
 import { BallotOutlined, LogoutOutlined, PersonOutline } from '@mui/icons-material';
 
-import { feathers } from '../../api/feathers';
+import { feathers } from '../../apis/feathers';
 
 import { toast } from 'react-toastify';
 

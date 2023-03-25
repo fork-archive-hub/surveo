@@ -11,7 +11,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import Spinner from '../components/elements/Spinner';
 import { SurveyQuestionnaireForm, useGetSurveyQuery, useSurveyProtection } from '../features/survey';
 
-import { feathers } from '../api/feathers';
+import { feathers } from '../apis/feathers';
 
 const SurveyQuestionnaire = () => {
   const params = useParams();

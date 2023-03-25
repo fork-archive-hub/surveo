@@ -1,4 +1,4 @@
-import { feathers } from '../../api/feathers';
+import { feathers } from '../../apis/feathers';
 
 import { authentication } from '../slices/authentication';
 

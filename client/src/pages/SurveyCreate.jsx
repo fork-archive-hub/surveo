@@ -8,7 +8,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 import { SurveyBuilderForm } from '../features/survey';
 
-import { feathers } from '../api/feathers';
+import { feathers } from '../apis/feathers';
 
 const SurveyCreate = () => {
   const navigate = useNavigate();

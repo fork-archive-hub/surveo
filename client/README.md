@@ -46,7 +46,7 @@ npm run build
 ```bash
 public                          # folder containing static files such as index.html
 src
-   |-- api                      # api related folders and files
+   |-- apis                     # api related folders and files
    |   |-- group                # group of files related to a single api
    |   |   |-- index.js         # exports main api instance from the folder
    |-- components               # shared components used across the entire application

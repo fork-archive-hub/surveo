@@ -9,7 +9,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import BrandHeader from '../components/elements/BrandHeader';
 import { LoginForm } from '../features/authentication';
 
-import { feathers } from '../api/feathers';
+import { feathers } from '../apis/feathers';
 
 const Login = () => {
   const navigate = useNavigate();

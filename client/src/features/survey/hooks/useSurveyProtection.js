@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
-import { feathers } from '../../../api/feathers';
+import { feathers } from '../../../apis/feathers';
 
 export const useSurveyProtection = (surveyId, isIPProtectionEnabled) => {
   const [isIPDisallowed, setIsIPDisallowed] = useState(false);

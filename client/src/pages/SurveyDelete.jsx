@@ -12,7 +12,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import Spinner from '../components/elements/Spinner';
 import { SurveyDeleteDialog, useGetSurveyQuery, useSurveyAuthorValidator } from '../features/survey';
 
-import { feathers } from '../api/feathers';
+import { feathers } from '../apis/feathers';
 
 const SurveyDelete = () => {
   const user = useSelector((state) => state.authentication.user);
