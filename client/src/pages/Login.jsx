@@ -1,6 +1,6 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
-import { Grid, Stack, Typography, Link as MUILink } from '@mui/material';
+import { Grid, Stack, Typography, Link } from '@mui/material';
 
 import { toast } from 'react-toastify';
 
@@ -34,9 +34,9 @@ const Login = () => {
         <LoginForm onSubmitCredentials={handleSubmitCredentials} />
         <Stack direction="row" spacing={1} sx={{ justifyContent: 'center', my: 1 }}>
           <Typography variant="body2">Dont have an account?</Typography>
-          <MUILink to="/auth/register" variant="body2" component={Link}>
+          <Link to="/auth/register" variant="body2" component={RouterLink}>
             Register
-          </MUILink>
+          </Link>
         </Stack>
       </Grid>
     </Grid>
