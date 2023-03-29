@@ -71,7 +71,8 @@ src
    |-- routes                   # routes used by the application
    |   |-- AppRoutes.jsx        # available routes in the application
    |-- theme                    # theme used by the application
-   |   |-- darkTheme.js           # dark theme object used in the application
+   |   |-- base.js              # base style object used in the application
+   |   |-- dark.js              # dark theme object used in the application
    |-- App.js                   # main application component
    |-- index.js                 # function that renders the application
    |-- .env                     # environment variables used by the application
