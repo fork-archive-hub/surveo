@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 
-const HighlighBackground = () => {
+const HighlightBackground = () => {
   const fill = '#074A3A';
   const fillOpacity = 0.5;
 
@@ -36,4 +36,4 @@ const HighlighBackground = () => {
   );
 };
 
-export default HighlighBackground;
+export default HighlightBackground;

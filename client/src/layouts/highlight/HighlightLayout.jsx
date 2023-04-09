@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 
 import { Box, Container } from '@mui/material';
 
-import HighlighBackground from './HighlighBackground';
+import HighlightBackground from './HighlightBackground';
 
 import Spinner from '../../components/elements/Spinner';
 
@@ -16,7 +16,7 @@ const HighlightLayout = () => {
           <Outlet />
         </Suspense>
       </Container>
-      <HighlighBackground />
+      <HighlightBackground />
     </Box>
   );
 };
