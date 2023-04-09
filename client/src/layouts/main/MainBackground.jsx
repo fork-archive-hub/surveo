@@ -1,9 +1,7 @@
-import { Box, useTheme } from '@mui/material';
+import { Box } from '@mui/material';
 
 const MainBackground = () => {
-  const theme = useTheme();
-
-  const stroke = theme.palette.background.main;
+  const stroke = '#074A3A';
   const strokeWidth = 20;
   const strokeOpacity = 0.3;
 

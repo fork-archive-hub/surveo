@@ -1,9 +1,7 @@
-import { Box, useTheme } from '@mui/material';
+import { Box } from '@mui/material';
 
 const HighlighBackground = () => {
-  const theme = useTheme();
-
-  const fill = theme.palette.background.main;
+  const fill = '#074A3A';
   const fillOpacity = 0.5;
 
   return (
