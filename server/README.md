@@ -5,8 +5,12 @@ Server is responsible for processing data and providing an external API.
 
 ## Pre-requisites
 
-- [node.js v17.0 or higher](https://nodejs.org/en/)
-- [npm v7.0 or higher](https://nodejs.org/en/download/)
+Server was developed and tested in a stable environment, utilizing the following versions:
+
+- [node.js v19.7.0](https://nodejs.org/en/)
+- [npm v9.6.0](https://nodejs.org/en/download/)
+
+This ensures that the application runs smoothly and efficiently.
 
 ## Installation
 
