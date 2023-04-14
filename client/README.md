@@ -3,6 +3,15 @@
 Surveo-client is a responsive web application written in [React](https://reactjs.org/), allowing users to create online surveys with basic security measures.  
 Application is built using [Redux](https://redux.js.org/), [React Router](https://reacttraining.com/react-router/), [Material UI](https://mui.com/).
 
+## Pre-requisites
+
+Surveo was developed and tested in a stable environment, utilizing the following versions:
+
+- [node.js v19.7.0](https://nodejs.org/en/)
+- [npm v9.6.0](https://nodejs.org/en/download/)
+
+This ensures that the application runs smoothly and efficiently.
+
 ## Installation
 
 Clone Surveo-client repository
@@ -44,37 +53,36 @@ npm run build
 ## Project structure
 
 ```bash
-public                          # folder containing static files such as index.html
+public                            # static files
 src
-   |-- apis                     # api related folders and files
-   |   |-- group                # group of files related to a single api
-   |   |   |-- index.js         # exports main api instance from the folder
-   |-- components               # shared components used across the entire application
-   |   |-- group                # group of related components
-   |-- features                 # feature based modules
-   |   |-- feature              # feature module
-   |   |   |-- components       # feature specific components
-   |   |   |-- hooks            # feature specific hooks
-   |   |   |-- schemas          # schemas used to validate form data
-   |   |   |-- templates        # templates used as default values for form fields
-   |   |   |-- utils            # utility functions used across feature
-   |   |   |-- index.js         # exports of all required elements from specific feature
-   |-- hooks                    # custom hooks used mostly by page level components
-   |-- layouts                  # page layouts
-   |   |-- layout               # single layout
-   |   |   |-- index.js         # export main component of the layout
-   |-- pages                    # pages used by the application
-   |-- redux
-   |   |-- slices               # redux slices used by the application
-   |   |-- store.js             # redux store used by the application
-   |   |-- index.js             # exports of all required elements from redux
-   |-- theme                    # theme used by the application
-   |   |-- base.js              # base style object used in the application
-   |   |-- dark.js              # dark theme object used in the application
-   |-- AppRoutes.jsx            # available routes in the application
-   |-- App.js                   # main application component
-   |-- index.js                 # function that renders the application
-   |-- .env                     # environment variables used by the application
+   |-- apis                       # api related folders and files
+   |   |-- group                  # files grouped by specific api
+   |   |   |-- index.js           # exports main api instance
+   |-- components                 # components used across the application
+   |   |-- group                  # components grouped by their purpose
+   |-- features                   # feature based modules
+   |   |-- feature                # resources grouped by the feature
+   |   |   |-- components         # feature components
+   |   |   |-- constants          # feature constants
+   |   |   |-- utils              # feature utils
+   |   |   |-- index.js           # exports resources from the feature folder
+   |-- hooks                      # hooks used across the application
+   |-- layouts                    # application layouts
+   |   |-- layout                 # layout components grouped by their purpose
+   |   |   |-- index.js           # exports main layout component from the folder
+   |-- pages                      # page components
+   |-- redux                      # redux related files
+   |   |-- middlewares            # redux middlewares
+   |   |-- slices                 # redux toolkit store slices
+   |   |-- store.js               # store configuration
+   |   |-- index.js               # exports redux related resources from the folder
+   |-- themes                     # theme related files
+   |   |-- base.js                # base style object containing common styles
+   |   |-- dark.js                # dark theme object
+   |-- App.jsx                    # main application component
+   |-- AppRoutes.jsx              # available routes in the application
+   |-- index.js                   # entry point of the application
+.env                              # file containing environment variables
 ```
 
 ## Author
