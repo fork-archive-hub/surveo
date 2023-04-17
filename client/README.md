@@ -1,35 +1,21 @@
-# Surveo-client
+# Surveo
 
-Surveo-client is a responsive web application written in [React](https://reactjs.org/), allowing users to create online surveys with basic security measures.  
-Application is built using [Redux](https://redux.js.org/), [React Router](https://reacttraining.com/react-router/), [Material UI](https://mui.com/).
+Surveo is a responsive web application that allows users to create online surveys with basic security measures and to analyze results using multiple forms of result presentation. Surveo is built using technologies such as [React](https://reactjs.org/), [React-Router](https://reactrouter.com), [Redux](https://redux.js.org/), [Material-UI](https://mui.com/).
 
 ## Pre-requisites
 
-Surveo was developed and tested in a stable environment, utilizing the following versions:
+Application was developed and tested in a stable environment, utilizing the following versions:
 
 - [node.js v19.7.0](https://nodejs.org/en/)
 - [npm v9.6.0](https://nodejs.org/en/download/)
 
 This ensures that the application runs smoothly and efficiently.
 
-## Installation
+## Environment Variables
 
-Clone Surveo-client repository
-
-```bash
-git clone https://github.com/r1pk/surveo-client.git master
-```
-
-Install all dependencies
+To run this project, you will need to add the following environment variables to your `.env` file
 
 ```bash
-cd ./master
-npm install
-```
-
-Before running the application, configure the environment variables.
-
-```env
 GENERATE_SOURCEMAP=false
 REACT_APP_BASE_TITLE=Surveo                                     # title of the application
 REACT_APP_FEATHERS_SERVER_URL=                                  # feathers server url
@@ -38,19 +24,33 @@ REACT_APP_AUTHENTICATION_SLICE_STORAGE_KEY=authentication-slice # local storage 
 REACT_APP_GOOGLE_RECAPTCHA_KEY=                                 # google recaptcha key
 ```
 
-Run the app in development mode
+## Run Locally
+
+Clone the project
 
 ```bash
-npm start
+  git clone https://github.com/r1pk/surveo-client.git
 ```
 
-Build the app for production to the `build` folder
+Go to the project directory
 
 ```bash
-npm run build
+  cd surveo-client
 ```
 
-## Project structure
+Install dependencies
+
+```bash
+  npm install
+```
+
+Run the project locally
+
+```bash
+  npm start
+```
+
+## Project file structure
 
 ```bash
 public                            # static files
@@ -85,6 +85,16 @@ src
 .env                              # file containing environment variables
 ```
 
-## Author
+## Demo
 
-- Patryk [r1pk](https://github.com/r1pk) Krawczyk
+Application is automatically deployed using Vercel.
+
+[Surveo Live Demo](https://surveo.vercel.app/)
+
+## Authors
+
+- [@r1pk](https://github.com/r1pk)
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
