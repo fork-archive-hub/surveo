@@ -1,36 +1,47 @@
 # Surveo-server
 
-Surveo-server is a server written in [Node.js](https://nodejs.org/en/) using [Feathers.js](https://feathersjs.com/) framework for Surveo application.  
-Server is responsible for processing data and providing an external API.
+Repository contains the server-side application for [Surveo project](https://github.com/r1pk/surveo-client). Server is written in Node.js and uses the [Feathers](https://feathersjs.com/) framework.
 
 ## Pre-requisites
 
-Server was developed and tested in a stable environment, utilizing the following versions:
+Application was developed and tested in a stable environment, utilizing the following versions:
 
 - [node.js v19.7.0](https://nodejs.org/en/)
 - [npm v9.6.0](https://nodejs.org/en/download/)
 
 This ensures that the application runs smoothly and efficiently.
 
-## Installation
+## Configuration
 
-Clone surveo-server repository
+Configuration of the application is done in the `config` directory.
+
+- `default.json` - file contains the default configuration of the application.
+- `production.json` - file contains the production configuration of the application.
+
+## Run Locally
+
+Clone the project
 
 ```bash
-git clone https://github.com/r1pk/surveo-server.git master
+  git clone https://github.com/r1pk/surveo-server.git
 ```
 
-Install all dependencies
+Go to the project directory
 
 ```bash
-cd ./master
-npm install
+  cd surveo-server
 ```
 
-Run server
+Install dependencies
 
 ```bash
-npm start
+  npm install
+```
+
+Run the project locally
+
+```bash
+  npm start
 ```
 
 ## Project structure
