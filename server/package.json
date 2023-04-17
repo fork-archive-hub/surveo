@@ -1,6 +1,5 @@
 {
   "name": "surveo-server",
-  "description": "Backend for Surveo application written in Node.js using Feathers.js framework.",
   "version": "1.0.0",
   "homepage": "https://github.com/r1pk/surveo-server",
   "private": true,
