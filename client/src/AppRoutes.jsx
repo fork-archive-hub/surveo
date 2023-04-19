@@ -3,8 +3,8 @@ import { lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import { MainLayout } from './layouts/main';
-import { HighlightLayout } from './layouts/highlight';
+import MainLayout from './layouts/main/MainLayout';
+import HighlightLayout from './layouts/highlight/HighlightLayout';
 
 import Landing from './pages/Landing';
 
