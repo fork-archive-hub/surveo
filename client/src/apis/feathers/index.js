@@ -1,1 +1,0 @@
-export { feathers } from './feathers';
