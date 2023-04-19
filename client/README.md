@@ -56,8 +56,6 @@ Run the project locally
 public                            # static files
 src
    |-- apis                       # api related folders and files
-   |   |-- group                  # files grouped by specific api
-   |   |   |-- index.js           # exports main api instance
    |-- components                 # components used across the application
    |   |-- group                  # components grouped by their purpose
    |-- features                   # feature based modules
@@ -69,7 +67,6 @@ src
    |-- hooks                      # hooks used across the application
    |-- layouts                    # application layouts
    |   |-- layout                 # layout components grouped by their purpose
-   |   |   |-- index.js           # exports main layout component from the folder
    |-- pages                      # page components
    |-- redux                      # redux related files
    |   |-- middlewares            # redux middlewares
