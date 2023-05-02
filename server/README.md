@@ -1,35 +1,58 @@
 # Surveo-server
 
-Repository contains the server-side application for [Surveo project](https://github.com/r1pk/surveo-client). Server is written in Node.js and uses the [Feathers](https://feathersjs.com/) framework.
+Directory containing server-side application for [Surveo project](https://github.com/r1pk/surveo). Surveo server is written in Node.js and uses the [Feathers](https://feathersjs.com/) framework.
 
-## Pre-requisites
+## Project structure
 
-Application was developed and tested in a stable environment, utilizing the following versions:
-
-- [node.js v19.7.0](https://nodejs.org/en/)
-- [npm v9.6.0](https://nodejs.org/en/download/)
-
-This ensures that the application runs smoothly and efficiently.
+```bash
+server/                     # root directory
+├─ config/                  # application configuration files
+├─ docs/                    # documentation files
+├─ src/                     # application source code
+│  ├─ hooks/                # custom hooks
+│  ├─ middleware/           # application middleware
+│  ├─ models/               # database models
+│  ├─ services/             # application services
+│  ├─ app.hooks.js          # global application hooks
+│  ├─ app.js                # application initialization
+│  ├─ authentication.js     # authentication configuration
+│  ├─ channels.js           # channels configuration
+│  ├─ index.js              # application entry point
+│  ├─ logger.js             # logger configuration
+│  ├─ mongoose.js           # mongoose configuration
+```
 
 ## Configuration
 
-Configuration of the application is done in the `config` directory.
+Configuration files are located in the `config` directory and are in JSON format:
 
-- `default.json` - file contains the default configuration of the application.
-- `production.json` - file contains the production configuration of the application.
+- `production.json` - Configuration used in production environment.
+- `default.json` - Default server configuration file and will be used as fallback for other environment-specific configuration files.
+
+To run the server, you need to set following settings in one of the above files:
+
+```json
+{
+  ...
+  "captcha": {
+    "secret": ""    // Google reCAPTCHA secret key
+  },
+  "mongodb": ""     // MongoDB connection string with username and password
+}
+```
 
 ## Run Locally
 
 Clone the project
 
 ```bash
-  git clone https://github.com/r1pk/surveo-server.git
+  git clone https://github.com/r1pk/surveo.git
 ```
 
-Go to the project directory
+Go to the server directory
 
 ```bash
-  cd surveo-server
+  cd server
 ```
 
 Install dependencies
@@ -44,26 +67,6 @@ Run the project locally
   npm start
 ```
 
-## Project structure
-
-```
-master
-  |-- config             # application configuration files
-  |-- src                # application source code
-  |  |-- hooks           # hooks used by services
-  |  |-- middleware      # middlewares used by application
-  |  |-- models          # database models definitions
-  |  |-- services        # feathers services
-  |  |  |-- service      # files related to a given service
-  |-- app.js             # basic configuration of feathers application
-  |-- app.hook.js        # global hooks used before and after all requests
-  |-- authentication.js  # authentication configuration
-  |-- channels.js        # socket channels configuration
-  |-- mongoose.js        # mongoose database configuration
-  |-- logger.js          # logger configuration
-  |-- index.js           # file that runs the application
-```
-
 ## Request authentication
 
 In order for a user to be authenticated, the request must have an `Authorization` header and a `Bearer [TOKEN]` value. The token used in the header can be obtained from the `authentication` service.
@@ -72,11 +75,11 @@ In order for a user to be authenticated, the request must have an `Authorization
 
 Surveo server currently has 5 services:
 
-- [authentication](https://github.com/r1pk/surveo-server#service-authentication-authentication)
-- [users](https://github.com/r1pk/surveo-server#service-users-users)
-- [subscriptions](https://github.com/r1pk/surveo-server#service-users-users)
-- [surveys](https://github.com/r1pk/surveo-server#service-users-users)
-- [votes](https://github.com/r1pk/surveo-server#service-users-users)
+- [authentication](#service-authentication-authentication)
+- [users](#service-users-users)
+- [subscriptions](#service-users-users)
+- [surveys](#service-users-users)
+- [votes](#service-users-users)
 
 ### Service: `authentication` (`/authentication`)
 
@@ -125,7 +128,3 @@ Validation of the query body is done with the `validateSchema` hook which uses t
 ## Author
 
 - Patryk [r1pk](https://github.com/r1pk) Krawczyk
-
-## License
-
-- [MIT](https://choosealicense.com/licenses/mit/)

@@ -1,19 +1,35 @@
-# Surveo
+# Surveo-client
 
-Surveo is a responsive web application that allows users to create online surveys with basic security measures and to analyze results using multiple forms of result presentation. Surveo is built using technologies such as [React](https://reactjs.org/), [React-Router](https://reactrouter.com), [Redux](https://redux.js.org/), [Material-UI](https://mui.com/).
+Directory containing client-side application for [Surveo project](https://github.com/r1pk/surveo). Surveo client is built using technologies such as [React](https://reactjs.org/), [React-Router](https://reactrouter.com), [Redux](https://redux.js.org/), [Material-UI](https://mui.com/).
 
-## Pre-requisites
+## Project structure
 
-Application was developed and tested in a stable environment, utilizing the following versions:
-
-- [node.js v19.7.0](https://nodejs.org/en/)
-- [npm v9.6.0](https://nodejs.org/en/download/)
-
-This ensures that the application runs smoothly and efficiently.
+```bash
+client/               # root directory
+├─ public/            # static files
+├─ src/               # application source code
+│  ├─ apis/           # api related files
+│  ├─ components/     # reusable components grouped by purpose
+│  ├─ features/       # functions, components, schemas grouped by feature
+│  ├─ hooks/          # custom hooks
+│  ├─ layouts/        # layout components grouped by layout type
+│  ├─ pages/          # page components
+│  ├─ redux/          # redux related files
+│  ├─ themes/         # theme related files (e.g. colors, fonts)
+│  ├─ App.jsx         # application root component
+│  ├─ AppRoutes.jsx   # application routes
+│  ├─ index.js        # application entry point
+├─ .env               # default environment variables
+```
 
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your `.env` file
+To run the application locally, you might need to change the following configuration in specific files:
+
+- `.env.local` - Configuration used by the local development server.
+- `.env` - Configuration used by default and will be used as fallback if some variables are not defined in `.env.local`.
+
+Default configuration:
 
 ```bash
 GENERATE_SOURCEMAP=false
@@ -29,13 +45,13 @@ REACT_APP_GOOGLE_RECAPTCHA_KEY=                                 # google recaptc
 Clone the project
 
 ```bash
-  git clone https://github.com/r1pk/surveo-client.git
+  git clone https://github.com/r1pk/surveo.git
 ```
 
-Go to the project directory
+Go to the client directory
 
 ```bash
-  cd surveo-client
+  cd client
 ```
 
 Install dependencies
@@ -50,48 +66,6 @@ Run the project locally
   npm start
 ```
 
-## Project file structure
-
-```bash
-public                            # static files
-src
-   |-- apis                       # api related folders and files
-   |-- components                 # components used across the application
-   |   |-- group                  # components grouped by their purpose
-   |-- features                   # feature based modules
-   |   |-- feature                # resources grouped by the feature
-   |   |   |-- components         # feature components
-   |   |   |-- constants          # feature constants
-   |   |   |-- utils              # feature utils
-   |   |   |-- index.js           # exports resources from the feature folder
-   |-- hooks                      # hooks used across the application
-   |-- layouts                    # application layouts
-   |   |-- layout                 # layout components grouped by their purpose
-   |-- pages                      # page components
-   |-- redux                      # redux related files
-   |   |-- middlewares            # redux middlewares
-   |   |-- slices                 # redux toolkit store slices
-   |   |-- store.js               # store configuration
-   |   |-- index.js               # exports redux related resources from the folder
-   |-- themes                     # theme related files
-   |   |-- base.js                # base style object containing common styles
-   |   |-- dark.js                # dark theme object
-   |-- App.jsx                    # main application component
-   |-- AppRoutes.jsx              # available routes in the application
-   |-- index.js                   # entry point of the application
-.env                              # file containing environment variables
-```
-
-## Demo
-
-Application is automatically deployed using Vercel.
-
-[Surveo Live Demo](https://surveo.vercel.app/)
-
 ## Authors
 
 - [@r1pk](https://github.com/r1pk)
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
