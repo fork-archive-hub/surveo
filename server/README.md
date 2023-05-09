@@ -26,7 +26,7 @@ server/                     # root directory
 
 Configuration files are located in the `config` directory and are in JSON format:
 
-- `production.json` - Configuration used in production environment.
+- `production.[json/js]` - Configuration used in production environment.
 - `default.json` - Default server configuration file and will be used as fallback for other environment-specific configuration files.
 
 To run the server, you need to set following settings in one of the above files:

@@ -25,7 +25,7 @@ This ensures that the application runs smoothly and efficiently.
 
 To run the server locally, you might need to change the default server configuration in specific files:
 
-- `config/production.json` - Configuration used in production environment.
+- `config/production.[json/js]` - Configuration used in production environment.
 - `config/default.json` - Default server configuration file and will be used as fallback for other environment-specific configuration files.
 
 To run the server, you need to set following settings in one of the above files:
@@ -115,7 +115,7 @@ For more information about the project, please refer to specific README files in
 
 ## Demo
 
-Application is automatically deployed using [Vercel](https://vercel.com) and [Fly.io](https://fly.io/).
+Application is automatically deployed using [Vercel](https://vercel.com).
 
 [Surveo Live Demo](https://surveo.vercel.app/)
 
